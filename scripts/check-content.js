@@ -1,0 +1,93 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const docs = path.join(root, 'docs');
+const errors = [];
+
+function walk(directory, predicate = () => true) {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const target = path.join(directory, entry.name);
+    return entry.isDirectory() ? walk(target, predicate) : predicate(target) ? [target] : [];
+  });
+}
+
+function existsAsDoc(target) {
+  return [target, `${target}.md`, path.join(target, 'index.md')].some(fs.existsSync);
+}
+
+function relative(file) { return path.relative(root, file).replaceAll('\\', '/'); }
+
+const markdownFiles = walk(docs, (file) => file.endsWith('.md'));
+for (const file of markdownFiles) {
+  const content = fs.readFileSync(file, 'utf8');
+  const withoutCode = content.replace(/```[\s\S]*?```/g, '').replace(/`[^`\r\n]*`/g, '');
+  const links = [...withoutCode.matchAll(/\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g)];
+  for (const match of links) {
+    const raw = match[1];
+    if (/^(https?:|mailto:|#)/.test(raw)) continue;
+    const clean = decodeURIComponent(raw.split(/[?#]/, 1)[0]);
+    if (!clean) continue;
+    const target = clean.startsWith('/') ? path.join(docs, clean.slice(1)) : path.resolve(path.dirname(file), clean);
+    if (!existsAsDoc(target)) errors.push(`${relative(file)} 链接不存在：${raw}`);
+  }
+  if (/无需\s*(Docker|容器)|复制到.*实验室|粘贴到.*实验室/.test(content)) {
+    errors.push(`${relative(file)} 包含过时的 Live 引导文案`);
+  }
+}
+
+const profileData = fs.readFileSync(path.join(docs, '.vitepress/theme/data/databaseProfiles.ts'), 'utf8');
+const guideData = fs.readFileSync(path.join(docs, '.vitepress/theme/data/databaseGuides.ts'), 'utf8');
+for (const file of markdownFiles.filter((item) => item.includes(`${path.sep}databases${path.sep}`))) {
+  const content = fs.readFileSync(file, 'utf8');
+  for (const match of content.matchAll(/<DatabaseProfile id="([^"]+)"/g)) {
+    if (!profileData.includes(`${match[1]}:`) && !profileData.includes(`'${match[1]}':`)) {
+      errors.push(`${relative(file)} 引用了不存在的数据库资料：${match[1]}`);
+    }
+  }
+}
+
+const databaseDirectories = ['sql', 'analytical', 'nosql'].flatMap((category) => {
+  const categoryDirectory = path.join(docs, 'databases', category);
+  const legacyPages = fs.readdirSync(categoryDirectory, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name !== 'index.md' && entry.name.endsWith('.md'));
+  for (const page of legacyPages) errors.push(`${relative(path.join(categoryDirectory, page.name))} 仍是旧的数据库单页，应迁移到独立目录`);
+  return fs.readdirSync(categoryDirectory, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => path.join(categoryDirectory, entry.name));
+});
+
+if (databaseDirectories.length !== 24) errors.push(`独立数据库目录数量应为 24，当前为 ${databaseDirectories.length}`);
+for (const directory of databaseDirectories) {
+  const id = path.basename(directory);
+  for (const page of ['index.md', 'core-concepts.md', 'versions.md']) {
+    if (!fs.existsSync(path.join(directory, page))) errors.push(`${relative(directory)} 缺少 ${page}`);
+  }
+  if (!guideData.includes(`${id}:`) && !guideData.includes(`'${id}':`)) errors.push(`${relative(directory)} 缺少核心知识与版本资料`);
+}
+
+for (const file of markdownFiles.filter((item) => item.includes(`${path.sep}databases${path.sep}`))) {
+  const content = fs.readFileSync(file, 'utf8');
+  for (const match of content.matchAll(/<Database(?:CoreGuide|VersionGuide) id="([^"]+)"/g)) {
+    if (!guideData.includes(`${match[1]}:`) && !guideData.includes(`'${match[1]}':`)) {
+      errors.push(`${relative(file)} 引用了不存在的数据库专题资料：${match[1]}`);
+    }
+  }
+}
+
+const requiredPages = [
+  'learn/query.md', 'learn/transactions.md', 'browser/indexeddb.md', 'playground/sqlite.md',
+  'playground/duckdb.md', 'playground/pglite.md', 'playground/surrealdb.md', 'playground/indexeddb.md',
+  'matrix/sql-dialects.md', 'matrix/browser-wasm.md', 'matrix/connection-strings.md',
+];
+for (const page of requiredPages) if (!fs.existsSync(path.join(docs, page))) errors.push(`缺少必需页面：docs/${page}`);
+
+if (markdownFiles.length < 95) errors.push(`内容页面数量不足：${markdownFiles.length}`);
+
+if (errors.length) {
+  console.error(`内容检查失败（${errors.length} 项）：`);
+  for (const error of errors) console.error(`  - ${error}`);
+  process.exit(1);
+}
+console.log(`内容检查通过：${markdownFiles.length} 篇文档，内部链接、Live 文案和数据库资料引用完整。`);

@@ -1,0 +1,8 @@
+node_modules/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+coverage/
+test-results/
+playwright-report/
+*.log
+.DS_Store
