@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import { splitDuckDbWasm } from './plugins/splitDuckDbWasm';
 
 const sqlItems = [
   ['PostgreSQL', '/databases/sql/postgresql'],
@@ -56,6 +57,7 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/logo.svg' }],
   ],
   vite: {
+    plugins: [splitDuckDbWasm()],
     optimizeDeps: {
       exclude: ['@surrealdb/wasm', '@sqlite.org/sqlite-wasm', '@duckdb/duckdb-wasm', '@electric-sql/pglite'],
     },

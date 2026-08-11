@@ -9,6 +9,32 @@ let database: duckdb.AsyncDuckDB;
 let connection: duckdb.AsyncDuckDBConnection;
 let nestedWorker: Worker;
 
+type SplitWasmManifest = { partCount: number; byteLength: number };
+
+async function materializeDuckDbModule(moduleUrl: string) {
+  if (!import.meta.env.PROD) return { url: moduleUrl, revoke: () => {} };
+
+  const manifestResponse = await fetch(`${moduleUrl}.parts.json`);
+  if (manifestResponse.status === 404) return { url: moduleUrl, revoke: () => {} };
+  if (!manifestResponse.ok) throw new Error(`DuckDB WASM 分片清单加载失败：HTTP ${manifestResponse.status}`);
+
+  const manifest = await manifestResponse.json() as SplitWasmManifest;
+  if (!Number.isInteger(manifest.partCount) || manifest.partCount < 1 || manifest.byteLength < 1) {
+    throw new Error('DuckDB WASM 分片清单无效');
+  }
+
+  const parts = await Promise.all(Array.from({ length: manifest.partCount }, async (_, index) => {
+    const response = await fetch(`${moduleUrl}.part${index}`);
+    if (!response.ok) throw new Error(`DuckDB WASM 分片 ${index + 1}/${manifest.partCount} 加载失败：HTTP ${response.status}`);
+    return response.arrayBuffer();
+  }));
+  const actualLength = parts.reduce((total, part) => total + part.byteLength, 0);
+  if (actualLength !== manifest.byteLength) throw new Error('DuckDB WASM 分片长度校验失败');
+
+  const url = URL.createObjectURL(new Blob(parts, { type: 'application/wasm' }));
+  return { url, revoke: () => URL.revokeObjectURL(url) };
+}
+
 const seedSql = `
 CREATE OR REPLACE TABLE lessons AS
 SELECT * FROM (VALUES
@@ -55,7 +81,12 @@ async function initialize() {
   const bundle = await duckdb.selectBundle(bundles);
   nestedWorker = new Worker(bundle.mainWorker!);
   database = new duckdb.AsyncDuckDB(new duckdb.VoidLogger(), nestedWorker);
-  await database.instantiate(bundle.mainModule, bundle.pthreadWorker);
+  const moduleAsset = await materializeDuckDbModule(bundle.mainModule);
+  try {
+    await database.instantiate(moduleAsset.url, bundle.pthreadWorker);
+  } finally {
+    moduleAsset.revoke();
+  }
   connection = await database.connect();
   await connection.query(seedSql);
   return {
