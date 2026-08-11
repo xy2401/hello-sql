@@ -55,12 +55,16 @@ export class EngineWorkerClient implements DatabaseEngineAdapter {
 
   private request<T>(type: string, payload?: unknown, transfer: Transferable[] = []): Promise<T> {
     const requestId = crypto.randomUUID();
+    const timeoutMs = this.engineId === 'duckdb' && (type === 'init' || type === 'reset')
+      ? 90_000
+      : this.timeoutMs;
     return new Promise<T>((resolve, reject) => {
       const timer = window.setTimeout(async () => {
         this.pending.delete(requestId);
-        reject(new Error(`执行超过 ${this.timeoutMs / 1000} 秒，运行环境已重启`));
+        const action = type === 'init' || type === 'reset' ? '初始化' : '执行';
+        reject(new Error(`${action}超过 ${timeoutMs / 1000} 秒，运行环境已重启`));
         await this.restart();
-      }, this.timeoutMs);
+      }, timeoutMs);
       this.pending.set(requestId, { resolve: resolve as (value: unknown) => void, reject, timer });
       this.worker.postMessage({ requestId, type, payload }, transfer);
     });
