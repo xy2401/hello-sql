@@ -1,42 +1,10 @@
 import { defineConfig } from 'vitepress';
 import { splitDuckDbWasm } from './plugins/splitDuckDbWasm';
+import { analyticalDatabaseItems, noSqlDatabaseItems, sqlDatabaseItems } from './theme/data/databaseNavigation';
 
-const sqlItems = [
-  ['PostgreSQL', '/databases/sql/postgresql'],
-  ['MySQL', '/databases/sql/mysql'],
-  ['MariaDB', '/databases/sql/mariadb'],
-  ['SQLite', '/databases/sql/sqlite'],
-  ['SQL Server', '/databases/sql/sql-server'],
-  ['Oracle Database', '/databases/sql/oracle'],
-];
-
-const analyticalItems = [
-  ['DuckDB', '/databases/analytical/duckdb'],
-  ['ClickHouse', '/databases/analytical/clickhouse'],
-  ['TiDB', '/databases/analytical/tidb'],
-  ['CockroachDB', '/databases/analytical/cockroachdb'],
-  ['Snowflake', '/databases/analytical/snowflake'],
-  ['BigQuery', '/databases/analytical/bigquery'],
-];
-
-const noSqlItems = [
-  ['MongoDB', '/databases/nosql/mongodb'],
-  ['CouchDB', '/databases/nosql/couchdb'],
-  ['Redis', '/databases/nosql/redis'],
-  ['Valkey', '/databases/nosql/valkey'],
-  ['DynamoDB', '/databases/nosql/dynamodb'],
-  ['Cassandra', '/databases/nosql/cassandra'],
-  ['ScyllaDB', '/databases/nosql/scylladb'],
-  ['Elasticsearch', '/databases/nosql/elasticsearch'],
-  ['OpenSearch', '/databases/nosql/opensearch'],
-  ['Neo4j', '/databases/nosql/neo4j'],
-  ['InfluxDB', '/databases/nosql/influxdb'],
-  ['TimescaleDB', '/databases/nosql/timescaledb'],
-];
-
-function databaseSidebarItems(items: string[][]) {
-  return items.map(([text, link]) => ({
-    text,
+function databaseSidebarItems(items: readonly { name: string; link: string }[]) {
+  return items.map(({ name, link }) => ({
+    text: name,
     collapsed: true,
     items: [
       { text: '概览', link: `${link}/` },
@@ -49,7 +17,7 @@ function databaseSidebarItems(items: string[][]) {
 export default defineConfig({
   base: '/',
   title: 'Hello SQL',
-  description: '主流 SQL、NoSQL、Browser Database 与 WebAssembly 数据库交互学习平台',
+  description: 'SQL、NoSQL、浏览器数据库与 WebAssembly 数据库交互学习平台',
   cleanUrls: true,
   lastUpdated: true,
   head: [
@@ -69,13 +37,12 @@ export default defineConfig({
     sidebarMenuLabel: '数据库',
     outline: { level: [2, 3], label: '本页导航' },
     nav: [
-      { text: '首页', link: '/' },
       { text: 'SQL 基础', link: '/learn/' },
-      { text: '主流 SQL', link: '/databases/sql/' },
-      { text: '主流 NoSQL', link: '/databases/nosql/' },
-      { text: 'Browser Database', link: '/browser/' },
+      { text: 'SQL 数据库', link: '/databases/sql/' },
+      { text: 'NoSQL 数据库', link: '/databases/nosql/' },
+      { text: '浏览器数据库', link: '/browser/' },
       { text: 'WASM 实验室', link: '/playground/' },
-      { text: '数据库矩阵', link: '/matrix/' },
+      { text: '数据库对比', link: '/matrix/' },
     ],
     sidebar: {
       '/learn/': [{
@@ -93,20 +60,20 @@ export default defineConfig({
       '/databases/sql/': [
         { text: '关系型数据库', items: [
           { text: 'SQL 数据库总览', link: '/databases/sql/' },
-          ...databaseSidebarItems(sqlItems),
+          ...databaseSidebarItems(sqlDatabaseItems),
         ] },
         { text: '分析、分布式与云', items: [
           { text: '能力总览', link: '/databases/analytical/' },
-          ...databaseSidebarItems(analyticalItems),
+          ...databaseSidebarItems(analyticalDatabaseItems),
         ] },
       ],
       '/databases/analytical/': [{ text: '分析、分布式与云', items: [
         { text: '能力总览', link: '/databases/analytical/' },
-        ...databaseSidebarItems(analyticalItems),
+        ...databaseSidebarItems(analyticalDatabaseItems),
       ] }],
       '/databases/nosql/': [{ text: 'NoSQL 数据模型', items: [
         { text: 'NoSQL 总览', link: '/databases/nosql/' },
-        ...databaseSidebarItems(noSqlItems),
+        ...databaseSidebarItems(noSqlDatabaseItems),
       ] }],
       '/browser/': [{ text: 'Browser Database', items: [
         { text: '浏览器数据层总览', link: '/browser/' },
@@ -123,7 +90,7 @@ export default defineConfig({
         { text: 'IndexedDB', link: '/playground/indexeddb' },
         { text: 'WASM 成熟度目录', link: '/playground/catalog' },
       ] }],
-      '/matrix/': [{ text: '数据库对比矩阵', items: [
+      '/matrix/': [{ text: '数据库对比', items: [
         { text: '矩阵总览', link: '/matrix/' },
         { text: 'SQL 方言与查询能力', link: '/matrix/sql-dialects' },
         { text: '事务与一致性', link: '/matrix/transactions' },

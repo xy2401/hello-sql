@@ -3,6 +3,10 @@ import { databaseProfiles } from '../../docs/.vitepress/theme/data/databaseProfi
 import { databaseGuides } from '../../docs/.vitepress/theme/data/databaseGuides';
 import { connectionStringProfiles } from '../../docs/.vitepress/theme/data/connectionStrings';
 import { defaultSources, engineCatalog, engineOrder } from '../../docs/.vitepress/theme/data/engineCatalog';
+import { databaseBrands, databaseLogoPath, databaseProductBrandIds } from '../../docs/.vitepress/theme/data/databaseBranding';
+import { analyticalDatabaseItems, noSqlDatabaseItems, sqlDatabaseItems } from '../../docs/.vitepress/theme/data/databaseNavigation';
+import fs from 'node:fs';
+import path from 'node:path';
 
 describe('database catalog', () => {
   it('registers all five browser engines', () => {
@@ -10,6 +14,17 @@ describe('database catalog', () => {
     for (const id of engineOrder) {
       expect(engineCatalog[id].description.length).toBeGreaterThan(12);
       expect(defaultSources[id].length).toBeGreaterThan(30);
+      expect(databaseBrands[engineCatalog[id].brandId]).toBeDefined();
+    }
+  });
+
+  it('keeps navigation, profiles and local brand assets in sync', () => {
+    const navigationIds = [...sqlDatabaseItems, ...analyticalDatabaseItems, ...noSqlDatabaseItems].map((item) => item.id).sort();
+    expect(navigationIds).toEqual(Object.keys(databaseProfiles).sort());
+    expect([...databaseProductBrandIds].sort()).toEqual(Object.keys(databaseProfiles).sort());
+    for (const id of Object.keys(databaseBrands) as Array<keyof typeof databaseBrands>) {
+      const asset = databaseLogoPath(id).replace(/^\//, 'docs/public/');
+      expect(fs.existsSync(path.resolve(process.cwd(), asset)), `${id} should have a local SVG`).toBe(true);
     }
   });
 

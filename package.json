@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "主流 SQL、NoSQL、Browser Database 与 WebAssembly 数据库交互学习平台",
+  "description": "SQL、NoSQL、浏览器数据库与 WebAssembly 数据库交互学习平台",
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },

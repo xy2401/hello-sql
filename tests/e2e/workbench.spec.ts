@@ -1,5 +1,82 @@
 import { expect, test } from '@playwright/test';
 
+test('desktop navigation remains aligned across layouts', async ({ page }) => {
+  for (const width of [1280, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    const measurements: Array<{ titleX: number; menuX: number }> = [];
+    for (const route of ['/', 'learn/', 'databases/sql/postgresql/', 'playground/sqlite']) {
+      await page.goto(route);
+      await page.locator('.VPNavBarTitle').waitFor({ state: 'visible' });
+      await page.locator('.VPNavBarMenu').waitFor({ state: 'visible' });
+      const values = await page.evaluate(() => {
+        const title = document.querySelector('.VPNavBarTitle')!.getBoundingClientRect();
+        const menu = document.querySelector('.VPNavBarMenu')!.getBoundingClientRect();
+        const nav = getComputedStyle(document.querySelector('.VPNav')!);
+        const divider = document.querySelector('.VPNavBar .divider-line')!.getBoundingClientRect();
+        return { titleX: title.x, menuX: menu.x, navPosition: nav.position, dividerX: divider.x, dividerWidth: divider.width };
+      });
+      expect(values.navPosition).toBe('fixed');
+      expect(values.dividerX).toBeLessThanOrEqual(1);
+      expect(Math.abs(values.dividerWidth - width)).toBeLessThanOrEqual(1);
+      measurements.push(values);
+    }
+    for (const values of measurements.slice(1)) {
+      expect(Math.abs(values.titleX - measurements[0].titleX)).toBeLessThanOrEqual(1);
+      expect(Math.abs(values.menuX - measurements[0].menuX)).toBeLessThanOrEqual(1);
+    }
+  }
+});
+
+test('sidebar and editor follow light and dark themes', async ({ page }) => {
+  await page.goto('playground/sqlite');
+  await expect(page.getByText('已连接').first()).toBeVisible({ timeout: 45_000 });
+  if (await page.locator('html.dark').count()) await page.getByRole('switch').click();
+  await page.getByRole('tab', { name: '查询 1' }).click();
+  const sourceBefore = await page.locator('.cm-content').textContent();
+  await page.evaluate(() => { (window as Window & { __helloSqlEditor?: Element }).__helloSqlEditor = document.querySelector('.cm-editor') || undefined; });
+  const light = await page.evaluate(() => ({
+    body: getComputedStyle(document.body).backgroundColor,
+    sidebar: getComputedStyle(document.querySelector('.VPSidebar')!).backgroundColor,
+    editor: getComputedStyle(document.querySelector('.cm-editor')!).backgroundColor,
+    toolbar: getComputedStyle(document.querySelector('.pane-toolbar')!).backgroundColor,
+    token: getComputedStyle(document.querySelector('.cm-line span')!).color,
+  }));
+  expect(light.sidebar).toBe(light.body);
+  await page.getByRole('switch').click();
+  const dark = await page.evaluate(() => ({
+    body: getComputedStyle(document.body).backgroundColor,
+    sidebar: getComputedStyle(document.querySelector('.VPSidebar')!).backgroundColor,
+    editor: getComputedStyle(document.querySelector('.cm-editor')!).backgroundColor,
+    toolbar: getComputedStyle(document.querySelector('.pane-toolbar')!).backgroundColor,
+    token: getComputedStyle(document.querySelector('.cm-line span')!).color,
+  }));
+  expect(dark.sidebar).toBe(dark.body);
+  expect(dark.editor).not.toBe(light.editor);
+  expect(dark.toolbar).not.toBe(light.toolbar);
+  expect(dark.token).not.toBe(light.token);
+  expect(await page.locator('.cm-content').textContent()).toBe(sourceBefore);
+  expect(await page.evaluate(() => (window as Window & { __helloSqlEditor?: Element }).__helloSqlEditor === document.querySelector('.cm-editor'))).toBe(true);
+});
+
+test('database branding is local and consistent across catalog, sidebar and profile', async ({ page }) => {
+  for (const route of ['databases/sql/', 'databases/analytical/', 'databases/nosql/']) {
+    await page.goto(route);
+    const logos = page.locator('.database-catalog-card .database-logo img');
+    await expect(logos.first()).toBeVisible();
+    expect(await logos.count()).toBeGreaterThanOrEqual(6);
+    expect(await logos.evaluateAll((images) => images.every((image) => {
+      const img = image as HTMLImageElement;
+      return img.src.startsWith(location.origin) && img.complete && img.naturalWidth > 0;
+    }))).toBe(true);
+  }
+
+  await page.goto('databases/sql/postgresql/');
+  await expect(page.locator('.database-sidebar-explorer')).toBeVisible();
+  await expect(page.locator('#VPSidebarNav > .group').first()).toBeHidden();
+  await expect(page.locator('.profile-heading img[src="/logos/databases/postgresql.svg"]')).toBeVisible();
+  await expect(page.locator('.database-sidebar-product img[src="/logos/databases/postgresql.svg"]').first()).toBeVisible();
+});
+
 test('site navigation and SQLite query work from the domain root', async ({ page }) => {
   await page.goto('playground/sqlite');
   await expect(page.getByRole('heading', { name: 'SQLite WASM 实验室' })).toBeVisible();

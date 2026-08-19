@@ -1,4 +1,5 @@
 :root {
+  --vp-sidebar-bg-color: var(--vp-c-bg);
   --vp-c-brand-1: #0f766e;
   --vp-c-brand-2: #0d9488;
   --vp-c-brand-3: #14b8a6;
@@ -7,6 +8,31 @@
   --sql-muted: #5e7573;
   --sql-panel: #f3f8f7;
   --sql-line: #d9e7e4;
+  --sql-logo-bg: #ffffff;
+  --sql-shadow-sm: 0 10px 28px rgb(15 23 42 / 5%);
+  --sql-shadow-lg: 0 18px 50px rgb(15 23 42 / 9%);
+  --sql-on-accent: #ffffff;
+  --sql-editor-bg: #f8fafc;
+  --sql-editor-text: #1e293b;
+  --sql-editor-gutter-bg: #f1f5f9;
+  --sql-editor-gutter-text: #64748b;
+  --sql-editor-active-line: #e2e8f080;
+  --sql-editor-selection: #93c5fd80;
+  --sql-editor-caret: #0f172a;
+  --sql-editor-toolbar: #eef5f4;
+  --sql-editor-toolbar-button: #ffffff;
+  --sql-scrollbar-track: #e2e8f0;
+  --sql-scrollbar-thumb: #94a3b8;
+  --sql-status-idle: #64748b;
+  --sql-status-ready: #059669;
+  --sql-status-busy: #d97706;
+  --sql-status-ring: rgb(5 150 105 / 14%);
+  --sql-warning-border: rgb(217 119 6 / 36%);
+  --sql-warning-bg: rgb(245 158 11 / 10%);
+  --sql-warning-text: #92400e;
+  --sql-danger: #b91c1c;
+  --sql-danger-bg: rgb(220 38 38 / 8%);
+  --sql-danger-border: rgb(220 38 38 / 36%);
 }
 
 .dark {
@@ -14,9 +40,34 @@
   --sql-muted: #9fb8b4;
   --sql-panel: #112523;
   --sql-line: #29423f;
+  --sql-logo-bg: #ffffff;
+  --sql-shadow-sm: 0 10px 28px rgb(0 0 0 / 18%);
+  --sql-shadow-lg: 0 18px 50px rgb(0 0 0 / 28%);
+  --sql-editor-bg: #07111f;
+  --sql-editor-text: #dbeafe;
+  --sql-editor-gutter-bg: #0b1727;
+  --sql-editor-gutter-text: #71849c;
+  --sql-editor-active-line: #102039;
+  --sql-editor-selection: #1d4ed866;
+  --sql-editor-caret: #f8fafc;
+  --sql-editor-toolbar: #0b1727;
+  --sql-editor-toolbar-button: #102039;
+  --sql-scrollbar-track: #0b1727;
+  --sql-scrollbar-thumb: #475569;
+  --sql-status-idle: #94a3b8;
+  --sql-status-ready: #34d399;
+  --sql-status-busy: #fbbf24;
+  --sql-status-ring: rgb(52 211 153 / 16%);
+  --sql-warning-border: rgb(250 204 21 / 34%);
+  --sql-warning-bg: rgb(254 243 199 / 8%);
+  --sql-warning-text: #fcd34d;
+  --sql-danger: #f87171;
+  --sql-danger-bg: rgb(248 113 113 / 10%);
+  --sql-danger-border: rgb(248 113 113 / 38%);
 }
 
 .VPNavBarTitle .title { font-weight: 800; letter-spacing: -.02em; }
+.VPNavBar .divider-line { background-color: var(--vp-c-gutter); }
 .VPDoc.has-aside .content-container { max-width: 980px; }
 .vp-doc h1 { letter-spacing: -.035em; }
 .vp-doc h2 { margin-top: 2.2rem; }
@@ -30,6 +81,18 @@
 .VPDoc.playground-page .content-container { max-width: none !important; }
 
 .playground-page #VPSidebarNav > .group { display: none; }
+#VPSidebarNav > .database-sidebar-explorer ~ .group { display: none; }
+
+@media (min-width: 960px) {
+  .VPNavBar.has-sidebar .wrapper { padding: 0 32px !important; }
+  .VPNavBar.has-sidebar .container { max-width: calc(var(--vp-layout-max-width) - 64px) !important; }
+  .VPNavBar.has-sidebar .title { position: relative !important; top: auto !important; left: auto !important; padding: 0 !important; width: auto !important; height: calc(var(--vp-nav-height) - 1px) !important; }
+  .VPNavBar.has-sidebar .content { padding-right: 0 !important; padding-left: 0 !important; }
+  .VPNavBarTitle.has-sidebar .title { border-bottom-color: transparent !important; }
+  .VPNavBar.has-sidebar .divider { padding-left: 0 !important; }
+  .VPNavBar:not(.home) { background-color: var(--vp-nav-bg-color) !important; }
+  .VPNavBar:not(.home.top) .content-body { background-color: transparent !important; }
+}
 
 @media (min-width: 1280px) {
   .playground-page .VPDoc,
@@ -46,20 +109,22 @@
 .sql-hero h1 { max-width: 900px; margin: .7rem 0 1rem; font-size: clamp(2.5rem, 6vw, 5.2rem); line-height: .98; }
 .sql-hero .lead { max-width: 760px; color: var(--vp-c-text-2); font-size: 1.15rem; line-height: 1.8; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.5rem; }
-.hero-actions a { padding: .72rem 1rem; border-radius: .7rem; background: var(--vp-c-brand-1); color: white; font-weight: 750; text-decoration: none; }
+.hero-actions a { padding: .72rem 1rem; border-radius: .7rem; background: var(--vp-c-brand-1); color: var(--sql-on-accent); font-weight: 750; text-decoration: none; }
 .hero-actions a.secondary { border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg); color: var(--vp-c-text-1); }
 
 .feature-grid, .database-grid, .path-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .9rem; margin: 1.2rem 0 2rem; }
-.feature-card, .database-card, .path-card { padding: 1.1rem; border: 1px solid var(--sql-line); border-radius: .9rem; background: var(--vp-c-bg); box-shadow: 0 10px 28px rgb(15 23 42 / 5%); }
+.feature-card, .database-card, .path-card { padding: 1.1rem; border: 1px solid var(--sql-line); border-radius: .9rem; background: var(--vp-c-bg); box-shadow: var(--sql-shadow-sm); }
 .feature-card h3, .database-card h3, .path-card h3 { margin: 0 0 .45rem; }
 .feature-card p, .database-card p, .path-card p { margin: 0; color: var(--vp-c-text-2); }
 .database-card a, .path-card a { color: inherit; text-decoration: none; }
 .database-card:hover, .path-card:hover { border-color: var(--vp-c-brand-2); transform: translateY(-1px); }
 
 .profile-hero { margin: 1rem 0 1.6rem; padding: 1.35rem; border: 1px solid var(--sql-line); border-radius: 1rem; background: linear-gradient(135deg, var(--sql-panel), var(--vp-c-bg)); }
+.profile-heading { display: flex; align-items: center; gap: 1rem; }
+.profile-heading h1 { margin: .15rem 0 0; }
 .profile-kicker { color: var(--vp-c-brand-1); font-size: .76rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
 .profile-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: .65rem; margin-top: 1rem; }
-.profile-fact { padding: .7rem; border-radius: .65rem; background: var(--vp-c-bg); }
+.profile-fact { padding: .7rem; border: 1px solid var(--sql-line); border-radius: .65rem; background: var(--vp-c-bg); }
 .profile-fact span { display: block; color: var(--vp-c-text-3); font-size: .72rem; }
 .profile-fact strong { font-size: .9rem; }
 .profile-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }

@@ -3,7 +3,7 @@
     <section class="db-workbench" :aria-label="workbenchTitle">
       <header class="workbench-header">
         <div class="workbench-identity">
-          <span class="database-mark">DB</span>
+          <DatabaseLogo :id="metadata.brandId" :size="32" />
           <div><p>{{ metadata.runtime }}</p><h3>{{ workbenchTitle }}</h3></div>
         </div>
         <span class="runtime-status" :class="statusClass"><i />{{ statusText }}</span>
@@ -80,13 +80,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watchEffect } from 'vue';
-import { EditorState } from '@codemirror/state';
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch, watchEffect } from 'vue';
+import { Compartment, EditorState } from '@codemirror/state';
 import { EditorView, keymap } from '@codemirror/view';
 import { sql } from '@codemirror/lang-sql';
 import { javascript } from '@codemirror/lang-javascript';
 import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
 import { tags } from '@lezer/highlight';
+import { useData } from 'vitepress';
 import { defaultSources, engineCatalog } from '../data/engineCatalog';
 import { EngineWorkerClient } from '../runtime/EngineWorkerClient';
 import { buildObjectPreviewSource } from '../runtime/workbenchQueries';
@@ -94,6 +95,7 @@ import { connectWorkbenchSidebar, workbenchSidebarState } from '../runtime/workb
 import type { EngineId, EngineStatus, ExecutionResult, ResultTab, SchemaNode } from '../runtime/types';
 import WorkbenchOverview from './workbench/WorkbenchOverview.vue';
 import WorkbenchResultPanel from './workbench/WorkbenchResultPanel.vue';
+import DatabaseLogo from './DatabaseLogo.vue';
 
 const props = withDefaults(defineProps<{
   engine?: EngineId;
@@ -104,6 +106,8 @@ const props = withDefaults(defineProps<{
   engine: 'sqlite',
   allowEngineSwitch: false,
 });
+
+const { isDark } = useData();
 
 const selectedEngine = ref<EngineId>(props.engine);
 const persistLocally = ref(false);
@@ -126,6 +130,7 @@ const history = ref<Array<{ source: string; time: number }>>([]);
 let editor: EditorView | undefined;
 let client: EngineWorkerClient | undefined;
 let disconnectSidebar: (() => void) | undefined;
+const editorTheme = new Compartment();
 
 const metadata = computed(() => engineCatalog[selectedEngine.value]);
 const workbenchTitle = computed(() => props.title || `${metadata.value.label} 数据库工作台`);
@@ -144,19 +149,41 @@ const capabilityRows = computed(() => [
   { label: '隔离', value: 'Dedicated Worker' },
 ]);
 
-const highlightStyle = HighlightStyle.define([
-  { tag: tags.keyword, color: '#c084fc', fontWeight: '600' },
-  { tag: [tags.string, tags.special(tags.string)], color: '#86efac' },
-  { tag: [tags.number, tags.bool, tags.null], color: '#fbbf24' },
-  { tag: [tags.comment, tags.lineComment, tags.blockComment], color: '#64748b', fontStyle: 'italic' },
-  { tag: [tags.variableName, tags.propertyName], color: '#dbeafe' },
-  { tag: tags.typeName, color: '#67e8f9' },
-]);
+function createEditorTheme(dark: boolean) {
+  const palette = dark ? {
+    keyword: '#d8b4fe', string: '#86efac', literal: '#fcd34d', comment: '#94a3b8', variable: '#dbeafe', type: '#67e8f9',
+  } : {
+    keyword: '#7e22ce', string: '#15803d', literal: '#a16207', comment: '#64748b', variable: '#1e3a8a', type: '#0e7490',
+  };
+  const highlightStyle = HighlightStyle.define([
+    { tag: tags.keyword, color: palette.keyword, fontWeight: '600' },
+    { tag: [tags.string, tags.special(tags.string)], color: palette.string },
+    { tag: [tags.number, tags.bool, tags.null], color: palette.literal },
+    { tag: [tags.comment, tags.lineComment, tags.blockComment], color: palette.comment, fontStyle: 'italic' },
+    { tag: [tags.variableName, tags.propertyName], color: palette.variable },
+    { tag: tags.typeName, color: palette.type },
+  ]);
+  return [
+    syntaxHighlighting(highlightStyle),
+    EditorView.theme({
+      '&': { height: '100%', backgroundColor: 'var(--sql-editor-bg)', color: 'var(--sql-editor-text)', fontSize: '13.5px' },
+      '.cm-content': { padding: '14px 0', caretColor: 'var(--sql-editor-caret)', fontFamily: 'ui-monospace, SFMono-Regular, Consolas, monospace' },
+      '.cm-line': { padding: '0 16px' },
+      '.cm-gutters': { backgroundColor: 'var(--sql-editor-gutter-bg)', color: 'var(--sql-editor-gutter-text)', border: 'none' },
+      '.cm-activeLine, .cm-activeLineGutter': { backgroundColor: 'var(--sql-editor-active-line)' },
+      '.cm-selectionBackground, &.cm-focused .cm-selectionBackground': { backgroundColor: 'var(--sql-editor-selection) !important' },
+      '.cm-scroller': { scrollbarColor: 'var(--sql-scrollbar-thumb) var(--sql-scrollbar-track)' },
+      '.cm-scroller::-webkit-scrollbar': { width: '10px', height: '10px' },
+      '.cm-scroller::-webkit-scrollbar-track': { background: 'var(--sql-scrollbar-track)' },
+      '.cm-scroller::-webkit-scrollbar-thumb': { background: 'var(--sql-scrollbar-thumb)', borderRadius: '999px', border: '2px solid var(--sql-scrollbar-track)' },
+      '&.cm-focused': { outline: 'none' },
+    }, { dark }),
+  ];
+}
 
 function editorExtensions() {
   return [
     metadata.value.editorLanguage === 'javascript' ? javascript() : sql(),
-    syntaxHighlighting(highlightStyle),
     EditorView.lineWrapping,
     EditorView.updateListener.of((update) => {
       if (!update.docChanged) return;
@@ -164,15 +191,7 @@ function editorExtensions() {
       drafts.value[selectedEngine.value] = currentSource.value;
     }),
     keymap.of([{ key: 'Mod-Enter', run: () => { void runQuery(); return true; } }]),
-    EditorView.theme({
-      '&': { height: '100%', backgroundColor: '#07111f', color: '#dbeafe', fontSize: '13.5px' },
-      '.cm-content': { padding: '14px 0', caretColor: '#f8fafc', fontFamily: 'ui-monospace, SFMono-Regular, Consolas, monospace' },
-      '.cm-line': { padding: '0 16px' },
-      '.cm-gutters': { backgroundColor: '#07111f', color: '#52657d', border: 'none' },
-      '.cm-activeLine, .cm-activeLineGutter': { backgroundColor: '#102039' },
-      '.cm-selectionBackground, &.cm-focused .cm-selectionBackground': { backgroundColor: '#1d4ed866' },
-      '&.cm-focused': { outline: 'none' },
-    }),
+    editorTheme.of(createEditorTheme(isDark.value)),
   ];
 }
 
@@ -395,6 +414,10 @@ watchEffect(() => {
   workbenchSidebarState.message = explorerMessage.value;
 });
 
+watch(isDark, (dark) => {
+  editor?.dispatch({ effects: editorTheme.reconfigure(createEditorTheme(dark)) });
+});
+
 onMounted(async () => {
   disconnectSidebar = connectWorkbenchSidebar({ selectEngine, selectNode, refresh: refreshSchema });
   sidebarBound.value = true;
@@ -410,18 +433,17 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.db-workbench { margin: 1.2rem 0 2.4rem; overflow: hidden; border: 1px solid var(--vp-c-divider); border-radius: 14px; background: var(--vp-c-bg); box-shadow: 0 18px 50px rgb(15 23 42 / 9%); }
+.db-workbench { margin: 1.2rem 0 2.4rem; overflow: hidden; border: 1px solid var(--vp-c-divider); border-radius: 14px; background: var(--vp-c-bg); box-shadow: var(--sql-shadow-lg); }
 .workbench-header { display: flex; min-height: 3.8rem; align-items: center; justify-content: space-between; gap: .8rem; padding: .65rem .85rem; border-bottom: 1px solid var(--vp-c-divider); background: linear-gradient(125deg, var(--sql-panel), var(--vp-c-bg)); }
 .workbench-identity { display: flex; min-width: 0; align-items: center; gap: .65rem; }
-.database-mark { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: .55rem; background: var(--vp-c-brand-1); color: white; font: 850 .65rem/1 ui-monospace, monospace; }
 .workbench-identity div { min-width: 0; }
 .workbench-identity p { margin: 0; overflow: hidden; color: var(--vp-c-brand-1); font-size: .59rem; font-weight: 800; letter-spacing: .05em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
 .workbench-identity h3 { margin: .12rem 0 0; overflow: hidden; font-size: .92rem; text-overflow: ellipsis; white-space: nowrap; }
 .runtime-status { display: inline-flex; flex: 0 0 auto; align-items: center; gap: .4rem; border: 1px solid var(--vp-c-divider); border-radius: 999px; padding: .32rem .5rem; background: var(--vp-c-bg); color: var(--vp-c-text-2); font-size: .66rem; font-weight: 750; }
-.runtime-status i { width: .42rem; height: .42rem; border-radius: 50%; background: #94a3b8; }
-.runtime-status.ready i { background: #10b981; box-shadow: 0 0 0 4px rgb(16 185 129 / 13%); }
-.runtime-status.busy i { background: #f59e0b; animation: pulse 1s infinite; }
-.runtime-warning { padding: .5rem .8rem; border-bottom: 1px solid #facc1555; background: #fef3c722; color: var(--vp-c-text-2); font-size: .7rem; }
+.runtime-status i { width: .42rem; height: .42rem; border-radius: 50%; background: var(--sql-status-idle); }
+.runtime-status.ready i { background: var(--sql-status-ready); box-shadow: 0 0 0 4px var(--sql-status-ring); }
+.runtime-status.busy i { background: var(--sql-status-busy); animation: pulse 1s infinite; }
+.runtime-warning { padding: .5rem .8rem; border-bottom: 1px solid var(--sql-warning-border); background: var(--sql-warning-bg); color: var(--sql-warning-text); font-size: .7rem; }
 .manager-shell { min-height: 650px; }
 .workbench-center { min-width: 0; }
 .main-tabs { display: flex; min-height: 3rem; align-items: end; gap: .15rem; padding: 0 .7rem; border-bottom: 1px solid var(--vp-c-divider); background: var(--sql-panel); }
@@ -435,18 +457,17 @@ button:disabled { cursor: wait; opacity: .55; }
 .workbench-upper { height: 390px; min-height: 390px; overflow: hidden; }
 .workbench-upper :deep(.overview-pane) { box-sizing: border-box; height: 100%; min-height: 0; }
 .query-pane { display: grid; height: 100%; min-width: 0; grid-template-rows: auto minmax(0, 1fr); }
-.pane-toolbar { display: flex; min-height: 3rem; align-items: center; justify-content: space-between; gap: .6rem; padding: .45rem .7rem; border-bottom: 1px solid #1e293b; background: #0b1727; color: #dbeafe; }
+.pane-toolbar { display: flex; min-height: 3rem; align-items: center; justify-content: space-between; gap: .6rem; padding: .45rem .7rem; border-bottom: 1px solid var(--vp-c-divider); background: var(--sql-editor-toolbar); color: var(--sql-editor-text); }
 .pane-toolbar > div:first-child { display: grid; gap: .08rem; }
 .pane-toolbar span { font-size: .72rem; font-weight: 800; }
-.pane-toolbar small { color: #64748b; font-size: .59rem; }
+.pane-toolbar small { color: var(--sql-editor-gutter-text); font-size: .59rem; }
 .toolbar-actions { display: flex; gap: .35rem; }
-.toolbar-actions button { border-color: #334155; background: #102039; color: #cbd5e1; }
-.run-button { border-color: var(--vp-c-brand-1) !important; background: var(--vp-c-brand-1) !important; color: white !important; }
+.toolbar-actions button { border-color: var(--sql-line); background: var(--sql-editor-toolbar-button); color: var(--sql-editor-text); }
+.run-button { border-color: var(--vp-c-brand-1) !important; background: var(--vp-c-brand-1) !important; color: var(--sql-on-accent) !important; }
 .query-editor { height: 100%; min-height: 0; overflow: hidden; }
 @keyframes pulse { 50% { opacity: .35; } }
 @media (max-width: 840px) {
   .manager-shell { min-height: 0; }
-  .database-mark { display: none; }
   .workbench-upper { height: 390px; min-height: 390px; }
   .main-tabs small { display: none; }
 }

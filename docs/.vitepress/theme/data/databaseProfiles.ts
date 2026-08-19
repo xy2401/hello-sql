@@ -1,5 +1,7 @@
+import type { DatabaseBrandId } from './databaseBranding';
+
 export interface DatabaseProfileData {
-  id: string;
+  id: DatabaseBrandId;
   name: string;
   family: string;
   license: string;
@@ -120,7 +122,7 @@ export const databaseProfiles: Record<string, DatabaseProfileData> = {
   timescaledb: nosql('timescaledb', 'TimescaleDB', 'PostgreSQL 时序扩展', 'Apache 2.0 / Timescale License', '在 PostgreSQL 上增加 hypertable、压缩和连续聚合。', '完整 PostgreSQL SQL 加时序函数。', ['希望保留 SQL 与 JOIN 的时序业务', '监控和金融时间序列', 'PostgreSQL 生态整合'], ['分布式能力和许可边界需确认', '高写入仍需分区与索引治理', '不是独立浏览器 WASM 引擎']),
 };
 
-function profile(id: string, name: string, family: string, license: string, positioning: string, model: string, query: string, useCases: string[], limitations: string[]): DatabaseProfileData {
+function profile(id: DatabaseBrandId, name: string, family: string, license: string, positioning: string, model: string, query: string, useCases: string[], limitations: string[]): DatabaseProfileData {
   return {
     id, name, family, license, positioning, model, query,
     transactions: ['事务和一致性能力按产品工作负载设计', '必须结合官方隔离级别和失败语义验证', '跨节点事务会引入协调成本'],
@@ -132,7 +134,7 @@ function profile(id: string, name: string, family: string, license: string, posi
   };
 }
 
-function nosql(id: string, name: string, family: string, license: string, positioning: string, query: string, useCases: string[], limitations: string[]): DatabaseProfileData {
+function nosql(id: DatabaseBrandId, name: string, family: string, license: string, positioning: string, query: string, useCases: string[], limitations: string[]): DatabaseProfileData {
   return {
     id, name, family, license, positioning,
     model: `${family}的数据模型围绕主要访问路径设计，不应机械套用关系表范式。`, query,

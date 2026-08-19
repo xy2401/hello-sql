@@ -1,8 +1,10 @@
 <template>
   <article v-if="profile" class="database-profile">
     <section class="profile-hero">
-      <span class="profile-kicker">{{ profile.family }}</span>
-      <h1>{{ profile.name }}</h1>
+      <div class="profile-heading">
+        <DatabaseLogo :id="profile.id" :size="58" />
+        <div><span class="profile-kicker">{{ profile.family }}</span><h1>{{ profile.name }}</h1></div>
+      </div>
       <p>{{ profile.positioning }}</p>
       <div class="profile-facts">
         <div class="profile-fact"><span>数据模型</span><strong>{{ profile.family }}</strong></div>
@@ -52,6 +54,7 @@
 <script setup lang="ts">
 import { computed, defineComponent, h, type PropType } from 'vue';
 import { databaseProfiles } from '../data/databaseProfiles';
+import DatabaseLogo from './DatabaseLogo.vue';
 
 const props = defineProps<{ id: string }>();
 const profile = computed(() => databaseProfiles[props.id]);

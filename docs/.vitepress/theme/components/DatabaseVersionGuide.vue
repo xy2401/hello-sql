@@ -48,7 +48,7 @@ const profile = computed(() => databaseProfiles[props.id]);
 .version-timeline { margin: 2rem 0; }
 .version-entry { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: .8rem; position: relative; padding-bottom: 1.5rem; }
 .version-entry:not(:last-child)::before { position: absolute; top: 2rem; bottom: 0; left: 1rem; width: 1px; background: var(--vp-c-divider); content: ''; }
-.timeline-marker span { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: 50%; background: var(--vp-c-brand-1); color: white; font-size: .72rem; font-weight: 800; }
+.timeline-marker span { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: 50%; background: var(--vp-c-brand-1); color: var(--sql-on-accent); font-size: .72rem; font-weight: 800; }
 .version-entry h2 { margin: .2rem 0 .55rem; border: 0; padding: 0; font-size: 1.05rem; }
 .version-entry ul { margin: 0 0 .55rem; }
 .version-entry p { margin: 0; padding: .65rem .8rem; border-radius: 8px; background: var(--sql-panel); color: var(--vp-c-text-2); font-size: .82rem; }
@@ -56,7 +56,7 @@ const profile = computed(() => databaseProfiles[props.id]);
 .upgrade-list li { padding: .55rem .7rem; border: 1px solid var(--vp-c-divider); border-radius: 8px; }
 .source-callout { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; padding: 1rem; border: 1px solid var(--vp-c-brand-1); border-radius: 12px; background: var(--sql-panel); }
 .source-callout p { margin: .25rem 0 0; color: var(--vp-c-text-2); font-size: .78rem; }
-.source-callout a { flex: 0 0 auto; padding: .55rem .7rem; border-radius: 8px; background: var(--vp-c-brand-1); color: white; font-size: .78rem; font-weight: 700; }
+.source-callout a { flex: 0 0 auto; padding: .55rem .7rem; border-radius: 8px; background: var(--vp-c-brand-1); color: var(--sql-on-accent); font-size: .78rem; font-weight: 700; }
 .topic-nav { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--vp-c-divider); }
 @media (max-width: 760px) { .source-callout { align-items: flex-start; flex-direction: column; } .topic-nav { align-items: flex-start; flex-direction: column; } }
 </style>

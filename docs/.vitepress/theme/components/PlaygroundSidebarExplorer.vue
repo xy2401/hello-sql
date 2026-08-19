@@ -1,14 +1,14 @@
 <template>
   <div v-if="isPlayground" class="playground-sidebar-explorer">
     <div class="sidebar-heading">
-      <div><strong>数据库</strong><small>{{ engineIds.length }} 个本地引擎</small></div>
+      <div><strong>数据库</strong><small>本地运行环境</small></div>
       <button type="button" :disabled="state.busy" aria-label="刷新数据库对象" @click="refreshSidebarSchema">↻</button>
     </div>
 
     <section v-for="id in engineIds" :key="id" class="sidebar-database" :class="{ active: id === state.activeEngine }">
       <div class="database-row">
         <button class="database-name" type="button" :disabled="state.busy && id !== state.activeEngine" @click="activateEngine(id)">
-          <span>▰</span><span><strong>{{ engineCatalog[id].label }}</strong><small>{{ engineCatalog[id].editorLanguage.toUpperCase() }}</small></span>
+          <DatabaseLogo :id="engineCatalog[id].brandId" :size="24" /><span><strong>{{ engineCatalog[id].label }}</strong><small>{{ engineCatalog[id].editorLanguage.toUpperCase() }}</small></span>
         </button>
         <button class="database-caret" type="button" :aria-expanded="expanded[id]" :aria-label="`${engineCatalog[id].label} 展开数据库`" @click="expanded[id] = !expanded[id]">›</button>
       </div>
@@ -39,6 +39,7 @@ import { useRoute } from 'vitepress';
 import { engineCatalog, engineOrder } from '../data/engineCatalog';
 import { refreshSidebarSchema, selectSidebarEngine, selectSidebarNode, workbenchSidebarState as state } from '../runtime/workbenchSidebar';
 import type { EngineId } from '../runtime/types';
+import DatabaseLogo from './DatabaseLogo.vue';
 
 const route = useRoute();
 const isPlayground = computed(() => route.path.startsWith('/playground/') && route.path !== '/playground/catalog');
@@ -65,8 +66,7 @@ button:disabled { cursor: wait; opacity: .55; }
 .sidebar-database { margin-bottom: .2rem; border-radius: .45rem; }
 .sidebar-database.active { background: var(--vp-c-bg-soft); }
 .database-row { display: grid; grid-template-columns: minmax(0, 1fr) 1.8rem; align-items: center; }
-.database-name { display: grid; grid-template-columns: 1rem minmax(0, 1fr); align-items: center; gap: .35rem; padding: .42rem .35rem; text-align: left; }
-.database-name > span:first-child { color: var(--vp-c-brand-1); font-size: .65rem; }
+.database-name { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); align-items: center; gap: .45rem; padding: .42rem .35rem; text-align: left; }
 .database-name > span:last-child { display: grid; min-width: 0; }
 .database-name strong { overflow: hidden; color: var(--vp-c-text-1); font-size: .75rem; text-overflow: ellipsis; white-space: nowrap; }
 .database-name small { color: var(--vp-c-text-3); font-size: .56rem; }
@@ -74,7 +74,7 @@ button:disabled { cursor: wait; opacity: .55; }
 .database-caret[aria-expanded="true"] { transform: rotate(90deg); }
 .database-children { margin: 0 .25rem .35rem 1.1rem; border-left: 1px solid var(--vp-c-divider); padding-left: .45rem; }
 .database-children > p, .database-children details > p { margin: 0; padding: .45rem .25rem; color: var(--vp-c-text-3); font-size: .62rem; }
-.database-children p.warning { color: #b45309; }
+.database-children p.warning { color: var(--sql-warning-text); }
 .database-children summary { display: grid; grid-template-columns: .9rem minmax(0, 1fr); gap: .2rem; border-radius: .3rem; padding: .34rem .25rem; cursor: pointer; list-style: none; }
 .database-children summary:hover, .database-children summary.selected { background: var(--vp-c-brand-soft); color: var(--vp-c-brand-1); }
 .database-children summary strong { overflow: hidden; font-size: .69rem; text-overflow: ellipsis; white-space: nowrap; }

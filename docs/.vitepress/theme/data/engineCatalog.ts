@@ -3,6 +3,7 @@ import type { EngineId, EngineMetadata } from '../runtime/types';
 export const engineCatalog: Record<EngineId, EngineMetadata> = {
   sqlite: {
     id: 'sqlite',
+    brandId: 'sqlite',
     label: 'SQLite WASM',
     runtime: 'SQLite 3 · WebAssembly · OPFS SAH Pool',
     editorLanguage: 'sql',
@@ -20,6 +21,7 @@ export const engineCatalog: Record<EngineId, EngineMetadata> = {
   },
   duckdb: {
     id: 'duckdb',
+    brandId: 'duckdb',
     label: 'DuckDB-Wasm',
     runtime: 'DuckDB · WebAssembly · Single Thread',
     editorLanguage: 'sql',
@@ -37,6 +39,7 @@ export const engineCatalog: Record<EngineId, EngineMetadata> = {
   },
   pglite: {
     id: 'pglite',
+    brandId: 'pglite',
     label: 'PGlite',
     runtime: 'PostgreSQL · WebAssembly · IndexedDB',
     editorLanguage: 'sql',
@@ -54,6 +57,7 @@ export const engineCatalog: Record<EngineId, EngineMetadata> = {
   },
   surrealdb: {
     id: 'surrealdb',
+    brandId: 'surrealdb',
     label: 'SurrealDB WASM',
     runtime: 'SurrealDB · WebAssembly · IndexedDB',
     editorLanguage: 'surrealql',
@@ -71,6 +75,7 @@ export const engineCatalog: Record<EngineId, EngineMetadata> = {
   },
   indexeddb: {
     id: 'indexeddb',
+    brandId: 'indexeddb',
     label: 'IndexedDB',
     runtime: 'Browser Native · JavaScript · Worker',
     editorLanguage: 'javascript',

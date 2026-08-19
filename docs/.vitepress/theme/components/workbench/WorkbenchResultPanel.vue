@@ -88,7 +88,7 @@ button:disabled { cursor: wait; opacity: .55; }
 .result-table th, .result-table td { max-width: 340px; border: 1px solid var(--vp-c-divider); padding: .48rem .62rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .result-table code { background: transparent; font-size: .69rem; }
 .empty-state { margin: 0; padding: 1.2rem; color: var(--vp-c-text-3); font-size: .76rem; text-align: center; }
-.query-error { margin: .75rem; padding: .75rem; border: 1px solid #ef444455; border-radius: .55rem; background: #ef44440d; color: #dc2626; }
+.query-error { margin: .75rem; padding: .75rem; border: 1px solid var(--sql-danger-border); border-radius: .55rem; background: var(--sql-danger-bg); color: var(--sql-danger); }
 .query-error pre { margin: .4rem 0 0; overflow: auto; background: transparent; color: inherit; white-space: pre-wrap; }
 .history-list { display: grid; max-height: 300px; overflow: auto; }
 .history-list button { display: grid; grid-template-columns: 85px minmax(0, 1fr); gap: .7rem; border: 0; border-bottom: 1px solid var(--vp-c-divider); border-radius: 0; padding: .65rem .8rem; text-align: left; }

@@ -1,6 +1,6 @@
 # Hello SQL
 
-Hello SQL 是一个纯静态、浏览器优先的数据库学习与工程选型站点，覆盖主流 SQL、NoSQL、IndexedDB 以及 SQLite、DuckDB、PostgreSQL、SurrealDB 的 WebAssembly 实验环境。
+Hello SQL 是一个纯静态、浏览器优先的数据库学习与工程选型站点，覆盖 SQL、NoSQL、IndexedDB 以及 SQLite、DuckDB、PostgreSQL、SurrealDB 的 WebAssembly 实验环境。
 
 ## 本地开发
 

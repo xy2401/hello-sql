@@ -39,6 +39,8 @@ for (const file of markdownFiles) {
 
 const profileData = fs.readFileSync(path.join(docs, '.vitepress/theme/data/databaseProfiles.ts'), 'utf8');
 const guideData = fs.readFileSync(path.join(docs, '.vitepress/theme/data/databaseGuides.ts'), 'utf8');
+const brandingData = fs.readFileSync(path.join(docs, '.vitepress/theme/data/databaseBranding.ts'), 'utf8');
+const configData = fs.readFileSync(path.join(docs, '.vitepress/config.ts'), 'utf8');
 for (const file of markdownFiles.filter((item) => item.includes(`${path.sep}databases${path.sep}`))) {
   const content = fs.readFileSync(file, 'utf8');
   for (const match of content.matchAll(/<DatabaseProfile id="([^"]+)"/g)) {
@@ -65,7 +67,26 @@ for (const directory of databaseDirectories) {
     if (!fs.existsSync(path.join(directory, page))) errors.push(`${relative(directory)} 缺少 ${page}`);
   }
   if (!guideData.includes(`${id}:`) && !guideData.includes(`'${id}':`)) errors.push(`${relative(directory)} 缺少核心知识与版本资料`);
+  if (!brandingData.includes(`${id}:`) && !brandingData.includes(`'${id}':`)) errors.push(`${relative(directory)} 缺少品牌注册信息`);
+  if (!fs.existsSync(path.join(docs, 'public', 'logos', 'databases', `${id}.svg`))) errors.push(`${relative(directory)} 缺少本地 Logo`);
 }
+
+for (const id of ['pglite', 'surrealdb', 'indexeddb']) {
+  if (!brandingData.includes(`${id}:`)) errors.push(`浏览器运行环境 ${id} 缺少品牌注册信息`);
+}
+
+const logoFiles = walk(path.join(docs, 'public', 'logos', 'databases'), (file) => file.endsWith('.svg'));
+for (const file of logoFiles) {
+  const svg = fs.readFileSync(file, 'utf8');
+  if (/<script\b/i.test(svg) || /<(?:image|use)\b[^>]+(?:href|xlink:href)=["']https?:/i.test(svg)) errors.push(`${relative(file)} 包含脚本或远程资源`);
+}
+
+const forbiddenHeadings = ['主流关系型数据库', '主流 NoSQL：先选模型，再选产品', '数据库横向对比矩阵', '五个真实浏览器运行环境', '按问题域学习，而不是堆版本号', 'WASM 数据库统一工作台'];
+for (const file of markdownFiles) {
+  const headings = fs.readFileSync(file, 'utf8').split(/\r?\n/).filter((line) => /^#{1,6}\s/.test(line));
+  for (const phrase of forbiddenHeadings) if (headings.some((heading) => heading.includes(phrase))) errors.push(`${relative(file)} 仍包含待精简标题：${phrase}`);
+}
+if (/text:\s*['"]首页['"]/.test(configData)) errors.push('顶部导航仍包含重复的“首页”入口');
 
 for (const file of markdownFiles.filter((item) => item.includes(`${path.sep}databases${path.sep}`))) {
   const content = fs.readFileSync(file, 'utf8');

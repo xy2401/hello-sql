@@ -1,3 +1,5 @@
+import type { DatabaseBrandId } from '../data/databaseBranding';
+
 export type EngineId = 'sqlite' | 'duckdb' | 'pglite' | 'surrealdb' | 'indexeddb';
 export type PersistenceMode = 'memory' | 'browser';
 export type EditorLanguage = 'sql' | 'javascript' | 'surrealql';
@@ -15,6 +17,7 @@ export interface EngineCapabilities {
 
 export interface EngineMetadata {
   id: EngineId;
+  brandId: DatabaseBrandId;
   label: string;
   runtime: string;
   editorLanguage: EditorLanguage;
