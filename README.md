@@ -17,7 +17,7 @@ npm run check
 
 站点部署在独立域名的根路径 `/`。
 
-Cloudflare Pages 可使用 VitePress 预设（`npx vitepress build`，输出目录 `.vitepress/dist`）。构建会把超过 Pages 25 MiB 单文件限制的 DuckDB WASM 拆分为同域静态分片，运行时在数据库 Worker 内合并，不依赖第三方 CDN。
+Cloudflare Pages 使用自定义构建命令 `npx vitepress build docs`，输出目录 `docs/.vitepress/dist`。构建会把超过 Pages 25 MiB 单文件限制的 DuckDB WASM 拆分为同域静态分片，运行时在数据库 Worker 内合并，不依赖第三方 CDN。
 
 ## Live 运行边界
 

@@ -5,12 +5,9 @@
   "type": "module",
   "description": "SQL、NoSQL、浏览器数据库与 WebAssembly 数据库交互学习平台",
   "engines": {
-    "node": "^20.19.0 || >=22.12.0"
+    "node": "^20.19.0 || >=22.16.0"
   },
   "scripts": {
-    "dev": "npm run docs:dev",
-    "build": "npm run docs:build",
-    "preview": "npm run docs:preview",
     "docs:dev": "vitepress dev docs --host 127.0.0.1",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs --host 127.0.0.1",
