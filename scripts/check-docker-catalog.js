@@ -7,6 +7,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const catalogSource = fs.readFileSync(path.join(root, 'docs/.vitepress/theme/data/dockerCatalog.ts'), 'utf8')
 const navigationSource = fs.readFileSync(path.join(root, 'docs/.vitepress/theme/data/databaseNavigation.ts'), 'utf8')
 const envSource = fs.readFileSync(path.join(root, '.env.versions'), 'utf8')
+const runnerSource = fs.readFileSync(path.join(root, 'scripts/run-database-session.js'), 'utf8')
 const failures = []
 
 const databaseBlock = navigationSource.match(/export const allDatabases = \[([\s\S]*?)\] as const/)?.[1] || ''
@@ -53,6 +54,15 @@ for (const cloud of ['snowflake', 'bigquery']) {
   if (!new RegExp(`${cloud}:\\s*\\{[\\s\\S]{0,160}mode:\\s*'cloud'[\\s\\S]{0,160}status:\\s*'documented'`).test(catalogSource)) failures.push(`${cloud} must remain a documented cloud entry`)
 }
 if (!fs.existsSync(path.join(root, 'docs/matrix/docker-tools.md'))) failures.push('missing Docker matrix')
+for (const command of [
+  'psql -h 127.0.0.1 -U postgres',
+  'mysql -h 127.0.0.1 -uroot --protocol=tcp',
+  'mariadb -h 127.0.0.1 -uroot --protocol=tcp',
+  '--listen-addr=127.0.0.1:26257',
+  '--advertise-addr=127.0.0.1:26257',
+]) {
+  if (!runnerSource.includes(command)) failures.push(`database runner missing stable readiness constraint: ${command}`)
+}
 
 if (failures.length) {
   console.error(failures.join('\n'))

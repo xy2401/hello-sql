@@ -58,21 +58,21 @@ const commonSql = `DROP TABLE IF EXISTS hello_items; CREATE TABLE hello_items (i
 const profiles = {
   postgresql: {
     env: ['POSTGRES_PASSWORD=hello'],
-    ready: () => inside(`PGPASSWORD=hello psql -U postgres -d postgres -Atqc 'SELECT 1'`, { allowFailure: true }),
-    readyLabel: "PGPASSWORD=… psql -U postgres -Atqc 'SELECT 1'",
-    run: () => logRun(`psql -U postgres -v ON_ERROR_STOP=1 -c "${commonSql} …"`, () => inside(`psql -U postgres -v ON_ERROR_STOP=1 -c "${commonSql} SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name='hello_items'; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
+    ready: () => inside(`PGPASSWORD=hello psql -h 127.0.0.1 -U postgres -d postgres -Atqc 'SELECT 1'`, { allowFailure: true }),
+    readyLabel: "PGPASSWORD=… psql -h 127.0.0.1 -U postgres -Atqc 'SELECT 1'",
+    run: () => logRun(`psql -h 127.0.0.1 -U postgres -v ON_ERROR_STOP=1 -c "${commonSql} …"`, () => inside(`PGPASSWORD=hello psql -h 127.0.0.1 -U postgres -v ON_ERROR_STOP=1 -c "${commonSql} SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name='hello_items'; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
   },
   mysql: {
     env: ['MYSQL_ROOT_PASSWORD=hello'],
-    ready: () => inside(`MYSQL_PWD=hello mysql -uroot --protocol=socket -Nse 'SELECT 1'`, { allowFailure: true }),
-    readyLabel: "MYSQL_PWD=… mysql -uroot -Nse 'SELECT 1'",
-    run: () => logRun(`mysql -uroot -p… -e "${commonSql} …"`, () => inside(`mysql -uroot -phello -e "CREATE DATABASE IF NOT EXISTS hello; USE hello; ${commonSql} SHOW TABLES; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
+    ready: () => inside(`MYSQL_PWD=hello mysql -h 127.0.0.1 -uroot --protocol=tcp -Nse 'SELECT 1'`, { allowFailure: true }),
+    readyLabel: "MYSQL_PWD=… mysql -h 127.0.0.1 -uroot -Nse 'SELECT 1'",
+    run: () => logRun(`mysql -h 127.0.0.1 -uroot -p… -e "${commonSql} …"`, () => inside(`MYSQL_PWD=hello mysql -h 127.0.0.1 -uroot --protocol=tcp -e "CREATE DATABASE IF NOT EXISTS hello; USE hello; ${commonSql} SHOW TABLES; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
   },
   mariadb: {
     env: ['MARIADB_ROOT_PASSWORD=hello'],
-    ready: () => inside(`MYSQL_PWD=hello mariadb -uroot --protocol=socket -Nse 'SELECT 1'`, { allowFailure: true }),
-    readyLabel: "MYSQL_PWD=… mariadb -uroot -Nse 'SELECT 1'",
-    run: () => logRun(`mariadb -uroot -p… -e "${commonSql} …"`, () => inside(`mariadb -uroot -phello -e "CREATE DATABASE IF NOT EXISTS hello; USE hello; ${commonSql} SHOW TABLES; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
+    ready: () => inside(`MYSQL_PWD=hello mariadb -h 127.0.0.1 -uroot --protocol=tcp -Nse 'SELECT 1'`, { allowFailure: true }),
+    readyLabel: "MYSQL_PWD=… mariadb -h 127.0.0.1 -uroot -Nse 'SELECT 1'",
+    run: () => logRun(`mariadb -h 127.0.0.1 -uroot -p… -e "${commonSql} …"`, () => inside(`MYSQL_PWD=hello mariadb -h 127.0.0.1 -uroot --protocol=tcp -e "CREATE DATABASE IF NOT EXISTS hello; USE hello; ${commonSql} SHOW TABLES; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
   },
   'sql-server': {
     env: ['ACCEPT_EULA=Y', `MSSQL_SA_PASSWORD=${password}`, 'MSSQL_PID=Developer'],
@@ -92,7 +92,7 @@ const profiles = {
     run: () => logRun('mysql -h server -P 4000 -uroot -e fixed-session.sql', () => client(env.MYSQL_CLIENT_IMAGE, `mysql -h server -P 4000 -uroot -e "CREATE DATABASE IF NOT EXISTS hello; USE hello; ${commonSql} SHOW TABLES; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
   },
   cockroachdb: {
-    args: ['start-single-node', '--insecure', '--listen-addr=0.0.0.0:26257', '--advertise-addr=server:26257', '--http-addr=0.0.0.0:8080'],
+    args: ['start-single-node', '--insecure', '--listen-addr=127.0.0.1:26257', '--advertise-addr=127.0.0.1:26257', '--http-addr=127.0.0.1:8080'],
     ready: () => inside('cockroach sql --insecure --host localhost:26257 -e "SELECT 1"', { allowFailure: true }),
     readyLabel: 'cockroach sql --insecure --host localhost:26257 -e "SELECT 1"',
     run: () => logRun('cockroach sql --insecure -e fixed-session.sql', () => inside(`cockroach sql --insecure --host localhost:26257 -e "${commonSql} SHOW TABLES; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
@@ -165,8 +165,8 @@ const profiles = {
   },
   timescaledb: {
     env: ['POSTGRES_PASSWORD=hello'],
-    ready: () => inside(`PGPASSWORD=hello psql -U postgres -d postgres -Atqc 'SELECT 1'`, { allowFailure: true }), readyLabel: "PGPASSWORD=… psql -U postgres -Atqc 'SELECT 1'",
-    run: () => logRun('psql fixed hypertable session', () => inside(`psql -U postgres -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS timescaledb; DROP TABLE IF EXISTS hello_items; CREATE TABLE hello_items (time timestamptz NOT NULL, id int, name text, score int); SELECT create_hypertable('hello_items','time'); INSERT INTO hello_items VALUES ('2025-01-01',1,'Alice',30),('2025-01-02',2,'Bob',20),('2025-01-03',3,'Carol',40); SELECT id,name,score FROM hello_items WHERE score >= 30 ORDER BY score DESC; SELECT hypertable_name FROM timescaledb_information.hypertables WHERE hypertable_name='hello_items'; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
+    ready: () => inside(`PGPASSWORD=hello psql -h 127.0.0.1 -U postgres -d postgres -Atqc 'SELECT 1'`, { allowFailure: true }), readyLabel: "PGPASSWORD=… psql -h 127.0.0.1 -U postgres -Atqc 'SELECT 1'",
+    run: () => logRun('psql fixed hypertable session', () => inside(`PGPASSWORD=hello psql -h 127.0.0.1 -U postgres -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS timescaledb; DROP TABLE IF EXISTS hello_items; CREATE TABLE hello_items (time timestamptz NOT NULL, id int, name text, score int); SELECT create_hypertable('hello_items','time'); INSERT INTO hello_items VALUES ('2025-01-01',1,'Alice',30),('2025-01-02',2,'Bob',20),('2025-01-03',3,'Carol',40); SELECT id,name,score FROM hello_items WHERE score >= 30 ORDER BY score DESC; SELECT hypertable_name FROM timescaledb_information.hypertables WHERE hypertable_name='hello_items'; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
   },
 }
 
