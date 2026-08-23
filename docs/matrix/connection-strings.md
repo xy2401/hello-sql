@@ -1,6 +1,6 @@
 ---
 title: 数据库连接串与驱动对比
-description: 对比 24 个数据库的 URI、JDBC、HTTP、SDK 参数、端口、TLS 与命名空间
+description: 对比 25 个数据库的 URI、JDBC、HTTP、SDK 参数、浏览器 API、端口、TLS 与命名空间
 ---
 
 # 数据库连接串与驱动对比

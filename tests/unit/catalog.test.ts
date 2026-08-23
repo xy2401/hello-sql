@@ -43,7 +43,7 @@ describe('database catalog', () => {
 
   it('does not claim unsupported server databases are live', () => {
     const live = Object.values(databaseProfiles).filter((profile) => profile.liveEngine).map((profile) => profile.id);
-    expect(live.sort()).toEqual(['duckdb', 'postgresql', 'sqlite']);
+    expect(live.sort()).toEqual(['browser', 'duckdb', 'postgresql', 'sqlite']);
   });
 
   it('provides core concepts and version guidance for every database', () => {

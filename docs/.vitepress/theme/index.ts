@@ -8,7 +8,7 @@ import DatabaseCoreGuide from './components/DatabaseCoreGuide.vue';
 import DatabaseVersionGuide from './components/DatabaseVersionGuide.vue';
 import ConnectionStringMatrix from './components/ConnectionStringMatrix.vue';
 import PlaygroundSidebarExplorer from './components/PlaygroundSidebarExplorer.vue';
-import DatabaseSidebarExplorer from './components/DatabaseSidebarExplorer.vue';
+import PlaygroundContextNav from './components/PlaygroundContextNav.vue';
 import DatabaseCatalogGrid from './components/DatabaseCatalogGrid.vue';
 import DatabaseLogo from './components/DatabaseLogo.vue';
 import './styles.css';
@@ -16,7 +16,8 @@ import './styles.css';
 export default {
   extends: DefaultTheme,
   Layout: () => h(DefaultTheme.Layout, null, {
-    'sidebar-nav-before': () => [h(PlaygroundSidebarExplorer), h(DatabaseSidebarExplorer)],
+    'sidebar-nav-before': () => h(PlaygroundSidebarExplorer),
+    'doc-before': () => h(PlaygroundContextNav),
   }),
   enhanceApp({ app }) {
     app.component('DatabaseProfile', DatabaseProfile);

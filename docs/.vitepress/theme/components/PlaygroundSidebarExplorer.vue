@@ -7,9 +7,14 @@
 
     <section v-for="id in engineIds" :key="id" class="sidebar-database" :class="{ active: id === state.activeEngine }">
       <div class="database-row">
-        <button class="database-name" type="button" :disabled="state.busy && id !== state.activeEngine" @click="activateEngine(id)">
+        <a
+          class="database-name"
+          :href="engineHref(id)"
+          :aria-current="isCurrentEnginePage(id) ? 'page' : undefined"
+          @click="activateEngine($event, id)"
+        >
           <DatabaseLogo :id="engineCatalog[id].brandId" :size="24" /><span><strong>{{ engineCatalog[id].label }}</strong><small>{{ engineCatalog[id].editorLanguage.toUpperCase() }}</small></span>
-        </button>
+        </a>
         <button class="database-caret" type="button" :aria-expanded="expanded[id]" :aria-label="`${engineCatalog[id].label} 展开数据库`" @click="expanded[id] = !expanded[id]">›</button>
       </div>
 
@@ -43,12 +48,20 @@ import DatabaseLogo from './DatabaseLogo.vue';
 
 const route = useRoute();
 const isPlayground = computed(() => route.path.startsWith('/playground/') && route.path !== '/playground/catalog');
-const engineIds = computed(() => state.allowEngineSwitch ? engineOrder : [state.activeEngine]);
+const engineIds = computed(() => engineOrder);
 const expanded = reactive<Record<EngineId, boolean>>({ sqlite: true, duckdb: false, pglite: false, surrealdb: false, indexeddb: false });
 
 watch(() => state.activeEngine, (id) => { expanded[id] = true; });
-function activateEngine(id: EngineId) {
+function engineHref(id: EngineId) {
+  return `/playground/${id}`;
+}
+function isCurrentEnginePage(id: EngineId) {
+  return route.path.replace(/\/$/, '') === engineHref(id);
+}
+function activateEngine(event: MouseEvent, id: EngineId) {
   expanded[id] = true;
+  if (!state.allowEngineSwitch || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
   void selectSidebarEngine(id);
 }
 </script>
@@ -66,7 +79,7 @@ button:disabled { cursor: wait; opacity: .55; }
 .sidebar-database { margin-bottom: .2rem; border-radius: .45rem; }
 .sidebar-database.active { background: var(--vp-c-bg-soft); }
 .database-row { display: grid; grid-template-columns: minmax(0, 1fr) 1.8rem; align-items: center; }
-.database-name { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); align-items: center; gap: .45rem; padding: .42rem .35rem; text-align: left; }
+.database-name { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); align-items: center; gap: .45rem; padding: .42rem .35rem; color: var(--vp-c-text-2); text-align: left; text-decoration: none; }
 .database-name > span:last-child { display: grid; min-width: 0; }
 .database-name strong { overflow: hidden; color: var(--vp-c-text-1); font-size: .75rem; text-overflow: ellipsis; white-space: nowrap; }
 .database-name small { color: var(--vp-c-text-3); font-size: .56rem; }

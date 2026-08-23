@@ -441,4 +441,21 @@ export const databaseGuides = {
     'https://docs.timescale.com/about/latest/release-notes/',
     ['核对 PostgreSQL 与 TimescaleDB 兼容矩阵', '新会话首先执行 ALTER EXTENSION UPDATE', '验证 jobs、连续聚合、压缩和备份恢复'],
   ),
+  browser: guide(
+    'Browser Database 是浏览器原生数据库产品层：IndexedDB 提供事务对象仓库与索引，OPFS 提供文件持久化，Storage API 决定配额与持久化资格。',
+    ['能设计 IndexedDB 的事务与索引', '能区分 IndexedDB 与 OPFS 的职责', '能管理浏览器兼容、配额和数据迁移'],
+    [
+      concept('对象仓库与索引', 'IndexedDB 以对象仓库保存结构化克隆记录，以主键和 IDBIndex 提供访问路径。', ['按访问模式设计 keyPath', '避免无索引全库游标', '升级事务中维护 Schema']),
+      concept('事务生命周期', '读写必须位于显式事务中；事务可能在当前任务结束且没有挂起请求时自动提交。', ['缩短读写事务', '统一处理 request/transaction 错误', '避免在事务中等待无关异步任务']),
+      concept('OPFS、配额与同步', 'OPFS 适合数据库文件，Storage Manager 提供配额与持久化请求；跨设备同步仍需要应用协议。', ['在 Worker 使用同步句柄', '检测 quota 与持久化状态', '为清理、迁移和冲突设计恢复路径']),
+    ],
+    'Browser Database 随浏览器和 Web 标准演进，不采用独立服务器版本号；能力基线由 IndexedDB、File System、Storage 标准及目标浏览器版本共同决定。',
+    [
+      version('IndexedDB 3.0', ['现代 IndexedDB 规范基线', '覆盖数据库、事务、对象仓库、索引与游标语义'], '新应用应以 Promise 封装或成熟库改善 API 体验，但不能绕过事务语义。'),
+      version('OPFS 与 Storage API', ['提供来源私有文件系统和配额管理', '同步访问句柄主要面向 Dedicated Worker'], 'WASM 数据库持久化前必须验证浏览器、Worker 和并发限制。'),
+      version('localStorage 兼容基线', ['同步字符串键值 API', '缺少事务、索引和结构化数据能力'], '只适合极少量偏好设置，不应作为 Browser Database 的替代。'),
+    ],
+    'https://www.w3.org/TR/IndexedDB/',
+    ['在目标浏览器执行升级与事务回归', '验证配额、隐私模式和站点数据清理行为', '演练 Schema 迁移、导入导出和同步冲突'],
+  ),
 } satisfies Record<string, DatabaseGuideData>;

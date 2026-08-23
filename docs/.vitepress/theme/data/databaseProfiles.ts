@@ -15,7 +15,7 @@ export interface DatabaseProfileData {
   useCases: string[];
   limitations: string[];
   recommendation: string;
-  liveEngine?: 'sqlite' | 'duckdb' | 'pglite' | 'surrealdb';
+  liveEngine?: 'sqlite' | 'duckdb' | 'pglite' | 'surrealdb' | 'indexeddb';
 }
 
 export const databaseProfiles: Record<string, DatabaseProfileData> = {
@@ -120,6 +120,20 @@ export const databaseProfiles: Record<string, DatabaseProfileData> = {
   neo4j: nosql('neo4j', 'Neo4j', '属性图数据库', 'GPL / Commercial', '围绕节点、关系和路径遍历优化的原生图数据库。', 'Cypher 图查询语言。', ['知识图谱', '欺诈检测和关系分析', '推荐与网络拓扑'], ['大规模全图分析需专门产品能力', '建模方式与关系数据库不同', '企业集群能力依许可']),
   influxdb: nosql('influxdb', 'InfluxDB', '时序数据库', 'MIT / Commercial by generation', '面向指标、传感器与时间窗口聚合的时序平台。', 'SQL、InfluxQL 或 Flux 能力取决于产品代际。', ['监控指标', 'IoT 时序数据', '时间窗口聚合和保留策略'], ['不同代际查询与存储架构差异大', '高基数标签需要治理', '不是通用事务数据库']),
   timescaledb: nosql('timescaledb', 'TimescaleDB', 'PostgreSQL 时序扩展', 'Apache 2.0 / Timescale License', '在 PostgreSQL 上增加 hypertable、压缩和连续聚合。', '完整 PostgreSQL SQL 加时序函数。', ['希望保留 SQL 与 JOIN 的时序业务', '监控和金融时间序列', 'PostgreSQL 生态整合'], ['分布式能力和许可边界需确认', '高写入仍需分区与索引治理', '不是独立浏览器 WASM 引擎']),
+  browser: {
+    id: 'browser', name: 'Browser Database', family: 'NoSQL · 浏览器原生', license: 'Web Standard',
+    positioning: '运行在浏览器安全沙箱内的原生数据库，以 IndexedDB 的事务对象仓库存储结构化数据，并与 OPFS 等持久化能力共同构成本地数据层。',
+    model: 'IndexedDB 使用数据库、对象仓库、记录、主键和二级索引；OPFS 为 SQLite、PGlite 等浏览器数据库提供文件持久化。',
+    query: 'IndexedDB JavaScript API；通过 IDBRequest、事务、Object Store 与 Index 访问数据。',
+    transactions: ['IndexedDB 提供只读与读写事务', '事务作用域由对象仓库集合确定', '事件循环中的异步边界会影响事务存活时间'],
+    indexes: ['对象仓库按 keyPath 或显式键组织记录', 'IDBIndex 提供派生键查询', '查询能力围绕键、索引和游标，不支持通用 SQL'],
+    scaling: ['数据隔离在同源范围内', '容量受浏览器配额和存储回收策略约束', '跨设备同步需要应用协议，不能直接复制内部存储'],
+    deployment: ['浏览器内置，无独立服务器', 'Worker 可承载数据库与 OPFS 文件 I/O', '站点数据清理、隐私模式和浏览器兼容性会影响持久化'],
+    useCases: ['离线与本地优先 Web 应用', '结构化客户端状态和 Blob', '浏览器内数据库与 WASM 数据库持久化'],
+    limitations: ['没有统一 SQL 查询接口', '配额与持久化策略由浏览器控制', '多设备同步、身份和冲突处理由应用负责'],
+    recommendation: 'Web 应用需要可靠的本地结构化数据、事务和索引时，应把 Browser Database 作为正式数据库层设计，而不是退化为 localStorage。',
+    liveEngine: 'indexeddb',
+  },
 };
 
 function profile(id: DatabaseBrandId, name: string, family: string, license: string, positioning: string, model: string, query: string, useCases: string[], limitations: string[]): DatabaseProfileData {

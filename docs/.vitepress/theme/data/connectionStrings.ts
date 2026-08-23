@@ -1,4 +1,4 @@
-export type ConnectionKind = 'URI' | 'JDBC' | 'HTTP' | 'SDK 参数' | '嵌入式';
+export type ConnectionKind = 'URI' | 'JDBC' | 'HTTP' | 'SDK 参数' | '嵌入式' | '浏览器 API';
 
 export interface ConnectionStringProfile {
   id: string;
@@ -157,5 +157,11 @@ export const connectionStringProfiles: ConnectionStringProfile[] = [
     example: 'postgresql://USER@ts.example:5432/app?sslmode=verify-full', namespace: 'database → schema；TimescaleDB 是扩展',
     tls: 'sslmode=verify-full', note: '连接方式与 PostgreSQL 相同；连接成功后仍需确认目标 database 已安装正确版本的 timescaledb 扩展。',
     docs: 'https://docs.timescale.com/integrations/latest/',
+  },
+  {
+    id: 'browser', group: 'NoSQL', kind: '浏览器 API', protocol: 'IndexedDB / Storage API', defaultPort: '—',
+    example: 'indexedDB.open("app", 1)', namespace: 'origin → database → object store',
+    tls: '由 HTTPS 安全上下文与同源策略保护', note: '没有网络连接串；数据库由浏览器按 origin 隔离，OPFS 和持久化资格由 Storage API 管理。',
+    docs: 'https://www.w3.org/TR/IndexedDB/',
   },
 ];

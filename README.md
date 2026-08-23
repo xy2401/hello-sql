@@ -6,7 +6,7 @@
 
 ## 核心特色
 
-- **三大分卷，24 个数据库**：SQL（MySQL、PostgreSQL、Oracle、SQL Server、MariaDB、SQLite）、分析型（DuckDB、ClickHouse、Snowflake、BigQuery、TiDB、CockroachDB）、NoSQL（MongoDB、Redis、Elasticsearch、Cassandra、Neo4j、DynamoDB 等 12 个）。
+- **三大分卷，25 个数据库**：SQL（MySQL、PostgreSQL、Oracle、SQL Server、MariaDB、SQLite）、分析型（DuckDB、ClickHouse、Snowflake、BigQuery、TiDB、CockroachDB）、NoSQL 与浏览器数据库（MongoDB、Redis、Elasticsearch、Cassandra、Neo4j、DynamoDB、Browser Database 等 13 个）。
 - **4 种 WASM 浏览器实验**：SQLite、PostgreSQL（PGlite）、DuckDB、SurrealDB 直接在浏览器 Worker 中运行，无需安装、无需后端。
 - **6 大横向选型矩阵**（`docs/matrix/`）：SQL 方言、事务、索引与 JSON、连接串、扩展与分片、浏览器 WASM 能力对比。
 - **纯静态无后端**：文档站由 VitePress 构建，所有实验代码只在浏览器本地执行。
@@ -17,7 +17,7 @@
 hello-sql/
 ├── docs/                   # VitePress 文档站（唯一文档入口）
 │   ├── index.md            # 首页与 SQL 基础
-│   ├── products/           # 24 款数据库分卷
+│   ├── products/           # 25 款数据库分卷
 │   ├── playground/         # 浏览器内交互实验（SQLite / PGlite / DuckDB / SurrealDB）
 │   ├── matrix/             # 6 大横向选型矩阵
 │   ├── reference/          # 浏览器数据层与实践参考

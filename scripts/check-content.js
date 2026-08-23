@@ -41,6 +41,11 @@ const profileData = fs.readFileSync(path.join(docs, '.vitepress/theme/data/datab
 const guideData = fs.readFileSync(path.join(docs, '.vitepress/theme/data/databaseGuides.ts'), 'utf8');
 const brandingData = fs.readFileSync(path.join(docs, '.vitepress/theme/data/databaseBranding.ts'), 'utf8');
 const configData = fs.readFileSync(path.join(docs, '.vitepress/config.ts'), 'utf8');
+for (const component of ['DatabaseProfile.vue', 'DatabaseCoreGuide.vue', 'DatabaseVersionGuide.vue']) {
+  const file = path.join(docs, '.vitepress/theme/components', component);
+  const content = fs.readFileSync(file, 'utf8');
+  if (/<h2(?![^>]*\bid=)[^>]*>/.test(content)) errors.push(`${relative(file)} 包含没有锚点 id 的章节标题，产品页右侧目录会缺项`);
+}
 for (const file of markdownFiles.filter((item) => item.includes(`${path.sep}products${path.sep}`))) {
   const content = fs.readFileSync(file, 'utf8');
   for (const match of content.matchAll(/<DatabaseProfile id="([^"]+)"/g)) {
@@ -55,7 +60,7 @@ const databaseDirectories = fs.readdirSync(productsDirectory, { withFileTypes: t
   .filter((entry) => entry.isDirectory())
   .map((entry) => path.join(productsDirectory, entry.name));
 
-if (databaseDirectories.length !== 24) errors.push(`独立数据库目录数量应为 24，当前为 ${databaseDirectories.length}`);
+if (databaseDirectories.length !== 25) errors.push(`独立数据库目录数量应为 25，当前为 ${databaseDirectories.length}`);
 for (const directory of databaseDirectories) {
   const directoryName = path.basename(directory);
   const id = directoryName === 'mssqlserver' ? 'sql-server' : directoryName;
@@ -92,7 +97,9 @@ for (const file of markdownFiles.filter((item) => item.includes(`${path.sep}prod
 }
 
 const requiredPages = [
-  'index.md', 'reference/index.md', 'reference/browser/indexeddb.md', 'playground/sqlite.md',
+  'index.md', 'reference/index.md', 'products/browser/index.md', 'products/browser/core-concepts.md',
+  'products/browser/versions.md', 'products/browser/indexeddb.md',
+  'products/browser/opfs.md', 'products/browser/local-first.md', 'playground/sqlite.md',
   'playground/duckdb.md', 'playground/pglite.md', 'playground/surrealdb.md', 'playground/indexeddb.md',
   'matrix/sql-dialects.md', 'matrix/browser-wasm.md', 'matrix/connection-strings.md',
 ];

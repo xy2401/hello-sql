@@ -6,22 +6,34 @@ const featuredDatabaseIds = new Set(['postgresql', 'mysql', 'duckdb', 'mongodb',
 const featuredDatabases = allDatabases.filter(database => featuredDatabaseIds.has(database.id));
 const moreDatabases = allDatabases.filter(database => !featuredDatabaseIds.has(database.id));
 
-function databaseSidebarItems(items: readonly { name: string; link: string }[]) {
+function databaseProductSidebar(name: string, link: string) {
+  return [
+    {
+      text: name,
+      items: [
+        { text: '概览', link: `${link}/` },
+        { text: '核心知识', link: `${link}/core-concepts` },
+        { text: '版本演进', link: `${link}/versions` },
+      ],
+    },
+  ];
+}
+
+const databaseProductSidebars = Object.fromEntries(
+  allDatabases.map(({ name, link }) => [`${link}/`, databaseProductSidebar(name, link)]),
+);
+
+function databaseDirectoryItems(items: readonly { name: string; link: string }[]) {
   return items.map(({ name, link }) => ({
     text: name,
-    collapsed: true,
-    items: [
-      { text: '概览', link: `${link}/` },
-      { text: '核心知识', link: `${link}/core-concepts` },
-      { text: '版本演进', link: `${link}/versions` },
-    ],
+    link: `${link}/`,
   }));
 }
 
 export default defineConfig({
   base: '/',
   title: 'Hello SQL',
-  description: '数据库与数据交互百科全书（24 款数据库 · WASM 实验 · 技术矩阵 · 选型指南）',
+  description: '数据库与数据交互百科全书（25 款数据库 · WASM 实验 · 技术矩阵 · 选型指南）',
   cleanUrls: true,
   lastUpdated: true,
   head: [
@@ -59,18 +71,26 @@ export default defineConfig({
       { text: '参考资料', link: '/reference/' },
     ],
     sidebar: {
+      ...databaseProductSidebars,
       '/products/': [
         {
           text: '数据库列表',
-          items: databaseSidebarItems(allDatabases),
+          items: databaseDirectoryItems(allDatabases),
         },
       ],
+      '/products/browser/': [{
+        text: 'Browser Database',
+        items: [
+          { text: '数据库总览', link: '/products/browser/' },
+          { text: '核心知识', link: '/products/browser/core-concepts' },
+          { text: '版本演进', link: '/products/browser/versions' },
+          { text: 'IndexedDB 原理与实践', link: '/products/browser/indexeddb' },
+          { text: 'OPFS 与存储配额', link: '/products/browser/opfs' },
+          { text: '离线、本地优先与同步', link: '/products/browser/local-first' },
+        ],
+      }],
       '/reference/': [{ text: '参考资料', items: [
         { text: '参考资料总览', link: '/reference/' },
-        { text: '浏览器数据层总览', link: '/reference/browser/' },
-        { text: 'IndexedDB 原理与实践', link: '/reference/browser/indexeddb' },
-        { text: 'OPFS 与存储配额', link: '/reference/browser/opfs' },
-        { text: '离线、本地优先与同步', link: '/reference/browser/local-first' },
       ] }],
       '/playground/': [{ text: 'WASM 数据库实验室', items: [
         { text: '统一工作台', link: '/playground/' },

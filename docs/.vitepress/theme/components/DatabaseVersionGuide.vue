@@ -8,14 +8,14 @@
       <section v-for="(item, index) in guide.versions" :key="item.line" class="version-entry">
         <div class="timeline-marker"><span>{{ index + 1 }}</span></div>
         <div>
-          <h2>{{ item.line }}</h2>
+          <h2 :id="`release-${index + 1}`">{{ item.line }}</h2>
           <ul><li v-for="change in item.changes" :key="change">{{ change }}</li></ul>
           <p><strong>工程影响：</strong>{{ item.impact }}</p>
         </div>
       </section>
     </div>
 
-    <h2>升级检查清单</h2>
+    <h2 id="upgrade-checklist">升级检查清单</h2>
     <ol class="upgrade-list"><li v-for="item in guide.upgradeFocus" :key="item">{{ item }}</li></ol>
 
     <div class="source-callout">

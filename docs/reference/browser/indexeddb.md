@@ -1,17 +1,21 @@
-# IndexedDB 原理与实践
+---
+title: IndexedDB 文档已迁移
+head:
+  - - meta
+    - http-equiv: refresh
+      content: 0; url=/products/browser/indexeddb
+  - - link
+    - rel: canonical
+      href: /products/browser/indexeddb
+---
 
-IndexedDB 保存由结构化克隆算法支持的 JavaScript 值。数据库升级通过 `versionchange` 事务创建对象仓库和索引；普通读写必须在显式事务范围内完成。
+# IndexedDB 文档已迁移
 
-## 核心对象
+请访问 [IndexedDB 原理与实践](/products/browser/indexeddb)。
 
-- `IDBDatabase`：连接与版本生命周期。
-- `IDBTransaction`：原子操作范围，完成后不可复用。
-- `IDBObjectStore`：以 keyPath 或显式键保存记录。
-- `IDBIndex`：根据派生键访问记录。
-- `IDBRequest`：传统事件式异步结果。
+<script setup>
+import { onMounted } from 'vue';
+import { withBase } from 'vitepress';
 
-## 页面内 Live
-
-<DatabaseWorkbench engine="indexeddb" title="IndexedDB 对象仓库与索引" />
-
-规范：[Indexed Database API 3.0](https://www.w3.org/TR/IndexedDB/)。
+onMounted(() => window.location.replace(withBase('/products/browser/indexeddb')));
+</script>

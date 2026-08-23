@@ -5,25 +5,25 @@
     <p class="guide-lead">{{ guide.intro }}</p>
 
     <section class="learning-goals">
-      <h2>学完应该能做到</h2>
+      <h2 id="learning-goals">学完应该能做到</h2>
       <ul><li v-for="goal in guide.goals" :key="goal">{{ goal }}</li></ul>
     </section>
 
-    <h2>三个必须建立的心智模型</h2>
+    <h2 id="mental-models">三个必须建立的心智模型</h2>
     <div class="concept-grid">
       <section v-for="(item, index) in guide.concepts" :key="item.title" class="concept-card">
         <span>0{{ index + 1 }}</span>
-        <h3>{{ item.title }}</h3>
+        <h3 :id="`concept-${index + 1}`" class="ignore-header">{{ item.title }}</h3>
         <p>{{ item.summary }}</p>
         <ul><li v-for="point in item.points" :key="point">{{ point }}</li></ul>
       </section>
     </div>
 
-    <h2>把知识落到工程决策</h2>
+    <h2 id="engineering-decisions">把知识落到工程决策</h2>
     <div class="decision-grid">
-      <section><h3>建模前</h3><p>先写出访问模式、正确性边界、数据生命周期和故障预算，再决定表、键、索引或分区。</p></section>
-      <section><h3>上线前</h3><p>使用接近生产的数据分布与并发压测，记录查询计划、资源水位和恢复时间作为基线。</p></section>
-      <section><h3>运行中</h3><p>监控延迟分位数、容量增长、后台维护与复制健康；报警必须能映射到可执行处置步骤。</p></section>
+      <section><h3 id="before-modeling" class="ignore-header">建模前</h3><p>先写出访问模式、正确性边界、数据生命周期和故障预算，再决定表、键、索引或分区。</p></section>
+      <section><h3 id="before-launch" class="ignore-header">上线前</h3><p>使用接近生产的数据分布与并发压测，记录查询计划、资源水位和恢复时间作为基线。</p></section>
+      <section><h3 id="in-production" class="ignore-header">运行中</h3><p>监控延迟分位数、容量增长、后台维护与复制健康；报警必须能映射到可执行处置步骤。</p></section>
     </div>
 
     <nav class="topic-nav" aria-label="数据库专题导航">

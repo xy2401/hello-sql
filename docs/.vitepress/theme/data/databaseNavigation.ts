@@ -30,7 +30,7 @@ export const allDatabases = [
   { id: 'cockroachdb', name: 'CockroachDB', link: '/products/cockroachdb' },
   { id: 'snowflake', name: 'Snowflake', link: '/products/snowflake' },
   { id: 'bigquery', name: 'BigQuery', link: '/products/bigquery' },
-  // NoSQL (12)
+  // NoSQL 与浏览器数据库 (13)
   { id: 'mongodb', name: 'MongoDB', link: '/products/mongodb' },
   { id: 'couchdb', name: 'Apache CouchDB', link: '/products/couchdb' },
   { id: 'redis', name: 'Redis', link: '/products/redis' },
@@ -43,4 +43,5 @@ export const allDatabases = [
   { id: 'neo4j', name: 'Neo4j', link: '/products/neo4j' },
   { id: 'influxdb', name: 'InfluxDB', link: '/products/influxdb' },
   { id: 'timescaledb', name: 'TimescaleDB', link: '/products/timescaledb' },
+  { id: 'browser', name: 'Browser Database', link: '/products/browser' },
 ] as const satisfies readonly DatabaseNavigationItem[];

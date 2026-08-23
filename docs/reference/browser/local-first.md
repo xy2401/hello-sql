@@ -1,13 +1,21 @@
-# 离线、本地优先与同步
+---
+title: 本地优先文档已迁移
+head:
+  - - meta
+    - http-equiv: refresh
+      content: 0; url=/products/browser/local-first
+  - - link
+    - rel: canonical
+      href: /products/browser/local-first
+---
 
-本地优先不是“把数据库塞进浏览器”就完成。应用仍需要定义身份、冲突、删除、Schema 迁移、加密、备份和多设备同步。
+# 本地优先文档已迁移
 
-## 分层设计
+请访问 [离线、本地优先与同步](/products/browser/local-first)。
 
-1. UI 只依赖本地查询接口，保证离线可用。
-2. 本地数据库记录业务状态与同步元数据。
-3. 同步层传输可重放变化，不直接复制内部文件。
-4. 服务端验证权限和业务约束。
-5. 冲突策略按字段、记录或领域操作明确表达。
+<script setup>
+import { onMounted } from 'vue';
+import { withBase } from 'vitepress';
 
-SQLite/PGlite 文件持久化适合单设备工作区；真正跨设备同步需要额外协议，不能把 OPFS 或 IndexedDB 当作云数据库。
+onMounted(() => window.location.replace(withBase('/products/browser/local-first')));
+</script>

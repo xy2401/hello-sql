@@ -68,7 +68,6 @@
 
 .VPNavBarTitle .title { font-weight: 800; letter-spacing: -.02em; }
 .VPNavBar .divider-line { background-color: var(--vp-c-gutter); }
-.VPDoc.has-aside .content-container { max-width: 980px; }
 .vp-doc h1 { letter-spacing: -.035em; }
 .vp-doc h2 { margin-top: 2.2rem; }
 .vp-doc table { display: table; width: 100%; }
@@ -112,6 +111,36 @@
 :where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/neo4j/"] { --database-nav-logo: url('/logos/databases/neo4j.svg'); }
 :where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/influxdb/"] { --database-nav-logo: url('/logos/databases/influxdb.svg'); }
 :where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/timescaledb/"] { --database-nav-logo: url('/logos/databases/timescaledb.svg'); }
+:where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/browser/"] { --database-nav-logo: url('/logos/databases/browser.svg'); }
+
+.VPSidebarItem.level-0:has(a[href*="/products/postgresql/"]) { --database-nav-logo: url('/logos/databases/postgresql.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/mysql/"]) { --database-nav-logo: url('/logos/databases/mysql.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/mariadb/"]) { --database-nav-logo: url('/logos/databases/mariadb.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/sqlite/"]) { --database-nav-logo: url('/logos/databases/sqlite.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/mssqlserver/"]) { --database-nav-logo: url('/logos/databases/sql-server.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/oracle/"]) { --database-nav-logo: url('/logos/databases/oracle.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/duckdb/"]) { --database-nav-logo: url('/logos/databases/duckdb.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/clickhouse/"]) { --database-nav-logo: url('/logos/databases/clickhouse.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/tidb/"]) { --database-nav-logo: url('/logos/databases/tidb.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/cockroachdb/"]) { --database-nav-logo: url('/logos/databases/cockroachdb.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/snowflake/"]) { --database-nav-logo: url('/logos/databases/snowflake.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/bigquery/"]) { --database-nav-logo: url('/logos/databases/bigquery.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/mongodb/"]) { --database-nav-logo: url('/logos/databases/mongodb.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/couchdb/"]) { --database-nav-logo: url('/logos/databases/couchdb.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/redis/"]) { --database-nav-logo: url('/logos/databases/redis.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/valkey/"]) { --database-nav-logo: url('/logos/databases/valkey.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/dynamodb/"]) { --database-nav-logo: url('/logos/databases/dynamodb.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/cassandra/"]) { --database-nav-logo: url('/logos/databases/cassandra.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/scylladb/"]) { --database-nav-logo: url('/logos/databases/scylladb.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/elasticsearch/"]) { --database-nav-logo: url('/logos/databases/elasticsearch.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/opensearch/"]) { --database-nav-logo: url('/logos/databases/opensearch.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/neo4j/"]) { --database-nav-logo: url('/logos/databases/neo4j.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/influxdb/"]) { --database-nav-logo: url('/logos/databases/influxdb.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/timescaledb/"]) { --database-nav-logo: url('/logos/databases/timescaledb.svg'); }
+.VPSidebarItem.level-0:has(a[href*="/products/browser/"]) { --database-nav-logo: url('/logos/databases/browser.svg'); }
+
+/* The product directory contains every database, so it intentionally has no single product mark. */
+.VPSidebarItem.level-0:has(a[href*="/products/postgresql/"]):has(a[href*="/products/mysql/"]) > .item .text::before { display: none; }
 
 .playground-page .VPDoc .container,
 .playground-page .VPDoc .content,
@@ -121,7 +150,6 @@
 .VPDoc.playground-page .content-container { max-width: none !important; }
 
 .playground-page #VPSidebarNav > .group { display: none; }
-#VPSidebarNav > .database-sidebar-explorer ~ .group { display: none; }
 
 @media (min-width: 960px) {
   .VPNavBar.has-sidebar .wrapper { padding: 0 32px !important; }

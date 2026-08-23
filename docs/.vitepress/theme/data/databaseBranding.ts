@@ -23,6 +23,7 @@ export const databaseBrands = {
   neo4j: { name: 'Neo4j', assetId: 'neo4j' },
   influxdb: { name: 'InfluxDB', assetId: 'influxdb' },
   timescaledb: { name: 'TimescaleDB', assetId: 'timescaledb' },
+  browser: { name: 'Browser Database', assetId: 'browser' },
   pglite: { name: 'PGlite', assetId: 'postgresql' },
   surrealdb: { name: 'SurrealDB', assetId: 'surrealdb' },
   indexeddb: { name: 'IndexedDB', assetId: 'indexeddb' },
@@ -35,6 +36,7 @@ export const databaseProductBrandIds = [
   'duckdb', 'clickhouse', 'tidb', 'cockroachdb', 'snowflake', 'bigquery',
   'mongodb', 'couchdb', 'redis', 'valkey', 'dynamodb', 'cassandra',
   'scylladb', 'elasticsearch', 'opensearch', 'neo4j', 'influxdb', 'timescaledb',
+  'browser',
 ] as const satisfies readonly DatabaseBrandId[];
 
 export function databaseLogoPath(id: DatabaseBrandId) {

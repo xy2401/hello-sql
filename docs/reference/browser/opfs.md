@@ -1,13 +1,21 @@
-# OPFS 与存储配额
+---
+title: OPFS 文档已迁移
+head:
+  - - meta
+    - http-equiv: refresh
+      content: 0; url=/products/browser/opfs
+  - - link
+    - rel: canonical
+      href: /products/browser/opfs
+---
 
-Origin Private File System 是当前来源私有、用户通常不可直接浏览的文件系统。同步访问句柄只在 Worker 中可用，因此浏览器数据库应把文件 I/O 和查询一起移出主线程。
+# OPFS 文档已迁移
 
-## 需要处理的失败
+请访问 [OPFS 与存储配额](/products/browser/opfs)。
 
-1. 浏览器或隐私模式不支持目标 API。
-2. 配额不足或数据被浏览器回收。
-3. 多标签页同时持有排他句柄。
-4. 用户清理站点数据。
-5. 数据库版本升级中断。
+<script setup>
+import { onMounted } from 'vue';
+import { withBase } from 'vitepress';
 
-本站 SQLite 优先 `opfs-sahpool`，因为它无需 COOP/COEP 且性能稳定；代价是同一 pool 不支持多个并发实例。运行器检测失败后会明确降级到内存模式。
+onMounted(() => window.location.replace(withBase('/products/browser/opfs')));
+</script>

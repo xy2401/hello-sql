@@ -1,6 +1,6 @@
 # Hello SQL - 数据库产品总览
 
-**24 款主流数据库，统一语义骨架讲解，浏览器内可运行实验验证。**
+**25 款主流数据库，统一语义骨架讲解，浏览器内可运行实验验证。**
 
 ---
 
@@ -38,7 +38,7 @@
 
 ---
 
-## 🗃️ NoSQL 数据库 (12)
+## 🗃️ NoSQL 与浏览器数据库 (13)
 
 多模型、灵活 schema、高扩展性：
 
@@ -57,6 +57,9 @@
 
 ### 时序数据库
 - [InfluxDB](/products/influxdb/) / [TimescaleDB](/products/timescaledb/) - 时间序列数据专用
+
+### 浏览器数据库
+- [Browser Database](/products/browser/) - 浏览器原生数据库，覆盖 IndexedDB、OPFS、存储配额与本地优先同步
 
 ---
 

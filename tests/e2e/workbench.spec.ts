@@ -4,7 +4,7 @@ test('desktop navigation remains aligned across layouts', async ({ page }) => {
   for (const width of [1280, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     const measurements: Array<{ titleX: number; menuX: number }> = [];
-    for (const route of ['/', 'reference/browser/', 'products/postgresql/', 'playground/sqlite']) {
+    for (const route of ['/', 'products/browser/', 'products/postgresql/', 'playground/sqlite']) {
       await page.goto(route);
       await page.locator('.VPNavBarTitle').waitFor({ state: 'visible' });
       await page.locator('.VPNavBarMenu').waitFor({ state: 'visible' });
