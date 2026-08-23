@@ -23,10 +23,6 @@
       <a :href="guide.officialReleaseNotes" target="_blank" rel="noreferrer">查看 {{ profile.name }} 官方发布说明 ↗</a>
     </div>
 
-    <nav class="topic-nav" aria-label="数据库专题导航">
-      <a href="./core-concepts">← 核心知识</a>
-      <a href="./">返回 {{ profile.name }} 概览 →</a>
-    </nav>
   </article>
 </template>
 
@@ -57,6 +53,5 @@ const profile = computed(() => databaseProfiles[props.id]);
 .source-callout { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; padding: 1rem; border: 1px solid var(--vp-c-brand-1); border-radius: 12px; background: var(--sql-panel); }
 .source-callout p { margin: .25rem 0 0; color: var(--vp-c-text-2); font-size: .78rem; }
 .source-callout a { flex: 0 0 auto; padding: .55rem .7rem; border-radius: 8px; background: var(--vp-c-brand-1); color: var(--sql-on-accent); font-size: .78rem; font-weight: 700; }
-.topic-nav { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--vp-c-divider); }
-@media (max-width: 760px) { .source-callout { align-items: flex-start; flex-direction: column; } .topic-nav { align-items: flex-start; flex-direction: column; } }
+@media (max-width: 760px) { .source-callout { align-items: flex-start; flex-direction: column; } }
 </style>

@@ -26,10 +26,6 @@
       <section><h3 id="in-production" class="ignore-header">运行中</h3><p>监控延迟分位数、容量增长、后台维护与复制健康；报警必须能映射到可执行处置步骤。</p></section>
     </div>
 
-    <nav class="topic-nav" aria-label="数据库专题导航">
-      <a href="./">← 返回 {{ profile.name }} 概览</a>
-      <a href="./versions">继续：版本演进 →</a>
-    </nav>
   </article>
 </template>
 
@@ -57,6 +53,5 @@ const profile = computed(() => databaseProfiles[props.id]);
 .concept-card h3, .decision-grid h3 { margin: .45rem 0; font-size: .95rem; }
 .concept-card p, .decision-grid p { color: var(--vp-c-text-2); font-size: .82rem; line-height: 1.65; }
 .concept-card ul { padding-left: 1.1rem; color: var(--vp-c-text-2); font-size: .76rem; }
-.topic-nav { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--vp-c-divider); }
-@media (max-width: 760px) { .concept-grid, .decision-grid { grid-template-columns: 1fr; } .topic-nav { align-items: flex-start; flex-direction: column; } }
+@media (max-width: 760px) { .concept-grid, .decision-grid { grid-template-columns: 1fr; } }
 </style>
