@@ -231,3 +231,7 @@ for (const [product, [tagKey, imageKey]] of Object.entries(products)) {
 for (const [product, reason] of Object.entries(explicitExceptions)) writeDocumented(product, reason)
 fs.writeFileSync(envFile, envText)
 console.log(`SQL Docker catalog: 25 products; ${resolved} digest(s) resolved, ${verified} verified session(s), ${partial} partial inventories, ${failed} pull/collection failure(s), ${Object.keys(explicitExceptions).length} explicit exception(s).`)
+if (failed > 0) {
+  console.error(`SQL Docker collection failed: ${failed} runnable product(s) could not be collected. See the product logs above; documented exceptions are not counted as failures.`)
+  process.exitCode = 1
+}

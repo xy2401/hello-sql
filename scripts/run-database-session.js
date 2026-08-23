@@ -44,6 +44,11 @@ function waitUntil(label, callback, attempts = 120) {
       session.push(`$ ${label}\n${(result.stdout || '').trim()}`.trimEnd())
       return
     }
+    const state = docker(['inspect', '--format', '{{.State.Running}}', container], { allowFailure: true, timeout: 30_000 })
+    if (state.status === 0 && state.stdout.trim() !== 'true') {
+      const logs = docker(['logs', container], { allowFailure: true, timeout: 30_000 })
+      throw new Error(`container exited before readiness: ${label}\n${(logs.stdout || '').trim()}${logs.stderr?.trim() ? `\n${logs.stderr.trim()}` : ''}`)
+    }
     if (attempt === attempts) throw new Error(`readiness timeout: ${label}\n${(result.stderr || result.stdout).trim()}`)
     sleep(1_000)
   }
@@ -53,20 +58,20 @@ const commonSql = `DROP TABLE IF EXISTS hello_items; CREATE TABLE hello_items (i
 const profiles = {
   postgresql: {
     env: ['POSTGRES_PASSWORD=hello'],
-    ready: () => inside('pg_isready -U postgres', { allowFailure: true }),
-    readyLabel: 'pg_isready -U postgres',
+    ready: () => inside(`PGPASSWORD=hello psql -U postgres -d postgres -Atqc 'SELECT 1'`, { allowFailure: true }),
+    readyLabel: "PGPASSWORD=… psql -U postgres -Atqc 'SELECT 1'",
     run: () => logRun(`psql -U postgres -v ON_ERROR_STOP=1 -c "${commonSql} …"`, () => inside(`psql -U postgres -v ON_ERROR_STOP=1 -c "${commonSql} SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name='hello_items'; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
   },
   mysql: {
     env: ['MYSQL_ROOT_PASSWORD=hello'],
-    ready: () => inside('mysqladmin ping -uroot -phello --silent', { allowFailure: true }),
-    readyLabel: 'mysqladmin ping -uroot -phello --silent',
+    ready: () => inside(`MYSQL_PWD=hello mysql -uroot --protocol=socket -Nse 'SELECT 1'`, { allowFailure: true }),
+    readyLabel: "MYSQL_PWD=… mysql -uroot -Nse 'SELECT 1'",
     run: () => logRun(`mysql -uroot -p… -e "${commonSql} …"`, () => inside(`mysql -uroot -phello -e "CREATE DATABASE IF NOT EXISTS hello; USE hello; ${commonSql} SHOW TABLES; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
   },
   mariadb: {
     env: ['MARIADB_ROOT_PASSWORD=hello'],
-    ready: () => inside('mariadb-admin ping -uroot -phello --silent', { allowFailure: true }),
-    readyLabel: 'mariadb-admin ping -uroot -p… --silent',
+    ready: () => inside(`MYSQL_PWD=hello mariadb -uroot --protocol=socket -Nse 'SELECT 1'`, { allowFailure: true }),
+    readyLabel: "MYSQL_PWD=… mariadb -uroot -Nse 'SELECT 1'",
     run: () => logRun(`mariadb -uroot -p… -e "${commonSql} …"`, () => inside(`mariadb -uroot -phello -e "CREATE DATABASE IF NOT EXISTS hello; USE hello; ${commonSql} SHOW TABLES; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
   },
   'sql-server': {
@@ -82,12 +87,12 @@ const profiles = {
   },
   tidb: {
     args: ['--store=unistore', '--path=/tmp/tidb'],
-    ready: () => client(env.MYSQL_CLIENT_IMAGE, 'mysqladmin ping -h server -P 4000 -uroot --silent', { allowFailure: true }),
-    readyLabel: 'mysqladmin ping -h server -P 4000 -uroot',
+    ready: () => client(env.MYSQL_CLIENT_IMAGE, `mysql -h server -P 4000 -uroot -Nse 'SELECT 1'`, { allowFailure: true }),
+    readyLabel: "mysql -h server -P 4000 -uroot -Nse 'SELECT 1'",
     run: () => logRun('mysql -h server -P 4000 -uroot -e fixed-session.sql', () => client(env.MYSQL_CLIENT_IMAGE, `mysql -h server -P 4000 -uroot -e "CREATE DATABASE IF NOT EXISTS hello; USE hello; ${commonSql} SHOW TABLES; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
   },
   cockroachdb: {
-    args: ['start-single-node', '--insecure', '--listen-addr=0.0.0.0:26257', '--http-addr=0.0.0.0:8080'],
+    args: ['start-single-node', '--insecure', '--listen-addr=0.0.0.0:26257', '--advertise-addr=server:26257', '--http-addr=0.0.0.0:8080'],
     ready: () => inside('cockroach sql --insecure --host localhost:26257 -e "SELECT 1"', { allowFailure: true }),
     readyLabel: 'cockroach sql --insecure --host localhost:26257 -e "SELECT 1"',
     run: () => logRun('cockroach sql --insecure -e fixed-session.sql', () => inside(`cockroach sql --insecure --host localhost:26257 -e "${commonSql} SHOW TABLES; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
@@ -155,12 +160,12 @@ const profiles = {
   },
   influxdb: {
     env: ['DOCKER_INFLUXDB_INIT_MODE=setup', 'DOCKER_INFLUXDB_INIT_USERNAME=hello', `DOCKER_INFLUXDB_INIT_PASSWORD=${password}`, 'DOCKER_INFLUXDB_INIT_ORG=hello', 'DOCKER_INFLUXDB_INIT_BUCKET=hello', 'DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=hello-sql-token'],
-    ready: () => inside('influx ping --host http://localhost:8086', { allowFailure: true }), readyLabel: 'influx ping --host http://localhost:8086',
+    ready: () => inside('influx bucket list --host http://localhost:8086 --token hello-sql-token --org hello', { allowFailure: true }), readyLabel: 'influx bucket list --token … --org hello',
     run: () => logRun('influx write/query/bucket list session', () => inside(`set -eu; influx write --host http://localhost:8086 --token hello-sql-token --org hello --bucket hello --precision s 'items,id=1 name="Alice",score=30 1700000001'; influx write --host http://localhost:8086 --token hello-sql-token --org hello --bucket hello --precision s 'items,id=2 name="Bob",score=20 1700000002'; influx write --host http://localhost:8086 --token hello-sql-token --org hello --bucket hello --precision s 'items,id=3 name="Carol",score=40 1700000003'; influx query --host http://localhost:8086 --token hello-sql-token --org hello 'from(bucket:"hello") |> range(start: 2023-01-01T00:00:00Z) |> filter(fn:(r)=>r._measurement=="items" and r._field=="score" and r._value>=30) |> sort(columns:["_value"], desc:true)'; influx bucket list --host http://localhost:8086 --token hello-sql-token --org hello`)),
   },
   timescaledb: {
     env: ['POSTGRES_PASSWORD=hello'],
-    ready: () => inside('pg_isready -U postgres', { allowFailure: true }), readyLabel: 'pg_isready -U postgres',
+    ready: () => inside(`PGPASSWORD=hello psql -U postgres -d postgres -Atqc 'SELECT 1'`, { allowFailure: true }), readyLabel: "PGPASSWORD=… psql -U postgres -Atqc 'SELECT 1'",
     run: () => logRun('psql fixed hypertable session', () => inside(`psql -U postgres -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS timescaledb; DROP TABLE IF EXISTS hello_items; CREATE TABLE hello_items (time timestamptz NOT NULL, id int, name text, score int); SELECT create_hypertable('hello_items','time'); INSERT INTO hello_items VALUES ('2025-01-01',1,'Alice',30),('2025-01-02',2,'Bob',20),('2025-01-03',3,'Carol',40); SELECT id,name,score FROM hello_items WHERE score >= 30 ORDER BY score DESC; SELECT hypertable_name FROM timescaledb_information.hypertables WHERE hypertable_name='hello_items'; EXPLAIN SELECT * FROM hello_items WHERE score >= 30;"`)),
   },
 }

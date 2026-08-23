@@ -21,6 +21,7 @@ jobs:
       - name: Verify catalog and docs
         run: npm run check
       - name: Upload evidence for review before commit
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: hello-sql-docker-evidence-${{ github.run_id }}
