@@ -14,6 +14,7 @@ function databaseProductSidebar(name: string, link: string) {
         { text: '概览', link: `${link}/` },
         { text: '核心知识', link: `${link}/core-concepts` },
         { text: '版本演进', link: `${link}/versions` },
+        { text: 'Docker 工具', link: `${link}/DockerTooling` },
       ],
     },
   ];
