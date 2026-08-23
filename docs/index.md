@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "🗄️ Hello SQL"
   text: "数据库学习、实验与选型"
-  tagline: "25 款主流数据库 · 浏览器内可运行实验 · WASM 技术矩阵 · 横向选型指南"
+  tagline: "22 款可本地运行的数据库 · 浏览器实验 · Docker 工具证据 · 横向选型指南"
   image: /favicon.svg
   alt: Hello SQL - 数据库学习平台
   actions:
@@ -26,7 +26,7 @@ features:
     title: 浏览器内可运行实验
     details: SQLite WASM、DuckDB-Wasm、PGlite、SurrealDB、IndexedDB 等直接在前端浏览器运行，所见即所得，无需本地环境配置。
   - icon: 🌐
-    title: 25 款数据库扁平化目录
+    title: 22 款数据库扁平化目录
     details: 移除 sql/analytical/nosql 分类嵌套，所有数据库平铺在 /products/ 下，通过元数据标签灵活筛选和对比。
   - icon: 🔮
     title: 浏览器数据库前沿
@@ -35,7 +35,7 @@ features:
 
 ## 🎯 典型数据库快速入口
 
-前 5 个为高频使用场景的代表性产品，其余 19 款可在导航栏「更多」下拉中查看完整列表。
+前 5 个为高频使用场景的代表性产品，其余 17 款可在导航栏「更多」下拉中查看完整列表。
 
 | 数据库 | 类型 | 核心价值 | 快速开始 |
 | :--- | :--- | :--- | --- |
@@ -49,8 +49,8 @@ features:
 
 <a href="/products/" style="text-decoration: none;">
   <div style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); padding: 20px; border-radius: 12px; height: 100%; transition: all 0.3s ease;">
-    <h3 style="margin: 0 0 8px 0; color: var(--vp-c-brand-1);">📚 查看所有 25 款数据库</h3>
-    <p style="margin: 0; font-size: 0.875rem; color: var(--vp-c-text-2);">包括 Oracle、MariaDB、SQLite、SQL Server、ClickHouse、TiDB、CockroachDB、Snowflake、BigQuery、CouchDB、Valkey、DynamoDB、Cassandra、ScyllaDB、Elasticsearch、OpenSearch、Neo4j、InfluxDB、TimescaleDB</p>
+    <h3 style="margin: 0 0 8px 0; color: var(--vp-c-brand-1);">📚 查看所有 22 款数据库</h3>
+    <p style="margin: 0; font-size: 0.875rem; color: var(--vp-c-text-2);">包括 Oracle、MariaDB、SQLite、SQL Server、ClickHouse、TiDB、CockroachDB、CouchDB、Valkey、Cassandra、ScyllaDB、Elasticsearch、OpenSearch、Neo4j、InfluxDB、TimescaleDB 等可自托管、嵌入式或浏览器本地运行的产品</p>
   </div>
 </a>
 

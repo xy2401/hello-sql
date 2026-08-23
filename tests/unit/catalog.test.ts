@@ -29,7 +29,7 @@ describe('database catalog', () => {
   });
 
   it('keeps product profiles decision-complete', () => {
-    expect(Object.keys(databaseProfiles).length).toBeGreaterThanOrEqual(24);
+    expect(Object.keys(databaseProfiles)).toHaveLength(22);
     for (const profile of Object.values(databaseProfiles)) {
       expect(profile.transactions).toHaveLength(3);
       expect(profile.indexes).toHaveLength(3);

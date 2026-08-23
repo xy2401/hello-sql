@@ -1,6 +1,6 @@
 # Hello SQL - 数据库产品总览
 
-**25 款主流数据库，统一语义骨架讲解，浏览器内可运行实验验证。**
+**22 款可自托管、嵌入式或浏览器本地运行的数据库，使用统一结构讲解。**
 
 ---
 
@@ -25,7 +25,7 @@
 
 ---
 
-## 📊 分析型数据库 (6)
+## 📊 分析型数据库 (4)
 
 列式存储、MPP 架构、适合大规模数据分析：
 
@@ -33,12 +33,10 @@
 - [ClickHouse](/products/clickhouse/) - Yandex 开源，实时 OLAP
 - [TiDB](/products/tidb/) - PingCAP 分布式 NewSQL
 - [CockroachDB](/products/cockroachdb/) - Google Spanner 开源版
-- [Snowflake](/products/snowflake/) - 云原生数据仓库
-- [BigQuery](/products/bigquery/) - Google serverless 数仓
 
 ---
 
-## 🗃️ NoSQL 与浏览器数据库 (13)
+## 🗃️ NoSQL 与浏览器数据库 (12)
 
 多模型、灵活 schema、高扩展性：
 
@@ -46,7 +44,6 @@
 - [MongoDB](/products/mongodb/) - 文档数据库领导者
 - [CouchDB](/products/couchdb/) - 复制与同步专长
 - [Redis](/products/redis/) / [Valkey](/products/valkey/) - 内存 KV 缓存与消息
-- [DynamoDB](/products/dynamodb/) - AWS 托管 NoSQL
 - [Cassandra](/products/cassandra/) / [ScyllaDB](/products/scylladb/) - 宽表存储
 
 ### 搜索引擎

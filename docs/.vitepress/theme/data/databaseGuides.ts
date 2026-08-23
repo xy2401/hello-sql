@@ -203,40 +203,6 @@ export const databaseGuides = {
     'https://www.cockroachlabs.com/docs/releases',
     ['检查 deprecation、cluster setting 与 license', '逐节点升级并观察 Range 可用性', '压测事务重试和跨区域延迟'],
   ),
-  snowflake: guide(
-    'Snowflake 是持续交付的云服务，学习重点不是服务器参数，而是微分区、虚拟仓库、缓存、数据共享和成本治理。',
-    ['能利用分区裁剪', '能隔离计算并控制成本', '能管理行为变更 bundle'],
-    [
-      concept('微分区与裁剪', '数据自动组织为微分区，聚簇元数据用于跳过扫描；聚簇键只应服务高价值过滤路径。', ['查看 query profile', '避免无谓 recluster', '关注扫描字节而非只有行数']),
-      concept('虚拟仓库', '计算与存储分离，仓库尺寸、自动暂停和多集群策略影响延迟与费用。', ['按工作负载隔离仓库', '设置 resource monitor', '评估 queue 与 spill']),
-      concept('持续交付治理', '服务端每周更新，行为变化通过 bundle 和公告管理；客户端有独立版本。', ['订阅 behavior change', '在测试账户预演', '维护驱动最低支持版本']),
-    ],
-    '服务端按周持续发布，不采用传统自托管主版本升级；行为变更、客户端和连接器分别维护。',
-    [
-      version('每周 Server Release', ['功能、SQL 与性能持续上线', '账户所在区域可能分阶段获得更新'], '监控发布说明与关键查询基线。'),
-      version('Behavior Change Bundle', ['潜在行为变化可按 bundle 预启用/延后', '最终会默认启用'], '在强制日期前完成回归和代码修正。'),
-      version('驱动与 Snowpark 版本', ['客户端独立语义化版本', '旧客户端不保证理解未来服务能力'], '维护企业级驱动最低版本清单。'),
-    ],
-    'https://docs.snowflake.com/en/release-notes/overview',
-    ['订阅行为变更并在测试账户启用 bundle', '比较 Query History 的扫描、spill 与成本', '核对驱动、连接器和 Snowpark 支持矩阵'],
-  ),
-  bigquery: guide(
-    'BigQuery 是无服务器分析服务。工程重点是列式扫描、slot、分区/聚簇、数据位置和按扫描量或容量计费。',
-    ['能估算查询成本', '能设计分区与聚簇', '能处理持续服务变更'],
-    [
-      concept('执行与 Slot', '查询被拆为 stage 并由 slot 执行；shuffle、倾斜和高基数聚合常是瓶颈。', ['查看 execution graph', '减少重复扫描', '处理 skew 与大 shuffle']),
-      concept('分区、聚簇与成本', '分区消除整段数据，聚簇改善块裁剪；SELECT * 会直接放大扫描成本。', ['启用 require_partition_filter', '先 dry run', '合理使用物化视图']),
-      concept('数据位置与治理', 'dataset location 影响 join、复制和合规；IAM、行列策略与审计共同构成治理。', ['先定区域再建表', '最小权限', '区分 time travel 与备份']),
-    ],
-    '云服务持续更新且不可降级；GoogleSQL、服务能力、驱动和客户端库分别发布。',
-    [
-      version('BigQuery 服务更新', ['功能按日期持续发布', 'Preview 与 GA 边界需要显式记录'], '生产只依赖已满足稳定性要求的能力。'),
-      version('GoogleSQL 行为变化', ['新函数、数据类型和限制持续演进', 'Legacy SQL 能力逐步受限'], '固定方言并回归关键查询结果。'),
-      version('客户端库/驱动', ['Java、Python、ODBC/JDBC 独立发布', 'API 能力与库版本可能不同步'], '维护最低版本并执行序列化兼容测试。'),
-    ],
-    'https://docs.cloud.google.com/bigquery/docs/release-notes',
-    ['记录 Preview/GA 依赖', '回放查询并比较 bytes processed 与 slot time', '核对区域、IAM、客户端和 Data Transfer 变更'],
-  ),
   mongodb: guide(
     'MongoDB 的关键不是“无 Schema”，而是围绕原子边界、查询模式、索引和分片键设计稳定的文档模型。',
     ['能选择嵌入或引用', '能解释 replica set 与读写关注', '能设计可扩展分片键'],
@@ -304,23 +270,6 @@ export const databaseGuides = {
     ],
     'https://valkey.io/download/releases/',
     ['比较 COMMAND 输出与脚本依赖', '验证 RDB/AOF、模块和客户端', '演练复制、Cluster 与回滚'],
-  ),
-  dynamodb: guide(
-    'DynamoDB 没有传统服务器版本，设计核心是把访问模式编码到分区键、排序键和二级索引中，并管理容量与热点。',
-    ['能从访问模式反推主键', '能识别热分区', '能选择一致性、事务与全球表'],
-    [
-      concept('单表与键设计', 'PK 决定数据分布，SK 决定同一实体集合内的排序与范围查询。', ['先列出访问模式', '避免低基数 PK', '用条件写入保护约束']),
-      concept('GSI 与容量', 'GSI 是异步维护的新访问路径，会额外消耗写入和存储；容量模式不消除热点。', ['投影最少字段', '监控 throttling reason', '预热突发流量']),
-      concept('一致性与全球表', '基础表可强一致读取，GSI 最终一致；全球表的一致性模式和区域拓扑需明确。', ['区分 RPO/RTO', '处理跨区冲突', 'Streams 消费保持幂等']),
-    ],
-    'AWS 持续交付托管服务能力；DynamoDB Local、SDK 和全局服务功能有各自变更记录。',
-    [
-      version('托管服务持续更新', ['功能无需用户升级服务器', '区域可用性和限制可能不同'], '基础设施代码和能力探测要按区域验证。'),
-      version('全球表与一致性演进', ['多区域强一致等能力按区域和拓扑提供', '旧全局表模式需核对迁移路径'], '更新灾备设计文档和故障演练。'),
-      version('DynamoDB Local 3.x', ['本地模拟器迁移到较新 AWS SDK 基线', '不模拟全部托管服务行为'], '本地测试之外仍需在真实 AWS 环境做集成验证。'),
-    ],
-    'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DocumentHistory.html',
-    ['核对区域、配额和 IAM 变化', '回放热点键与容量突发', '验证 Streams、全球表和 SDK 重试语义'],
   ),
   cassandra: guide(
     'Cassandra 要按查询反向设计表。分区键、聚簇顺序、一致性级别、压缩和 tombstone 是性能与可靠性的共同基础。',

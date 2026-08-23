@@ -15,7 +15,7 @@ const databaseBlock = navigationSource.match(/export const allDatabases = \[([\s
 const expected = [...databaseBlock.matchAll(/\bid:\s*['"]([^'"]+)['"]/g)].map((match) => match[1])
 const specBlock = catalogSource.match(/const specs = \{([\s\S]*?)\n\} satisfies Record/)?.[1] || ''
 
-if (expected.length !== 25) failures.push(`databaseNavigation must expose 25 products, got ${expected.length}`)
+if (expected.length !== 22) failures.push(`databaseNavigation must expose 22 products, got ${expected.length}`)
 if (!catalogSource.includes("import { allDatabases } from './databaseNavigation'")) failures.push('Docker catalog must reuse databaseNavigation/allDatabases')
 if (!catalogSource.includes('allDatabases.map((product)')) failures.push('Docker catalog must be derived from allDatabases')
 if (!catalogSource.includes('satisfies Record<DatabaseBrandId, DockerProductSpec>')) failures.push('Docker specs must be exhaustive for DatabaseBrandId')
@@ -51,8 +51,9 @@ for (const line of envSource.split(/\r?\n/)) {
 }
 
 if (!/browser:\s*\{[\s\S]{0,160}mode:\s*'browser'[\s\S]{0,160}status:\s*'unsupported'/.test(catalogSource)) failures.push('Browser Database must remain explicit unsupported Docker exception')
-for (const cloud of ['snowflake', 'bigquery']) {
-  if (!new RegExp(`${cloud}:\\s*\\{[\\s\\S]{0,160}mode:\\s*'cloud'[\\s\\S]{0,160}status:\\s*'documented'`).test(catalogSource)) failures.push(`${cloud} must remain a documented cloud entry`)
+const managedServiceSources = [navigationSource, catalogSource, envSource, runnerSource, collectorSource].join('\n')
+for (const managed of ['snowflake', 'bigquery', 'dynamodb']) {
+  if (new RegExp(managed, 'i').test(managedServiceSources)) failures.push(`cloud-only managed service must not be collected as a product: ${managed}`)
 }
 if (!fs.existsSync(path.join(root, 'docs/matrix/docker-tools.md'))) failures.push('missing Docker matrix')
 for (const command of [
@@ -73,4 +74,4 @@ if (failures.length) {
   console.error(failures.join('\n'))
   process.exit(1)
 }
-console.log('[docker-catalog] 25 database products derived from databaseNavigation; evidence and explicit exceptions validated')
+console.log('[docker-catalog] 22 self-hostable/local database products derived from databaseNavigation; evidence and explicit exceptions validated')

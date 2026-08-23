@@ -1,7 +1,0 @@
----
-status: documented
-capturedAt: 2026-08-23T15:15:53.547Z
-dockerImage: "not-applicable"
-exitCode: -1
----
-DOCUMENTED: 只展示官方 CLI 命令；没有云账号时不执行查询。

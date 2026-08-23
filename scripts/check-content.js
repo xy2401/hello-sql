@@ -60,7 +60,7 @@ const databaseDirectories = fs.readdirSync(productsDirectory, { withFileTypes: t
   .filter((entry) => entry.isDirectory())
   .map((entry) => path.join(productsDirectory, entry.name));
 
-if (databaseDirectories.length !== 25) errors.push(`独立数据库目录数量应为 25，当前为 ${databaseDirectories.length}`);
+if (databaseDirectories.length !== 22) errors.push(`独立数据库目录数量应为 22，当前为 ${databaseDirectories.length}`);
 for (const directory of databaseDirectories) {
   const directoryName = path.basename(directory);
   const id = directoryName === 'mssqlserver' ? 'sql-server' : directoryName;

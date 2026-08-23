@@ -9,13 +9,10 @@ export const databaseBrands = {
   clickhouse: { name: 'ClickHouse', assetId: 'clickhouse' },
   tidb: { name: 'TiDB', assetId: 'tidb' },
   cockroachdb: { name: 'CockroachDB', assetId: 'cockroachdb' },
-  snowflake: { name: 'Snowflake', assetId: 'snowflake' },
-  bigquery: { name: 'BigQuery', assetId: 'bigquery' },
   mongodb: { name: 'MongoDB', assetId: 'mongodb' },
   couchdb: { name: 'Apache CouchDB', assetId: 'couchdb' },
   redis: { name: 'Redis', assetId: 'redis' },
   valkey: { name: 'Valkey', assetId: 'valkey' },
-  dynamodb: { name: 'Amazon DynamoDB', assetId: 'dynamodb' },
   cassandra: { name: 'Apache Cassandra', assetId: 'cassandra' },
   scylladb: { name: 'ScyllaDB', assetId: 'scylladb' },
   elasticsearch: { name: 'Elasticsearch', assetId: 'elasticsearch' },
@@ -33,8 +30,8 @@ export type DatabaseBrandId = keyof typeof databaseBrands;
 
 export const databaseProductBrandIds = [
   'postgresql', 'mysql', 'mariadb', 'sqlite', 'sql-server', 'oracle',
-  'duckdb', 'clickhouse', 'tidb', 'cockroachdb', 'snowflake', 'bigquery',
-  'mongodb', 'couchdb', 'redis', 'valkey', 'dynamodb', 'cassandra',
+  'duckdb', 'clickhouse', 'tidb', 'cockroachdb',
+  'mongodb', 'couchdb', 'redis', 'valkey', 'cassandra',
   'scylladb', 'elasticsearch', 'opensearch', 'neo4j', 'influxdb', 'timescaledb',
   'browser',
 ] as const satisfies readonly DatabaseBrandId[];

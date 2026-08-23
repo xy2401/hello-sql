@@ -120,11 +120,6 @@ const profiles = {
     ready: () => inside('valkey-cli ping', { allowFailure: true }), readyLabel: 'valkey-cli ping',
     run: () => logRun('valkey-cli fixed Stream session', () => inside(`set -eu; valkey-cli DEL hello:items; valkey-cli XADD hello:items 1-0 id 1 name Alice score 30; valkey-cli XADD hello:items 2-0 id 2 name Bob score 20; valkey-cli XADD hello:items 3-0 id 3 name Carol score 40; valkey-cli XRANGE hello:items - +; valkey-cli XLEN hello:items; valkey-cli XINFO STREAM hello:items`)),
   },
-  dynamodb: {
-    ready: () => client(env.AWS_CLI_IMAGE, 'export AWS_ACCESS_KEY_ID=local AWS_SECRET_ACCESS_KEY=local AWS_DEFAULT_REGION=us-east-1; aws dynamodb list-tables --endpoint-url http://server:8000', { allowFailure: true }),
-    readyLabel: 'aws dynamodb list-tables --endpoint-url http://server:8000',
-    run: () => logRun('aws dynamodb create/put/scan/list against DynamoDB Local', () => client(env.AWS_CLI_IMAGE, `set -eu; export AWS_ACCESS_KEY_ID=local AWS_SECRET_ACCESS_KEY=local AWS_DEFAULT_REGION=us-east-1; aws dynamodb create-table --endpoint-url http://server:8000 --table-name hello_items --attribute-definitions AttributeName=id,AttributeType=N --key-schema AttributeName=id,KeyType=HASH --billing-mode PAY_PER_REQUEST; aws dynamodb put-item --endpoint-url http://server:8000 --table-name hello_items --item '{"id":{"N":"1"},"name":{"S":"Alice"},"score":{"N":"30"}}'; aws dynamodb put-item --endpoint-url http://server:8000 --table-name hello_items --item '{"id":{"N":"2"},"name":{"S":"Bob"},"score":{"N":"20"}}'; aws dynamodb put-item --endpoint-url http://server:8000 --table-name hello_items --item '{"id":{"N":"3"},"name":{"S":"Carol"},"score":{"N":"40"}}'; aws dynamodb scan --endpoint-url http://server:8000 --table-name hello_items --filter-expression 'score >= :score' --expression-attribute-values '{":score":{"N":"30"}}'; aws dynamodb list-tables --endpoint-url http://server:8000`)),
-  },
   cassandra: {
     env: ['MAX_HEAP_SIZE=512M', 'HEAP_NEWSIZE=100M'],
     ready: () => inside('/opt/cassandra/bin/cqlsh -e "DESCRIBE CLUSTER"', { allowFailure: true }), readyLabel: '/opt/cassandra/bin/cqlsh -e "DESCRIBE CLUSTER"',

@@ -25,13 +25,13 @@ const group = computed(() => ({
     if (props.category === 'sql') {
       return ['postgresql', 'mysql', 'mariadb', 'sqlite', 'sql-server', 'oracle'].includes(db.id);
     }
-    // Analytical (6): duckdb, clickhouse, tidb, cockroachdb, snowflake, bigquery
+    // Analytical (4): duckdb, clickhouse, tidb, cockroachdb
     if (props.category === 'analytical') {
-      return ['duckdb', 'clickhouse', 'tidb', 'cockroachdb', 'snowflake', 'bigquery'].includes(db.id);
+      return ['duckdb', 'clickhouse', 'tidb', 'cockroachdb'].includes(db.id);
     }
-    // NoSQL (12): mongodb, couchdb, redis, valkey, dynamodb, cassandra, scylladb, elasticsearch, opensearch, neo4j, influxdb, timescaledb
+    // NoSQL (11): mongodb, couchdb, redis, valkey, cassandra, scylladb, elasticsearch, opensearch, neo4j, influxdb, timescaledb
     if (props.category === 'nosql') {
-      return ['mongodb', 'couchdb', 'redis', 'valkey', 'dynamodb', 'cassandra', 'scylladb', 'elasticsearch', 'opensearch', 'neo4j', 'influxdb', 'timescaledb'].includes(db.id);
+      return ['mongodb', 'couchdb', 'redis', 'valkey', 'cassandra', 'scylladb', 'elasticsearch', 'opensearch', 'neo4j', 'influxdb', 'timescaledb'].includes(db.id);
     }
     return false;
   })

@@ -2,7 +2,7 @@ import { allDatabases } from './databaseNavigation'
 import type { DatabaseBrandId } from './databaseBranding'
 
 export type DockerEvidenceStatus = 'verified' | 'partial' | 'documented' | 'unsupported'
-export type DockerRunMode = 'container' | 'custom-image' | 'cloud' | 'browser' | 'restricted-image'
+export type DockerRunMode = 'container' | 'custom-image' | 'browser' | 'restricted-image'
 
 export interface DockerImageRef {
   role: 'builder' | 'runtime' | 'server' | 'client'
@@ -52,13 +52,10 @@ const specs = {
   clickhouse: local('CLICKHOUSE_IMAGE', ['clickhouse', 'clickhouse-client', 'clickhouse-server'], 'clickhouse-client --host clickhouse', 'CREATE TABLE → INSERT → SELECT → SHOW TABLES → EXPLAIN'),
   tidb: local('TIDB_IMAGE', ['tidb-server', 'mysql'], 'mysql -h tidb -P 4000 -u root', 'MySQL 协议：CREATE TABLE → INSERT → SELECT → SHOW TABLES → EXPLAIN'),
   cockroachdb: local('COCKROACHDB_IMAGE', ['cockroach'], 'cockroach sql --insecure --host cockroach', 'CREATE TABLE → INSERT → SELECT → SHOW TABLES → EXPLAIN'),
-  snowflake: { mode: 'cloud', status: 'documented', images: [{ role: 'client', tag: '官方 Snowflake CLI 固定版本', digestKey: 'SNOWFLAKE_CLI_BASE_IMAGE', source: 'custom-official-base' }], toolRoots: ['/usr/local/bin'], keyTools: ['snow'], connectCommand: 'snow connection test --connection HELLO_SQL', queryCommand: 'snow sql -q "SELECT ..."', note: 'CI 只验证官方 CLI 的版本和帮助；查询需要外部账号与凭证，不执行、不伪造输出。' },
-  bigquery: { mode: 'cloud', status: 'documented', images: [{ role: 'client', tag: 'google-cloud-cli 固定版本', digestKey: 'GCLOUD_CLI_IMAGE', source: 'vendor' }], toolRoots: ['/google-cloud-sdk/bin'], keyTools: ['bq', 'gcloud'], connectCommand: 'gcloud auth list / bq version', queryCommand: 'bq query --use_legacy_sql=false "SELECT ..."', note: 'CI 实测 bq/gcloud 的版本和帮助，但不注入 Google Cloud 凭证。' },
   mongodb: local('MONGODB_IMAGE', ['mongod', 'mongosh'], 'mongosh mongodb://mongodb:27017', 'insertMany → find().sort() → show collections → explain'),
   couchdb: local('COUCHDB_IMAGE', ['couchdb', 'curl'], 'curl http://couchdb:5984/', 'PUT database → bulk docs → _find → _all_docs → _explain'),
   redis: local('REDIS_IMAGE', ['redis-server', 'redis-cli', 'redis-check-aof', 'redis-check-rdb'], 'redis-cli -h redis', 'XGROUP CREATE → XADD → XREADGROUP → XLEN/XPENDING'),
   valkey: local('VALKEY_IMAGE', ['valkey-server', 'valkey-cli', 'valkey-check-aof'], 'valkey-cli -h valkey', 'XGROUP CREATE → XADD → XREADGROUP → XLEN/XPENDING'),
-  dynamodb: { ...local('DYNAMODB_LOCAL_IMAGE', ['java', 'aws'], 'aws dynamodb --endpoint-url http://dynamodb:8000', 'create-table → put-item ×3 → scan/query → list-tables'), images: [server('DYNAMODB_LOCAL_IMAGE'), { role: 'client', tag: '由 AWS_CLI_IMAGE 锁定', digestKey: 'AWS_CLI_IMAGE', source: 'vendor' }], note: '使用 AWS 官方 DynamoDB Local 模拟器，明确不等同于云端 DynamoDB。' },
   cassandra: local('CASSANDRA_IMAGE', ['cassandra', 'cqlsh', 'nodetool'], 'cqlsh cassandra 9042', 'CREATE KEYSPACE/TABLE → INSERT → SELECT → DESCRIBE TABLES → tracing'),
   scylladb: local('SCYLLADB_IMAGE', ['scylla', 'cqlsh', 'nodetool'], 'cqlsh scylladb 9042', 'CREATE KEYSPACE/TABLE → INSERT → SELECT → DESCRIBE TABLES → tracing'),
   elasticsearch: local('ELASTICSEARCH_IMAGE', ['elasticsearch', 'elasticsearch-cli', 'curl'], 'curl http://elasticsearch:9200', 'PUT index → bulk docs → _search → _cat/indices → _explain'),

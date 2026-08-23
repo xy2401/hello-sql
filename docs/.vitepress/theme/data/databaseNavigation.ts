@@ -23,19 +23,16 @@ export const allDatabases = [
   { id: 'sqlite', name: 'SQLite', link: '/products/sqlite' },
   { id: 'sql-server', name: 'SQL Server', link: '/products/mssqlserver' },
   { id: 'oracle', name: 'Oracle Database', link: '/products/oracle' },
-  // Analytical (6)
+  // Analytical (4)
   { id: 'duckdb', name: 'DuckDB', link: '/products/duckdb' },
   { id: 'clickhouse', name: 'ClickHouse', link: '/products/clickhouse' },
   { id: 'tidb', name: 'TiDB', link: '/products/tidb' },
   { id: 'cockroachdb', name: 'CockroachDB', link: '/products/cockroachdb' },
-  { id: 'snowflake', name: 'Snowflake', link: '/products/snowflake' },
-  { id: 'bigquery', name: 'BigQuery', link: '/products/bigquery' },
-  // NoSQL 与浏览器数据库 (13)
+  // NoSQL 与浏览器数据库 (12)
   { id: 'mongodb', name: 'MongoDB', link: '/products/mongodb' },
   { id: 'couchdb', name: 'Apache CouchDB', link: '/products/couchdb' },
   { id: 'redis', name: 'Redis', link: '/products/redis' },
   { id: 'valkey', name: 'Valkey', link: '/products/valkey' },
-  { id: 'dynamodb', name: 'Amazon DynamoDB', link: '/products/dynamodb' },
   { id: 'cassandra', name: 'Apache Cassandra', link: '/products/cassandra' },
   { id: 'scylladb', name: 'ScyllaDB', link: '/products/scylladb' },
   { id: 'elasticsearch', name: 'Elasticsearch', link: '/products/elasticsearch' },

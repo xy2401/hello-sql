@@ -97,13 +97,10 @@
 :where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/clickhouse/"] { --database-nav-logo: url('/logos/databases/clickhouse.svg'); }
 :where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/tidb/"] { --database-nav-logo: url('/logos/databases/tidb.svg'); }
 :where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/cockroachdb/"] { --database-nav-logo: url('/logos/databases/cockroachdb.svg'); }
-:where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/snowflake/"] { --database-nav-logo: url('/logos/databases/snowflake.svg'); }
-:where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/bigquery/"] { --database-nav-logo: url('/logos/databases/bigquery.svg'); }
 :where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/mongodb/"] { --database-nav-logo: url('/logos/databases/mongodb.svg'); }
 :where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/couchdb/"] { --database-nav-logo: url('/logos/databases/couchdb.svg'); }
 :where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/redis/"] { --database-nav-logo: url('/logos/databases/redis.svg'); }
 :where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/valkey/"] { --database-nav-logo: url('/logos/databases/valkey.svg'); }
-:where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/dynamodb/"] { --database-nav-logo: url('/logos/databases/dynamodb.svg'); }
 :where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/cassandra/"] { --database-nav-logo: url('/logos/databases/cassandra.svg'); }
 :where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/scylladb/"] { --database-nav-logo: url('/logos/databases/scylladb.svg'); }
 :where(.VPNavBarMenuLink, .VPNavScreenMenuLink, .VPMenu a)[href*="/products/elasticsearch/"] { --database-nav-logo: url('/logos/databases/elasticsearch.svg'); }
@@ -123,13 +120,10 @@
 .VPSidebarItem.level-0:has(a[href*="/products/clickhouse/"]) { --database-nav-logo: url('/logos/databases/clickhouse.svg'); }
 .VPSidebarItem.level-0:has(a[href*="/products/tidb/"]) { --database-nav-logo: url('/logos/databases/tidb.svg'); }
 .VPSidebarItem.level-0:has(a[href*="/products/cockroachdb/"]) { --database-nav-logo: url('/logos/databases/cockroachdb.svg'); }
-.VPSidebarItem.level-0:has(a[href*="/products/snowflake/"]) { --database-nav-logo: url('/logos/databases/snowflake.svg'); }
-.VPSidebarItem.level-0:has(a[href*="/products/bigquery/"]) { --database-nav-logo: url('/logos/databases/bigquery.svg'); }
 .VPSidebarItem.level-0:has(a[href*="/products/mongodb/"]) { --database-nav-logo: url('/logos/databases/mongodb.svg'); }
 .VPSidebarItem.level-0:has(a[href*="/products/couchdb/"]) { --database-nav-logo: url('/logos/databases/couchdb.svg'); }
 .VPSidebarItem.level-0:has(a[href*="/products/redis/"]) { --database-nav-logo: url('/logos/databases/redis.svg'); }
 .VPSidebarItem.level-0:has(a[href*="/products/valkey/"]) { --database-nav-logo: url('/logos/databases/valkey.svg'); }
-.VPSidebarItem.level-0:has(a[href*="/products/dynamodb/"]) { --database-nav-logo: url('/logos/databases/dynamodb.svg'); }
 .VPSidebarItem.level-0:has(a[href*="/products/cassandra/"]) { --database-nav-logo: url('/logos/databases/cassandra.svg'); }
 .VPSidebarItem.level-0:has(a[href*="/products/scylladb/"]) { --database-nav-logo: url('/logos/databases/scylladb.svg'); }
 .VPSidebarItem.level-0:has(a[href*="/products/elasticsearch/"]) { --database-nav-logo: url('/logos/databases/elasticsearch.svg'); }

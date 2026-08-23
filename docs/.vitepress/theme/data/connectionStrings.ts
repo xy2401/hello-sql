@@ -75,18 +75,6 @@ export const connectionStringProfiles: ConnectionStringProfile[] = [
     docs: 'https://www.cockroachlabs.com/docs/stable/connect-to-the-database',
   },
   {
-    id: 'snowflake', group: '分析与分布式', kind: 'JDBC', protocol: 'HTTPS', defaultPort: '443',
-    example: 'jdbc:snowflake://ORG-ACCOUNT.snowflakecomputing.com/?db=APP&schema=PUBLIC&warehouse=WH&role=ROLE', namespace: 'account → database → schema；warehouse 是计算资源',
-    tls: 'HTTPS；不要中间人替换证书', note: '用户、OAuth、密钥或工作负载身份应放 Properties/安全配置，不要把密码写入 URL。',
-    docs: 'https://docs.snowflake.com/en/developer-guide/jdbc/jdbc-configure',
-  },
-  {
-    id: 'bigquery', group: '分析与分布式', kind: 'SDK 参数', protocol: 'Google APIs / REST/gRPC', defaultPort: '443',
-    example: 'project=PROJECT_ID; location=REGION; dataset=DATASET', namespace: 'project → dataset → table',
-    tls: 'Google API HTTPS + ADC/OAuth', note: '没有跨语言统一数据库 URI；JDBC/ODBC URL 由具体驱动定义，应用通常使用 ADC 与 SDK 配置。',
-    docs: 'https://cloud.google.com/bigquery/docs/authentication',
-  },
-  {
     id: 'mongodb', group: 'NoSQL', kind: 'URI', protocol: 'MongoDB wire / DNS SRV', defaultPort: '27017',
     example: 'mongodb+srv://USER@cluster.example/app?retryWrites=true&w=majority', namespace: '路径是默认 authentication/database 上下文',
     tls: 'SRV 默认启用 TLS', note: '优先 mongodb+srv；标准 mongodb:// 需要列出 seed hosts，并显式处理 replicaSet 与 TLS。',
@@ -109,12 +97,6 @@ export const connectionStringProfiles: ConnectionStringProfile[] = [
     example: 'valkeys://default@cache.example:6379/0', namespace: '路径数字是逻辑 DB',
     tls: 'valkeys://', note: 'valkey-cli 使用 valkey:// 与 valkeys://；部分兼容客户端仍使用 redis:// / rediss://。',
     docs: 'https://valkey.io/topics/cli/',
-  },
-  {
-    id: 'dynamodb', group: 'NoSQL', kind: 'SDK 参数', protocol: 'AWS JSON API over HTTPS', defaultPort: '443',
-    example: 'region=ap-southeast-1; credentials=AWS default chain', namespace: 'AWS account + region → table',
-    tls: 'AWS HTTPS + SigV4', note: '没有数据库连接 URI；SDK 根据 region、身份与 endpoint 构造并签名请求，本地模拟器才常覆写 endpoint。',
-    docs: 'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.SDKOverview.html',
   },
   {
     id: 'cassandra', group: 'NoSQL', kind: 'SDK 参数', protocol: 'CQL native protocol', defaultPort: '9042',
