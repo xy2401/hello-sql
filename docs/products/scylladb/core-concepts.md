@@ -1,6 +1,57 @@
----
-title: ScyllaDB 核心知识
-description: ScyllaDB 的关键心智模型与工程实践
----
+# ScyllaDB 核心知识
 
-<DatabaseCoreGuide id="scylladb" />
+> ScyllaDB 兼容 CQL，但 shard-per-core、Seastar 调度和节点资源隔离改变了容量规划与尾延迟治理方式。
+
+## 学习目标
+
+在深入 ScyllaDB 开发与运维前，建议掌握以下能力：
+
+- [x] **能解释 shard-per-core**
+- [x] **能复用并验证 CQL 模型**
+- [x] **能执行安全滚动升级**
+
+## 必须建立的核心心智模型
+
+### 01 Shard-per-core
+
+每个 CPU 核心拥有独立 shard，减少共享锁；分区到 shard 的映射影响均衡。
+
+**关键实践要点：**
+
+- 绑定 CPU/NUMA
+- 控制 cross-shard 操作
+- 按 shard 观察负载
+
+### 02 CQL 与数据模型
+
+仍需按分区键与聚簇键设计有界分区，兼容不意味着所有 Cassandra 行为一致。
+
+**关键实践要点：**
+
+- 验证驱动和 system 表
+- 避免大分区
+- 核对 LWT 语义
+
+### 03 Compaction 与维护
+
+压缩、repair、streaming 和 tablet/ring 管理直接影响尾延迟。
+
+**关键实践要点：**
+
+- 限制维护并发
+- 监控 reactor stall
+- 逐节点演练恢复
+
+## 工程决策落地指南
+
+| 工程阶段 | 核心决策与行动要点 |
+| :--- | :--- |
+| **建模前** | 明确读写访问模式、一致性容忍度、数据生命周期与故障预算，再决定表结构、主键类型、分片键与索引策略。 |
+| **上线前** | 基于生产规模的数据分布进行并发压测，记录查询计划（Query Plan）、内存/I/O 水位与高可用主从故障切换耗时。 |
+| **运行中** | 监控 P95/P99 延迟分位数、连接池水位、长事务/慢查询与存储碎片；所有监控告警均需具备明确的 SOP 处置步骤。 |
+
+## 关联资源
+
+- 🏠 [返回 ScyllaDB 总览](./)
+- 📜 [查看版本演进与发布说明](./versions)
+- 🐳 [查看 Docker 工具验证证据](./DockerTooling)

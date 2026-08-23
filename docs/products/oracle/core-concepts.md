@@ -1,6 +1,57 @@
----
-title: Oracle Database 核心知识
-description: Oracle Database 的关键心智模型与工程实践
----
+# Oracle Database 核心知识
 
-<DatabaseCoreGuide id="oracle" />
+> Oracle 的核心不只在 SQL/PLSQL，而在多租户、undo 一致性读、优化器、Data Guard/RAC 和严格的版本许可治理。
+
+## 学习目标
+
+在深入 Oracle Database 开发与运维前，建议掌握以下能力：
+
+- [x] **能解释 CDB/PDB 边界**
+- [x] **能判断执行计划与统计问题**
+- [x] **能制定 RU 和大版本升级策略**
+
+## 必须建立的核心心智模型
+
+### 01 多租户架构
+
+CDB 承载公共基础设施，PDB 提供可插拔业务数据库；资源、备份和补丁都受容器边界影响。
+
+**关键实践要点：**
+
+- 理解 common/local user
+- 设计 PDB 服务名
+- 演练 clone/relocate
+
+### 02 一致性读与 Undo
+
+Oracle 通过 undo 提供读一致性；长查询、undo 保留和 ORA-01555 直接相关。
+
+**关键实践要点：**
+
+- 规划 undo retention
+- 控制长事务
+- 区分锁等待与一致性读
+
+### 03 优化器与高可用
+
+统计、绑定变量、SQL Plan Management 与 Exadata/RAC 拓扑会共同影响性能。
+
+**关键实践要点：**
+
+- 保留 AWR/SQL Monitor 基线
+- 谨慎使用 hint
+- Data Guard 必须演练 switchover
+
+## 工程决策落地指南
+
+| 工程阶段 | 核心决策与行动要点 |
+| :--- | :--- |
+| **建模前** | 明确读写访问模式、一致性容忍度、数据生命周期与故障预算，再决定表结构、主键类型、分片键与索引策略。 |
+| **上线前** | 基于生产规模的数据分布进行并发压测，记录查询计划（Query Plan）、内存/I/O 水位与高可用主从故障切换耗时。 |
+| **运行中** | 监控 P95/P99 延迟分位数、连接池水位、长事务/慢查询与存储碎片；所有监控告警均需具备明确的 SOP 处置步骤。 |
+
+## 关联资源
+
+- 🏠 [返回 Oracle Database 总览](./)
+- 📜 [查看版本演进与发布说明](./versions)
+- 🐳 [查看 Docker 工具验证证据](./DockerTooling)
