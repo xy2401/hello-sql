@@ -48,7 +48,7 @@ export default defineConfig({
     worker: { format: 'es' },
   },
   themeConfig: {
-    logo: '/logo.svg',
+    logo: '/favicon.svg',
     siteTitle: 'Hello SQL',
     sidebarMenuLabel: '数据库',
     outline: { level: [2, 3], label: '本页导航' },
