@@ -2,6 +2,10 @@ import { defineConfig } from 'vitepress';
 import { splitDuckDbWasm } from './plugins/splitDuckDbWasm';
 import { allDatabases } from './theme/data/databaseNavigation';
 
+const featuredDatabaseIds = new Set(['postgresql', 'mysql', 'duckdb', 'mongodb', 'redis']);
+const featuredDatabases = allDatabases.filter(database => featuredDatabaseIds.has(database.id));
+const moreDatabases = allDatabases.filter(database => !featuredDatabaseIds.has(database.id));
+
 function databaseSidebarItems(items: readonly { name: string; link: string }[]) {
   return items.map(({ name, link }) => ({
     text: name,
@@ -22,7 +26,7 @@ export default defineConfig({
   lastUpdated: true,
   head: [
     ['meta', { name: 'theme-color', content: '#0f766e' }],
-    ['link', { rel: 'icon', href: '/logo.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
   ],
   vite: {
     plugins: [splitDuckDbWasm()],
@@ -37,14 +41,16 @@ export default defineConfig({
     sidebarMenuLabel: '数据库',
     outline: { level: [2, 3], label: '本页导航' },
     nav: [
-      { text: '首页', link: '/' },
+      ...featuredDatabases.map(database => ({
+        text: database.name,
+        link: `${database.link}/`,
+      })),
       {
-        text: '产品',
+        text: '更多',
         items: [
-          { text: '产品总览', link: '/products/' },
-          ...allDatabases.map(db => ({
-            text: db.name,
-            link: `${db.link}/`,
+          ...moreDatabases.map(database => ({
+            text: database.name,
+            link: `${database.link}/`,
           })),
         ],
       },
