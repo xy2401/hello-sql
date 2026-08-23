@@ -1,3 +1,3 @@
 # Elasticsearch 版本演进
 
-- **Elasticsearch 8.x**：默认集成向量搜索（k-NN）、支持自然语言处理（NLP）模型推断，重构安全与认证配置。
+- **Elasticsearch 8.x**：全面内置向量检索（k-NN）、NLP 模型推断支持与更严密的安全配置。

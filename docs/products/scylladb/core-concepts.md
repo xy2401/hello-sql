@@ -1,5 +1,3 @@
 # ScyllaDB 核心知识
 
-## 运维要点
-
-- CPU 核心绑定（NUMA awareness）与直接异步 I/O（AIO），无需复杂的 JVM 调优。
+- 每个 CPU 核心绑定一个独立 Shard，实现极低的 P99 尾延迟与极高的单机吞吐。

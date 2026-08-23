@@ -1,53 +1,79 @@
 # PostgreSQL 核心知识
 
-学习 PostgreSQL 的关键不仅在于掌握复杂的 SQL 语法，更在于深入理解其存储引擎、MVCC 机制、查询优化器以及高可用复制链路的内部工作原理。
+深入理解 PostgreSQL 的核心在于吃透其堆表存储机制、MVCC 的版本标记与回收原理、基于代价的查询优化器（CBO），以及 WAL 流复制链路。
 
-## 核心心智模型
+## 1. 堆表存储与 MVCC（多版本并发控制）
 
-### 1. MVCC 与 Tuple 版本生命周期
+PostgreSQL 采用**堆表追加（Append-only Heap Pages）**设计实现 MVCC：
 
-PostgreSQL 的多版本并发控制（MVCC）采用**堆表追加旧版本（Heap-based MVCC）**设计：
+### Tuple 行头与版本标记
+每个数据行（Tuple）头部包含关键的事务标记：
+- `t_xmin`：插入该行版本的事务 ID。
+- `t_xmax`：删除或更新该行版本的事务 ID（若行仍有效，则通常为 0）。
+- `t_ctid`：指向当前行物理位置（块号 + 偏移量）的指针。发生更新时，原行版本的 `ctid` 会指向新插入的行版本。
 
-- **更新即插入**：执行 `UPDATE` 时，PostgreSQL 不会就地覆写原有行，而是将原 Tuple 标记为已过期（设置 `xmax`），并在堆页面中插入一条带有新 `xmin` 的新 Tuple。
-- **事务可见性判断**：每个事务根据当前快照的活跃事务列表，结合 Tuple 头部的 `xmin`（创建事务 ID）和 `xmax`（删除/更新事务 ID）判断行版本是否可见。
-- **Vacuum 回收与表膨胀（Bloat）**：
-  - 当旧 Tuple 不再对任何活跃事务可见时，成为死元组（Dead Tuple）。
-  - `VACUUM` 扫描堆页清理死元组，并将可用空间记录在空闲空间映射表（FSM）中供后续插入复用，但默认不会收缩操作系统磁盘文件。
-  - **长事务的致命危害**：若存在运行数小时的慢查询或未提交事务，会阻止其后所有 Dead Tuples 的回收，导致表和索引剧烈膨胀。
+```
+[事务 100 插入] -> Heap Page: Tuple A (xmin=100, xmax=0)
+[事务 105 更新] -> Heap Page: Tuple A (xmin=100, xmax=105, ctid->Tuple B)
+                              Tuple B (xmin=105, xmax=0,   ctid->自身)
+```
+
+### 事务快照与可见性判断
+每个事务开始时，PostgreSQL 会捕获一个瞬时快照（Snapshot），记录：
+- 当前正在运行但尚未提交的活跃事务列表（Active Transactions）。
+- 当前已提交的最大事务 ID。
+- 查询根据 Tuple 头部的 `xmin`/`xmax` 与快照比对，决定该行是否对当前查询可见。**读操作无需加锁，写操作不阻塞读操作**。
+
+---
+
+## 2. Vacuum 机制、表膨胀与长事务危害
+
+### 垃圾回收（Vacuum）的运作流程
+当被更新或删除的旧 Tuple 不再对任何活跃事务可见时，该行变成**死元组（Dead Tuple）**。
+1. **标准 Vacuum**：扫描堆页面，清理 Dead Tuple，将空闲空间更新到空闲空间映射表（Free Space Map, FSM）供后续 `INSERT`/`UPDATE` 复用。但**不会向操作系统释放已占用的磁盘空间**。
+2. **Vacuum Full**：重写整张表生成全新的物理文件并释放磁盘空间，执行期间会对整表加排他锁（AccessExclusiveLock），阻塞所有读写。
+
+### 为什么长事务会导致表膨胀（Table Bloat）？
+Vacuum 能够回收 Dead Tuple 的前提是：该 Tuple 的 `xmax` 必须小于当前系统中**所有活跃事务的最老事务 ID（Oldest Active XID）**。
+- 如果存在一个执行数小时的慢查询或忘记提交的事务，整个数据库的垃圾回收进度都会被“钉住”。
+- 在此期间发生的所有表更新，其产生的 Dead Tuples 均无法被回收，导致堆文件与所有索引体积几何级数暴增。
 
 ```sql
--- 观察表中的死元组数量与膨胀情况
-SELECT relname, n_live_tup, n_dead_tup,
-       round(100.0 * n_dead_tup / nullif(n_live_tup + n_dead_tup, 0), 2) AS dead_tuple_pct,
-       last_autovacuum, last_autoanalyze
-FROM pg_stat_user_tables
-ORDER BY n_dead_tup DESC;
+-- 监控当前阻止垃圾回收的最老活跃长事务
+SELECT pid, usename, client_addr, state,
+       age(backend_xmin) AS xmin_age,
+       now() - xact_start AS xact_duration,
+       query
+FROM pg_stat_activity
+WHERE backend_xmin IS NOT NULL
+ORDER BY age(backend_xmin) DESC
+LIMIT 10;
 ```
 
 ---
 
-### 2. 查询规划器与专用索引体系
+## 3. 基于代价的查询规划器（Cost-based Optimizer）
 
-PostgreSQL 拥有基于代价估算（Cost-based Optimizer）的高级查询优化器：
+### 统计信息与执行计划
+优化器根据系统表（`pg_statistic` / `pg_stats`）中的统计信息估算不同执行路径的代价（Cost）：
+- **Seq Scan（顺序扫描）**：全表扫描，适合读取大比例数据。
+- **Index Scan（索引扫描）**：先遍历 B-tree 索引获取物理指针（TID），再去堆表回表读取数据。
+- **Bitmap Index Scan（位图索引扫描）**：在内存中构建包含候选物理块的位图，排序后按物理顺序批量读取堆块，减少离散随机 I/O。
 
-- **统计信息收集**：`ANALYZE` 采样收集列的数据分布柱状图（Histogram）、高频值（Most Common Values）和去重计数（n_distinct）。
-- **执行计划解读**：
-  - 使用 `EXPLAIN (ANALYZE, BUFFERS)` 观察真实执行耗时、扫描算法（Seq Scan, Index Scan, Bitmap Index Scan）以及共享内存缓冲区击中率（Shared Hit Blocks）。
-- **多维度索引选择**：
-  - **B-tree**：适合等值查询与范围比较（`=`, `<`, `>`, `BETWEEN`）。
-  - **GIN（Generalized Inverted Index）**：适合包含多元素的列（JSONB 键值查询、数组元素包含 `@>`、全文检索）。
-  - **BRIN（Block Range Index）**：针对自然按时间递增的大表，每个块范围仅记录最小值和最大值，索引占用极小（仅为 B-tree 的数千分之一）。
+```sql
+-- 使用 EXPLAIN (ANALYZE, BUFFERS) 查看真实执行细节与缓存命中
+EXPLAIN (ANALYZE, BUFFERS, COSTS, VERBOSE)
+SELECT c.name, sum(o.total_amount)
+FROM customers c
+JOIN orders o ON c.id = o.customer_id
+WHERE o.created_at >= '2026-01-01'
+GROUP BY c.name;
+```
 
 ---
 
-### 3. WAL 日志、流复制与主从一致性
+## 4. WAL 日志与流复制高可用
 
-预写式日志（Write-Ahead Logging）是 PostgreSQL 事务持久性与高可用复制的核心基石：
-
-- **WAL 写入机制**：事务提交前只需将 WAL 日志顺序刷盘（`fsync`），数据页可在后台由 Checkpointer 批量异步刷入磁盘。
-- **物理流复制（Streaming Replication）**：
-  - Primary 节点通过 WAL Sender 进程将 WAL 字节流实时推送到 Standby 节点的 WAL Receiver。
-  - 支持配置 `synchronous_commit`（`off`, `local`, `on`, `remote_apply`），在吞吐性能与 RPO 之间权衡。
-- **复制槽（Replication Slots）**：
-  - 确保 Primary 不会提前删除从节点尚未消费的 WAL 日志。
-  - **运维陷阱**：若从节点宕机且复制槽未及时处理，Primary 的 WAL 日志会在 `pg_wal` 目录持续堆积，最终导致磁盘写满挂起。
+- **WAL Flush 机制**：事务提交时只需保证对应的 WAL 日志写入磁盘并 `fsync` 成功（由 `synchronous_commit` 控制），数据页在后台由 Checkpointer 批量异步刷盘。
+- **物理流复制**：主节点的 WAL Sender 进程将 WAL 日志流持续发送给从节点的 WAL Receiver，从节点实时重放 WAL 实现近实时副本。
+- **复制槽（Replication Slot）风险**：复制槽确保主节点不会过早清理从节点尚未消费的 WAL。但如果从节点宕机且复制槽未被及时监控移除，主节点的 `pg_wal` 目录会持续暴增直至耗尽磁盘空间。

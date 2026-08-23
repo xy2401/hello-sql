@@ -1,20 +1,19 @@
 # ClickHouse 核心知识
 
-## 核心心智模型
-
-### 1. MergeTree 核心建表规范
+## 1. MergeTree 核心建表与排序键设计
 
 ```sql
-CREATE TABLE events (
+CREATE TABLE user_events (
     event_date Date,
+    tenant_id UInt32,
     user_id UInt64,
     event_type LowCardinality(String),
+    cost Float64,
     payload String
 ) ENGINE = MergeTree()
 PARTITION BY toYYYYMM(event_date)
-ORDER BY (event_type, user_id, event_date);
+ORDER BY (tenant_id, event_type, user_id, event_date);
 ```
 
-- **ORDER BY 是物理排序键**：决定了数据在磁盘上的实际排列顺序，也是主键索引（稀疏索引）的依据。
-- **稀疏索引（Sparse Index）**：默认每隔 8192 行记录一个索引标记（Index Mark），索引全部常驻内存，内存开销极小。
-- **小批量写入是大忌**：单条插入会产生大量碎零件（Parts），极易触发 `Too many parts in all data parts in table` 报错。写入应保持每批 1000~100000 行。
+- **ORDER BY 决定物理存储排序**：查询过滤条件如果能命中 `ORDER BY` 的前缀列，ClickHouse 即可通过稀疏索引跳过 99% 以上无关数据块。
+- **小批量写入禁忌**：单条插入会产生海量零碎 Parts，引发 `Too many parts` 崩溃。单次写入必须批量提交（建议批次 1000 ~ 100000 行）。

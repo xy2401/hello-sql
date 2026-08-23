@@ -1,7 +1,16 @@
-# Redis 版本演进与分叉
+# Redis 版本演进与生态格局
 
-## 历史里程碑与协议分歧
+## 核心版本演进
 
-- **Redis 7.0**：引入 Multi-Part AOF 解决 AOF rewrite 内存暴涨；支持 Functions 与 Sharded Pub/Sub。
-- **协议变更事件**：自 Redis 7.4 起，官方宣布调整开源许可证为双重非 OSI 认可协议（RSALv2 / SSPLv1）。
-- **开源生态演进**：Linux 基金会与各大云厂商联合建立了 **Valkey** 分支，继续保持纯正 BSD 开源治理。
+### Redis 7.4
+- **特性演进**：引入 Hash 字段级别独立的 TTL（Hash Field Expiry），支持对 Hash 内部的 key 分别设置过期时间。
+- **协议重大事件**：自 7.4 起，官方调整开源许可证为商业限制协议（RSALv2/SSPLv1），促成了开源社区分支 **Valkey** 的建立。
+
+### Redis 7.0
+- **Multi-Part AOF**：彻底重构 AOF 持久化架构，重写操作不再生成庞大的临时文件，大幅减少 Fork 内存峰值。
+- **Redis Functions**：支持服务端常驻可持久化的脚本函数，作为 Lua 脚本的现代替代品。
+- **分片发布订阅（Sharded Pub/Sub）**：Pub/Sub 消息按槽位绑定，无需在整个 Cluster 广播。
+
+### Redis 6.0
+- **多线程网络 I/O**：网络读写支持多线程并行，大幅提升小包高并发下的吞吐上限。
+- **ACL 安全访问控制**：支持细粒度的用户权限控制（按命令白名单与 Key 正则授权）。

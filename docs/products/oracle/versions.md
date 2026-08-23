@@ -1,4 +1,4 @@
 # Oracle 版本演进
 
-- **Oracle 19c**：当前生产部署最广泛的长效支持版本（Long Term Release）。
-- **Oracle 23ai**：全面拥抱人工智能，原生引入向量搜索（AI Vector Search）与 JSON-Relational Duality。
+- **Oracle 19c**：长期企业生产基准（Long Term Release）。
+- **Oracle 23ai**：引入 AI 向量搜索与 JSON-Relational Duality。

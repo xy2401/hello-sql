@@ -1,5 +1,4 @@
 # InfluxDB 核心知识
 
-## 技术要点
-
-- **高基数控制**：在 InfluxDB 1.x/2.x 中，Tag 的不同取值组合会构成时间线（Series），避免将高离散度 UUID 放入 Tag；InfluxDB 3.0 则利用 Parquet 列式存储大幅放宽了限制。
+- **时序数据模型**：Measurement + Tag Set（索引键） + Field Set（度量数值） + Timestamp。
+- **架构革新**：InfluxDB 3.0 基于 Apache Arrow、DataFusion 与 Parquet 重新构建，彻底解决了旧版本高基数（High Cardinality）爆炸问题。

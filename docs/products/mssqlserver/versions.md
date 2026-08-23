@@ -1,3 +1,3 @@
 # SQL Server 版本演进
 
-- 支持在 Windows 与 Linux（Docker 容器）跨平台部署，支持与 Azure 云原生存储深度互通。
+- **SQL Server 2022 / 2025**：全面集成 Azure 云连接、智能查询处理（IQPref）与 AI 向量嵌入分析。

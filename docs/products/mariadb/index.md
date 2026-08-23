@@ -1,9 +1,3 @@
 # MariaDB 概览
 
-MariaDB 由 MySQL 原作者创立，虽然最初作为 MySQL 的分支诞生，但目前在存储引擎体系、复制协议（Galera）、优化器以及内部实现上已与 MySQL 形成了显著的技术分歧。
-
-## 核心技术特性
-
-- **插件式多存储引擎**：除 InnoDB 之外，原生支持 Aria（抗崩溃 MyISAM 替代）、ColumnStore（列式分析分析引擎）、Spider（分片代理引擎）等。
-- **Galera Cluster 同步多主**：原生深度集成 Galera 复制协议，提供几乎无延迟的数据多主同步复制与节点自动加入机制。
-- **系统表与授权机制**：采用区别于 MySQL 8.0 数据字典的元数据管理方式，保持较好的向后兼容性与轻量特性。
+MariaDB 是由 MySQL 创始人主导的开源关系型数据库分支，在存储引擎丰富度（Aria, ColumnStore）、Galera 同步多主集群与社区治理上与 MySQL 形成差异化竞争。
