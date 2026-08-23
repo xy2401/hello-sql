@@ -32,10 +32,12 @@ function logRun(label, callback) {
   session.push(`$ ${label}\n${(result.stdout || '').trim()}${result.stderr?.trim() ? `\n${result.stderr.trim()}` : ''}`.trimEnd())
   return result
 }
-function inside(script, options = {}) { return docker(['exec', container, 'sh', '-lc', script], options) }
+// Preserve the image-defined PATH. A login shell (-l) can replace it and hide
+// vendor tools such as Cassandra's /opt/cassandra/bin/cqlsh.
+function inside(script, options = {}) { return docker(['exec', container, 'sh', '-c', script], options) }
 function client(imageRef, script, options = {}) {
   if (!imageRef?.includes('@sha256:')) throw new Error('required client image is not digest pinned')
-  return docker(['run', '--rm', '--network', network, '--entrypoint', 'sh', imageRef, '-lc', script], options)
+  return docker(['run', '--rm', '--network', network, '--entrypoint', 'sh', imageRef, '-c', script], options)
 }
 function waitUntil(label, callback, attempts = 120) {
   for (let attempt = 1; attempt <= attempts; attempt++) {
@@ -125,8 +127,8 @@ const profiles = {
   },
   cassandra: {
     env: ['MAX_HEAP_SIZE=512M', 'HEAP_NEWSIZE=100M'],
-    ready: () => inside('cqlsh -e "DESCRIBE CLUSTER"', { allowFailure: true }), readyLabel: 'cqlsh -e "DESCRIBE CLUSTER"',
-    run: () => logRun('cqlsh -e fixed-session.cql', () => inside(`cqlsh -e "CREATE KEYSPACE IF NOT EXISTS hello WITH replication = {'class':'SimpleStrategy','replication_factor':1}; DROP TABLE IF EXISTS hello.items; CREATE TABLE hello.items (id int PRIMARY KEY, name text, score int); INSERT INTO hello.items (id,name,score) VALUES (1,'Alice',30); INSERT INTO hello.items (id,name,score) VALUES (2,'Bob',20); INSERT INTO hello.items (id,name,score) VALUES (3,'Carol',40); SELECT * FROM hello.items; DESCRIBE TABLE hello.items;"`)),
+    ready: () => inside('/opt/cassandra/bin/cqlsh -e "DESCRIBE CLUSTER"', { allowFailure: true }), readyLabel: '/opt/cassandra/bin/cqlsh -e "DESCRIBE CLUSTER"',
+    run: () => logRun('/opt/cassandra/bin/cqlsh -e fixed-session.cql', () => inside(`/opt/cassandra/bin/cqlsh -e "CREATE KEYSPACE IF NOT EXISTS hello WITH replication = {'class':'SimpleStrategy','replication_factor':1}; DROP TABLE IF EXISTS hello.items; CREATE TABLE hello.items (id int PRIMARY KEY, name text, score int); INSERT INTO hello.items (id,name,score) VALUES (1,'Alice',30); INSERT INTO hello.items (id,name,score) VALUES (2,'Bob',20); INSERT INTO hello.items (id,name,score) VALUES (3,'Carol',40); SELECT * FROM hello.items; DESCRIBE TABLE hello.items;"`)),
   },
   scylladb: {
     args: ['--smp', '1', '--memory', '750M', '--overprovisioned', '1', '--developer-mode', '1'],
@@ -201,7 +203,7 @@ try {
   const metadata = docker(['image', 'inspect', image, '--format', 'id={{.Id}}\nos={{.Os}}\narchitecture={{.Architecture}}\nsizeBytes={{.Size}}'])
   const inventory = inside(`set -eu; echo "PATH=$PATH"; [ ! -r /etc/os-release ] || cat /etc/os-release; roots="$PATH:/opt/mssql-tools18/bin:/opt/mssql-tools/bin:/usr/share/elasticsearch/bin:/usr/share/opensearch/bin:/var/lib/neo4j/bin"; oldIFS="$IFS"; IFS=:; for root in $roots; do [ -d "$root" ] || continue; find "$root" -maxdepth 1 -type f -perm -111 -print 2>/dev/null || true; done; IFS="$oldIFS"`, { allowFailure: true })
   const status = inventory.status === 0 ? 'verified' : 'partial'
-  evidence('inventory', status, inventory.status ?? 1, `$ docker image inspect ${image}\n${metadata.stdout.trim()}\n\n$ docker exec ${container} sh -lc '<PATH and vendor executable inventory>'\n${inventory.status === 0 ? inventory.stdout.trim() : `inventory unavailable: ${(inventory.stderr || inventory.stdout).trim()}`}`)
+  evidence('inventory', status, inventory.status ?? 1, `$ docker image inspect ${image}\n${metadata.stdout.trim()}\n\n$ docker exec ${container} sh -c '<PATH and vendor executable inventory>'\n${inventory.status === 0 ? inventory.stdout.trim() : `inventory unavailable: ${(inventory.stderr || inventory.stdout).trim()}`}`)
   evidence('session', status, 0, session.join('\n\n'))
   evidence('assert', status, 0, `PASS image tag+digest\nPASS isolated internal Docker network\nPASS readiness check\nPASS fixed three-record write\nPASS native filter/query and structure/status review\n${inventory.status === 0 ? 'PASS' : 'PARTIAL'} PATH/vendor executable inventory\nRESULT: ${status}`)
   console.log(`[done] ${product}: evidence status=${status}`)

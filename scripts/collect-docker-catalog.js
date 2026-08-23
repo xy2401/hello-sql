@@ -144,14 +144,14 @@ IFS="$oldIFS"
 
 function collectPartialInventory(product, image) {
   const inspect = command('docker', ['image', 'inspect', image, '--format', 'id={{.Id}}\nos={{.Os}}\narchitecture={{.Architecture}}\nsizeBytes={{.Size}}'])
-  const tools = command('docker', ['run', '--rm', '--entrypoint', 'sh', image, '-lc', inventoryScript], { timeout: 180_000 })
+  const tools = command('docker', ['run', '--rm', '--entrypoint', 'sh', image, '-c', inventoryScript], { timeout: 180_000 })
   const hasShell = tools.status === 0
   const status = 'partial'
   const inventory = [
     `$ docker image inspect ${image}`,
     inspect.stdout.trim(),
     '',
-    `$ docker run --rm --entrypoint sh ${image} -lc '<PATH and vendor executable inventory>'`,
+    `$ docker run --rm --entrypoint sh ${image} -c '<PATH and vendor executable inventory>'`,
     hasShell ? tools.stdout.trim() : `image shell unavailable: ${(tools.stderr || tools.stdout).trim()}`,
   ].join('\n')
   writeEvidence(product, 'inventory', status, image, hasShell ? 0 : (tools.status ?? 1), inventory)
@@ -160,10 +160,10 @@ function collectPartialInventory(product, image) {
 }
 
 function collectBigQueryCli(image) {
-  const version = command('docker', ['run', '--rm', '--entrypoint', 'sh', image, '-lc', 'set -eu; bq version; gcloud version; bq help | sed -n "1,60p"'], { timeout: 180_000 })
+  const version = command('docker', ['run', '--rm', '--entrypoint', 'sh', image, '-c', 'set -eu; bq version; gcloud version; bq help | sed -n "1,60p"'], { timeout: 180_000 })
   collectPartialInventory('bigquery', image)
   if (version.status !== 0) throw new Error((version.stderr || version.stdout || 'bq CLI probe failed').trim())
-  writeEvidence('bigquery', 'session', 'partial', image, 0, `$ docker run --rm --entrypoint sh ${image} -lc 'bq version; gcloud version; bq help'\n${version.stdout.trim()}\n\nDOCUMENTED: bq query 未执行；CI 不注入 Google Cloud 凭证。`)
+  writeEvidence('bigquery', 'session', 'partial', image, 0, `$ docker run --rm --entrypoint sh ${image} -c 'bq version; gcloud version; bq help'\n${version.stdout.trim()}\n\nDOCUMENTED: bq query 未执行；CI 不注入 Google Cloud 凭证。`)
   writeEvidence('bigquery', 'assert', 'partial', image, 0, 'PASS official bq CLI version\nPASS official gcloud CLI version\nPASS bq help\nDOCUMENTED authenticated query not executed\nRESULT: partial')
 }
 

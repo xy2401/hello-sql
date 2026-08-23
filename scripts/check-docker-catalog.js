@@ -8,6 +8,7 @@ const catalogSource = fs.readFileSync(path.join(root, 'docs/.vitepress/theme/dat
 const navigationSource = fs.readFileSync(path.join(root, 'docs/.vitepress/theme/data/databaseNavigation.ts'), 'utf8')
 const envSource = fs.readFileSync(path.join(root, '.env.versions'), 'utf8')
 const runnerSource = fs.readFileSync(path.join(root, 'scripts/run-database-session.js'), 'utf8')
+const collectorSource = fs.readFileSync(path.join(root, 'scripts/collect-docker-catalog.js'), 'utf8')
 const failures = []
 
 const databaseBlock = navigationSource.match(/export const allDatabases = \[([\s\S]*?)\] as const/)?.[1] || ''
@@ -60,8 +61,12 @@ for (const command of [
   'mariadb -h 127.0.0.1 -uroot --protocol=tcp',
   '--listen-addr=127.0.0.1:26257',
   '--advertise-addr=127.0.0.1:26257',
+  '/opt/cassandra/bin/cqlsh',
 ]) {
   if (!runnerSource.includes(command)) failures.push(`database runner missing stable readiness constraint: ${command}`)
+}
+for (const [name, source] of [['database runner', runnerSource], ['catalog collector', collectorSource]]) {
+  if (source.includes("'sh', '-lc'")) failures.push(`${name} must preserve image PATH by using sh -c, not a login shell`)
 }
 
 if (failures.length) {
