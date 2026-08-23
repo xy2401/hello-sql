@@ -11,6 +11,7 @@ import PlaygroundSidebarExplorer from './components/PlaygroundSidebarExplorer.vu
 import PlaygroundContextNav from './components/PlaygroundContextNav.vue';
 import DatabaseCatalogGrid from './components/DatabaseCatalogGrid.vue';
 import DatabaseLogo from './components/DatabaseLogo.vue';
+import DockerTooling from './components/DockerTooling.vue';
 import './styles.css';
 
 export default {
@@ -28,5 +29,6 @@ export default {
     app.component('ConnectionStringMatrix', ConnectionStringMatrix);
     app.component('DatabaseCatalogGrid', DatabaseCatalogGrid);
     app.component('DatabaseLogo', DatabaseLogo);
+    app.component('DockerTooling', DockerTooling);
   },
 } satisfies Theme;

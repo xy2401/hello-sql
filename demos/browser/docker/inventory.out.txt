@@ -1,0 +1,7 @@
+---
+status: unsupported
+capturedAt: null
+dockerImage: "not-applicable"
+exitCode: -1
+---
+UNSUPPORTED: browser — Docker 不适用于浏览器存储上下文。

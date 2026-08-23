@@ -35,6 +35,8 @@
     </div>
     <div class="decision-callout"><strong>选型建议：</strong>{{ profile.recommendation }}</div>
 
+    <DockerTooling :product="profile.id" />
+
     <template v-if="profile.liveEngine">
       <h2 id="live-experiment">页面内 Live 实验</h2>
       <p>当前产品具有正式浏览器运行环境。直接修改查询并运行，不需要复制到其他页面。</p>

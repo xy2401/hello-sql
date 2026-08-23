@@ -14,8 +14,10 @@
     "typecheck": "vue-tsc --noEmit",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "collect:docker": "node scripts/initialize-docker-evidence.js && node scripts/collect-docker-catalog.js",
+    "check:docker-catalog": "node scripts/check-docker-catalog.js",
     "check:content": "node scripts/check-content.js",
-    "check": "npm run check:content && npm run typecheck && npm run test && npm run docs:build"
+    "check": "npm run check:content && npm run check:docker-catalog && npm run typecheck && npm run test && npm run docs:build"
   },
   "dependencies": {
     "@codemirror/lang-javascript": "6.2.5",

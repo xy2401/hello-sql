@@ -1,0 +1,31 @@
+name: collect-docker-outputs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  collect-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Collect pinned Docker/CLI evidence
+        run: npm run collect:docker
+      - name: Verify catalog and docs
+        run: npm run check
+      - name: Upload evidence for review before commit
+        uses: actions/upload-artifact@v4
+        with:
+          name: hello-sql-docker-evidence-${{ github.run_id }}
+          path: |
+            .env.versions
+            demos/**/docker/*.out.txt
+          include-hidden-files: true
+          if-no-files-found: error

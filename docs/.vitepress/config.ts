@@ -109,6 +109,7 @@ export default defineConfig({
         { text: '扩展、复制与分片', link: '/matrix/scaling' },
         { text: '浏览器与 WASM 能力', link: '/matrix/browser-wasm' },
         { text: '连接串与驱动', link: '/matrix/connection-strings' },
+        { text: 'Docker 与 CLI', link: '/matrix/docker-tools' },
       ] }],
     },
     socialLinks: [{ icon: 'github', link: 'https://github.com/xy2401/hello-sql' }],

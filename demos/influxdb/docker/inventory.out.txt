@@ -1,0 +1,7 @@
+---
+status: documented
+capturedAt: null
+dockerImage: "unresolved"
+exitCode: -1
+---
+DOCUMENTED: influxdb — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。

@@ -1,0 +1,7 @@
+---
+status: documented
+capturedAt: null
+dockerImage: "unresolved"
+exitCode: -1
+---
+DOCUMENTED: snowflake — CLI 查询需要云账号与凭证，CI 不执行。
