@@ -1,42 +1,85 @@
-# PostgreSQL 版本演进与升级指南
+# PostgreSQL 版本演进
 
-PostgreSQL 社区保持每年发布一个主版本（Major Version）的节奏。每个主版本提供 5 年的官方维护与安全更新支持（EOL）。
+PostgreSQL 社区每年秋季发布一个主版本（Major Version），受支持版本享有 5 年官方安全与缺陷修复周期。
 
-## 核心版本演进与关键特性
+## 核心版本演进与关键里程碑
 
-### PostgreSQL 18（前瞻版本）
-- **AIO 异步 I/O 架构**：重构底层 I/O 子系统，大幅优化顺序扫描与预读性能。
-- **内存优化**：进一步收紧内部缓存数据结构的内存开销，提升极端并发下的内存效率。
+### PostgreSQL 17（2024 年 9 月）
 
-### PostgreSQL 17
-- **VACUUM 内存大幅缩减**：重构了 Vacuum 的内部内存数据结构，内存占用降低高达 20 倍，减少大表清理对生产 I/O 的冲击。
-- **高可用与逻辑复制**：支持故障转移时同步逻辑复制槽（Logical Replication Slots Failover Control），使逻辑复制架构下的主从切换更加平滑。
-- **SQL/JSON 增强**：全面引入标准 `JSON_TABLE`，可将 JSON 数据直接映射为关系虚拟表。
+**主要功能与架构演进：**
 
-### PostgreSQL 16
-- **只读从库逻辑复制**：支持直接从物理 Standby 节点建立逻辑复制槽并解码数据，大幅减轻主库压力。
-- **I/O 可观测性**：新增 `pg_stat_io` 系统视图，细粒度观测客户端、后台写入、Vacuum 及临时文件的 I/O 吞吐与延迟。
-- **CPU 向量化**：对 `IN` 表达式和多范围扫描引入 SIMD 硬件指令加速。
+- VACUUM 内存管理全面重构，清理死元组内存开销降低高达 20 倍，大幅减轻生产大表维护颠簸
+- 逻辑复制故障转移控制（Replication Slots Failover），支持主备平滑切换不丢逻辑复制槽
+- 引入标准 SQL/JSON 的 `JSON_TABLE` 函数，将 JSON 数组展开为行
 
-### PostgreSQL 15
-- **引入 SQL 标准 `MERGE` 语句**：支持在一个原子语句中根据条件同时执行 `INSERT`、`UPDATE` 或 `DELETE`。
-- **默认权限安全收紧**：移除了 `public` schema 上的默认公共创建权限，提升多租户安全性。
+**工程影响与选型建议：**
 
-### PostgreSQL 14
-- **连接伸缩性优化**：大幅改善了数千活跃并发连接下的锁竞争与上下文开销。
-- **JSON 语法糖**：原生支持下标语法（`record['data']['user_id']`）直接访问 JSONB 字段。
-- **B-tree 索引去重**：自动合并重复键值，显著压缩非唯一索引体积。
+> 当前新建生产系统的官方推荐稳定基线。
 
----
+### PostgreSQL 16（2023 年 9 月）
 
-## 生产跨版本升级实战指南
+**主要功能与架构演进：**
 
-PostgreSQL 主版本之间的数据物理文件格式存在差异，升级必须通过工具重构或硬链接。
+- 支持直接从只读物理 Standby 节点建立逻辑复制槽并解码数据
+- 新增 `pg_stat_io` 系统视图，提供按后端、I/O 目标划分的细粒度读写指标
+- 引入 SIMD 硬件向量化指令加速多列比较与 `IN` 子查询
 
-### 方案一：`pg_upgrade --link` 硬链接秒级升级（最常用）
+**工程影响与选型建议：**
+
+> 目前生产广泛使用的成熟稳定版本。
+
+### PostgreSQL 15（2022 年 10 月）
+
+**主要功能与架构演进：**
+
+- 引入 SQL 标准 `MERGE` 语句支持原子插入/更新/删除
+- 安全收紧：移除 `public` schema 上的默认公共写权限
+- 支持 LZ4 与 Zstandard 算法压缩 WAL 日志与备份
+
+**工程影响与选型建议：**
+
+> 企业数据仓库与 ETL 同步场景的重要基线。
+
+### PostgreSQL 14（2021 年 9 月）
+
+**主要功能与架构演进：**
+
+- 大幅优化超高并发活跃连接（千级以上）下的锁竞争与上下文开销
+- 原生支持 JSONB 下标语法（如 record["data"]["id"]）
+- B-tree 索引自适应去重，显著降低重复键索引体积
+
+**工程影响与选型建议：**
+
+> 高并发连接与 JSON 密集型业务的里程碑版本。
+
+### PostgreSQL 13（2020 年 9 月）
+
+**主要功能与架构演进：**
+
+- B-tree 索引重复项物理去重（B-tree Deduplication）
+- 增量排序（Incremental Sort）加速带排序的连接查询
+- 支持并行 Vacuum 清理索引
+
+**工程影响与选型建议：**
+
+> 大规模索引空间节省与查询加速。
+
+### PostgreSQL 12（2019 年 10 月）
+
+**主要功能与架构演进：**
+
+- 分区表查询与路由性能质的飞跃（支持数千分区高效裁剪）
+- 引入 SQL/JSON 路径语言（jsonpath）与表达式
+- 彻底重构恢复配置：合并 `recovery.conf` 到 `postgresql.conf`
+
+**工程影响与选型建议：**
+
+> 现代化分区表与 JSON 查询的关键奠基版本。
+
+## 生产升级实战命令
 
 ```bash
-# 1. 在目标版本节点执行预检（--check 模式不修改任何数据）
+# 1. 运行升级预检
 /usr/lib/postgresql/17/bin/pg_upgrade \
   --old-datadir=/var/lib/postgresql/16/main \
   --new-datadir=/var/lib/postgresql/17/main \
@@ -44,24 +87,11 @@ PostgreSQL 主版本之间的数据物理文件格式存在差异，升级必须
   --new-bindir=/usr/lib/postgresql/17/bin \
   --check
 
-# 2. 停止旧版本数据库服务
-systemctl stop postgresql@16-main
-
-# 3. 正式执行硬链接升级（秒级完成，不占用额外磁盘）
+# 2. 硬链接秒级升级
 /usr/lib/postgresql/17/bin/pg_upgrade \
   --old-datadir=/var/lib/postgresql/16/main \
   --new-datadir=/var/lib/postgresql/17/main \
   --old-bindir=/usr/lib/postgresql/16/bin \
   --new-bindir=/usr/lib/postgresql/17/bin \
   --link
-
-# 4. 启动新版本服务并立即分阶段重建统计信息
-systemctl start postgresql@17-main
-/var/lib/postgresql/17/main/vacuumdb --all --analyze-in-stages
 ```
-
-### 方案二：逻辑复制零停机滚动升级
-对于超大规模或无法接受数分钟停机窗口的核心系统：
-1. 搭建新版本目标 PG 实例。
-2. 配置从旧实例到新实例的逻辑复制（Logical Replication）。
-3. 待从库追平数据后，应用层短暂切换写流量至新实例。

@@ -1,38 +1,61 @@
-# MySQL 版本演进与升级指南
+# MySQL 版本演进
 
-MySQL 从 8.4 开始划分为 **LTS（长期支持版，通常维护 5 年）** 与 **Innovation（按季度更新特性的创新版）** 双轨模式。
+MySQL 从 8.4 开始进入 LTS（长期支持版，维护 5 年）与 Innovation（按季度更新）双轨交付模式。
 
-## 核心版本演进
+## 核心版本演进与关键里程碑
 
-### MySQL 8.4 LTS
-- **定位**：当前生产环境新建集群推荐的长期支持版本。
-- **安全与兼容**：
-  - 默认彻底废弃了历史不安全的 `mysql_native_password` 插件，全面推行基于 SHA-256 的 `caching_sha2_password`。
-  - 统一并规范了大量历史系统变量与参数命名。
+### MySQL 8.4 LTS（2024 年 4 月）
 
-### MySQL 8.0（里程碑版本）
-- **原生数据字典（Data Dictionary）**：废弃了历史的 `.frm` 元数据文件，DDL 操作具备原子性与事务回滚能力。
-- **现代 SQL 特性**：引入窗口函数（Window Functions）、公用表表达式（CTE）、倒序索引与不可见索引（Invisible Indexes）。
-- **默认字符集升级**：全面切换为 `utf8mb4`（字符序 `utf8mb4_0900_ai_ci`），彻底解决 3 字节 utf8mb3 缺陷。
-- **Instant DDL**：支持秒级在线添加列（无需全表拷贝与锁表）。
+**主要功能与架构演进：**
 
-### MySQL 5.7（已于 2023 年 EOL）
-- 原生支持 JSON 数据类型与生成列。
-- 支持多源复制与基于 GTID 的在线故障转移。
+- 首个现代化 LTS 长期支持版本，提供 5 年官方支持
+- 默认彻底废弃历史不安全的 `mysql_native_password`，全面推行 `caching_sha2_password`
+- 规范并清理了大量历史已弃用的系统变量与参数
 
----
+**工程影响与选型建议：**
 
-## 生产升级检查清单与实战步骤
+> 新生产环境首选推荐的长期维护基线。
 
-从 MySQL 5.7 / 8.0 升级至 8.4 LTS 前，必须使用官方检查工具：
+### MySQL 8.0（2018 年 4 月）
+
+**主要功能与架构演进：**
+
+- 原生数据字典（Data Dictionary）：彻底废弃 `.frm` 文件，DDL 具备事务原子性
+- 高级 SQL 特性：窗口函数（Window Functions）、公用表表达式（CTE）、倒序索引
+- 默认字符集切换为 `utf8mb4`（`utf8mb4_0900_ai_ci`）
+- Instant DDL：秒级在线添加列，无需拷贝全表数据
+
+**工程影响与选型建议：**
+
+> 现代 MySQL 架构的绝对基石，奠定了当代关系型功能基线。
+
+### MySQL 5.7（2015 年 10 月）
+
+**主要功能与架构演进：**
+
+- 原生支持 JSON 数据类型与生成列（Generated Columns）
+- 支持基于 GTID 的多源复制与增强半同步复制（Lossless Semi-Sync）
+- InnoDB 支持空间数据索引（GIS）与临时表空间优化
+
+**工程影响与选型建议：**
+
+> 一代经典生产版本（已于 2023 年 10 月正式 EOL，建议全面升级至 8.0/8.4）。
+
+### MySQL 5.6（2013 年 2 月）
+
+**主要功能与架构演进：**
+
+- 引入全局事务标识符（GTID）简化主从复制拓扑切换
+- InnoDB 支持只读事务与全文索引（Full-text Index）
+- 支持 Online DDL（In-place 算法）
+
+**工程影响与选型建议：**
+
+> 奠定了 GTID 复制与在线表结构变更的基础。
+
+## 升级兼容性预检命令
 
 ```bash
-# 1. 运行 MySQL Shell 升级检查工具（检查关键字冲突、过时配置、字符集问题）
+# 使用 MySQL Shell 检查目标版本不兼容项
 mysqlsh root@127.0.0.1:3306 -- util check-for-server-upgrade --target-version=8.4.0
-
-# 2. 检查输出中的严重级别（Error 必须修复，Warning 需评估）
-# 重点检查：
-# - 表名或列名是否使用了新保留字
-# - 客户端驱动是否支持 caching_sha2_password 认证
-# - sql_mode 中的 ONLY_FULL_GROUP_BY 是否会导致旧查询报错
 ```
