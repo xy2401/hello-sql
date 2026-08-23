@@ -1,5 +1,5 @@
 <template>
-  <div class="database-sidebar-explorer">
+  <div v-if="currentProduct" class="database-sidebar-explorer">
     <section class="database-sidebar-product-list">
       <div v-for="item in products" :key="item.id" class="database-sidebar-product" :class="{ active: isProductActive(item.link) }">
         <div class="database-sidebar-row">
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive } from 'vue';
+import { computed, reactive, watch } from 'vue';
 import { useRoute } from 'vitepress';
 import { allDatabases } from '../data/databaseNavigation';
 import DatabaseLogo from './DatabaseLogo.vue';
@@ -28,9 +28,17 @@ const productPages = [
   { text: '版本演进', suffix: '/versions' },
 ];
 
-const products = computed(() => allDatabases);
-
 function normalize(path: string) { return path.length > 1 ? path.replace(/\/$/, '') : path; }
+const currentProduct = computed(() => allDatabases.find((item) => {
+  const path = normalize(route.path);
+  return path === item.link || path.startsWith(`${item.link}/`);
+}));
+const products = computed(() => currentProduct.value ? [currentProduct.value] : []);
+
+watch(currentProduct, (item) => {
+  if (item) expanded[item.id] = true;
+}, { immediate: true });
+
 function isPageActive(path: string) { return normalize(route.path) === normalize(path); }
 function isProductActive(link: string) { return normalize(route.path) === link || route.path.startsWith(`${link}/`); }
 </script>

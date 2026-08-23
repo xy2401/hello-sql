@@ -86,7 +86,7 @@ features:
 | **流式复制** | ✅ WAL 流复制 | ✅ Binlog 流复制 | ❌ 不适用 | ✅ Replica Set | ✅ Master-Slave |
 | **WASM 版本** | ❌ PGlite 实验 | ❌ 无 | ✅ DuckDB-Wasm | ✅ MongoDB Atlas Wasm | ❌ 无 |
 
-完整选型建议见 [选型指南](/matrix/selection-guide)。
+完整选型建议见 [数据库对比矩阵](/matrix/)。
 
 ---
 
@@ -94,22 +94,22 @@ features:
 
 以下数据库可直接在浏览器中运行，无需安装任何软件：
 
-### 1. [SQLite WASM](/playground/sqlite/)
+### 1. [SQLite WASM](/playground/sqlite)
 - **优势**: 零依赖、单文件、与 Node.js 版 API 一致
 - **适用**: 轻量级离线存储、原型验证、教育演示
 - **体验**: 直接在浏览器编写 SQL 并查看结果集
 
-### 2. [DuckDB-Wasm](/playground/duckdb/)
+### 2. [DuckDB-Wasm](/playground/duckdb)
 - **优势**: 列式存储、MPP 架构、分析查询性能卓越
 - **适用**: 嵌入式数据分析、大规模 CSV/Parquet 处理
 - **体验**: 加载大文件进行聚合分析与 OLAP 查询
 
-### 3. [PGlite](/playground/pglite/)
+### 3. [PGlite](/playground/pglite)
 - **优势**: 完整 PostgreSQL 兼容性、支持扩展
 - **适用**: 需要复杂 SQL 特性、函数、触发器的场景
 - **体验**: 运行 PostgreSQL 专属 SQL 语句、查看执行计划
 
-### 4. [SurrealDB WASM](/playground/surrealdb/)
+### 4. [SurrealDB WASM](/playground/surrealdb)
 - **优势**: 图数据库 + 文档数据库 + 关系型数据库三合一
 - **适用**: 需要关联查询、图遍历、实时订阅的场景
 - **体验**: 编写 SurrealQL 查询语言、查看子图关系
@@ -122,12 +122,12 @@ features:
 
 如果你是数据库新手，建议按以下顺序学习：
 
-1. **查询与过滤** (`/concepts/query`) —— SELECT、WHERE、ORDER BY
-2. **聚合、JOIN 与子查询** (`/concepts/joins`) —— GROUP BY、INNER/LEFT JOIN
-3. **CTE 与窗口函数** (`/concepts/advanced-query`) —— WITH、ROW_NUMBER、RANK
-4. **DDL、约束与数据建模** (`/concepts/schema`) —— CREATE TABLE、PRIMARY KEY、FOREIGN KEY
-5. **事务、锁与并发** (`/concepts/transactions`) —— BEGIN、COMMIT、ISOLATION LEVEL
-6. **索引与执行计划** (`/concepts/indexes-explain`) —— B-Tree、HASH、EXPLAIN ANALYZE
+1. **查询与过滤** (`/learn/query`) —— SELECT、WHERE、ORDER BY
+2. **聚合、JOIN 与子查询** (`/learn/joins`) —— GROUP BY、INNER/LEFT JOIN
+3. **CTE 与窗口函数** (`/learn/advanced-query`) —— WITH、ROW_NUMBER、RANK
+4. **DDL、约束与数据建模** (`/learn/schema`) —— CREATE TABLE、PRIMARY KEY、FOREIGN KEY
+5. **事务、锁与并发** (`/learn/transactions`) —— BEGIN、COMMIT、ISOLATION LEVEL
+6. **索引与执行计划** (`/learn/indexes-explain`) —— B-Tree、HASH、EXPLAIN ANALYZE
 
 适合目标读者：**希望系统掌握 SQL 语法的开发者**。
 
@@ -143,4 +143,4 @@ npm run docs:dev          # http://localhost:3009
 
 环境要求：Node.js ≥ 18，推荐 Chrome/Firefox/Safari 最新版。
 
-详细安装步骤与环境配置见 [快速开始](/guide/getting-started)。
+可以从 [WASM 数据库实验室](/playground/) 直接开始运行示例。

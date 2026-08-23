@@ -21,9 +21,9 @@ const group = computed(() => ({
   title: props.category === 'sql' ? 'SQL 族关系型数据库' : 
          props.category === 'analytical' ? '分析型数据库' : 'NoSQL 数据库',
   items: allDatabases.filter(db => {
-    // SQL 族 (6): postgresql, mysql, mariadb, sqlite, sqlserver, oracle
+    // SQL 族 (6): postgresql, mysql, mariadb, sqlite, sql-server, oracle
     if (props.category === 'sql') {
-      return ['postgresql', 'mysql', 'mariadb', 'sqlite', 'sqlserver', 'oracle'].includes(db.id);
+      return ['postgresql', 'mysql', 'mariadb', 'sqlite', 'sql-server', 'oracle'].includes(db.id);
     }
     // Analytical (6): duckdb, clickhouse, tidb, cockroachdb, snowflake, bigquery
     if (props.category === 'analytical') {

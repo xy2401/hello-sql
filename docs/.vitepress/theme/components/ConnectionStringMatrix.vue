@@ -25,6 +25,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { connectionStringProfiles, type ConnectionStringProfile } from '../data/connectionStrings';
+import { allDatabases } from '../data/databaseNavigation';
 import { databaseProfiles } from '../data/databaseProfiles';
 
 const query = ref('');
@@ -37,8 +38,8 @@ const filteredProfiles = computed(() => {
 });
 
 function databaseLink(item: ConnectionStringProfile) {
-  const category = item.group === '关系型' ? 'sql' : item.group === '分析与分布式' ? 'analytical' : 'nosql';
-  return `/databases/${category}/${item.id}/`;
+  const product = allDatabases.find((database) => database.id === item.id);
+  return product ? `${product.link}/` : '/products/';
 }
 </script>
 

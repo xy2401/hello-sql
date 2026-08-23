@@ -16,12 +16,12 @@
 
 支持标准 SQL 查询、ACID 事务、强一致性：
 
-- [PostgreSQL](/products/postgresql) - 开源首选，功能最全面
-- [MySQL](/products/mysql) - Web 应用事实标准
-- [MariaDB](/products/mariadb) - MySQL 分支，增强兼容性与性能
-- [SQLite](/products/sqlite) - 嵌入式数据库王者
-- [SQL Server](/products/sqlserver) - Microsoft 企业级方案
-- [Oracle](/products/oracle) - 传统企业数据库标杆
+- [PostgreSQL](/products/postgresql/) - 开源首选，功能最全面
+- [MySQL](/products/mysql/) - Web 应用事实标准
+- [MariaDB](/products/mariadb/) - MySQL 分支，增强兼容性与性能
+- [SQLite](/products/sqlite/) - 嵌入式数据库王者
+- [SQL Server](/products/mssqlserver/) - Microsoft 企业级方案
+- [Oracle](/products/oracle/) - 传统企业数据库标杆
 
 ---
 
@@ -29,12 +29,12 @@
 
 列式存储、MPP 架构、适合大规模数据分析：
 
-- [DuckDB](/products/duckdb) - 嵌入式分析数据库
-- [ClickHouse](/products/clickhouse) - Yandex 开源，实时 OLAP
-- [TiDB](/products/tidb) - PingCAP 分布式 NewSQL
-- [CockroachDB](/products/cockroachdb) - Google Spanner 开源版
-- [Snowflake](/products/snowflake) - 云原生数据仓库
-- [BigQuery](/products/bigquery) - Google serverless 数仓
+- [DuckDB](/products/duckdb/) - 嵌入式分析数据库
+- [ClickHouse](/products/clickhouse/) - Yandex 开源，实时 OLAP
+- [TiDB](/products/tidb/) - PingCAP 分布式 NewSQL
+- [CockroachDB](/products/cockroachdb/) - Google Spanner 开源版
+- [Snowflake](/products/snowflake/) - 云原生数据仓库
+- [BigQuery](/products/bigquery/) - Google serverless 数仓
 
 ---
 
@@ -43,20 +43,20 @@
 多模型、灵活 schema、高扩展性：
 
 ### KV / 文档
-- [MongoDB](/products/mongodb) - 文档数据库领导者
-- [CouchDB](/products/couchdb) - 复制与同步专长
-- [Redis](/products/redis) / [Valkey](/products/valkey) - 内存 KV 缓存与消息
-- [DynamoDB](/products/dynamodb) - AWS 托管 NoSQL
-- [Cassandra](/products/cassandra) / [ScyllaDB](/products/scylladb) - 宽表存储
+- [MongoDB](/products/mongodb/) - 文档数据库领导者
+- [CouchDB](/products/couchdb/) - 复制与同步专长
+- [Redis](/products/redis/) / [Valkey](/products/valkey/) - 内存 KV 缓存与消息
+- [DynamoDB](/products/dynamodb/) - AWS 托管 NoSQL
+- [Cassandra](/products/cassandra/) / [ScyllaDB](/products/scylladb/) - 宽表存储
 
 ### 搜索引擎
-- [Elasticsearch](/products/elasticsearch) / [OpenSearch](/products/opensearch) - 全文检索与日志分析
+- [Elasticsearch](/products/elasticsearch/) / [OpenSearch](/products/opensearch/) - 全文检索与日志分析
 
 ### 图数据库
-- [Neo4j](/products/neo4j) - 图数据库标准
+- [Neo4j](/products/neo4j/) - 图数据库标准
 
 ### 时序数据库
-- [InfluxDB](/products/influxdb) / [TimescaleDB](/products/timescaledb) - 时间序列数据专用
+- [InfluxDB](/products/influxdb/) / [TimescaleDB](/products/timescaledb/) - 时间序列数据专用
 
 ---
 

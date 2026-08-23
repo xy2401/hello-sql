@@ -20,7 +20,6 @@ export default defineConfig({
   description: '数据库与数据交互百科全书（24 款数据库 · WASM 实验 · 技术矩阵 · 选型指南）',
   cleanUrls: true,
   lastUpdated: true,
-  ignoreDeadLinks: true,
   head: [
     ['meta', { name: 'theme-color', content: '#0f766e' }],
     ['link', { rel: 'icon', href: '/logo.svg' }],
@@ -52,22 +51,22 @@ export default defineConfig({
           link: db.link,
         })),
       },
-      { text: 'SQL 基础', link: '/concepts/' },
+      { text: 'SQL 基础', link: '/learn/' },
       { text: '浏览器数据库', link: '/browser/' },
       { text: 'WASM 实验室', link: '/playground/' },
       { text: '数据库对比', link: '/matrix/' },
     ],
     sidebar: {
-      '/concepts/': [{
+      '/learn/': [{
         text: 'SQL 基础',
         items: [
-          { text: '学习路线总览', link: '/concepts/' },
-          { text: '查询与过滤', link: '/concepts/query' },
-          { text: '聚合、JOIN 与子查询', link: '/concepts/joins' },
-          { text: 'CTE 与窗口函数', link: '/concepts/advanced-query' },
-          { text: 'DDL、约束与数据建模', link: '/concepts/schema' },
-          { text: '事务、锁与并发', link: '/concepts/transactions' },
-          { text: '索引与执行计划', link: '/concepts/indexes-explain' },
+          { text: '学习路线总览', link: '/learn/' },
+          { text: '查询与过滤', link: '/learn/query' },
+          { text: '聚合、JOIN 与子查询', link: '/learn/joins' },
+          { text: 'CTE 与窗口函数', link: '/learn/advanced-query' },
+          { text: 'DDL、约束与数据建模', link: '/learn/schema' },
+          { text: '事务、锁与并发', link: '/learn/transactions' },
+          { text: '索引与执行计划', link: '/learn/indexes-explain' },
         ],
       }],
       '/products/': [
