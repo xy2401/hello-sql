@@ -106,16 +106,26 @@ function recordFailure(product, reason, image) {
   writeDocumented(product, reason, image)
 }
 
-function resolveDigest(tag) {
-  const pull = command('docker', ['pull', tag], { timeout: 600_000 })
-  if (pull.status !== 0) throw new Error((pull.stderr || pull.stdout || `docker pull exited ${pull.status}`).trim())
+function resolveDigest(tag, label) {
+  console.log(`[pull] ${label}: ${tag}`)
+  const pull = command('docker', ['pull', tag], { timeout: 600_000, stdio: 'inherit' })
+  if (pull.status !== 0) throw new Error(`docker pull ${tag} exited ${pull.status}`)
   const inspect = command('docker', ['image', 'inspect', tag, '--format', '{{json .RepoDigests}}'])
   if (inspect.status !== 0) throw new Error((inspect.stderr || inspect.stdout).trim())
   const digests = JSON.parse(inspect.stdout.trim())
   const reference = digests.find((item) => item.includes('@sha256:'))
   if (!reference) throw new Error('image inspect did not return a repo digest')
   const digest = reference.slice(reference.indexOf('@'))
-  return `${tag}${digest}`
+  const image = `${tag}${digest}`
+  console.log(`[digest] ${label}: ${image}`)
+  return image
+}
+
+function removeImages(label, refs) {
+  const unique = [...new Set(refs.filter(Boolean))]
+  if (!unique.length) return
+  console.log(`[cleanup] ${label}: removing ${unique.length} exact image reference(s)`)
+  command('docker', ['image', 'rm', '--force', ...unique], { timeout: 180_000, stdio: 'inherit' })
 }
 
 const inventoryScript = String.raw`
@@ -169,6 +179,7 @@ let resolved = 0
 let verified = 0
 let partial = 0
 let failed = 0
+const auxiliaryRefs = new Set()
 
 for (const [label, [tagKey, imageKey]] of Object.entries(auxiliaryImages)) {
   const seed = env[tagKey]
@@ -177,32 +188,40 @@ for (const [label, [tagKey, imageKey]] of Object.entries(auxiliaryImages)) {
     continue
   }
   try {
-    const image = resolveDigest(seed)
+    const image = resolveDigest(seed, `auxiliary ${label}`)
     env[imageKey] = image
     envText = updateEnv(envText, imageKey, image)
+    auxiliaryRefs.add(seed)
+    auxiliaryRefs.add(image)
     console.log(`[pinned] auxiliary ${label}: ${image}`)
   } catch (error) {
     console.error(`[documented] auxiliary ${label}: ${error.message}`)
   }
 }
 
+let productIndex = 0
 for (const [product, [tagKey, imageKey]] of Object.entries(products)) {
+  productIndex++
   const seed = env[tagKey]
+  console.log(`\n[collect ${productIndex}/${Object.keys(products).length}] ${product}`)
   if (!seed || /(^|:)latest$|edge|nightly/i.test(seed)) {
     recordFailure(product, `${tagKey} 缺失或不是允许的明确版本。`, seed || 'unresolved')
     failed++
     continue
   }
+  let image
   try {
-    const image = resolveDigest(seed)
+    image = resolveDigest(seed, product)
     env[imageKey] = image
     envText = updateEnv(envText, imageKey, image)
     resolved++
     const runner = path.join(root, 'demos', product, 'docker', 'run.sh')
     if (product === 'bigquery') {
+      console.log(`[probe] ${product}: collecting official CLI version and help`)
       collectBigQueryCli(image)
       partial++
     } else if (liveSessions.has(product)) {
+      console.log(`[session] ${product}: starting isolated database session`)
       fs.writeFileSync(envFile, envText)
       const result = command(process.execPath, [path.join(root, 'scripts/run-database-session.js'), product], {
         stdio: 'inherit', timeout: 1_200_000,
@@ -210,14 +229,18 @@ for (const [product, [tagKey, imageKey]] of Object.entries(products)) {
       })
       if (result.status !== 0) throw new Error(`database session exited ${result.status}`)
       verified++
+      console.log(`[verified] ${product}: session and inventory captured`)
     } else if (fs.existsSync(runner)) {
+      console.log(`[session] ${product}: running product collector`)
       const result = command('bash', [runner], {
         stdio: 'inherit', timeout: 900_000,
         env: { ...process.env, HELLO_SQL_IMAGE: image, HELLO_SQL_CAPTURED_AT: capturedAt },
       })
       if (result.status !== 0) throw new Error(`run.sh exited ${result.status}`)
       verified++
+      console.log(`[verified] ${product}: product collector completed`)
     } else {
+      console.log(`[inventory] ${product}: no live runner; collecting image inventory`)
       collectPartialInventory(product, image)
       partial++
     }
@@ -225,8 +248,12 @@ for (const [product, [tagKey, imageKey]] of Object.entries(products)) {
     recordFailure(product, `${tagKey} 拉取或采集失败：${error.message}`, seed)
     console.error(`[documented] ${product}: ${error.message}`)
     failed++
+  } finally {
+    if (image && !auxiliaryRefs.has(image) && !auxiliaryRefs.has(seed)) removeImages(product, [image, seed])
   }
 }
+
+removeImages('auxiliary clients', [...auxiliaryRefs])
 
 for (const [product, reason] of Object.entries(explicitExceptions)) writeDocumented(product, reason)
 fs.writeFileSync(envFile, envText)

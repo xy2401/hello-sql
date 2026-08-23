@@ -39,9 +39,11 @@ function client(imageRef, script, options = {}) {
 }
 function waitUntil(label, callback, attempts = 120) {
   for (let attempt = 1; attempt <= attempts; attempt++) {
+    if (attempt === 1 || attempt % 10 === 0) console.log(`[wait] ${product}: ${label} (attempt ${attempt}/${attempts})`)
     const result = callback()
     if (result.status === 0) {
       session.push(`$ ${label}\n${(result.stdout || '').trim()}`.trimEnd())
+      console.log(`[ready] ${product}: ${label}`)
       return
     }
     const state = docker(['inspect', '--format', '{{.State.Running}}', container], { allowFailure: true, timeout: 30_000 })
@@ -182,23 +184,29 @@ function evidence(kind, status, exitCode, body) {
 
 let started = false
 try {
+  console.log(`[network] ${product}: creating isolated internal network ${network}`)
   docker(['network', 'create', '--internal', network])
   const args = ['run', '-d', '--name', container, '--hostname', 'server', '--network', network]
   for (const variable of profile.env || []) args.push('-e', variable)
   args.push(...(profile.dockerArgs || []))
   args.push(image, ...(profile.args || []))
+  console.log(`[container] ${product}: starting ${container}`)
   docker(args, { timeout: 300_000 })
   started = true
   waitUntil(profile.readyLabel, profile.ready)
+  console.log(`[query] ${product}: running fixed three-record session`)
   profile.run()
 
+  console.log(`[inventory] ${product}: collecting image metadata and executables`)
   const metadata = docker(['image', 'inspect', image, '--format', 'id={{.Id}}\nos={{.Os}}\narchitecture={{.Architecture}}\nsizeBytes={{.Size}}'])
   const inventory = inside(`set -eu; echo "PATH=$PATH"; [ ! -r /etc/os-release ] || cat /etc/os-release; roots="$PATH:/opt/mssql-tools18/bin:/opt/mssql-tools/bin:/usr/share/elasticsearch/bin:/usr/share/opensearch/bin:/var/lib/neo4j/bin"; oldIFS="$IFS"; IFS=:; for root in $roots; do [ -d "$root" ] || continue; find "$root" -maxdepth 1 -type f -perm -111 -print 2>/dev/null || true; done; IFS="$oldIFS"`, { allowFailure: true })
   const status = inventory.status === 0 ? 'verified' : 'partial'
   evidence('inventory', status, inventory.status ?? 1, `$ docker image inspect ${image}\n${metadata.stdout.trim()}\n\n$ docker exec ${container} sh -lc '<PATH and vendor executable inventory>'\n${inventory.status === 0 ? inventory.stdout.trim() : `inventory unavailable: ${(inventory.stderr || inventory.stdout).trim()}`}`)
   evidence('session', status, 0, session.join('\n\n'))
   evidence('assert', status, 0, `PASS image tag+digest\nPASS isolated internal Docker network\nPASS readiness check\nPASS fixed three-record write\nPASS native filter/query and structure/status review\n${inventory.status === 0 ? 'PASS' : 'PARTIAL'} PATH/vendor executable inventory\nRESULT: ${status}`)
+  console.log(`[done] ${product}: evidence status=${status}`)
 } finally {
+  console.log(`[cleanup] ${product}: removing experiment container and network`)
   if (started) docker(['rm', '-f', container], { allowFailure: true, timeout: 60_000 })
   docker(['network', 'rm', network], { allowFailure: true, timeout: 60_000 })
 }
