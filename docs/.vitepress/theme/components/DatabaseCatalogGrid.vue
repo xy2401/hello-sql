@@ -11,11 +11,31 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { databaseProfiles } from '../data/databaseProfiles';
-import { databaseNavigationGroups } from '../data/databaseNavigation';
+import { allDatabases } from '../data/databaseNavigation';
 import DatabaseLogo from './DatabaseLogo.vue';
 
 const props = defineProps<{ category: 'sql' | 'analytical' | 'nosql' }>();
-const group = computed(() => databaseNavigationGroups[props.category]);
+
+const group = computed(() => ({
+  id: props.category,
+  title: props.category === 'sql' ? 'SQL 族关系型数据库' : 
+         props.category === 'analytical' ? '分析型数据库' : 'NoSQL 数据库',
+  items: allDatabases.filter(db => {
+    // SQL 族 (6): postgresql, mysql, mariadb, sqlite, sqlserver, oracle
+    if (props.category === 'sql') {
+      return ['postgresql', 'mysql', 'mariadb', 'sqlite', 'sqlserver', 'oracle'].includes(db.id);
+    }
+    // Analytical (6): duckdb, clickhouse, tidb, cockroachdb, snowflake, bigquery
+    if (props.category === 'analytical') {
+      return ['duckdb', 'clickhouse', 'tidb', 'cockroachdb', 'snowflake', 'bigquery'].includes(db.id);
+    }
+    // NoSQL (12): mongodb, couchdb, redis, valkey, dynamodb, cassandra, scylladb, elasticsearch, opensearch, neo4j, influxdb, timescaledb
+    if (props.category === 'nosql') {
+      return ['mongodb', 'couchdb', 'redis', 'valkey', 'dynamodb', 'cassandra', 'scylladb', 'elasticsearch', 'opensearch', 'neo4j', 'influxdb', 'timescaledb'].includes(db.id);
+    }
+    return false;
+  })
+}));
 </script>
 
 <style scoped>

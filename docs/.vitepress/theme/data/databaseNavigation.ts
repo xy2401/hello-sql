@@ -14,41 +14,33 @@ export interface DatabaseNavigationGroup {
   items: readonly DatabaseNavigationItem[];
 }
 
-export const sqlDatabaseItems = [
-  { id: 'postgresql', name: 'PostgreSQL', link: '/databases/sql/postgresql' },
-  { id: 'mysql', name: 'MySQL', link: '/databases/sql/mysql' },
-  { id: 'mariadb', name: 'MariaDB', link: '/databases/sql/mariadb' },
-  { id: 'sqlite', name: 'SQLite', link: '/databases/sql/sqlite' },
-  { id: 'sql-server', name: 'SQL Server', link: '/databases/sql/sql-server' },
-  { id: 'oracle', name: 'Oracle Database', link: '/databases/sql/oracle' },
+// 所有数据库（平铺在 /products/）
+export const allDatabases = [
+  // SQL 关系型 (6)
+  { id: 'postgresql', name: 'PostgreSQL', link: '/products/postgresql/' },
+  { id: 'mysql', name: 'MySQL', link: '/products/mysql/' },
+  { id: 'mariadb', name: 'MariaDB', link: '/products/mariadb/' },
+  { id: 'sqlite', name: 'SQLite', link: '/products/sqlite/' },
+  { id: 'sqlserver', name: 'SQL Server', link: '/products/sqlserver/' },
+  { id: 'oracle', name: 'Oracle Database', link: '/products/oracle/' },
+  // Analytical (6)
+  { id: 'duckdb', name: 'DuckDB', link: '/products/duckdb/' },
+  { id: 'clickhouse', name: 'ClickHouse', link: '/products/clickhouse/' },
+  { id: 'tidb', name: 'TiDB', link: '/products/tidb/' },
+  { id: 'cockroachdb', name: 'CockroachDB', link: '/products/cockroachdb/' },
+  { id: 'snowflake', name: 'Snowflake', link: '/products/snowflake/' },
+  { id: 'bigquery', name: 'BigQuery', link: '/products/bigquery/' },
+  // NoSQL (12)
+  { id: 'mongodb', name: 'MongoDB', link: '/products/mongodb/' },
+  { id: 'couchdb', name: 'Apache CouchDB', link: '/products/couchdb/' },
+  { id: 'redis', name: 'Redis', link: '/products/redis/' },
+  { id: 'valkey', name: 'Valkey', link: '/products/valkey/' },
+  { id: 'dynamodb', name: 'Amazon DynamoDB', link: '/products/dynamodb/' },
+  { id: 'cassandra', name: 'Apache Cassandra', link: '/products/cassandra/' },
+  { id: 'scylladb', name: 'ScyllaDB', link: '/products/scylladb/' },
+  { id: 'elasticsearch', name: 'Elasticsearch', link: '/products/elasticsearch/' },
+  { id: 'opensearch', name: 'OpenSearch', link: '/products/opensearch/' },
+  { id: 'neo4j', name: 'Neo4j', link: '/products/neo4j/' },
+  { id: 'influxdb', name: 'InfluxDB', link: '/products/influxdb/' },
+  { id: 'timescaledb', name: 'TimescaleDB', link: '/products/timescaledb/' },
 ] as const satisfies readonly DatabaseNavigationItem[];
-
-export const analyticalDatabaseItems = [
-  { id: 'duckdb', name: 'DuckDB', link: '/databases/analytical/duckdb' },
-  { id: 'clickhouse', name: 'ClickHouse', link: '/databases/analytical/clickhouse' },
-  { id: 'tidb', name: 'TiDB', link: '/databases/analytical/tidb' },
-  { id: 'cockroachdb', name: 'CockroachDB', link: '/databases/analytical/cockroachdb' },
-  { id: 'snowflake', name: 'Snowflake', link: '/databases/analytical/snowflake' },
-  { id: 'bigquery', name: 'BigQuery', link: '/databases/analytical/bigquery' },
-] as const satisfies readonly DatabaseNavigationItem[];
-
-export const noSqlDatabaseItems = [
-  { id: 'mongodb', name: 'MongoDB', link: '/databases/nosql/mongodb' },
-  { id: 'couchdb', name: 'CouchDB', link: '/databases/nosql/couchdb' },
-  { id: 'redis', name: 'Redis', link: '/databases/nosql/redis' },
-  { id: 'valkey', name: 'Valkey', link: '/databases/nosql/valkey' },
-  { id: 'dynamodb', name: 'DynamoDB', link: '/databases/nosql/dynamodb' },
-  { id: 'cassandra', name: 'Cassandra', link: '/databases/nosql/cassandra' },
-  { id: 'scylladb', name: 'ScyllaDB', link: '/databases/nosql/scylladb' },
-  { id: 'elasticsearch', name: 'Elasticsearch', link: '/databases/nosql/elasticsearch' },
-  { id: 'opensearch', name: 'OpenSearch', link: '/databases/nosql/opensearch' },
-  { id: 'neo4j', name: 'Neo4j', link: '/databases/nosql/neo4j' },
-  { id: 'influxdb', name: 'InfluxDB', link: '/databases/nosql/influxdb' },
-  { id: 'timescaledb', name: 'TimescaleDB', link: '/databases/nosql/timescaledb' },
-] as const satisfies readonly DatabaseNavigationItem[];
-
-export const databaseNavigationGroups = {
-  sql: { id: 'sql', title: 'SQL 数据库', overviewText: '关系型数据库', overviewLink: '/databases/sql/', items: sqlDatabaseItems },
-  analytical: { id: 'analytical', title: '分析、分布式与云', overviewText: '能力总览', overviewLink: '/databases/analytical/', items: analyticalDatabaseItems },
-  nosql: { id: 'nosql', title: 'NoSQL 数据库', overviewText: 'NoSQL 总览', overviewLink: '/databases/nosql/', items: noSqlDatabaseItems },
-} as const satisfies Record<string, DatabaseNavigationGroup>;

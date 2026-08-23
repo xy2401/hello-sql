@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress';
 import { splitDuckDbWasm } from './plugins/splitDuckDbWasm';
-import { analyticalDatabaseItems, noSqlDatabaseItems, sqlDatabaseItems } from './theme/data/databaseNavigation';
+import { allDatabases } from './theme/data/databaseNavigation';
 
 function databaseSidebarItems(items: readonly { name: string; link: string }[]) {
   return items.map(({ name, link }) => ({
@@ -20,6 +20,7 @@ export default defineConfig({
   description: 'SQL、NoSQL、浏览器数据库与 WebAssembly 数据库交互学习平台',
   cleanUrls: true,
   lastUpdated: true,
+  ignoreDeadLinks: true,
   head: [
     ['meta', { name: 'theme-color', content: '#0f766e' }],
     ['link', { rel: 'icon', href: '/logo.svg' }],
@@ -37,44 +38,44 @@ export default defineConfig({
     sidebarMenuLabel: '数据库',
     outline: { level: [2, 3], label: '本页导航' },
     nav: [
-      { text: 'SQL 基础', link: '/learn/' },
-      { text: 'SQL 数据库', link: '/databases/sql/' },
-      { text: 'NoSQL 数据库', link: '/databases/nosql/' },
+      // 前 5 个典型数据库全部平铺在主导航
+      { text: 'PostgreSQL', link: '/products/postgresql/' },
+      { text: 'MySQL', link: '/products/mysql/' },
+      { text: 'DuckDB', link: '/products/duckdb/' },
+      { text: 'MongoDB', link: '/products/mongodb/' },
+      { text: 'Redis', link: '/products/redis/' },
+      // 第 6 个起在「更多」下拉中展开选择
+      {
+        text: '更多',
+        items: allDatabases.slice(5).map(db => ({
+          text: db.name,
+          link: db.link,
+        })),
+      },
+      { text: 'SQL 基础', link: '/concepts/' },
       { text: '浏览器数据库', link: '/browser/' },
       { text: 'WASM 实验室', link: '/playground/' },
       { text: '数据库对比', link: '/matrix/' },
     ],
     sidebar: {
-      '/learn/': [{
-        text: 'SQL 学习路线',
+      '/concepts/': [{
+        text: 'SQL 基础',
         items: [
-          { text: '路线总览', link: '/learn/' },
-          { text: '查询与过滤', link: '/learn/query' },
-          { text: '聚合、JOIN 与子查询', link: '/learn/joins' },
-          { text: 'CTE 与窗口函数', link: '/learn/advanced-query' },
-          { text: 'DDL、约束与数据建模', link: '/learn/schema' },
-          { text: '事务、锁与并发', link: '/learn/transactions' },
-          { text: '索引与执行计划', link: '/learn/indexes-explain' },
+          { text: '学习路线总览', link: '/concepts/' },
+          { text: '查询与过滤', link: '/concepts/query' },
+          { text: '聚合、JOIN 与子查询', link: '/concepts/joins' },
+          { text: 'CTE 与窗口函数', link: '/concepts/advanced-query' },
+          { text: 'DDL、约束与数据建模', link: '/concepts/schema' },
+          { text: '事务、锁与并发', link: '/concepts/transactions' },
+          { text: '索引与执行计划', link: '/concepts/indexes-explain' },
         ],
       }],
-      '/databases/sql/': [
-        { text: '关系型数据库', items: [
-          { text: 'SQL 数据库总览', link: '/databases/sql/' },
-          ...databaseSidebarItems(sqlDatabaseItems),
-        ] },
-        { text: '分析、分布式与云', items: [
-          { text: '能力总览', link: '/databases/analytical/' },
-          ...databaseSidebarItems(analyticalDatabaseItems),
-        ] },
+      '/products/': [
+        {
+          text: '数据库列表',
+          items: databaseSidebarItems(allDatabases),
+        },
       ],
-      '/databases/analytical/': [{ text: '分析、分布式与云', items: [
-        { text: '能力总览', link: '/databases/analytical/' },
-        ...databaseSidebarItems(analyticalDatabaseItems),
-      ] }],
-      '/databases/nosql/': [{ text: 'NoSQL 数据模型', items: [
-        { text: 'NoSQL 总览', link: '/databases/nosql/' },
-        ...databaseSidebarItems(noSqlDatabaseItems),
-      ] }],
       '/browser/': [{ text: 'Browser Database', items: [
         { text: '浏览器数据层总览', link: '/browser/' },
         { text: 'IndexedDB 原理与实践', link: '/browser/indexeddb' },

@@ -1,8 +1,7 @@
 <template>
-  <div v-if="groups.length" class="database-sidebar-explorer">
-    <section v-for="group in groups" :key="group.id" class="database-sidebar-group">
-      <a class="database-sidebar-heading" :class="{ active: isPageActive(group.overviewLink) }" :href="group.overviewLink">{{ group.title }}</a>
-      <div v-for="item in group.items" :key="item.id" class="database-sidebar-product" :class="{ active: isProductActive(item.link) }">
+  <div class="database-sidebar-explorer">
+    <section class="database-sidebar-product-list">
+      <div v-for="item in products" :key="item.id" class="database-sidebar-product" :class="{ active: isProductActive(item.link) }">
         <div class="database-sidebar-row">
           <a :href="`${item.link}/`"><DatabaseLogo :id="item.id" :size="24" /><strong>{{ item.name }}</strong></a>
           <button type="button" :aria-expanded="Boolean(expanded[item.id])" :aria-label="`${item.name} 展开页面`" @click="expanded[item.id] = !expanded[item.id]">›</button>
@@ -16,9 +15,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, watchEffect } from 'vue';
+import { computed, reactive } from 'vue';
 import { useRoute } from 'vitepress';
-import { databaseNavigationGroups } from '../data/databaseNavigation';
+import { allDatabases } from '../data/databaseNavigation';
 import DatabaseLogo from './DatabaseLogo.vue';
 
 const route = useRoute();
@@ -29,20 +28,11 @@ const productPages = [
   { text: '版本演进', suffix: '/versions' },
 ];
 
-const groups = computed(() => {
-  if (route.path.startsWith('/databases/sql/')) return [databaseNavigationGroups.sql, databaseNavigationGroups.analytical];
-  if (route.path.startsWith('/databases/analytical/')) return [databaseNavigationGroups.analytical];
-  if (route.path.startsWith('/databases/nosql/')) return [databaseNavigationGroups.nosql];
-  return [];
-});
+const products = computed(() => allDatabases);
 
 function normalize(path: string) { return path.length > 1 ? path.replace(/\/$/, '') : path; }
 function isPageActive(path: string) { return normalize(route.path) === normalize(path); }
 function isProductActive(link: string) { return normalize(route.path) === link || route.path.startsWith(`${link}/`); }
-
-watchEffect(() => {
-  for (const group of groups.value) for (const item of group.items) if (isProductActive(item.link)) expanded[item.id] = true;
-});
 </script>
 
 <style scoped>
