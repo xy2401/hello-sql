@@ -1,7 +1,7 @@
 ---
 status: documented
-capturedAt: null
-dockerImage: "unresolved"
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "not-applicable"
 exitCode: -1
 ---
-DOCUMENTED: duckdb — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+DOCUMENTED: 嵌入式 CLI 自建镜像需要同时锁定 DuckDB 发布包校验和，未完成前保持 documented。

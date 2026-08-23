@@ -1,7 +1,19 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "pingcap/tidb:v8.5.0@sha256:490861bd4a2fa643dbe76b77ffecafcad66e6a42774e580b82f4ec2429a80e57"
+exitCode: 0
 ---
-DOCUMENTED: tidb — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ mysql -h server -P 4000 -uroot -Nse 'SELECT 1'
+1
+
+$ mysql -h server -P 4000 -uroot -e fixed-session.sql
+id	name	score
+3	Carol	40
+1	Alice	30
+Tables_in_hello
+hello_items
+id	estRows	task	access object	operator info
+TableReader_7	3333.33	root		data:Selection_6
+└─Selection_6	3333.33	cop[tikv]		ge(hello.hello_items.score, 30)
+  └─TableFullScan_5	10000.00	cop[tikv]	table:hello_items	keep order:false, stats:pseudo

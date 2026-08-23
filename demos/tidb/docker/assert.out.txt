@@ -1,7 +1,13 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "pingcap/tidb:v8.5.0@sha256:490861bd4a2fa643dbe76b77ffecafcad66e6a42774e580b82f4ec2429a80e57"
+exitCode: 0
 ---
-RESULT: not executed — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+PASS image tag+digest
+PASS isolated internal Docker network
+PASS readiness check
+PASS fixed three-record write
+PASS native filter/query and structure/status review
+PASS PATH/vendor executable inventory
+RESULT: verified

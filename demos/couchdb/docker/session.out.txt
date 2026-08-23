@@ -1,7 +1,26 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "couchdb:3.5@sha256:b80216f643e99d31df318c740dbc556ac08b56444030ed1d5e6d7b0d4e625213"
+exitCode: 0
 ---
-DOCUMENTED: couchdb — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ curl -fsS -u hello:… http://server:5984/
+{"couchdb":"Welcome","version":"3.5.2","git_sha":"5b4d92103","uuid":"2685ebe39f627a504aca012fd0dc41f9","features":["access-ready","partitioned","pluggable-storage-engines","reshard","scheduler"],"vendor":{"name":"The Apache Software Foundation"}}
+
+$ curl CouchDB fixed document session
+{"ok":true}
+[{"ok":true,"id":"1","rev":"1-0b80444185021f65274ccf12b02fe57f"},{"ok":true,"id":"2","rev":"1-5f0f2bfb16d0b5ed3cffce9423550280"},{"ok":true,"id":"3","rev":"1-27ac2e3c75eacb6b7ecf24f9671c3fa2"}]
+{"result":"created","id":"_design/ddff4c38f2a8a3f2fd4a18613351d2b8b704fb82","name":"score-index"}
+{"docs":[
+{"_id":"3","_rev":"1-27ac2e3c75eacb6b7ecf24f9671c3fa2","name":"Carol","score":40},
+{"_id":"1","_rev":"1-0b80444185021f65274ccf12b02fe57f","name":"Alice","score":30}
+],
+"bookmark": "g2wAAAACaAJkAA5zdGFydGtleV9kb2NpZG0AAAABMWgCZAAIc3RhcnRrZXlrAAEeag"}
+
+{"total_rows":4,"offset":0,"rows":[
+{"id":"1","key":"1","value":{"rev":"1-0b80444185021f65274ccf12b02fe57f"},"doc":{"_id":"1","_rev":"1-0b80444185021f65274ccf12b02fe57f","name":"Alice","score":30}},
+{"id":"2","key":"2","value":{"rev":"1-5f0f2bfb16d0b5ed3cffce9423550280"},"doc":{"_id":"2","_rev":"1-5f0f2bfb16d0b5ed3cffce9423550280","name":"Bob","score":20}},
+{"id":"3","key":"3","value":{"rev":"1-27ac2e3c75eacb6b7ecf24f9671c3fa2"},"doc":{"_id":"3","_rev":"1-27ac2e3c75eacb6b7ecf24f9671c3fa2","name":"Carol","score":40}},
+{"id":"_design/ddff4c38f2a8a3f2fd4a18613351d2b8b704fb82","key":"_design/ddff4c38f2a8a3f2fd4a18613351d2b8b704fb82","value":{"rev":"1-9bed055abd632aaaf5b1c65b2d3f3b7c"},"doc":{"_id":"_design/ddff4c38f2a8a3f2fd4a18613351d2b8b704fb82","_rev":"1-9bed055abd632aaaf5b1c65b2d3f3b7c","language":"query","views":{"score-index":{"map":{"fields":{"score":"asc"},"partial_filter_selector":{}},"reduce":"_count","options":{"def":{"fields":["score"]}}}}}}
+]}
+curl: (22) The requested URL returned error: 404

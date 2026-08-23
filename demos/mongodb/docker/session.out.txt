@@ -1,7 +1,35 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "mongo:8.0@sha256:02a0cc7939f5ed38f30f9bc714ef5f682d49baf9350c54acf302ce833087fe8a"
+exitCode: 0
 ---
-DOCUMENTED: mongodb — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ mongosh --quiet --eval 'db.runCommand({ping:1})'
+{ ok: 1 }
+
+$ mongosh --quiet --eval fixed-session.js
+[
+  {
+    _id: 3,
+    name: 'Carol',
+    score: 40
+  },
+  {
+    _id: 1,
+    name: 'Alice',
+    score: 30
+  }
+]
+[
+  'items'
+]
+{
+  isCached: false,
+  stage: 'COLLSCAN',
+  filter: {
+    score: {
+      '$gte': 30
+    }
+  },
+  direction: 'forward'
+}

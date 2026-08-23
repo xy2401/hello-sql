@@ -1,7 +1,40 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "timescale/timescaledb:2.21.0-pg17@sha256:5a93eda62d176c749ea7740d3296a5b7e32f99a3af4c5830d9dea1a0a03462d6"
+exitCode: 0
 ---
-DOCUMENTED: timescaledb — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ PGPASSWORD=… psql -h 127.0.0.1 -U postgres -Atqc 'SELECT 1'
+1
+
+$ psql fixed hypertable session
+CREATE EXTENSION
+DROP TABLE
+CREATE TABLE
+    create_hypertable     
+--------------------------
+ (1,public,hello_items,t)
+(1 row)
+
+INSERT 0 3
+ id | name  | score 
+----+-------+-------
+  3 | Carol |    40
+  1 | Alice |    30
+(2 rows)
+
+ hypertable_name 
+-----------------
+ hello_items
+(1 row)
+
+                                QUERY PLAN                                
+--------------------------------------------------------------------------
+ Append  (cost=0.00..50.32 rows=714 width=48)
+   ->  Seq Scan on _hyper_1_1_chunk  (cost=0.00..23.38 rows=357 width=48)
+         Filter: (score >= 30)
+   ->  Seq Scan on _hyper_1_2_chunk  (cost=0.00..23.38 rows=357 width=48)
+         Filter: (score >= 30)
+(5 rows)
+NOTICE:  extension "timescaledb" already exists, skipping
+NOTICE:  table "hello_items" does not exist, skipping

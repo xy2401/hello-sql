@@ -1,7 +1,75 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "postgres:18-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
+exitCode: 0
 ---
-DOCUMENTED: postgresql — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ docker image inspect postgres:18-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2
+id=sha256:b07129cc272f688c98f5b343138a0a52fa45b3d82f50d7a53ff441330624cd2e
+os=linux
+architecture=amd64
+sizeBytes=303688877
+
+$ docker exec hello-sql-postgresql-2637-server sh -c '<PATH and vendor executable inventory>'
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+NAME="Alpine Linux"
+ID=alpine
+VERSION_ID=3.24.1
+PRETTY_NAME="Alpine Linux v3.24"
+HOME_URL="https://alpinelinux.org/"
+BUG_REPORT_URL="https://gitlab.alpinelinux.org/alpine/aports/-/issues"
+/usr/local/bin/docker-ensure-initdb.sh
+/usr/local/bin/docker-entrypoint.sh
+/usr/local/bin/pg_dumpall
+/usr/local/bin/pg_ctl
+/usr/local/bin/psql
+/usr/local/bin/pg_checksums
+/usr/local/bin/dropuser
+/usr/local/bin/pg_upgrade
+/usr/local/bin/pg_combinebackup
+/usr/local/bin/dropdb
+/usr/local/bin/pg_restore
+/usr/local/bin/pg_walsummary
+/usr/local/bin/pg_controldata
+/usr/local/bin/vacuumlo
+/usr/local/bin/pg_waldump
+/usr/local/bin/pg_resetwal
+/usr/local/bin/ecpg
+/usr/local/bin/pgbench
+/usr/local/bin/pg_isready
+/usr/local/bin/pg_createsubscriber
+/usr/local/bin/createuser
+/usr/local/bin/oid2name
+/usr/local/bin/pg_test_fsync
+/usr/local/bin/pg_config
+/usr/local/bin/pg_verifybackup
+/usr/local/bin/pg_receivewal
+/usr/local/bin/vacuumdb
+/usr/local/bin/pg_rewind
+/usr/local/bin/pg_dump
+/usr/local/bin/pg_basebackup
+/usr/local/bin/initdb
+/usr/local/bin/createdb
+/usr/local/bin/pg_test_timing
+/usr/local/bin/pg_amcheck
+/usr/local/bin/pg_archivecleanup
+/usr/local/bin/pg_recvlogical
+/usr/local/bin/postgres
+/usr/local/bin/reindexdb
+/usr/local/bin/clusterdb
+/usr/local/bin/gosu
+/usr/bin/ldd
+/usr/bin/getent
+/usr/bin/iconv
+/usr/bin/scanelf
+/usr/bin/ssl_client
+/usr/bin/getconf
+/usr/bin/pzstd
+/usr/bin/zstdless
+/usr/bin/zstd
+/usr/bin/zstdgrep
+/usr/bin/xsltproc
+/sbin/ldconfig
+/sbin/apk
+/bin/busybox
+/bin/bash

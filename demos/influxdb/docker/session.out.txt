@@ -1,7 +1,26 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "influxdb:2.7@sha256:b8d940ca9376f85118260f5b6bd236b8a00b1749c3350c5578d4cde8e27f31f2"
+exitCode: 0
 ---
-DOCUMENTED: influxdb — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ influx bucket list --token … --org hello
+ID			Name		Retention	Shard group duration	Organization ID		Schema Type
+12ae3b26d6effc96	_monitoring	168h0m0s	24h0m0s			b716be163e530ac7	implicit
+b0c82e0a9ea8c9c9	_tasks		72h0m0s		24h0m0s			b716be163e530ac7	implicit
+c95dc4768ea21db9	hello		infinite	168h0m0s		b716be163e530ac7	implicit
+
+$ influx write/query/bucket list session
+Result: _result
+Table: keys: [_start, _stop, _field, _measurement, id]
+                   _start:time                      _stop:time           _field:string     _measurement:string               id:string                      _time:time                  _value:float
+------------------------------  ------------------------------  ----------------------  ----------------------  ----------------------  ------------------------------  ----------------------------
+2023-01-01T00:00:00.000000000Z  2026-08-23T15:20:58.897432215Z                   score                   items                       1  2023-11-14T22:13:21.000000000Z                            30
+Table: keys: [_start, _stop, _field, _measurement, id]
+                   _start:time                      _stop:time           _field:string     _measurement:string               id:string                      _time:time                  _value:float
+------------------------------  ------------------------------  ----------------------  ----------------------  ----------------------  ------------------------------  ----------------------------
+2023-01-01T00:00:00.000000000Z  2026-08-23T15:20:58.897432215Z                   score                   items                       3  2023-11-14T22:13:23.000000000Z                            40
+ID			Name		Retention	Shard group duration	Organization ID		Schema Type
+12ae3b26d6effc96	_monitoring	168h0m0s	24h0m0s			b716be163e530ac7	implicit
+b0c82e0a9ea8c9c9	_tasks		72h0m0s		24h0m0s			b716be163e530ac7	implicit
+c95dc4768ea21db9	hello		infinite	168h0m0s		b716be163e530ac7	implicit

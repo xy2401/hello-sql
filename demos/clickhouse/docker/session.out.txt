@@ -1,7 +1,16 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "clickhouse/clickhouse-server:25.8@sha256:7c39abeb161d627fa3ca6a1e5f6241ecdc24501e8463486e61b80be3ab4471b0"
+exitCode: 0
 ---
-DOCUMENTED: clickhouse — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ clickhouse-client --query "SELECT 1"
+1
+
+$ clickhouse-client --multiquery < fixed-session.sql
+3	Carol	40
+1	Alice	30
+hello_items
+Expression ((Project names + Projection))
+  Expression ((WHERE + Change column names to column identifiers))
+    ReadFromMergeTree (default.hello_items)

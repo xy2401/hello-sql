@@ -1,7 +1,13 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "redis:8.2@sha256:69549d08c5a19b8c28214dea5dfe3b6afa7ac1ad7ea61d66c29a8454b875df40"
+exitCode: 0
 ---
-RESULT: not executed — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+PASS image tag+digest
+PASS isolated internal Docker network
+PASS readiness check
+PASS fixed three-record write
+PASS native filter/query and structure/status review
+PASS PATH/vendor executable inventory
+RESULT: verified

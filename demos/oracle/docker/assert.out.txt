@@ -1,7 +1,7 @@
 ---
 status: documented
-capturedAt: null
-dockerImage: "unresolved"
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "not-applicable"
 exitCode: -1
 ---
-RESULT: not executed — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+RESULT: not executed — 官方镜像入口可能需要登录或接受许可；无凭证 Actions 不改用社区镜像。

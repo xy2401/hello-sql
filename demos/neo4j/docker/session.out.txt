@@ -1,7 +1,29 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "neo4j:2025.08.0-community@sha256:cb225f5256e8a0c14efd9439cf870346857f1c5a3df1fdd11a3e9c91a857a43f"
+exitCode: 0
 ---
-DOCUMENTED: neo4j — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ cypher-shell -u neo4j -p … RETURN 1
+1
+1
+
+$ cypher-shell fixed Cypher session
+n.id, n.name, n.score
+3, "Carol", 40
+1, "Alice", 30
+id, name, state, populationPercent, type, entityType, labelsOrTypes, properties, indexProvider, owningConstraint, lastRead, readCount
+1, "index_343aff4e", "ONLINE", 100.0, "LOOKUP", "NODE", NULL, NULL, "token-lookup-1.0", NULL, NULL, NULL
+2, "index_f7700477", "ONLINE", 100.0, "LOOKUP", "RELATIONSHIP", NULL, NULL, "token-lookup-1.0", NULL, NULL, NULL
+n
+(:HelloItem {name: "Alice", score: 30, id: 1})
+(:HelloItem {name: "Carol", score: 40, id: 3})
+Plan: "PROFILE"
+Statement: "READ_ONLY"
+Version: "5"
+Planner: "COST"
+Runtime: "SLOTTED"
+Time: 69
+DbHits: 15
+Rows: 2
+Memory (Bytes): 64

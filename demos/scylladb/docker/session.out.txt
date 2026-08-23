@@ -1,7 +1,42 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "scylladb/scylla:2025.2@sha256:f034b76802b76a0398935a9d8ff28323b16eed8e9bbba18da513b8225cca25f0"
+exitCode: 0
 ---
-DOCUMENTED: scylladb — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ cqlsh -e "DESCRIBE CLUSTER"
+Cluster: 
+Partitioner: org.apache.cassandra.dht.Murmur3Partitioner
+Snitch: SimpleSnitch
+
+$ cqlsh -e fixed-session.cql
+Warnings :
+SimpleStrategy replication class is not recommended, but was used for keyspace hello. You may suppress this warning by delisting SimpleStrategy from replication_strategy_warn_list configuration option, or make it into an error by listing this replication strategy on replication_strategy_fail_list.
+
+Using Replication Factor replication_factor=1 lower than the minimum_replication_factor_warn_threshold=3 is not recommended.
+
+
+ id | name  | score
+----+-------+-------
+  1 | Alice |    30
+  2 |   Bob |    20
+  3 | Carol |    40
+
+(3 rows)
+
+CREATE TABLE hello.items (
+    id int PRIMARY KEY,
+    name text,
+    score int
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'ALL'}
+    AND comment = ''
+    AND compaction = {'class': 'IncrementalCompactionStrategy'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND speculative_retry = '99.0PERCENTILE';

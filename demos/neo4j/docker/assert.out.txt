@@ -1,7 +1,13 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "neo4j:2025.08.0-community@sha256:cb225f5256e8a0c14efd9439cf870346857f1c5a3df1fdd11a3e9c91a857a43f"
+exitCode: 0
 ---
-RESULT: not executed — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+PASS image tag+digest
+PASS isolated internal Docker network
+PASS readiness check
+PASS fixed three-record write
+PASS native filter/query and structure/status review
+PASS PATH/vendor executable inventory
+RESULT: verified

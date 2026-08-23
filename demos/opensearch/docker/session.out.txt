@@ -1,7 +1,30 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "opensearchproject/opensearch:3.2.0@sha256:23297b8d8545e129dd58c254ed08d786dc552410ba772983ad2af31048d2f04b"
+exitCode: 0
 ---
-DOCUMENTED: opensearch — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ curl -fsS http://server:9200/
+{
+  "name" : "server",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "cgX98CHIT2amj6g0yaB-dQ",
+  "version" : {
+    "distribution" : "opensearch",
+    "number" : "3.2.0",
+    "build_type" : "tar",
+    "build_hash" : "6adc0bf476e1624190564d7fbe4aba00ccf49ad8",
+    "build_date" : "2025-08-12T03:55:01.226522683Z",
+    "build_snapshot" : false,
+    "lucene_version" : "10.2.2",
+    "minimum_wire_compatibility_version" : "2.19.0",
+    "minimum_index_compatibility_version" : "2.0.0"
+  },
+  "tagline" : "The OpenSearch Project: https://opensearch.org/"
+}
+
+$ curl OpenSearch bulk/search/cat/explain session
+{"took":187,"errors":false,"items":[{"index":{"_index":"hello-items","_id":"1","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1,"status":201}},{"index":{"_index":"hello-items","_id":"2","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":1,"_primary_term":1,"status":201}},{"index":{"_index":"hello-items","_id":"3","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":2,"_primary_term":1,"status":201}}]}{"_shards":{"total":2,"successful":1,"failed":0}}{"took":31,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":2,"relation":"eq"},"max_score":null,"hits":[{"_index":"hello-items","_id":"3","_score":null,"_source":{"name":"Carol","score":40},"sort":[40]},{"_index":"hello-items","_id":"1","_score":null,"_source":{"name":"Alice","score":30},"sort":[30]}]}}health status index       uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   hello-items 9P4Iu3b6Q2SMlnjxQFZazQ   1   1          3            0      4.3kb          4.3kb
+{"_index":"hello-items","_id":"1","matched":true,"explanation":{"value":1.0,"description":"Approximate(score:[30 TO 9223372036854775807])","details":[]}}
+curl: (22) The requested URL returned error: 404

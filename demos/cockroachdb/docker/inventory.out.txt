@@ -1,7 +1,32 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "cockroachdb/cockroach:v25.2.0@sha256:9957538cc1586355bd6c26af8198b3b1d4302e7ce3422f59b8b23d01cbd8503a"
+exitCode: 0
 ---
-DOCUMENTED: cockroachdb — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ docker image inspect cockroachdb/cockroach:v25.2.0@sha256:9957538cc1586355bd6c26af8198b3b1d4302e7ce3422f59b8b23d01cbd8503a
+id=sha256:6209bce55bb1b35f880e8318f3ba684bc09ddd512ce3dce955ad9813b105c786
+os=linux
+architecture=amd64
+sizeBytes=453079547
+
+$ docker exec hello-sql-cockroachdb-6945-server sh -c '<PATH and vendor executable inventory>'
+PATH=/cockroach:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+NAME="Red Hat Enterprise Linux"
+VERSION="9.6 (Plow)"
+ID="rhel"
+ID_LIKE="fedora"
+VERSION_ID="9.6"
+PLATFORM_ID="platform:el9"
+PRETTY_NAME="Red Hat Enterprise Linux 9.6 (Plow)"
+ANSI_COLOR="0;31"
+LOGO="fedora-logo-icon"
+CPE_NAME="cpe:/o:redhat:enterprise_linux:9::baseos"
+HOME_URL="https://www.redhat.com/"
+DOCUMENTATION_URL="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9"
+BUG_REPORT_URL="https://issues.redhat.com/"
+
+REDHAT_BUGZILLA_PRODUCT="Red Hat Enterprise Linux 9"
+REDHAT_BUGZILLA_PRODUCT_VERSION=9.6
+REDHAT_SUPPORT_PRODUCT="Red Hat Enterprise Linux"
+REDHAT_SUPPORT_PRODUCT_VERSION="9.6"

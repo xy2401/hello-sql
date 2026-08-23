@@ -1,7 +1,7 @@
 ---
 status: unsupported
-capturedAt: null
+capturedAt: 2026-08-23T15:15:53.547Z
 dockerImage: "not-applicable"
 exitCode: -1
 ---
-RESULT: not executed — Docker 不适用于浏览器存储上下文。
+RESULT: not executed — 浏览器数据库依赖浏览器存储上下文，不适用 Docker。

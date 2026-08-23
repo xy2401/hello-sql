@@ -1,7 +1,68 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "valkey/valkey:9.0@sha256:2437dbc85bb67005fa7db135dfbc45075b800f4afa1ab2a301e3b878b0c273e2"
+exitCode: 0
 ---
-DOCUMENTED: valkey — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ valkey-cli ping
+PONG
+
+$ valkey-cli fixed Stream session
+0
+1-0
+2-0
+3-0
+1-0
+id
+1
+name
+Alice
+score
+30
+2-0
+id
+2
+name
+Bob
+score
+20
+3-0
+id
+3
+name
+Carol
+score
+40
+3
+length
+3
+radix-tree-keys
+1
+radix-tree-nodes
+2
+last-generated-id
+3-0
+max-deleted-entry-id
+0-0
+entries-added
+3
+recorded-first-entry-id
+1-0
+groups
+0
+first-entry
+1-0
+id
+1
+name
+Alice
+score
+30
+last-entry
+3-0
+id
+3
+name
+Carol
+score
+40

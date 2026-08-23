@@ -1,7 +1,13 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "valkey/valkey:9.0@sha256:2437dbc85bb67005fa7db135dfbc45075b800f4afa1ab2a301e3b878b0c273e2"
+exitCode: 0
 ---
-RESULT: not executed — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+PASS image tag+digest
+PASS isolated internal Docker network
+PASS readiness check
+PASS fixed three-record write
+PASS native filter/query and structure/status review
+PASS PATH/vendor executable inventory
+RESULT: verified

@@ -1,7 +1,18 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "mariadb:11.8@sha256:24e76fcec8c003a0362d0dd53f4806e7e79458d7fdeaf47437760e19496f5a9c"
+exitCode: 0
 ---
-DOCUMENTED: mariadb — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ MYSQL_PWD=… mariadb -h 127.0.0.1 -uroot -Nse 'SELECT 1'
+1
+
+$ mariadb -h 127.0.0.1 -uroot -p… -e "DROP TABLE IF EXISTS hello_items; CREATE TABLE hello_items (id INT PRIMARY KEY, name VARCHAR(20), score INT); INSERT INTO hello_items VALUES (1,'Alice',30),(2,'Bob',20),(3,'Carol',40); SELECT id,name,score FROM hello_items WHERE score >= 30 ORDER BY score DESC; …"
+id	name	score
+3	Carol	40
+1	Alice	30
+Tables_in_hello
+hello_items
+id	select_type	table	type	possible_keys	key	key_len	ref	rows	Extra
+1	SIMPLE	hello_items	ALL	NULL	NULL	NULL	NULL	3	Using where
+WARNING: option --ssl-verify-server-cert is disabled, because of an insecure passwordless login.

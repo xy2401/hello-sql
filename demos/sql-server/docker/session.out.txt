@@ -1,7 +1,35 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "mcr.microsoft.com/mssql/server:2022-CU14-ubuntu-22.04@sha256:c1aa8afe9b06eab64c9774a4802dcd032205d1be785b1fd51e1c0151e7586b74"
+exitCode: 0
 ---
-DOCUMENTED: sql-server — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ sqlcmd -S localhost -U sa -C -Q "SELECT 1"
+-----------
+          1
+
+(1 rows affected)
+
+$ sqlcmd fixed T-SQL session
+(3 rows affected)
+id          name                 score      
+----------- -------------------- -----------
+          3 Carol                         40
+          1 Alice                         30
+
+(2 rows affected)
+name                                                                                                                            
+--------------------------------------------------------------------------------------------------------------------------------
+hello_items                                                                                                                     
+
+(1 rows affected)
+StmtText                                         
+-------------------------------------------------
+SELECT * FROM dbo.hello_items WHERE score >= 30  
+
+(1 rows affected)
+StmtText                                                                                                                                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  |--Clustered Index Scan(OBJECT:([master].[dbo].[hello_items].[PK__hello_it__3213E83FADD8674B]), WHERE:([master].[dbo].[hello_items].[score]>=CONVERT_IMPLICIT(int,[@1],0))) 
+
+(1 rows affected)

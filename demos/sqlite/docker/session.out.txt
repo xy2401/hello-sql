@@ -1,7 +1,7 @@
 ---
 status: documented
-capturedAt: null
-dockerImage: "unresolved"
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "not-applicable"
 exitCode: -1
 ---
-DOCUMENTED: sqlite — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+DOCUMENTED: 嵌入式 CLI 自建镜像需要同时锁定 SQLite 源码校验和，未完成前不以 apt 浮动包冒充固定版本。

@@ -1,7 +1,13 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "influxdb:2.7@sha256:b8d940ca9376f85118260f5b6bd236b8a00b1749c3350c5578d4cde8e27f31f2"
+exitCode: 0
 ---
-RESULT: not executed — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+PASS image tag+digest
+PASS isolated internal Docker network
+PASS readiness check
+PASS fixed three-record write
+PASS native filter/query and structure/status review
+PASS PATH/vendor executable inventory
+RESULT: verified

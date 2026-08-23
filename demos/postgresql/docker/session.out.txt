@@ -1,7 +1,30 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "postgres:18-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
+exitCode: 0
 ---
-DOCUMENTED: postgresql — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ PGPASSWORD=… psql -h 127.0.0.1 -U postgres -Atqc 'SELECT 1'
+1
+
+$ psql -h 127.0.0.1 -U postgres -v ON_ERROR_STOP=1 -c "DROP TABLE IF EXISTS hello_items; CREATE TABLE hello_items (id INT PRIMARY KEY, name VARCHAR(20), score INT); INSERT INTO hello_items VALUES (1,'Alice',30),(2,'Bob',20),(3,'Carol',40); SELECT id,name,score FROM hello_items WHERE score >= 30 ORDER BY score DESC; …"
+DROP TABLE
+CREATE TABLE
+INSERT 0 3
+ id | name  | score 
+----+-------+-------
+  3 | Carol |    40
+  1 | Alice |    30
+(2 rows)
+
+ table_name  
+-------------
+ hello_items
+(1 row)
+
+                          QUERY PLAN                           
+---------------------------------------------------------------
+ Seq Scan on hello_items  (cost=0.00..20.75 rows=287 width=66)
+   Filter: (score >= 30)
+(2 rows)
+NOTICE:  table "hello_items" does not exist, skipping

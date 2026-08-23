@@ -1,7 +1,35 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: verified
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "cockroachdb/cockroach:v25.2.0@sha256:9957538cc1586355bd6c26af8198b3b1d4302e7ce3422f59b8b23d01cbd8503a"
+exitCode: 0
 ---
-DOCUMENTED: cockroachdb — 镜像锁与真实查询会话尚待手动 Docker 工作流采集。
+$ cockroach sql --insecure --host localhost:26257 -e "SELECT 1"
+?column?
+1
+
+$ cockroach sql --insecure -e fixed-session.sql
+DROP TABLE
+CREATE TABLE
+INSERT 0 3
+id	name	score
+3	Carol	40
+1	Alice	30
+schema_name	table_name	type	owner	estimated_row_count	locality
+public	hello_items	table	root	NULL	NULL
+info
+distribution: local
+vectorized: true
+
+• filter
+│ filter: score >= 30
+│
+└── • scan
+"      missing stats"
+"      table: hello_items@hello_items_pkey"
+"      spans: FULL SCAN"
+
+index recommendations: 1
+1. type: index creation
+"   SQL command: CREATE INDEX ON defaultdb.public.hello_items (score) STORING (name);"
+NOTICE: auto-committing transaction before processing DDL due to autocommit_before_ddl setting

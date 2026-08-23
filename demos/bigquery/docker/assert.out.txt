@@ -1,7 +1,11 @@
 ---
-status: documented
-capturedAt: null
-dockerImage: "unresolved"
-exitCode: -1
+status: partial
+capturedAt: 2026-08-23T15:15:53.547Z
+dockerImage: "google/cloud-sdk:533.0.0-slim@sha256:ce0b68a1e7a598d2c329fab26a4d88be3d8b5bb8677187aeff263d633838e4c3"
+exitCode: 0
 ---
-RESULT: not executed — CLI 查询需要云账号与凭证，CI 不执行。
+PASS official bq CLI version
+PASS official gcloud CLI version
+PASS bq help
+DOCUMENTED authenticated query not executed
+RESULT: partial
