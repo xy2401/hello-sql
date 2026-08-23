@@ -1,55 +1,18 @@
-# MongoDB 版本演进
+# MongoDB 版本演进与 FCV 升级机制
 
-> **版本模型**：MongoDB 提供 stable release 与历史长期版本线；大版本升级通常需要逐级提升 featureCompatibilityVersion。
+## 版本演进与重大特性
 
-## 版本发布规律与生命周期
+- **MongoDB 7.0+**：增强复合分片键变更、查询分析缓存与时间序列集合性能。
+- **MongoDB 6.0**：默认关闭 `mongo` legacy shell，全面推行 `mongosh`；增强分布式事务与 Change Streams。
 
-- **发布策略**：MongoDB 提供 stable release 与历史长期版本线；大版本升级通常需要逐级提升 featureCompatibilityVersion。
-- **官方权威发布说明**：[查看 MongoDB 官方 Release Notes ↗](https://www.mongodb.com/docs/manual/release-notes/)
+## 生产副本集升级步骤（以 FCV 为核心）
 
-## 主流版本线与关键特性
+```javascript
+// 1. 跨大版本升级必须逐级提升（例如从 5.0 -> 6.0 -> 7.0，不能跳级）
+// 2. 依次滚动升级所有 Secondary 二进制包，最后触发 Primary stepDown 升级主节点
+// 3. 观察业务稳定运行后，再提升 FeatureCompatibilityVersion (FCV) 锁定新版本功能
+db.adminCommand({ setFeatureCompatibilityVersion: "7.0" })
 
-### MongoDB 8.3 Stable
-
-**关键功能与演进：**
-
-- 快速稳定版本线持续引入能力
-- 驱动与 Atlas 支持需同步核对
-
-**工程影响与选型建议：**
-
-> 采用前确认组织对升级频率的承受能力。
-
-### MongoDB 8.2
-
-**关键功能与演进：**
-
-- 8.x 查询与性能能力继续演进
-- 部分行为受 FCV 控制
-
-**工程影响与选型建议：**
-
-> 升级二进制后分阶段提升 FCV。
-
-### MongoDB 8.0
-
-**关键功能与演进：**
-
-- 性能、安全和分片能力形成重要基线
-- 从 7.x 升级需检查不兼容项
-
-**工程影响与选型建议：**
-
-> 先处理 deprecation 和索引/查询回归。
-
-## 生产升级检查清单
-
-跨版本或主版本升级时，建议按顺序核对以下事项：
-
-1. **运行 compatibility/deprecation 检查**
-2. **逐节点升级 replica set/sharded cluster**
-3. **延后 FCV 提升以保留回退窗口**
-
-::: warning 官方依据声明
-补丁号、生命周期支持期限（EOL）、预览功能和许可协议会随时间演进。生产环境变更前，请始终以 [MongoDB 官方发布说明](https://www.mongodb.com/docs/manual/release-notes/) 为最终依据，勿仅凭文档标题推断当前最新版本。
-:::
+// 查看当前 FCV 状态
+db.adminCommand({ getParameter: 1, featureCompatibilityVersion: 1 })
+```

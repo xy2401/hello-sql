@@ -1,51 +1,46 @@
 # MySQL 核心知识
 
-> MySQL 的工程核心是 InnoDB：聚簇索引、二级索引回表、undo/redo、next-key lock 与复制拓扑决定大多数线上行为。
+深入理解 MySQL 的核心在于吃透 InnoDB 存储引擎的底层物理存储结构、锁与隔离级别的微观交互，以及 Binlog 复制链路。
 
-## 学习目标
+## 核心心智模型
 
-在深入 MySQL 开发与运维前，建议掌握以下能力：
+### 1. InnoDB 聚簇索引与回表机制
 
-- [x] **掌握 InnoDB 行与索引组织**
-- [x] **能定位锁等待和复制延迟**
-- [x] **区分 LTS 与 Innovation 版本线**
+- **聚簇索引与二级索引**：
+  - **主键索引**：叶子节点包含完整的整行数据（Row Data）。
+  - **二级索引（Secondary Index）**：叶子节点仅保存索引列的值以及对应的**主键值**。
+  - **回表代价**：通过二级索引定位到主键值后，需再走一遍主键 B+ 树才能读取整行字段。
+- **覆盖索引（Covering Index）优化**：
+  - 若查询所需字段全部包含在二级索引中，优化器将直接从二级索引返回数据，完全消除回表 I/O。
+- **页分裂（Page Split）与主键选择**：
+  - 推荐使用单调递增的主键（如 Auto Increment ID 或有序 UUID），避免随机写入导致 B+ 树叶子页频繁分裂与碎片化。
 
-## 必须建立的核心心智模型
+---
 
-### 01 InnoDB 存储结构
+### 2. Next-Key Lock 与并发事务锁机制
 
-主键即聚簇索引，二级索引叶子保存主键；主键选择会直接影响所有索引大小。
+InnoDB 在 Repeatable Read 隔离级别下，通过多粒度锁解决幻读与并发更新冲突：
 
-**关键实践要点：**
+- **Record Lock（记录锁）**：直接锁定索引记录本身。
+- **Gap Lock（间隙锁）**：锁定索引记录之间的开区间，防止其他事务在间隙中插入新数据。
+- **Next-Key Lock**：Record Lock + 前面的 Gap Lock 构成的左开右闭区间。
+- **锁升级陷阱**：
+  - 如果 `UPDATE` 或 `DELETE` 语句的 `WHERE` 条件未能命中索引，MySQL 会对全表所有记录和间隙加锁，导致整个表并发写瘫痪。
 
-- 优先短且稳定的主键
-- 理解覆盖索引与回表
-- 控制大字段和页分裂
+```sql
+-- 查看当前活跃事务与锁等待情况
+SELECT waiting_trx_id, waiting_pid, waiting_query,
+       blocking_trx_id, blocking_pid, blocking_query
+FROM sys.innodb_lock_waits;
+```
 
-### 02 隔离与锁
+---
 
-默认 Repeatable Read 配合 next-key lock 防止幻读，但范围更新可能扩大锁范围。
+### 3. 两阶段提交与 Binlog/Redo Log 协同
 
-**关键实践要点：**
+为保证 Crash-Safe 与主从数据一致，MySQL 内部采用基于 XA 的两阶段提交（2PC）：
 
-- 用 performance_schema 查看等待
-- 避免无索引更新
-- 把死锁当作可重试的并发信号
-
-### 03 复制与高可用
-
-binlog、GTID、异步/半同步复制和 Group Replication 构成常见高可用基础。
-
-**关键实践要点：**
-
-- 监控 apply 延迟而非只看连接
-- 校验 failover 后数据一致性
-- 区分读扩展和写扩展
-
-## 工程决策落地指南
-
-| 工程阶段 | 核心决策与行动要点 |
-| :--- | :--- |
-| **建模前** | 明确读写访问模式、一致性容忍度、数据生命周期与故障预算，再决定表结构、主键类型、分片键与索引策略。 |
-| **上线前** | 基于生产规模的数据分布进行并发压测，记录查询计划（Query Plan）、内存/I/O 水位与高可用主从故障切换耗时。 |
-| **运行中** | 监控 P95/P99 延迟分位数、连接池水位、长事务/慢查询与存储碎片；所有监控告警均需具备明确的 SOP 处置步骤。 |
+1. **Prepare 阶段**：InnoDB 写入 Redo Log 并将其状态置为 `PREPARE`，同时刷盘（受 `innodb_flush_log_at_trx_commit` 控制）。
+2. **Write Binlog**：Server 层将事务写入 Binlog 并刷盘（受 `sync_binlog` 控制）。
+3. **Commit 阶段**：InnoDB 将 Redo Log 状态标记为 `COMMIT`。
+- **崩溃恢复判断**：如果实例在步骤 2 之后崩溃，恢复时由于 Binlog 已完整，引擎会自动重新提交 Redo Log，确保从库与主库一致。

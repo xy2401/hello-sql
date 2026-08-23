@@ -1,55 +1,61 @@
 # PostgreSQL 版本演进
 
-> **版本模型**：每年一个主版本；受支持主版本会并行发布修复版本。主版本升级需要 pg_upgrade、逻辑迁移或转储恢复。
+PostgreSQL 社区保持每年发布一个主版本（Major Version，如 16 -> 17 -> 18）的稳定节奏。每个主版本提供为期 5 年的官方维护支持（EOL）。
 
-## 版本发布规律与生命周期
+## 主流版本线特性解析
 
-- **发布策略**：每年一个主版本；受支持主版本会并行发布修复版本。主版本升级需要 pg_upgrade、逻辑迁移或转储恢复。
-- **官方权威发布说明**：[查看 PostgreSQL 官方 Release Notes ↗](https://www.postgresql.org/docs/release/)
-
-## 主流版本线与关键特性
-
-### PostgreSQL 18
-
-**关键功能与演进：**
-
-- 异步 I/O 与查询执行继续增强
-- 升级前检查扩展、参数与统计行为变化
-
-**工程影响与选型建议：**
-
-> 适合新部署；从旧主版本迁移时必须在真实数据上验证计划回归。
+### PostgreSQL 18（当前前瞻版）
+- **核心演进**：引入更深层次的异步 I/O 子系统（AIO 框架重构），显著优化预读与扫描密集型查询；继续收紧内部数据结构内存开销。
+- **工程建议**：适合前瞻性测试与新平台特性预研，生产迁移需等待首个小版本发布并完成插件兼容性测试。
 
 ### PostgreSQL 17
+- **核心演进**：
+  - 内存分配优化：`VACUUM` 内部内存结构重新设计，内存消耗降低高达 20x，大幅减少大表清理对生产的 I/O 扰动。
+  - 逻辑复制增强：支持故障转移时逻辑复制槽的同步，使逻辑复制高可用更加平滑。
+  - 存储与执行：新增 `JSON_TABLE` 等 SQL/JSON 标准特性；增强了针对 `IN` 子查询的 SIMD 向量化加速。
+- **工程建议**：当前新建高并发与大数据量写入业务的首选版本。
 
-**关键功能与演进：**
+### PostgreSQL 16
+- **核心演进**：
+  - 支持从只读副本节点进行逻辑复制解码。
+  - 显著提升了并行聚合、`DISTINCT` 查询与 `RIGHT`/`FULL` 外连接的并行执行效率。
+  - 引入了 `pg_stat_io` 视图，提供细粒度的 I/O 读写统计（区分 Heap、WAL、临时文件）。
+- **工程建议**：目前生产最广泛采用的成熟稳定基线。
 
-- VACUUM、备份和逻辑复制能力增强
-- JSON 与 SQL 能力继续扩展
+---
 
-**工程影响与选型建议：**
+## 生产跨版本升级实战指南
 
-> 大量写入和逻辑复制场景值得重点评估。
+PostgreSQL 主版本之间的数据文件格式可能发生变化，不能直接通过替换二进制包启动。推荐采用以下两类升级方式：
 
-### PostgreSQL 16 及更早受支持版本
+### 方案一：使用 `pg_upgrade` 进行近零停机升级（推荐）
 
-**关键功能与演进：**
+`pg_upgrade` 通过直接复用（或硬链接）原有数据文件，可在数秒至数分钟内完成数百 GB 数据的升级：
 
-- 并行查询、监控和复制能力逐代完善
-- 不同版本的扩展 ABI 与默认参数不同
+```bash
+# 1. 运行兼容性预检（--check 模式不修改任何数据）
+/usr/lib/postgresql/17/bin/pg_upgrade \
+  --old-datadir=/var/lib/postgresql/16/main \
+  --new-datadir=/var/lib/postgresql/17/main \
+  --old-bindir=/usr/lib/postgresql/16/bin \
+  --new-bindir=/usr/lib/postgresql/17/bin \
+  --check
 
-**工程影响与选型建议：**
+# 2. 正式升级（--link 模式使用硬链接，避免全量数据拷贝）
+/usr/lib/postgresql/17/bin/pg_upgrade \
+  --old-datadir=/var/lib/postgresql/16/main \
+  --new-datadir=/var/lib/postgresql/17/main \
+  --old-bindir=/usr/lib/postgresql/16/bin \
+  --new-bindir=/usr/lib/postgresql/17/bin \
+  --link
 
-> 不要跨主版本复制数据目录；先确认扩展支持矩阵。
+# 3. 升级后立即全量重新收集统计信息
+/var/lib/postgresql/17/main/vacuumdb --all --analyze-in-stages
+```
 
-## 生产升级检查清单
+### 方案二：逻辑复制跨版本滚动升级
 
-跨版本或主版本升级时，建议按顺序核对以下事项：
-
-1. **列出全部扩展及目标版本兼容性**
-2. **回放生产查询并对比执行计划**
-3. **验证备份恢复、复制槽和回滚窗口**
-
-::: warning 官方依据声明
-补丁号、生命周期支持期限（EOL）、预览功能和许可协议会随时间演进。生产环境变更前，请始终以 [PostgreSQL 官方发布说明](https://www.postgresql.org/docs/release/) 为最终依据，勿仅凭文档标题推断当前最新版本。
-:::
+1. 搭建新的目标版本 PG 实例。
+2. 建立由旧版本向新版本的发布-订阅逻辑复制（Logical Replication）。
+3. 待数据同步追平后，业务短暂停写，将读写流量直接切换至新实例。
+4. 适合无法接受单机几分钟停机窗口的超大型核心业务。
