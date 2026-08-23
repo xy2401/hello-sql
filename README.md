@@ -2,7 +2,7 @@
 
 > **数据库概念、SQL 方言与工程选型大典 (Database Concept Explorer & Selection Matrix)**
 
-`hello-sql` 是一个浏览器优先、纯静态的数据库学习与工程选型知识库，属于 `hello-*` 系列开源学习矩阵（已落地 `hello-lang`、`hello-sql`、`hello-mq`，`hello-shell`）。用统一语义骨架讲解各类数据库，用浏览器内可运行的 WASM 实验验证关键结论，用横向矩阵说明能力边界与选型依据。
+`hello-sql` 是一个浏览器优先、纯静态的数据库学习与工程选型项目，属于 `hello-*` 系列开源学习矩阵（已落地 `hello-lang`、`hello-sql`、`hello-mq`，`hello-shell`）。用统一语义骨架讲解各类数据库，用浏览器内可运行的 WASM 实验验证关键结论，用横向矩阵说明能力边界与选型依据。
 
 ## 核心特色
 

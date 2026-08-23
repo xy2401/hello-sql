@@ -33,7 +33,7 @@ function databaseDirectoryItems(items: readonly { name: string; link: string }[]
 export default defineConfig({
   base: '/',
   title: 'Hello SQL',
-  description: '数据库与数据交互百科全书（25 款数据库 · WASM 实验 · 技术矩阵 · 选型指南）',
+  description: '数据库学习与工程选型（25 款数据库 · WASM 实验 · 技术矩阵 · 选型指南）',
   cleanUrls: true,
   lastUpdated: true,
   head: [

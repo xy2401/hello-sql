@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: "🗄️ Hello SQL"
-  text: "数据库与数据交互百科全书"
+  text: "数据库学习、实验与选型"
   tagline: "25 款主流数据库 · 浏览器内可运行实验 · WASM 技术矩阵 · 横向选型指南"
   image: /logo.svg
   alt: Hello SQL - 数据库学习平台
