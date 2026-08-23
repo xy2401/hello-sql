@@ -68,8 +68,6 @@ LIMIT 20;
 当业务数据关系复杂、数据一致性要求高，且希望保留未来扩展 GIS、AI 向量和分析能力的灵活性时，PostgreSQL 是最稳妥的通用默认选择。
 :::
 
-## 页面内 Live 实验
-
-当前环境内置了基于 WebAssembly 编译的 PGlite 运行时，可直接在下方编写并运行真实 PostgreSQL SQL：
-
-<DatabaseWorkbench engine="pglite" title="PostgreSQL Live" />
+::: tip 在线实验环境
+可在 [PostgreSQL (PGlite) 在线实验室](/playground/pglite) 直接在浏览器中编写并运行 PostgreSQL SQL 语句。
+:::

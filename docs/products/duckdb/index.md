@@ -29,6 +29,6 @@ GROUP BY 1, 2
 ORDER BY 1 DESC, total_revenue DESC;
 ```
 
-## 页面内 Live 实验
-
-<DatabaseWorkbench engine="duckdb" title="DuckDB Live" />
+::: tip 在线实验环境
+可在 [DuckDB 在线实验室](/playground/duckdb) 直接在浏览器中执行高速列式分析查询。
+:::

@@ -155,16 +155,7 @@ npm run docs:dev          # http://localhost:3009
 
 <a id="sql-query"></a>
 
-<script setup>
-import {
-  explainExample,
-  joinExample,
-  queryExample,
-  schemaExample,
-  transactionExample,
-  windowExample,
-} from './.vitepress/theme/data/lessonExamples';
-</script>
+
 
 ### 查询与过滤
 
@@ -176,9 +167,15 @@ import {
 
 `NULL` 表示未知或缺失。比较需要 `IS NULL`，布尔表达式采用三值逻辑。`NOT IN` 子查询一旦包含 `NULL`，常产生意外结果；存在性判断优先考虑 `EXISTS`。
 
-#### 页面内 Live
+```sql
+SELECT title, category, score
+FROM lessons
+WHERE score >= 90
+ORDER BY score DESC
+LIMIT 10;
+```
 
-<DatabaseWorkbench engine="sqlite" title="SELECT、WHERE 与排序" :initial-source="queryExample" />
+> 💡 **在线运行**：可在 [SQLite 在线实验室](/playground/sqlite) 直接执行并观察此 SQL 的结果集。
 
 <a id="sql-joins"></a>
 
@@ -195,7 +192,25 @@ import {
 - 半连接通常用 `EXISTS`，反连接通常用 `NOT EXISTS`。
 - 相关子查询是否高效取决于优化器能否改写和索引是否支持。
 
-<DatabaseWorkbench engine="sqlite" title="JOIN 与条件聚合" :initial-source="joinExample" />
+```sql
+CREATE TABLE IF NOT EXISTS enrollments (
+  lesson_id INTEGER,
+  learner TEXT,
+  completed INTEGER
+);
+DELETE FROM enrollments;
+INSERT INTO enrollments VALUES (1, 'Alice', 1), (2, 'Alice', 1), (3, 'Bob', 0);
+
+SELECT l.category,
+       COUNT(e.learner) AS enrollments,
+       SUM(CASE WHEN e.completed = 1 THEN 1 ELSE 0 END) AS completed
+FROM lessons AS l
+LEFT JOIN enrollments AS e ON e.lesson_id = l.id
+GROUP BY l.category
+ORDER BY enrollments DESC;
+```
+
+> 💡 **在线运行**：可在 [SQLite 在线实验室](/playground/sqlite) 体验多表连接与条件聚合。
 
 <a id="sql-advanced-query"></a>
 
@@ -207,7 +222,20 @@ CTE 给复杂查询命名，但它是否物化取决于数据库和提示。窗�
 
 `PARTITION BY` 决定分组，`ORDER BY` 决定窗口顺序，Frame 决定当前行看到的范围。默认 Frame 在有重复排序键时可能不是“截至当前物理行”，应显式理解 `ROWS` 与 `RANGE`。
 
-<DatabaseWorkbench engine="sqlite" title="CTE 与窗口排名" :initial-source="windowExample" />
+```sql
+WITH ranked AS (
+  SELECT title, category, score,
+         DENSE_RANK() OVER (
+           PARTITION BY category
+           ORDER BY score DESC
+         ) AS category_rank
+  FROM lessons
+)
+SELECT * FROM ranked
+ORDER BY category, category_rank;
+```
+
+> 💡 **在线运行**：可在 [SQLite 在线实验室](/playground/sqlite) 执行窗口排名查询。
 
 <a id="sql-schema"></a>
 
@@ -222,7 +250,21 @@ Schema 不只是存储布局，也是数据契约。`NOT NULL`、`CHECK`、`UNIQ
 3. 规范化减少更新异常；反规范化必须由可测的读取收益驱动。
 4. JSON 适合边界字段，不应成为逃避关系建模的默认容器。
 
-<DatabaseWorkbench engine="sqlite" title="DDL、约束与唯一性" :initial-source="schemaExample" />
+```sql
+CREATE TABLE IF NOT EXISTS learners (
+  id INTEGER PRIMARY KEY,
+  email TEXT NOT NULL UNIQUE,
+  display_name TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT OR IGNORE INTO learners(id, email, display_name)
+VALUES (1, 'alice@example.com', 'Alice');
+
+SELECT * FROM learners;
+```
+
+> 💡 **在线运行**：可在 [SQLite 在线实验室](/playground/sqlite) 验证 DDL 与唯一约束。
 
 <a id="sql-transactions"></a>
 
@@ -237,7 +279,16 @@ Schema 不只是存储布局，也是数据契约。`NOT NULL`、`CHECK`、`UNIQ
 - Serializable 失败需要重试策略。
 - “读后写”要验证丢失更新，不能只依赖应用内判断。
 
-<DatabaseWorkbench engine="sqlite" title="COMMIT 与 ROLLBACK" :initial-source="transactionExample" />
+```sql
+BEGIN;
+UPDATE lessons SET score = score + 1 WHERE category = 'SQL 基础';
+SELECT title, score FROM lessons WHERE category = 'SQL 基础';
+ROLLBACK;
+
+SELECT title, score FROM lessons WHERE category = 'SQL 基础';
+```
+
+> 💡 **在线运行**：可在 [SQLite 在线实验室](/playground/sqlite) 验证事务原子回滚。
 
 <a id="sql-indexes-explain"></a>
 
@@ -252,4 +303,15 @@ Schema 不只是存储布局，也是数据契约。`NOT NULL`、`CHECK`、`UNIQ
 3. 检查扫描、连接算法、排序和临时结果。
 4. 修改索引或 SQL 后重新测量整体工作负载。
 
-<DatabaseWorkbench engine="sqlite" title="索引与 EXPLAIN QUERY PLAN" :initial-source="explainExample" />
+```sql
+CREATE INDEX IF NOT EXISTS idx_lessons_category_score
+ON lessons(category, score DESC);
+
+EXPLAIN QUERY PLAN
+SELECT title, score
+FROM lessons
+WHERE category = 'SQL 基础'
+ORDER BY score DESC;
+```
+
+> 💡 **在线运行**：可在 [SQLite 在线实验室](/playground/sqlite) 查看执行计划与索引命中。

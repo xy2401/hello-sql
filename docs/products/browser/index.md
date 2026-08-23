@@ -9,6 +9,6 @@
 3. **PGlite**：把完整的 PostgreSQL 编译为单个轻量 WASM 二进制包，直接在前端支持复杂 SQL、事务与向量计算。
 4. **DuckDB-WASM**：前端毫秒级执行百万行数据列式 OLAP 聚合。
 
-## 页面内 Live 实验
-
-<DatabaseWorkbench engine="sqlite" title="浏览器内 SQLite-WASM 实验" />
+::: tip 在线实验环境
+可在 [WASM 数据库实验室](/playground/) 体验 SQLite-WASM、DuckDB-WASM、PGlite 等浏览器数据库的实际运行。
+:::
