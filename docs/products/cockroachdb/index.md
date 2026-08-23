@@ -58,10 +58,3 @@ PostgreSQL wire protocol 与相近 SQL 方言。
 ::: tip 架构选型建议
 当跨区域高可用业务是首要目标，且团队能够接受“高争用事务代价高”这一边界时，CockroachDB值得进入概念验证。
 :::
-
-## 深入学习专题
-
-- 📘 [核心知识与心智模型](./core-concepts)：系统性掌握 CockroachDB 的底层机制与关键原理
-- 📜 [版本演进与发布说明](./versions)：主流版本线、特性演进与升级检查清单
-- 🐳 [Docker 工具证据](./DockerTooling)：可复现的 Docker 镜像环境、内置 CLI 与验证快照
-- 🔌 [连接串与驱动规范](/matrix/connection-strings)：标准连接语法、参数与命名空间配置

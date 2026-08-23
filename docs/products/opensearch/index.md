@@ -58,10 +58,3 @@ Query DSL、PPL、SQL 与聚合。
 ::: tip 架构选型建议
 只有当开源搜索平台带来的模型收益明显高于“与 Elasticsearch 功能继续分化”的代价时，才应以 OpenSearch 替代通用关系数据库。
 :::
-
-## 深入学习专题
-
-- 📘 [核心知识与心智模型](./core-concepts)：系统性掌握 OpenSearch 的底层机制与关键原理
-- 📜 [版本演进与发布说明](./versions)：主流版本线、特性演进与升级检查清单
-- 🐳 [Docker 工具证据](./DockerTooling)：可复现的 Docker 镜像环境、内置 CLI 与验证快照
-- 🔌 [连接串与驱动规范](/matrix/connection-strings)：标准连接语法、参数与命名空间配置

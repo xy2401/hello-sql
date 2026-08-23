@@ -53,9 +53,3 @@
 ::: warning 官方依据声明
 补丁号、生命周期支持期限（EOL）、预览功能和许可协议会随时间演进。生产环境变更前，请始终以 [Elasticsearch 官方发布说明](https://www.elastic.co/docs/release-notes) 为最终依据，勿仅凭文档标题推断当前最新版本。
 :::
-
-## 关联资源
-
-- 🏠 [返回 Elasticsearch 总览](./)
-- 📘 [查看核心知识专题](./core-concepts)
-- 🐳 [查看 Docker 工具验证证据](./DockerTooling)

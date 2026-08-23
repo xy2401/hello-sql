@@ -58,10 +58,3 @@ CQL，查询能力围绕分区键和聚簇键设计。
 ::: tip 架构选型建议
 只有当时序和事件写入带来的模型收益明显高于“不支持任意 JOIN 与聚合”的代价时，才应以 Apache Cassandra 替代通用关系数据库。
 :::
-
-## 深入学习专题
-
-- 📘 [核心知识与心智模型](./core-concepts)：系统性掌握 Apache Cassandra 的底层机制与关键原理
-- 📜 [版本演进与发布说明](./versions)：主流版本线、特性演进与升级检查清单
-- 🐳 [Docker 工具证据](./DockerTooling)：可复现的 Docker 镜像环境、内置 CLI 与验证快照
-- 🔌 [连接串与驱动规范](/matrix/connection-strings)：标准连接语法、参数与命名空间配置

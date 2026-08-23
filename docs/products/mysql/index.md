@@ -58,10 +58,3 @@ MySQL SQL；需注意 GROUP BY、布尔值、日期函数、UPSERT 等方言差�
 ::: tip 架构选型建议
 团队已有 MySQL 经验、生态依赖明确或云平台围绕 MySQL 建设时优先采用；新系统仍应与 PostgreSQL 按查询和扩展需求比较。
 :::
-
-## 深入学习专题
-
-- 📘 [核心知识与心智模型](./core-concepts)：系统性掌握 MySQL 的底层机制与关键原理
-- 📜 [版本演进与发布说明](./versions)：主流版本线、特性演进与升级检查清单
-- 🐳 [Docker 工具证据](./DockerTooling)：可复现的 Docker 镜像环境、内置 CLI 与验证快照
-- 🔌 [连接串与驱动规范](/matrix/connection-strings)：标准连接语法、参数与命名空间配置

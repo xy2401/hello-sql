@@ -58,10 +58,3 @@ T-SQL；TOP、APPLY、MERGE、存储过程和系统函数具有明显方言特�
 ::: tip 架构选型建议
 组织已经采用 .NET、Azure、Power BI 或需要 Microsoft 商业支持时具有明显协同优势。
 :::
-
-## 深入学习专题
-
-- 📘 [核心知识与心智模型](./core-concepts)：系统性掌握 Microsoft SQL Server 的底层机制与关键原理
-- 📜 [版本演进与发布说明](./versions)：主流版本线、特性演进与升级检查清单
-- 🐳 [Docker 工具证据](./DockerTooling)：可复现的 Docker 镜像环境、内置 CLI 与验证快照
-- 🔌 [连接串与驱动规范](/matrix/connection-strings)：标准连接语法、参数与命名空间配置

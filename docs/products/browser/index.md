@@ -64,10 +64,3 @@ Web 应用需要可靠的本地结构化数据、事务和索引时，应把 Bro
 当前产品已接入正式 WebAssembly 交互式运行环境。可直接在下方编写并运行指令：
 
 <DatabaseWorkbench engine="indexeddb" title="Browser Database Live" />
-
-## 深入学习专题
-
-- 📘 [核心知识与心智模型](./core-concepts)：系统性掌握 Browser Database 的底层机制与关键原理
-- 📜 [版本演进与发布说明](./versions)：主流版本线、特性演进与升级检查清单
-- 🐳 [Docker 工具证据](./DockerTooling)：可复现的 Docker 镜像环境、内置 CLI 与验证快照
-- 🔌 [连接串与驱动规范](/matrix/connection-strings)：标准连接语法、参数与命名空间配置
