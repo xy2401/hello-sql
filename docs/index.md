@@ -61,7 +61,7 @@ features:
   </div>
 </a>
 
-<a href="/browser/" style="text-decoration: none;">
+<a href="/reference/browser/" style="text-decoration: none;">
   <div style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); padding: 20px; border-radius: 12px; height: 100%; transition: all 0.3s ease;">
     <h3 style="margin: 0 0 8px 0; color: var(--vp-c-brand-1);">🌐 浏览器数据层专题</h3>
     <p style="margin: 0; font-size: 0.875rem; color: var(--vp-c-text-2);">IndexedDB 原理与实践、OPFS 存储配额、离线优先架构与本地同步机制</p>
@@ -122,12 +122,12 @@ features:
 
 如果你是数据库新手，建议按以下顺序学习：
 
-1. **查询与过滤** (`/learn/query`) —— SELECT、WHERE、ORDER BY
-2. **聚合、JOIN 与子查询** (`/learn/joins`) —— GROUP BY、INNER/LEFT JOIN
-3. **CTE 与窗口函数** (`/learn/advanced-query`) —— WITH、ROW_NUMBER、RANK
-4. **DDL、约束与数据建模** (`/learn/schema`) —— CREATE TABLE、PRIMARY KEY、FOREIGN KEY
-5. **事务、锁与并发** (`/learn/transactions`) —— BEGIN、COMMIT、ISOLATION LEVEL
-6. **索引与执行计划** (`/learn/indexes-explain`) —— B-Tree、HASH、EXPLAIN ANALYZE
+1. **查询与过滤** (`/#sql-query`) —— SELECT、WHERE、ORDER BY
+2. **聚合、JOIN 与子查询** (`/#sql-joins`) —— GROUP BY、INNER/LEFT JOIN
+3. **CTE 与窗口函数** (`/#sql-advanced-query`) —— WITH、ROW_NUMBER、RANK
+4. **DDL、约束与数据建模** (`/#sql-schema`) —— CREATE TABLE、PRIMARY KEY、FOREIGN KEY
+5. **事务、锁与并发** (`/#sql-transactions`) —— BEGIN、COMMIT、ISOLATION LEVEL
+6. **索引与执行计划** (`/#sql-indexes-explain`) —— B-Tree、HASH、EXPLAIN ANALYZE
 
 适合目标读者：**希望系统掌握 SQL 语法的开发者**。
 
@@ -144,3 +144,112 @@ npm run docs:dev          # http://localhost:3009
 环境要求：Node.js ≥ 18，推荐 Chrome/Firefox/Safari 最新版。
 
 可以从 [WASM 数据库实验室](/playground/) 直接开始运行示例。
+
+
+---
+
+
+<!-- merged-section:sql-basics -->
+
+## SQL 基础 {#sql-basics}
+
+<a id="sql-query"></a>
+
+<script setup>
+import {
+  explainExample,
+  joinExample,
+  queryExample,
+  schemaExample,
+  transactionExample,
+  windowExample,
+} from './.vitepress/theme/data/lessonExamples';
+</script>
+
+### 查询与过滤
+
+#### 查询的逻辑顺序
+
+理解 `FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT` 的逻辑顺序，比背书写顺序更重要。列别名通常不能直接在 `WHERE` 使用，就是因为过滤发生在投影之前。
+
+#### NULL 不是普通值
+
+`NULL` 表示未知或缺失。比较需要 `IS NULL`，布尔表达式采用三值逻辑。`NOT IN` 子查询一旦包含 `NULL`，常产生意外结果；存在性判断优先考虑 `EXISTS`。
+
+#### 页面内 Live
+
+<DatabaseWorkbench engine="sqlite" title="SELECT、WHERE 与排序" :initial-source="queryExample" />
+
+<a id="sql-joins"></a>
+
+### 聚合、JOIN 与子查询
+
+#### 先确定结果粒度
+
+每一行代表什么，是写聚合查询前必须回答的问题。`GROUP BY` 决定结果粒度；JOIN 前若两边都不是唯一键，行数可能乘法增长。
+
+#### JOIN 不是“查两个表”
+
+- `INNER JOIN` 保留匹配组合。
+- `LEFT JOIN` 保留左侧粒度，右侧缺失补 `NULL`。
+- 半连接通常用 `EXISTS`，反连接通常用 `NOT EXISTS`。
+- 相关子查询是否高效取决于优化器能否改写和索引是否支持。
+
+<DatabaseWorkbench engine="sqlite" title="JOIN 与条件聚合" :initial-source="joinExample" />
+
+<a id="sql-advanced-query"></a>
+
+### CTE 与窗口函数
+
+CTE 给复杂查询命名，但它是否物化取决于数据库和提示。窗口函数不会像 `GROUP BY` 那样折叠行，而是在分区内计算排名、累计、移动平均和前后值。
+
+#### 常用窗口维度
+
+`PARTITION BY` 决定分组，`ORDER BY` 决定窗口顺序，Frame 决定当前行看到的范围。默认 Frame 在有重复排序键时可能不是“截至当前物理行”，应显式理解 `ROWS` 与 `RANGE`。
+
+<DatabaseWorkbench engine="sqlite" title="CTE 与窗口排名" :initial-source="windowExample" />
+
+<a id="sql-schema"></a>
+
+### DDL、约束与数据建模
+
+Schema 不只是存储布局，也是数据契约。`NOT NULL`、`CHECK`、`UNIQUE`、外键和正确的数据类型，应尽量在数据库边界表达。
+
+#### 建模原则
+
+1. 先确定实体身份和业务唯一性，再决定代理主键。
+2. 把必须始终成立的不变量写成约束。
+3. 规范化减少更新异常；反规范化必须由可测的读取收益驱动。
+4. JSON 适合边界字段，不应成为逃避关系建模的默认容器。
+
+<DatabaseWorkbench engine="sqlite" title="DDL、约束与唯一性" :initial-source="schemaExample" />
+
+<a id="sql-transactions"></a>
+
+### 事务、锁与并发
+
+事务把一组读写变成一个失败边界。ACID 并不意味着所有并发异常自动消失；隔离级别、锁粒度、MVCC 快照和业务重试共同决定可见行为。
+
+#### 工程检查表
+
+- 事务必须尽量短，避免在事务中等待网络调用。
+- 更新顺序保持一致，减少死锁。
+- Serializable 失败需要重试策略。
+- “读后写”要验证丢失更新，不能只依赖应用内判断。
+
+<DatabaseWorkbench engine="sqlite" title="COMMIT 与 ROLLBACK" :initial-source="transactionExample" />
+
+<a id="sql-indexes-explain"></a>
+
+### 索引与执行计划
+
+索引是额外维护的数据结构，用写入、存储和缓存换取特定访问路径。组合索引的列顺序应服务过滤、连接和排序，而不是按字段“重要程度”排列。
+
+#### 不靠猜测优化
+
+1. 用真实参数和数据分布获取执行计划。
+2. 区分估算行数与实际行数。
+3. 检查扫描、连接算法、排序和临时结果。
+4. 修改索引或 SQL 后重新测量整体工作负载。
+
+<DatabaseWorkbench engine="sqlite" title="索引与 EXPLAIN QUERY PLAN" :initial-source="explainExample" />

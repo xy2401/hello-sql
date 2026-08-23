@@ -41,7 +41,7 @@ const profileData = fs.readFileSync(path.join(docs, '.vitepress/theme/data/datab
 const guideData = fs.readFileSync(path.join(docs, '.vitepress/theme/data/databaseGuides.ts'), 'utf8');
 const brandingData = fs.readFileSync(path.join(docs, '.vitepress/theme/data/databaseBranding.ts'), 'utf8');
 const configData = fs.readFileSync(path.join(docs, '.vitepress/config.ts'), 'utf8');
-for (const file of markdownFiles.filter((item) => item.includes(`${path.sep}databases${path.sep}`))) {
+for (const file of markdownFiles.filter((item) => item.includes(`${path.sep}products${path.sep}`))) {
   const content = fs.readFileSync(file, 'utf8');
   for (const match of content.matchAll(/<DatabaseProfile id="([^"]+)"/g)) {
     if (!profileData.includes(`${match[1]}:`) && !profileData.includes(`'${match[1]}':`)) {
@@ -50,19 +50,15 @@ for (const file of markdownFiles.filter((item) => item.includes(`${path.sep}data
   }
 }
 
-const databaseDirectories = ['sql', 'analytical', 'nosql'].flatMap((category) => {
-  const categoryDirectory = path.join(docs, 'databases', category);
-  const legacyPages = fs.readdirSync(categoryDirectory, { withFileTypes: true })
-    .filter((entry) => entry.isFile() && entry.name !== 'index.md' && entry.name.endsWith('.md'));
-  for (const page of legacyPages) errors.push(`${relative(path.join(categoryDirectory, page.name))} 仍是旧的数据库单页，应迁移到独立目录`);
-  return fs.readdirSync(categoryDirectory, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => path.join(categoryDirectory, entry.name));
-});
+const productsDirectory = path.join(docs, 'products');
+const databaseDirectories = fs.readdirSync(productsDirectory, { withFileTypes: true })
+  .filter((entry) => entry.isDirectory())
+  .map((entry) => path.join(productsDirectory, entry.name));
 
 if (databaseDirectories.length !== 24) errors.push(`独立数据库目录数量应为 24，当前为 ${databaseDirectories.length}`);
 for (const directory of databaseDirectories) {
-  const id = path.basename(directory);
+  const directoryName = path.basename(directory);
+  const id = directoryName === 'mssqlserver' ? 'sql-server' : directoryName;
   for (const page of ['index.md', 'core-concepts.md', 'versions.md']) {
     if (!fs.existsSync(path.join(directory, page))) errors.push(`${relative(directory)} 缺少 ${page}`);
   }
@@ -86,9 +82,7 @@ for (const file of markdownFiles) {
   const headings = fs.readFileSync(file, 'utf8').split(/\r?\n/).filter((line) => /^#{1,6}\s/.test(line));
   for (const phrase of forbiddenHeadings) if (headings.some((heading) => heading.includes(phrase))) errors.push(`${relative(file)} 仍包含待精简标题：${phrase}`);
 }
-if (/text:\s*['"]首页['"]/.test(configData)) errors.push('顶部导航仍包含重复的“首页”入口');
-
-for (const file of markdownFiles.filter((item) => item.includes(`${path.sep}databases${path.sep}`))) {
+for (const file of markdownFiles.filter((item) => item.includes(`${path.sep}products${path.sep}`))) {
   const content = fs.readFileSync(file, 'utf8');
   for (const match of content.matchAll(/<Database(?:CoreGuide|VersionGuide) id="([^"]+)"/g)) {
     if (!guideData.includes(`${match[1]}:`) && !guideData.includes(`'${match[1]}':`)) {
@@ -98,13 +92,13 @@ for (const file of markdownFiles.filter((item) => item.includes(`${path.sep}data
 }
 
 const requiredPages = [
-  'learn/query.md', 'learn/transactions.md', 'browser/indexeddb.md', 'playground/sqlite.md',
+  'index.md', 'reference/index.md', 'reference/browser/indexeddb.md', 'playground/sqlite.md',
   'playground/duckdb.md', 'playground/pglite.md', 'playground/surrealdb.md', 'playground/indexeddb.md',
   'matrix/sql-dialects.md', 'matrix/browser-wasm.md', 'matrix/connection-strings.md',
 ];
 for (const page of requiredPages) if (!fs.existsSync(path.join(docs, page))) errors.push(`缺少必需页面：docs/${page}`);
 
-if (markdownFiles.length < 95) errors.push(`内容页面数量不足：${markdownFiles.length}`);
+if (markdownFiles.length < 90) errors.push(`内容页面数量不足：${markdownFiles.length}`);
 
 if (errors.length) {
   console.error(`内容检查失败（${errors.length} 项）：`);

@@ -4,7 +4,7 @@ import { databaseGuides } from '../../docs/.vitepress/theme/data/databaseGuides'
 import { connectionStringProfiles } from '../../docs/.vitepress/theme/data/connectionStrings';
 import { defaultSources, engineCatalog, engineOrder } from '../../docs/.vitepress/theme/data/engineCatalog';
 import { databaseBrands, databaseLogoPath, databaseProductBrandIds } from '../../docs/.vitepress/theme/data/databaseBranding';
-import { analyticalDatabaseItems, noSqlDatabaseItems, sqlDatabaseItems } from '../../docs/.vitepress/theme/data/databaseNavigation';
+import { allDatabases } from '../../docs/.vitepress/theme/data/databaseNavigation';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -19,7 +19,7 @@ describe('database catalog', () => {
   });
 
   it('keeps navigation, profiles and local brand assets in sync', () => {
-    const navigationIds = [...sqlDatabaseItems, ...analyticalDatabaseItems, ...noSqlDatabaseItems].map((item) => item.id).sort();
+    const navigationIds = allDatabases.map((item) => item.id).sort();
     expect(navigationIds).toEqual(Object.keys(databaseProfiles).sort());
     expect([...databaseProductBrandIds].sort()).toEqual(Object.keys(databaseProfiles).sort());
     for (const id of Object.keys(databaseBrands) as Array<keyof typeof databaseBrands>) {

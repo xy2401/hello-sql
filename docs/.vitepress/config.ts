@@ -37,49 +37,34 @@ export default defineConfig({
     sidebarMenuLabel: '数据库',
     outline: { level: [2, 3], label: '本页导航' },
     nav: [
-      // 前 5 个典型数据库全部平铺在主导航
-      { text: 'PostgreSQL', link: '/products/postgresql/' },
-      { text: 'MySQL', link: '/products/mysql/' },
-      { text: 'DuckDB', link: '/products/duckdb/' },
-      { text: 'MongoDB', link: '/products/mongodb/' },
-      { text: 'Redis', link: '/products/redis/' },
-      // 第 6 个起在「更多」下拉中展开选择
+      { text: '首页', link: '/' },
       {
-        text: '更多',
-        items: allDatabases.slice(5).map(db => ({
-          text: db.name,
-          link: db.link,
-        })),
+        text: '产品',
+        items: [
+          { text: '产品总览', link: '/products/' },
+          ...allDatabases.map(db => ({
+            text: db.name,
+            link: `${db.link}/`,
+          })),
+        ],
       },
-      { text: 'SQL 基础', link: '/learn/' },
-      { text: '浏览器数据库', link: '/browser/' },
-      { text: 'WASM 实验室', link: '/playground/' },
-      { text: '数据库对比', link: '/matrix/' },
+      { text: '对比矩阵', link: '/matrix/' },
+      { text: '试验场', link: '/playground/' },
+      { text: '参考资料', link: '/reference/' },
     ],
     sidebar: {
-      '/learn/': [{
-        text: 'SQL 基础',
-        items: [
-          { text: '学习路线总览', link: '/learn/' },
-          { text: '查询与过滤', link: '/learn/query' },
-          { text: '聚合、JOIN 与子查询', link: '/learn/joins' },
-          { text: 'CTE 与窗口函数', link: '/learn/advanced-query' },
-          { text: 'DDL、约束与数据建模', link: '/learn/schema' },
-          { text: '事务、锁与并发', link: '/learn/transactions' },
-          { text: '索引与执行计划', link: '/learn/indexes-explain' },
-        ],
-      }],
       '/products/': [
         {
           text: '数据库列表',
           items: databaseSidebarItems(allDatabases),
         },
       ],
-      '/browser/': [{ text: 'Browser Database', items: [
-        { text: '浏览器数据层总览', link: '/browser/' },
-        { text: 'IndexedDB 原理与实践', link: '/browser/indexeddb' },
-        { text: 'OPFS 与存储配额', link: '/browser/opfs' },
-        { text: '离线、本地优先与同步', link: '/browser/local-first' },
+      '/reference/': [{ text: '参考资料', items: [
+        { text: '参考资料总览', link: '/reference/' },
+        { text: '浏览器数据层总览', link: '/reference/browser/' },
+        { text: 'IndexedDB 原理与实践', link: '/reference/browser/indexeddb' },
+        { text: 'OPFS 与存储配额', link: '/reference/browser/opfs' },
+        { text: '离线、本地优先与同步', link: '/reference/browser/local-first' },
       ] }],
       '/playground/': [{ text: 'WASM 数据库实验室', items: [
         { text: '统一工作台', link: '/playground/' },

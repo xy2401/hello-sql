@@ -4,7 +4,7 @@ test('desktop navigation remains aligned across layouts', async ({ page }) => {
   for (const width of [1280, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     const measurements: Array<{ titleX: number; menuX: number }> = [];
-    for (const route of ['/', 'learn/', 'databases/sql/postgresql/', 'playground/sqlite']) {
+    for (const route of ['/', 'reference/browser/', 'products/postgresql/', 'playground/sqlite']) {
       await page.goto(route);
       await page.locator('.VPNavBarTitle').waitFor({ state: 'visible' });
       await page.locator('.VPNavBarMenu').waitFor({ state: 'visible' });
@@ -58,19 +58,8 @@ test('sidebar and editor follow light and dark themes', async ({ page }) => {
   expect(await page.evaluate(() => (window as Window & { __helloSqlEditor?: Element }).__helloSqlEditor === document.querySelector('.cm-editor'))).toBe(true);
 });
 
-test('database branding is local and consistent across catalog, sidebar and profile', async ({ page }) => {
-  for (const route of ['databases/sql/', 'databases/analytical/', 'databases/nosql/']) {
-    await page.goto(route);
-    const logos = page.locator('.database-catalog-card .database-logo img');
-    await expect(logos.first()).toBeVisible();
-    expect(await logos.count()).toBeGreaterThanOrEqual(6);
-    expect(await logos.evaluateAll((images) => images.every((image) => {
-      const img = image as HTMLImageElement;
-      return img.src.startsWith(location.origin) && img.complete && img.naturalWidth > 0;
-    }))).toBe(true);
-  }
-
-  await page.goto('databases/sql/postgresql/');
+test('database branding is local and consistent across sidebar and profile', async ({ page }) => {
+  await page.goto('products/postgresql/');
   await expect(page.locator('.database-sidebar-explorer')).toBeVisible();
   await expect(page.locator('#VPSidebarNav > .group').first()).toBeHidden();
   await expect(page.locator('.profile-heading img[src="/logos/databases/postgresql.svg"]')).toBeVisible();

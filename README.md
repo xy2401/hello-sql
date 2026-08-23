@@ -16,14 +16,11 @@
 ```text
 hello-sql/
 ├── docs/                   # VitePress 文档站（唯一文档入口）
-│   ├── learn/              # 入门与核心概念
-│   ├── databases/          # 数据库分卷
-│   │   ├── sql/            # MySQL、PostgreSQL、Oracle、SQL Server、MariaDB、SQLite
-│   │   ├── analytical/     # DuckDB、ClickHouse、Snowflake、BigQuery、TiDB、CockroachDB
-│   │   └── nosql/          # MongoDB、Redis、Elasticsearch 等 12 库
-│   ├── browser/            # WASM 浏览器实验环境说明
+│   ├── index.md            # 首页与 SQL 基础
+│   ├── products/           # 24 款数据库分卷
 │   ├── playground/         # 浏览器内交互实验（SQLite / PGlite / DuckDB / SurrealDB）
 │   ├── matrix/             # 6 大横向选型矩阵
+│   ├── reference/          # 浏览器数据层与实践参考
 │   └── public/             # 静态资源（含 WASM 分片）
 ├── scripts/                # check-content.js 内容静态检查
 ├── tests/                  # unit（vitest）+ e2e（playwright）测试
