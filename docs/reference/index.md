@@ -4,5 +4,5 @@
 
 ## 运行实验
 
-- [WASM 数据库试验场](/playground/)
+- [WASM 数据库实验台](/playground/)
 - [WASM 成熟度目录](/playground/catalog)

@@ -36,6 +36,7 @@ const base = process.env.DOCS_BASE || '/';
 export default defineConfig({
   base,
   title: 'Hello SQL',
+  titleTemplate: ':title | SQL 与数据库手册',
   description: '数据库学习与工程选型（22 款可本地运行数据库 · WASM 实验 · Docker 工具 · 选型指南）',
   cleanUrls: true,
   lastUpdated: true,
@@ -70,7 +71,7 @@ export default defineConfig({
         ],
       },
       { text: '对比矩阵', link: '/matrix/' },
-      { text: '试验场', link: '/playground/' },
+      { text: '实验台', link: '/playground/' },
       { text: '参考资料', link: '/reference/' },
     ],
     sidebar: {
@@ -95,8 +96,8 @@ export default defineConfig({
       '/reference/': [{ text: '参考资料', items: [
         { text: '参考资料总览', link: '/reference/' },
       ] }],
-      '/playground/': [{ text: 'WASM 数据库实验室', items: [
-        { text: '统一工作台', link: '/playground/' },
+      '/playground/': [{ text: 'WASM 数据库实验台', items: [
+        { text: '实验台总览', link: '/playground/' },
         { text: 'SQLite WASM', link: '/playground/sqlite' },
         { text: 'DuckDB-Wasm', link: '/playground/duckdb' },
         { text: 'PGlite / PostgreSQL', link: '/playground/pglite' },

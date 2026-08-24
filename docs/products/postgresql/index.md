@@ -69,5 +69,5 @@ LIMIT 20;
 :::
 
 ::: tip 在线实验环境
-可在 [PostgreSQL (PGlite) 在线实验室](/playground/pglite) 直接在浏览器中编写并运行 PostgreSQL SQL 语句。
+可在 [PostgreSQL (PGlite) 在线工作台](/playground/pglite) 直接在浏览器中编写并运行 PostgreSQL SQL 语句。
 :::

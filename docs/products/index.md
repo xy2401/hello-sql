@@ -77,9 +77,9 @@
 
 | 数据库 | 实验环境 | 说明 |
 |--------|---------|------|
-| SQLite | [Playground](/playground/sqlite) | OPFS 持久化存储 |
+| SQLite | [在线工作台](/playground/sqlite) | OPFS 持久化存储 |
 | PostgreSQL | [PGlite](/playground/pglite) | WebAssembly 版本 |
 | DuckDB | [DuckDB-Wasm](/playground/duckdb) | 分析型 WASM |
 | SurrealDB | [SurrealDB WASM](/playground/surrealdb) | 多模型云原生 |
 
-详见 [WASM 实验室](/playground/catalog)。
+详见 [WASM 数据库实验台](/playground/catalog)。

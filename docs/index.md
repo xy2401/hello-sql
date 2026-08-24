@@ -1,9 +1,10 @@
 ---
 layout: home
+title: "Hello SQL"
 
 hero:
   name: "🗄️ Hello SQL"
-  text: "数据库学习、实验与选型"
+  text: "学习 SQL，并了解常用数据库的能力与差异。"
   tagline: "22 款可本地运行的数据库 · 浏览器实验 · Docker 工具证据 · 横向选型指南"
   image: /favicon.svg
   alt: Hello SQL - 数据库学习平台
@@ -12,7 +13,7 @@ hero:
       text: 探索产品库
       link: /products/
     - theme: alt
-      text: ⚡ WASM 实验室
+      text: ⚡ WASM 实验台
       link: /playground/
     - theme: alt
       text: 📊 横向对比矩阵
@@ -56,7 +57,7 @@ features:
 
 <a href="/playground/" style="text-decoration: none;">
   <div style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); padding: 20px; border-radius: 12px; height: 100%; transition: all 0.3s ease;">
-    <h3 style="margin: 0 0 8px 0; color: var(--vp-c-brand-1);">⚡ WASM 数据库实验室</h3>
+    <h3 style="margin: 0 0 8px 0; color: var(--vp-c-brand-1);">⚡ WASM 数据库实验台</h3>
     <p style="margin: 0; font-size: 0.875rem; color: var(--vp-c-text-2);">SQLite、DuckDB、PGlite、SurrealDB 在线编辑器实时试写 SQL，查看执行计划与结果集</p>
   </div>
 </a>
@@ -90,7 +91,7 @@ features:
 
 ---
 
-## 🧪 WASM 数据库实验室速览
+## 🧪 WASM 数据库实验台速览
 
 以下数据库可直接在浏览器中运行，无需安装任何软件：
 
@@ -143,7 +144,7 @@ npm run docs:dev          # http://localhost:3009
 
 环境要求：Node.js ≥ 18，推荐 Chrome/Firefox/Safari 最新版。
 
-可以从 [WASM 数据库实验室](/playground/) 直接开始运行示例。
+可以从 [WASM 数据库实验台](/playground/) 直接开始运行示例。
 
 
 ---
@@ -175,7 +176,7 @@ ORDER BY score DESC
 LIMIT 10;
 ```
 
-> 💡 **在线运行**：可在 [SQLite 在线实验室](/playground/sqlite) 直接执行并观察此 SQL 的结果集。
+> 💡 **在线运行**：可在 [SQLite 在线工作台](/playground/sqlite) 直接执行并观察此 SQL 的结果集。
 
 <a id="sql-joins"></a>
 
@@ -210,7 +211,7 @@ GROUP BY l.category
 ORDER BY enrollments DESC;
 ```
 
-> 💡 **在线运行**：可在 [SQLite 在线实验室](/playground/sqlite) 体验多表连接与条件聚合。
+> 💡 **在线运行**：可在 [SQLite 在线工作台](/playground/sqlite) 体验多表连接与条件聚合。
 
 <a id="sql-advanced-query"></a>
 
@@ -235,7 +236,7 @@ SELECT * FROM ranked
 ORDER BY category, category_rank;
 ```
 
-> 💡 **在线运行**：可在 [SQLite 在线实验室](/playground/sqlite) 执行窗口排名查询。
+> 💡 **在线运行**：可在 [SQLite 在线工作台](/playground/sqlite) 执行窗口排名查询。
 
 <a id="sql-schema"></a>
 
@@ -264,7 +265,7 @@ VALUES (1, 'alice@example.com', 'Alice');
 SELECT * FROM learners;
 ```
 
-> 💡 **在线运行**：可在 [SQLite 在线实验室](/playground/sqlite) 验证 DDL 与唯一约束。
+> 💡 **在线运行**：可在 [SQLite 在线工作台](/playground/sqlite) 验证 DDL 与唯一约束。
 
 <a id="sql-transactions"></a>
 
@@ -288,7 +289,7 @@ ROLLBACK;
 SELECT title, score FROM lessons WHERE category = 'SQL 基础';
 ```
 
-> 💡 **在线运行**：可在 [SQLite 在线实验室](/playground/sqlite) 验证事务原子回滚。
+> 💡 **在线运行**：可在 [SQLite 在线工作台](/playground/sqlite) 验证事务原子回滚。
 
 <a id="sql-indexes-explain"></a>
 
@@ -314,4 +315,4 @@ WHERE category = 'SQL 基础'
 ORDER BY score DESC;
 ```
 
-> 💡 **在线运行**：可在 [SQLite 在线实验室](/playground/sqlite) 查看执行计划与索引命中。
+> 💡 **在线运行**：可在 [SQLite 在线工作台](/playground/sqlite) 查看执行计划与索引命中。

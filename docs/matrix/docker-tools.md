@@ -18,6 +18,6 @@ description: 对比 22 个可本地运行数据库产品的容器形态、客户
 | 宽列 | Cassandra、ScyllaDB | `cqlsh`、`nodetool` | CQL 会话与 tracing |
 | 图 | Neo4j | `cypher-shell` | Cypher + `SHOW INDEXES` + `PROFILE` |
 | 时序 | InfluxDB | `influx` / HTTP | 固定 points、查询与 bucket 状态 |
-| 浏览器 | Browser Database | IndexedDB / Storage API | Docker 不适用，链接浏览器 Playground |
+| 浏览器 | Browser Database | IndexedDB / Storage API | Docker 不适用，链接浏览器实验台 |
 
 每个产品页展示自己的连接命令、查询会话规格、快照状态和明确限制。非 SQL 产品使用真实原生接口，不强行包装成 SQL。

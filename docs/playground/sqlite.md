@@ -3,7 +3,7 @@ pageClass: playground-page
 aside: false
 ---
 
-# SQLite WASM 实验室
+# SQLite WASM 工作台
 
 本页使用 `@sqlite.org/sqlite-wasm` 的 oo1 API。临时模式使用内存数据库；本地模式在 Worker 内启用 `opfs-sahpool`，因此不要求站点设置 COOP/COEP 响应头。
 

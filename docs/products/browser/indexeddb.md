@@ -13,7 +13,7 @@ IndexedDB 保存由结构化克隆算法支持的 JavaScript 值。数据库升�
 ## 页面内 Live
 
 ::: tip 在线实验环境
-可在 [IndexedDB 在线实验室](/playground/indexeddb) 交互式执行 IndexedDB 对象仓库与索引操作。
+可在 [IndexedDB 在线工作台](/playground/indexeddb) 交互式执行 IndexedDB 对象仓库与索引操作。
 :::
 
 规范：[Indexed Database API 3.0](https://www.w3.org/TR/IndexedDB/)。

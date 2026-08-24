@@ -3,7 +3,7 @@ pageClass: playground-page
 aside: false
 ---
 
-# PGlite / PostgreSQL WASM 实验室
+# PGlite / PostgreSQL WASM 工作台
 
 PGlite 是 PostgreSQL 的 WASM 构建。临时模式使用 `memory://`，持久模式使用 `idb://hello-sql-v1-pglite-{workspace}`。
 

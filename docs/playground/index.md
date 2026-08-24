@@ -3,7 +3,7 @@ pageClass: playground-page
 aside: false
 ---
 
-# WASM 数据库工作台
+# WASM 数据库实验台
 
 五个运行环境都在浏览器本地 Dedicated Worker 中初始化。切换引擎会关闭旧 Worker；SQL 只在点击“运行”或按 `Ctrl/⌘ + Enter` 时执行。
 

@@ -3,7 +3,7 @@ pageClass: playground-page
 aside: false
 ---
 
-# DuckDB-Wasm 实验室
+# DuckDB-Wasm 工作台
 
 DuckDB-Wasm 使用本地打包的 MVP/EH WASM 与浏览器 Worker。本站兼容 GitHub Pages，不依赖跨源隔离，因此采用单线程 bundle。
 

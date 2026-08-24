@@ -30,5 +30,5 @@ ORDER BY 1 DESC, total_revenue DESC;
 ```
 
 ::: tip 在线实验环境
-可在 [DuckDB 在线实验室](/playground/duckdb) 直接在浏览器中执行高速列式分析查询。
+可在 [DuckDB 在线工作台](/playground/duckdb) 直接在浏览器中执行高速列式分析查询。
 :::

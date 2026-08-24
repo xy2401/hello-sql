@@ -3,7 +3,7 @@ pageClass: playground-page
 aside: false
 ---
 
-# SurrealDB WASM 实验室
+# SurrealDB WASM 工作台
 
 SurrealDB 是多模型数据库。本页使用官方 JavaScript SDK 和 WASM engine，临时模式连接 `mem://`，持久模式连接 `indxdb://`。
 
