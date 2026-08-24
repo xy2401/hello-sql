@@ -31,15 +31,17 @@ function databaseDirectoryItems(items: readonly { name: string; link: string }[]
   }));
 }
 
+const base = process.env.DOCS_BASE || '/';
+
 export default defineConfig({
-  base: '/',
+  base,
   title: 'Hello SQL',
   description: '数据库学习与工程选型（22 款可本地运行数据库 · WASM 实验 · Docker 工具 · 选型指南）',
   cleanUrls: true,
   lastUpdated: true,
   head: [
     ['meta', { name: 'theme-color', content: '#0f766e' }],
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` }],
   ],
   vite: {
     plugins: [splitDuckDbWasm()],
