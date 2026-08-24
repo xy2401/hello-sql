@@ -14,7 +14,7 @@ function databaseProductSidebar(name: string, link: string) {
         { text: '概览', link: `${link}/` },
         { text: '核心知识', link: `${link}/core-concepts` },
         { text: '版本演进', link: `${link}/versions` },
-        { text: 'Docker 工具', link: `${link}/DockerTooling` },
+        { text: 'Docker 验证', link: `${link}/DockerTooling` },
       ],
     },
   ];
@@ -37,7 +37,7 @@ export default defineConfig({
   base,
   title: 'Hello SQL',
   titleTemplate: ':title | SQL 与数据库手册',
-  description: '数据库学习与工程选型（22 款可本地运行数据库 · WASM 实验 · Docker 工具 · 选型指南）',
+  description: '数据库学习与工程选型（22 款可本地运行数据库 · WASM 实验 · Docker 验证 · 选型指南）',
   cleanUrls: true,
   lastUpdated: true,
   head: [

@@ -5,7 +5,7 @@ title: "Hello SQL"
 hero:
   name: "🗄️ Hello SQL"
   text: "学习 SQL，并了解常用数据库的能力与差异。"
-  tagline: "22 款可本地运行的数据库 · 浏览器实验 · Docker 工具证据 · 横向选型指南"
+  tagline: "22 款可本地运行的数据库 · 浏览器实验 · Docker 验证证据 · 横向选型指南"
   image: /favicon.svg
   alt: Hello SQL - 数据库学习平台
   actions:
