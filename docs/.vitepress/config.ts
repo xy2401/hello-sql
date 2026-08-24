@@ -70,9 +70,9 @@ export default defineConfig({
           })),
         ],
       },
-      { text: '对比矩阵', link: '/matrix/' },
-      { text: '实验台', link: '/playground/' },
-      { text: '参考资料', link: '/reference/' },
+      { text: '🧪 实验台', link: '/playground/' },
+      { text: '⚖️ 对比矩阵', link: '/matrix/' },
+      { text: '📚 参考资料', link: '/reference/' },
     ],
     sidebar: {
       ...databaseProductSidebars,
