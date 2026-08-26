@@ -62,7 +62,7 @@ export default defineConfig({
         link: `${database.link}/`,
       })),
       {
-        text: '更多',
+        text: '📦 更多',
         items: [
           ...moreDatabases.map(database => ({
             text: database.name,
