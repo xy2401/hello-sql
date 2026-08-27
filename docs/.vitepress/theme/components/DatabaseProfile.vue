@@ -44,7 +44,7 @@
     <h2 id="further-reading">深入学习</h2>
     <div class="profile-columns">
       <a class="profile-section topic-card" href="./core-concepts"><h3 id="core-concepts" class="ignore-header">核心知识</h3><p>建立 {{ profile.name }} 的存储、查询、事务与扩展心智模型。</p></a>
-      <a class="profile-section topic-card" href="./versions"><h3 id="version-evolution" class="ignore-header">版本演进</h3><p>理解版本线、关键变化、升级影响和官方发布说明。</p></a>
+      <a class="profile-section topic-card" href="./version/"><h3 id="version-evolution" class="ignore-header">版本演进</h3><p>理解版本线、关键变化、升级影响和官方发布说明。</p></a>
       <a class="profile-section topic-card" href="./DockerTooling"><h3 id="docker-tooling" class="ignore-header">Docker 验证</h3><p>查看 {{ profile.name }} 的构建/运行镜像与验证证据快照。</p></a>
       <a class="profile-section topic-card" href="/matrix/connection-strings"><h3 id="connection-strings" class="ignore-header">连接串对比</h3><p>对比协议、端口、TLS、驱动与命名空间写法。</p></a>
     </div>

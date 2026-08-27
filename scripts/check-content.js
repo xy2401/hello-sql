@@ -64,7 +64,7 @@ if (databaseDirectories.length !== 22) errors.push(`独立数据库目录数量�
 for (const directory of databaseDirectories) {
   const directoryName = path.basename(directory);
   const id = directoryName === 'mssqlserver' ? 'sql-server' : directoryName;
-  for (const page of ['index.md', 'core-concepts.md', 'versions.md']) {
+  for (const page of ['index.md', 'core-concepts.md', 'version/index.md']) {
     if (!fs.existsSync(path.join(directory, page))) errors.push(`${relative(directory)} 缺少 ${page}`);
   }
   if (!guideData.includes(`${id}:`) && !guideData.includes(`'${id}':`)) errors.push(`${relative(directory)} 缺少核心知识与版本资料`);
@@ -98,7 +98,7 @@ for (const file of markdownFiles.filter((item) => item.includes(`${path.sep}prod
 
 const requiredPages = [
   'index.md', 'reference/index.md', 'products/browser/index.md', 'products/browser/core-concepts.md',
-  'products/browser/versions.md', 'products/browser/indexeddb.md',
+  'products/browser/version/index.md', 'products/browser/indexeddb.md',
   'products/browser/opfs.md', 'products/browser/local-first.md', 'playground/sqlite.md',
   'playground/duckdb.md', 'playground/pglite.md', 'playground/surrealdb.md', 'playground/indexeddb.md',
   'matrix/sql-dialects.md', 'matrix/browser-wasm.md', 'matrix/connection-strings.md',
