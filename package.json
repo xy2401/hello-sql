@@ -18,7 +18,9 @@
     "check:docker-catalog": "node scripts/check-docker-catalog.js",
     "check:content": "node scripts/check-content.js",
     "check:versions": "node scripts/check-version-docs.js",
-    "check": "npm run check:versions && npm run check:content && npm run check:docker-catalog && npm run typecheck && npm run test && npm run docs:build"
+    "check:installs": "node scripts/check-install-docs.js",
+    "check:cli": "node scripts/check-cli-docs.js",
+    "check": "npm run check:versions && npm run check:installs && npm run check:cli && npm run check:content && npm run check:docker-catalog && npm run typecheck && npm run test && npm run docs:build"
   },
   "dependencies": {
     "@codemirror/lang-javascript": "6.2.5",

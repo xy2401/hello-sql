@@ -171,6 +171,8 @@ function databaseProductSidebar(id: string, name: string, link: string) {
       text: name,
       items: [
         { text: '概览', link: `${link}/` },
+        { text: '安装与切换', link: `${link}/install` },
+        { text: '连接与执行', link: `${link}/cli` },
         { text: '核心知识', link: `${link}/core-concepts` },
         { text: '版本演进', link: `${link}/version/`, collapsed: false, items: databaseVersionItems[id] },
         { text: 'Docker 验证', link: `${link}/DockerTooling` },
@@ -245,6 +247,8 @@ export default defineConfig({
         text: 'Browser Database',
         items: [
           { text: '数据库总览', link: '/products/browser/' },
+          { text: '安装与切换', link: '/products/browser/install' },
+          { text: '调用与调试', link: '/products/browser/cli' },
           { text: '核心知识', link: '/products/browser/core-concepts' },
           { text: '版本演进', link: '/products/browser/version/', collapsed: false, items: databaseVersionItems.browser },
           { text: 'IndexedDB 原理与实践', link: '/products/browser/indexeddb' },
