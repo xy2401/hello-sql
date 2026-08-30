@@ -1,4 +1,4 @@
-# ClickHouse 概览
+# ClickHouse 总览
 
 ClickHouse 是一款专为实时海量数据在线分析处理（Real-time OLAP）打造的高性能分布式开源列式数据库系统，能够在上千亿级数据规模下实现亚秒级 SQL 交互式查询。
 

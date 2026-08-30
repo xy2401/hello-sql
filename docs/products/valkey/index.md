@@ -1,4 +1,4 @@
-# Valkey 概览
+# Valkey 总览
 
 Valkey 是由 Linux 基金会主导，AWS、Google Cloud、Oracle、爱立信等各大科技公司联合成立的高性能开源内存键值存储项目。它采用极其宽松友好的 **BSD-3-Clause** 开源协议，是 Redis 7.2 开源代码库的正统开源演进分支。
 

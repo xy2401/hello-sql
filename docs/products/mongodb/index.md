@@ -1,4 +1,4 @@
-# MongoDB 概览
+# MongoDB 总览
 
 MongoDB 是一款成熟、高度灵活的通用分布式文档型 NoSQL 数据库系统。它采用类似 JSON 的 **BSON（二进制 JSON）** 格式存储数据，原生支持动态 Schema、多层嵌套文档、多键索引与强大的聚合分析管道（Aggregation Pipeline）。
 

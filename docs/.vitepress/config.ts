@@ -4,6 +4,13 @@ import { allDatabases } from './theme/data/databaseNavigation';
 
 const featuredDatabaseIds = new Set(['postgresql', 'mysql', 'duckdb', 'mongodb', 'redis']);
 const featuredDatabases = allDatabases.filter(database => featuredDatabaseIds.has(database.id));
+
+function markProductPage(pageData: any) {
+  if (!pageData.relativePath.startsWith('products/')) return;
+  const pageClasses = String(pageData.frontmatter.pageClass ?? '').split(/\s+/).filter(Boolean);
+  pageData.frontmatter.pageClass = [...new Set([...pageClasses, 'product-doc-page'])].join(' ');
+}
+
 const databaseVersionItems = {
   'browser': [
     { text: "OPFS + SyncAccessHandle 普及", link: '/products/browser/version/opfs-syncaccesshandle' },
@@ -212,11 +219,14 @@ export default defineConfig({
     },
     worker: { format: 'es' },
   },
+  transformPageData: markProductPage,
   themeConfig: {
     logo: '/favicon.svg',
     siteTitle: 'Hello SQL',
     sidebarMenuLabel: '数据库',
-    outline: { level: [2, 3], label: '本页导航' },
+    outline: { level: [2, 3], label: '本页目录' },
+    lastUpdated: { text: '最后更新' },
+    docFooter: { prev: '上一篇', next: '下一篇' },
     nav: [
       ...featuredDatabases.map(database => ({
         text: database.name,

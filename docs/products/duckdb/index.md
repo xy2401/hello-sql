@@ -1,4 +1,4 @@
-# DuckDB 概览
+# DuckDB 总览
 
 DuckDB 是一款专为在线分析处理（OLAP）设计的进程内（In-process）列式 SQL 数据库引擎，被广泛誉为“分析领域的 SQLite”。它无需独立守护进程即可直接嵌入在 Python、R、Node.js、C++ 或浏览器环境中使用。
 

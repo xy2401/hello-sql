@@ -1,4 +1,4 @@
-# Browser Database 概览
+# Browser Database 总览
 
 随着 WebAssembly（WASM）与现代 Web API 的演进，浏览器端已具备运行完整独立数据库的能力，成为**本地优先（Local-First）**架构的核心基石。
 

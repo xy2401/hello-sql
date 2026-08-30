@@ -12,6 +12,7 @@ import PlaygroundContextNav from './components/PlaygroundContextNav.vue';
 import DatabaseCatalogGrid from './components/DatabaseCatalogGrid.vue';
 import DatabaseLogo from './components/DatabaseLogo.vue';
 import DockerTooling from './components/DockerTooling.vue';
+import './doc-baseline.css';
 import './styles.css';
 
 export default {
