@@ -24,6 +24,7 @@ export class EngineWorkerClient implements DatabaseEngineAdapter {
   private worker: Worker;
   private pending = new Map<string, Pending>();
   private initOptions?: EngineInitOptions;
+  private disposed = false;
 
   constructor(readonly engineId: EngineId, private readonly timeoutMs = 15_000) {
     this.metadata = engineCatalog[engineId];
@@ -54,6 +55,7 @@ export class EngineWorkerClient implements DatabaseEngineAdapter {
   }
 
   private request<T>(type: string, payload?: unknown, transfer: Transferable[] = []): Promise<T> {
+    if (this.disposed) return Promise.reject(new Error('运行环境已关闭，请重新连接'));
     const requestId = crypto.randomUUID();
     const timeoutMs = this.engineId === 'duckdb' && (type === 'init' || type === 'reset')
       ? 90_000
@@ -63,14 +65,23 @@ export class EngineWorkerClient implements DatabaseEngineAdapter {
         this.pending.delete(requestId);
         const action = type === 'init' || type === 'reset' ? '初始化' : '执行';
         reject(new Error(`${action}超过 ${timeoutMs / 1000} 秒，运行环境已重启`));
-        await this.restart();
+        try { await this.restart(); } catch (error) {
+          this.rejectAll(error instanceof Error ? error : new Error(String(error)));
+        }
       }, timeoutMs);
       this.pending.set(requestId, { resolve: resolve as (value: unknown) => void, reject, timer });
-      this.worker.postMessage({ requestId, type, payload }, transfer);
+      try {
+        this.worker.postMessage({ requestId, type, payload }, transfer);
+      } catch (error) {
+        window.clearTimeout(timer);
+        this.pending.delete(requestId);
+        reject(error);
+      }
     });
   }
 
   private async restart() {
+    if (this.disposed) return;
     this.worker.terminate();
     this.rejectAll(new Error('运行环境已重启'));
     this.worker = this.createWorker();
@@ -105,9 +116,17 @@ export class EngineWorkerClient implements DatabaseEngineAdapter {
   }
 
   async close() {
+    if (this.disposed) return;
     try { await this.request('close'); } finally {
-      this.worker.terminate();
-      this.rejectAll(new Error('运行环境已关闭'));
+      this.dispose();
     }
+  }
+
+  // Failed initialization cannot reliably answer a graceful close request.
+  dispose() {
+    if (this.disposed) return;
+    this.disposed = true;
+    this.worker.terminate();
+    this.rejectAll(new Error('运行环境已关闭'));
   }
 }

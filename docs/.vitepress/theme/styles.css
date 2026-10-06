@@ -1,7 +1,18 @@
 :root {
   --vp-c-brand-1: #0f766e;
-  --vp-c-brand-2: #0d9488;
-  --vp-c-brand-3: #14b8a6;
+  --vp-c-brand-2: #115e59;
+  --vp-c-brand-3: #0f766e;
+  --doc-action-bg: #0f766e;
+  --doc-action-hover-bg: #115e59;
+  --doc-action-active-bg: #134e4a;
+}
+
+.dark {
+  --vp-c-brand-1: #5eead4;
+  --vp-c-brand-2: #99f6e4;
+}
+
+:root {
   --vp-c-brand-soft: rgb(20 184 166 / 14%);
   --sql-ink: #102a2a;
   --sql-muted: #5e7573;
@@ -166,7 +177,9 @@
 .sql-hero h1 { max-width: 900px; margin: .7rem 0 1rem; font-size: clamp(2.5rem, 6vw, 5.2rem); line-height: .98; }
 .sql-hero .lead { max-width: 760px; color: var(--vp-c-text-2); font-size: 1.15rem; line-height: 1.8; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.5rem; }
-.hero-actions a { padding: .72rem 1rem; border-radius: .7rem; background: var(--vp-c-brand-1); color: var(--sql-on-accent); font-weight: 750; text-decoration: none; }
+.hero-actions a { padding: .72rem 1rem; border-radius: .7rem; background: var(--doc-action-bg); color: var(--sql-on-accent); font-weight: 750; text-decoration: none; }
+.hero-actions a:not(.secondary):hover { background: var(--doc-action-hover-bg); }
+.hero-actions a:not(.secondary):active { background: var(--doc-action-active-bg); }
 .hero-actions a.secondary { border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg); color: var(--vp-c-text-1); }
 
 .feature-grid, .database-grid, .path-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .9rem; margin: 1.2rem 0 2rem; }
@@ -176,7 +189,7 @@
 .database-card a, .path-card a { color: inherit; text-decoration: none; }
 .database-card:hover, .path-card:hover { border-color: var(--vp-c-brand-2); transform: translateY(-1px); }
 
-.profile-hero { margin: 1rem 0 1.6rem; padding: 1.35rem; border: 1px solid var(--sql-line); border-radius: 1rem; background: linear-gradient(135deg, var(--sql-panel), var(--vp-c-bg)); }
+.profile-hero { margin: var(--doc-card-spacing) 0; padding: 1.35rem; border: 1px solid var(--vp-c-divider); border-radius: var(--doc-card-radius); background: linear-gradient(135deg, var(--sql-panel), var(--vp-c-bg)); }
 .profile-heading { display: flex; align-items: center; gap: 1rem; }
 .profile-heading h1 { margin: .15rem 0 0; }
 .profile-kicker { color: var(--vp-c-brand-1); font-size: .76rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }

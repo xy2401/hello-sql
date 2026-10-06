@@ -13,7 +13,7 @@ hero:
       text: 探索产品库
       link: /products/
     - theme: alt
-      text: ⚡ WASM 实验台
+      text: ⚡ WASM 数据库实验台
       link: /playground/
     - theme: alt
       text: 📊 横向对比矩阵
@@ -34,6 +34,10 @@ features:
     details: IndexedDB 原理与实践、OPFS 存储配额、离线优先架构与本地同步机制——构建下一代 Web 应用的数据层。
 ---
 
+<script setup>
+import { withBase } from "vitepress";
+</script>
+
 ## 🎯 典型数据库快速入口
 
 前 5 个为高频使用场景的代表性产品，其余 17 款可在导航栏「更多」下拉中查看完整列表。
@@ -48,21 +52,21 @@ features:
 
 <div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 24px;">
 
-<a href="/products/" style="text-decoration: none;">
+<a :href="withBase('/products/')" style="text-decoration: none;">
   <div style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); padding: 20px; border-radius: 12px; height: 100%; transition: all 0.3s ease;">
     <h3 style="margin: 0 0 8px 0; color: var(--vp-c-brand-1);">📚 查看所有 22 款数据库</h3>
     <p style="margin: 0; font-size: 0.875rem; color: var(--vp-c-text-2);">包括 Oracle、MariaDB、SQLite、SQL Server、ClickHouse、TiDB、CockroachDB、CouchDB、Valkey、Cassandra、ScyllaDB、Elasticsearch、OpenSearch、Neo4j、InfluxDB、TimescaleDB 等可自托管、嵌入式或浏览器本地运行的产品</p>
   </div>
 </a>
 
-<a href="/playground/" style="text-decoration: none;">
+<a :href="withBase('/playground/')" style="text-decoration: none;">
   <div style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); padding: 20px; border-radius: 12px; height: 100%; transition: all 0.3s ease;">
     <h3 style="margin: 0 0 8px 0; color: var(--vp-c-brand-1);">⚡ WASM 数据库实验台</h3>
     <p style="margin: 0; font-size: 0.875rem; color: var(--vp-c-text-2);">SQLite、DuckDB、PGlite、SurrealDB 在线编辑器实时试写 SQL，查看执行计划与结果集</p>
   </div>
 </a>
 
-<a href="/products/browser/" style="text-decoration: none;">
+<a :href="withBase('/products/browser/')" style="text-decoration: none;">
   <div style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); padding: 20px; border-radius: 12px; height: 100%; transition: all 0.3s ease;">
     <h3 style="margin: 0 0 8px 0; color: var(--vp-c-brand-1);">🌐 浏览器数据层专题</h3>
     <p style="margin: 0; font-size: 0.875rem; color: var(--vp-c-text-2);">IndexedDB 原理与实践、OPFS 存储配额、离线优先架构与本地同步机制</p>
@@ -142,7 +146,7 @@ npm install
 npm run docs:dev          # http://localhost:3009
 ```
 
-环境要求：Node.js ≥ 18，推荐 Chrome/Firefox/Safari 最新版。
+环境要求：Node.js 20.19+（20.x）或22.16+，与 `package.json` 的 engines 一致。独立启动默认地址为 http://localhost:5173，以终端输出为准；hello-world 根目录的 `start-all.ps1` 为 SQL 固定使用5174。浏览器需支持本页所用的 WebAssembly 和存储 API。
 
 可以从 [WASM 数据库实验台](/playground/) 直接开始运行示例。
 

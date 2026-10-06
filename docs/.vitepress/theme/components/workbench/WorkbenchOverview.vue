@@ -5,7 +5,7 @@
         <div><p>{{ metadata.label }} / {{ selectedNode.type === 'store' ? '对象仓库' : '数据表' }}</p><h4>{{ selectedNode.name }}</h4></div>
         <div class="overview-actions">
           <button type="button" @click="$emit('insertQuery', selectedNode)">插入查询</button>
-          <button v-if="isQueryableObject(selectedNode)" class="primary" type="button" :disabled="busy" @click="$emit('preview', selectedNode)">预览前 100 行</button>
+          <button v-if="isQueryableObject(selectedNode)" class="primary" type="button" :disabled="busy || !ready" @click="$emit('preview', selectedNode)">预览前 100 行</button>
         </div>
       </div>
       <div class="object-layout">
@@ -45,14 +45,14 @@
       </div>
       <div class="database-actions">
         <input ref="fileInput" class="visually-hidden" type="file" :accept="metadata.capabilities.importFormats.join(',')" @change="selectFile">
-        <button v-if="metadata.capabilities.importFormats.length" type="button" :disabled="busy" @click="fileInput?.click()">导入文件</button>
-        <button v-if="canExportDatabase" type="button" :disabled="busy" @click="$emit('exportDatabase')">导出数据库</button>
-        <button type="button" :disabled="busy" @click="$emit('refresh')">刷新对象</button>
+        <button v-if="metadata.capabilities.importFormats.length" type="button" :disabled="busy || !ready" @click="fileInput?.click()">导入文件</button>
+        <button v-if="canExportDatabase" type="button" :disabled="busy || !ready" @click="$emit('exportDatabase')">导出数据库</button>
+        <button type="button" :disabled="busy || !ready" @click="$emit('refresh')">刷新对象</button>
         <template v-if="resetArmed">
           <button type="button" @click="resetArmed = false">取消</button>
-          <button class="danger" type="button" :disabled="busy" @click="confirmReset">确认重置</button>
+          <button class="danger" type="button" :disabled="busy || !ready" @click="confirmReset">确认重置</button>
         </template>
-        <button v-else class="danger-ghost" type="button" :disabled="busy" @click="resetArmed = true">重置样例库</button>
+        <button v-else class="danger-ghost" type="button" :disabled="busy || !ready" @click="resetArmed = true">重置样例库</button>
       </div>
     </template>
   </section>
@@ -75,6 +75,7 @@ defineProps<{
   workspaceId: string;
   canExportDatabase: boolean;
   busy: boolean;
+  ready: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -113,13 +114,19 @@ function confirmReset() {
 button { border: 1px solid var(--vp-c-divider); border-radius: .45rem; padding: .42rem .65rem; background: var(--vp-c-bg); color: var(--vp-c-text-2); cursor: pointer; font-size: .7rem; font-weight: 750; }
 button:hover:not(:disabled) { border-color: var(--vp-c-brand-2); color: var(--vp-c-brand-1); }
 button:disabled { cursor: wait; opacity: .55; }
-button.primary { border-color: var(--vp-c-brand-1); background: var(--vp-c-brand-1); color: var(--sql-on-accent); }
-button.danger { border-color: var(--sql-danger); background: var(--sql-danger); color: var(--sql-on-accent); }
+button.primary { border-color: var(--vp-c-brand-1); background: var(--doc-action-bg); color: var(--sql-on-accent); }
+button.primary:hover:not(:disabled) { background: var(--doc-action-hover-bg); color: var(--sql-on-accent); }
+button.primary:active:not(:disabled) { background: var(--doc-action-active-bg); }
+button.danger { border-color: var(--doc-danger-bg); background: var(--doc-danger-bg); color: var(--sql-on-accent); }
+button.danger:hover:not(:disabled) { background: var(--doc-danger-hover-bg); color: var(--sql-on-accent); }
+button.danger:active:not(:disabled) { background: var(--doc-danger-active-bg); }
 button.danger-ghost { color: var(--sql-danger); }
 .status-pill { display: inline-flex !important; flex: 0 0 auto; align-items: center; gap: .4rem; margin: 0 !important; border: 1px solid var(--vp-c-divider); border-radius: 999px; padding: .35rem .55rem; background: var(--vp-c-bg); font-size: .68rem !important; font-weight: 750; }
 .status-pill i { width: .45rem; height: .45rem; border-radius: 50%; background: var(--sql-status-idle); }
 .status-pill.ready i { background: var(--sql-status-ready); box-shadow: 0 0 0 4px var(--sql-status-ring); }
 .status-pill.busy i { background: var(--sql-status-busy); }
+.status-pill.failed { color: var(--doc-danger-text); }
+.status-pill.failed i { background: var(--doc-danger-text); }
 .overview-facts { display: grid; grid-template-columns: repeat(3, minmax(130px, 1fr)); gap: .65rem; margin-top: 1rem; }
 .overview-facts div { padding: .75rem; border: 1px solid var(--sql-line); border-radius: .65rem; background: var(--sql-panel); }
 .overview-facts span { display: block; color: var(--vp-c-text-3); font-size: .62rem; }

@@ -6,10 +6,13 @@
           <DatabaseLogo :id="metadata.brandId" :size="32" />
           <div><p>{{ metadata.runtime }}</p><h3>{{ workbenchTitle }}</h3></div>
         </div>
-        <span class="runtime-status" :class="statusClass"><i />{{ statusText }}</span>
+        <span class="runtime-status" :class="statusClass" role="status" aria-live="polite"><i />{{ statusText }}</span>
       </header>
 
-      <div v-if="runtimeWarning" class="runtime-warning" role="status">{{ runtimeWarning }}</div>
+      <div v-if="runtimeWarning" class="runtime-warning" :role="connectionState === 'failed' ? 'alert' : 'status'">
+        <span>{{ runtimeWarning }}</span>
+        <button v-if="connectionState === 'failed'" type="button" :disabled="busy" @click="initializeClient">重新连接</button>
+      </div>
 
       <div class="manager-shell">
         <div class="workbench-center">
@@ -36,6 +39,7 @@
               :workspace-id="workspaceId"
               :can-export-database="canExportDatabase"
               :busy="busy"
+              :ready="ready"
               @insert-query="insertObjectQuery"
               @preview="previewObject"
               @set-persistence="setPersistence"
@@ -66,7 +70,7 @@
             :error-message="errorMessage"
             :history="history"
             :capabilities="capabilityRows"
-            :can-export-database="canExportDatabase"
+            :can-export-database="canExportDatabase && ready"
             :busy="busy"
             @select-tab="activeResultTab = $event"
             @restore-history="restoreHistory"
@@ -114,6 +118,7 @@ const persistLocally = ref(false);
 const workspaceId = ref('main');
 const busy = ref(false);
 const ready = ref(false);
+const connectionState = ref<'idle' | 'connecting' | 'ready' | 'failed'>('idle');
 const runtimeWarning = ref('');
 const explorerMessage = ref('');
 const errorMessage = ref('');
@@ -135,8 +140,8 @@ const editorTheme = new Compartment();
 const metadata = computed(() => engineCatalog[selectedEngine.value]);
 const workbenchTitle = computed(() => props.title || `${metadata.value.label} 数据库工作台`);
 const editorLabel = computed(() => metadata.value.editorLanguage === 'javascript' ? 'JavaScript / IndexedDB' : metadata.value.editorLanguage === 'surrealql' ? 'SurrealQL' : 'SQL 查询');
-const statusText = computed(() => busy.value ? '运行中' : ready.value ? '已连接' : '等待初始化');
-const statusClass = computed(() => busy.value ? 'busy' : ready.value ? 'ready' : 'idle');
+const statusText = computed(() => connectionState.value === 'failed' ? '连接失败' : connectionState.value === 'connecting' ? '连接中' : busy.value ? '运行中' : ready.value ? '已连接' : '等待初始化');
+const statusClass = computed(() => connectionState.value === 'failed' ? 'failed' : busy.value ? 'busy' : ready.value ? 'ready' : 'idle');
 const activeResult = computed(() => [...results.value].reverse().find((result) => result.rows.length) || results.value.at(-1));
 const canExportDatabase = computed(() => ['sqlite', 'pglite', 'indexeddb'].includes(selectedEngine.value));
 const persistenceLabel = computed(() => persistLocally.value ? metadata.value.capabilities.persistenceLabel : '内存工作区');
@@ -203,8 +208,10 @@ function createEditor(source: string) {
 }
 
 async function initializeClient() {
+  if (busy.value) return;
   busy.value = true;
   ready.value = false;
+  connectionState.value = 'connecting';
   runtimeWarning.value = '';
   explorerMessage.value = '';
   errorMessage.value = '';
@@ -219,8 +226,13 @@ async function initializeClient() {
     });
     applyStatus(status);
     ready.value = true;
+    connectionState.value = 'ready';
     await refreshSchema(false);
   } catch (error) {
+    client?.dispose();
+    client = undefined;
+    ready.value = false;
+    connectionState.value = 'failed';
     explorerMessage.value = `连接失败：${messageOf(error)}`;
     runtimeWarning.value = explorerMessage.value;
   } finally {
@@ -443,7 +455,13 @@ onBeforeUnmount(() => {
 .runtime-status i { width: .42rem; height: .42rem; border-radius: 50%; background: var(--sql-status-idle); }
 .runtime-status.ready i { background: var(--sql-status-ready); box-shadow: 0 0 0 4px var(--sql-status-ring); }
 .runtime-status.busy i { background: var(--sql-status-busy); animation: pulse 1s infinite; }
-.runtime-warning { padding: .5rem .8rem; border-bottom: 1px solid var(--sql-warning-border); background: var(--sql-warning-bg); color: var(--sql-warning-text); font-size: .7rem; }
+.runtime-status.failed { color: var(--doc-danger-text); }
+.runtime-status.failed i { background: var(--doc-danger-text); }
+.runtime-warning { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; padding: .5rem .8rem; border-bottom: 1px solid var(--sql-warning-border); background: var(--sql-warning-bg); color: var(--sql-warning-text); font-size: .7rem; }
+.runtime-warning span { flex: 1 1 240px; overflow-wrap: anywhere; }
+.runtime-warning button { flex: 0 0 auto; background: var(--doc-action-bg); color: var(--doc-action-text); }
+.runtime-warning button:hover:not(:disabled) { background: var(--doc-action-hover-bg); color: var(--doc-action-text); }
+.runtime-warning button:active:not(:disabled) { background: var(--doc-action-active-bg); }
 .manager-shell { min-height: 650px; }
 .workbench-center { min-width: 0; }
 .main-tabs { display: flex; min-height: 3rem; align-items: end; gap: .15rem; padding: 0 .7rem; border-bottom: 1px solid var(--vp-c-divider); background: var(--sql-panel); }
@@ -463,7 +481,9 @@ button:disabled { cursor: wait; opacity: .55; }
 .pane-toolbar small { color: var(--sql-editor-gutter-text); font-size: .59rem; }
 .toolbar-actions { display: flex; gap: .35rem; }
 .toolbar-actions button { border-color: var(--sql-line); background: var(--sql-editor-toolbar-button); color: var(--sql-editor-text); }
-.run-button { border-color: var(--vp-c-brand-1) !important; background: var(--vp-c-brand-1) !important; color: var(--sql-on-accent) !important; }
+.run-button { border-color: var(--doc-action-bg) !important; background: var(--doc-action-bg) !important; color: var(--sql-on-accent) !important; }
+.run-button:hover:not(:disabled) { background: var(--doc-action-hover-bg) !important; }
+.run-button:active:not(:disabled) { background: var(--doc-action-active-bg) !important; }
 .query-editor { height: 100%; min-height: 0; overflow: hidden; }
 @keyframes pulse { 50% { opacity: .35; } }
 @media (max-width: 840px) {

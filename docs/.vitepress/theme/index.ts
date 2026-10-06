@@ -1,3 +1,4 @@
+import { installUiLabels } from './ui-labels';
 import DefaultTheme from 'vitepress/theme';
 import type { Theme } from 'vitepress';
 import { h } from 'vue';
@@ -22,6 +23,7 @@ export default {
     'doc-before': () => h(PlaygroundContextNav),
   }),
   enhanceApp({ app }) {
+    installUiLabels(app);
     app.component('DatabaseProfile', DatabaseProfile);
     app.component('DatabaseWorkbench', DatabaseWorkbench);
     app.component('EngineSupportTable', EngineSupportTable);

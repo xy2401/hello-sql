@@ -1,5 +1,6 @@
 import sqlite3InitModule from '@sqlite.org/sqlite-wasm';
 import { exposeWorker, normalizeRows } from '../workerHost';
+import { measureSqliteChanges } from '../sqliteChanges';
 import type { EngineInitOptions, EngineStatus, ExecutionResult } from '../types';
 
 let sqlite3: any;
@@ -115,11 +116,13 @@ async function initialize(next: EngineInitOptions): Promise<EngineStatus> {
 function execute(payload: { source: string; maxRows: number }): ExecutionResult[] {
   const started = performance.now();
   const rows: Record<string, unknown>[] = [];
-  db.exec({ sql: payload.source, rowMode: 'object', resultRows: rows });
+  const affectedRows = measureSqliteChanges(db, () => {
+    db.exec({ sql: payload.source, rowMode: 'object', resultRows: rows });
+  });
   const normalized = normalizeRows(rows, payload.maxRows);
   return [{
     ...normalized,
-    affectedRows: db.changes(true),
+    affectedRows,
     elapsedMs: performance.now() - started,
     message: rows.length ? `${rows.length} 行结果` : '语句执行成功',
   }];

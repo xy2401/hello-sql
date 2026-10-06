@@ -1,3 +1,4 @@
+import { sharedThemeLabels } from './shared-ui';
 import { defineConfig } from 'vitepress';
 import { splitDuckDbWasm } from './plugins/splitDuckDbWasm';
 import { allDatabases } from './theme/data/databaseNavigation';
@@ -202,6 +203,7 @@ function databaseDirectoryItems(items: readonly { name: string; link: string }[]
 const base = process.env.DOCS_BASE || '/';
 
 export default defineConfig({
+  lang: 'zh-CN',
   base,
   title: 'Hello SQL',
   titleTemplate: ':title | SQL 与数据库手册',
@@ -221,9 +223,9 @@ export default defineConfig({
   },
   transformPageData: markProductPage,
   themeConfig: {
+    ...sharedThemeLabels,
     logo: '/favicon.svg',
     siteTitle: 'Hello SQL',
-    sidebarMenuLabel: '数据库',
     outline: { level: [2, 3], label: '本页目录' },
     lastUpdated: { text: '最后更新' },
     docFooter: { prev: '上一篇', next: '下一篇' },
@@ -241,7 +243,7 @@ export default defineConfig({
           })),
         ],
       },
-      { text: '🧪 实验台', link: '/playground/' },
+      { text: 'WASM 数据库实验台', link: '/playground/' },
       { text: '⚖️ 对比矩阵', link: '/matrix/' },
       { text: '📚 参考资料', link: '/reference/' },
     ],
@@ -270,7 +272,7 @@ export default defineConfig({
         { text: '参考资料总览', link: '/reference/' },
       ] }],
       '/playground/': [{ text: 'WASM 数据库实验台', items: [
-        { text: '实验台总览', link: '/playground/' },
+        { text: 'WASM 数据库实验台', link: '/playground/' },
         { text: 'SQLite WASM', link: '/playground/sqlite' },
         { text: 'DuckDB-Wasm', link: '/playground/duckdb' },
         { text: 'PGlite / PostgreSQL', link: '/playground/pglite' },
@@ -294,6 +296,5 @@ export default defineConfig({
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2026 Hello SQL',
     },
-    search: { provider: 'local' },
   },
 });
