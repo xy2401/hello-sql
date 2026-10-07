@@ -143,10 +143,10 @@ import { withBase } from "vitepress";
 ```bash
 git clone https://github.com/xy2401/hello-sql.git && cd hello-sql
 npm install
-npm run docs:dev          # http://localhost:3009
+npm run docs:dev          # 默认 http://127.0.0.1:5173，以终端输出为准
 ```
 
-环境要求：Node.js 20.19+（20.x）或22.16+，与 `package.json` 的 engines 一致。独立启动默认地址为 http://localhost:5173，以终端输出为准；hello-world 根目录的 `start-all.ps1` 为 SQL 固定使用5174。浏览器需支持本页所用的 WebAssembly 和存储 API。
+以上命令在 hello-sql 仓库根目录执行。环境要求：Node.js 20.19+（20.x）或22.16+，与 `package.json` 的 engines 一致。按 `Ctrl+C` 停止开发服务。浏览器需支持本页所用的 WebAssembly 和存储 API。
 
 可以从 [WASM 数据库实验台](/playground/) 直接开始运行示例。
 

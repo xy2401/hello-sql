@@ -74,7 +74,7 @@ db.orders.aggregate([
 
 ## 推荐学习路线
 
-[安装与环境](./install) → [核心概念](./core-concepts) → [命令行工具](./cli) → [完整版本目录](./version/)。先完成最小示例，再阅读版本差异。
+[安装与环境](./install) → [核心概念](./core-concepts) → [命令行工具](./cli) → [示例数据](./sample-data) → [完整版本目录](./version/)。用官方样例完成查询、聚合与增删改查练习，再阅读版本差异。
 
 ## 实验入口与范围
 

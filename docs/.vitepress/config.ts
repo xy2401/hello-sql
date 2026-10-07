@@ -182,6 +182,7 @@ function databaseProductSidebar(id: string, name: string, link: string) {
         { text: '安装与切换', link: `${link}/install` },
         { text: '连接与执行', link: `${link}/cli` },
         { text: '核心知识', link: `${link}/core-concepts` },
+        ...(id === 'mongodb' ? [{ text: '示例数据', link: `${link}/sample-data` }] : []),
         { text: '版本演进', link: `${link}/version/`, collapsed: false, items: databaseVersionItems[id] },
         { text: 'Docker 验证', link: `${link}/DockerTooling` },
       ],
