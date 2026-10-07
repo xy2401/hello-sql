@@ -193,13 +193,6 @@ const databaseProductSidebars = Object.fromEntries(
   allDatabases.map(({ id, name, link }) => [`${link}/`, databaseProductSidebar(id, name, link)]),
 );
 
-function databaseDirectoryItems(items: readonly { name: string; link: string }[]) {
-  return items.map(({ name, link }) => ({
-    text: name,
-    link: `${link}/`,
-  }));
-}
-
 const base = process.env.DOCS_BASE || '/';
 
 export default defineConfig({
@@ -252,7 +245,7 @@ export default defineConfig({
       '/products/': [
         {
           text: '数据库列表',
-          items: databaseDirectoryItems(allDatabases),
+          items: [{ text: '总览', link: '/products/' }],
         },
       ],
       '/products/browser/': [{
