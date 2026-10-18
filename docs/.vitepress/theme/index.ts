@@ -4,6 +4,7 @@ import type { Theme } from 'vitepress';
 import { h } from 'vue';
 import DatabaseProfile from './components/DatabaseProfile.vue';
 import DatabaseWorkbench from './components/DatabaseWorkbench.vue';
+import SampleDataWorkbench from './components/SampleDataWorkbench.vue';
 import EngineSupportTable from './components/EngineSupportTable.vue';
 import DatabaseCoreGuide from './components/DatabaseCoreGuide.vue';
 import DatabaseVersionGuide from './components/DatabaseVersionGuide.vue';
@@ -13,6 +14,7 @@ import PlaygroundContextNav from './components/PlaygroundContextNav.vue';
 import DatabaseCatalogGrid from './components/DatabaseCatalogGrid.vue';
 import DatabaseLogo from './components/DatabaseLogo.vue';
 import DockerTooling from './components/DockerTooling.vue';
+import DockerCommands from './components/docker-commands/DockerCommands.vue';
 import './doc-baseline.css';
 import './styles.css';
 
@@ -26,6 +28,7 @@ export default {
     installUiLabels(app);
     app.component('DatabaseProfile', DatabaseProfile);
     app.component('DatabaseWorkbench', DatabaseWorkbench);
+    app.component('SampleDataWorkbench', SampleDataWorkbench);
     app.component('EngineSupportTable', EngineSupportTable);
     app.component('DatabaseCoreGuide', DatabaseCoreGuide);
     app.component('DatabaseVersionGuide', DatabaseVersionGuide);
@@ -33,5 +36,6 @@ export default {
     app.component('DatabaseCatalogGrid', DatabaseCatalogGrid);
     app.component('DatabaseLogo', DatabaseLogo);
     app.component('DockerTooling', DockerTooling);
+    app.component('DockerCommands', DockerCommands);
   },
 } satisfies Theme;

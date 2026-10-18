@@ -149,6 +149,13 @@
 .VPDoc.playground-page .content,
 .VPDoc.playground-page .content-container { max-width: none !important; }
 
+.sample-data-ops-page .VPDoc .container,
+.sample-data-ops-page .VPDoc .content,
+.sample-data-ops-page .VPDoc .content-container,
+.VPDoc.sample-data-ops-page .container,
+.VPDoc.sample-data-ops-page .content,
+.VPDoc.sample-data-ops-page .content-container { max-width: none !important; }
+
 .playground-page #VPSidebarNav > .group { display: none; }
 
 @media (min-width: 960px) {

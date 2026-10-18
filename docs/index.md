@@ -13,10 +13,10 @@ hero:
       text: 探索产品库
       link: /products/
     - theme: alt
-      text: ⚡ WASM 数据库实验台
+      text: 🧪 实验台
       link: /playground/
     - theme: alt
-      text: 📊 横向对比矩阵
+      text: ⚖️ 对比矩阵
       link: /matrix/
 
 features:
@@ -61,7 +61,7 @@ import { withBase } from "vitepress";
 
 <a :href="withBase('/playground/')" style="text-decoration: none;">
   <div style="background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); padding: 20px; border-radius: 12px; height: 100%; transition: all 0.3s ease;">
-    <h3 style="margin: 0 0 8px 0; color: var(--vp-c-brand-1);">⚡ WASM 数据库实验台</h3>
+    <h3 style="margin: 0 0 8px 0; color: var(--vp-c-brand-1);">🧪 实验台</h3>
     <p style="margin: 0; font-size: 0.875rem; color: var(--vp-c-text-2);">SQLite、DuckDB、PGlite、SurrealDB 在线编辑器实时试写 SQL，查看执行计划与结果集</p>
   </div>
 </a>
@@ -91,11 +91,11 @@ import { withBase } from "vitepress";
 | **流式复制** | ✅ WAL 流复制 | ✅ Binlog 流复制 | ❌ 不适用 | ✅ Replica Set | ✅ Master-Slave |
 | **WASM 版本** | ❌ PGlite 实验 | ❌ 无 | ✅ DuckDB-Wasm | ✅ MongoDB Atlas Wasm | ❌ 无 |
 
-完整选型建议见 [数据库对比矩阵](/matrix/)。
+完整选型建议见 [⚖️ 对比矩阵](/matrix/)。
 
 ---
 
-## 🧪 WASM 数据库实验台速览
+## 🧪 实验台速览 {#🧪-wasm-数据库实验台速览}
 
 以下数据库可直接在浏览器中运行，无需安装任何软件：
 
@@ -143,12 +143,12 @@ import { withBase } from "vitepress";
 ```bash
 git clone https://github.com/xy2401/hello-sql.git && cd hello-sql
 npm install
-npm run docs:dev          # 默认 http://127.0.0.1:5173，以终端输出为准
+npm run docs:dev          # 默认 http://127.0.0.1:24041，以终端输出为准
 ```
 
 以上命令在 hello-sql 仓库根目录执行。环境要求：Node.js 20.19+（20.x）或22.16+，与 `package.json` 的 engines 一致。按 `Ctrl+C` 停止开发服务。浏览器需支持本页所用的 WebAssembly 和存储 API。
 
-可以从 [WASM 数据库实验台](/playground/) 直接开始运行示例。
+可以从 [🧪 实验台](/playground/) 直接开始运行示例。
 
 
 ---

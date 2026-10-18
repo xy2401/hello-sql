@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "product": "mongodb",
+  "captureId": "pending-02efdf7d78b049ed",
+  "manifestFile": "runs/pending-02efdf7d78b049ed/manifest.json",
+  "sourceRepository": "https://github.com/xy2401/hello-docker",
+  "sourceSha": null,
+  "dataRevision": null,
+  "manifestSha256": "0c333dbda9ba5557de1ea145d32ad175b4c28796cbd3fdb47798ee7136c43c9a"
+}

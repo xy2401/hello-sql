@@ -1,0 +1,2039 @@
+{
+  "schemaVersion": 1,
+  "id": "mongo-samples",
+  "title": "MFlix 示例数据操作",
+  "language": "javascript",
+  "description": "电影与评论样例的查询、新增、修改、删除、聚合和索引操作。",
+  "defaultExampleId": "01-list-movies",
+  "source": {
+    "label": "Hello Docker · MongoDB MFlix",
+    "url": "https://github.com/xy2401/hello-docker/tree/codex/hello-docker/compose/mongo-samples",
+    "recordedAt": "2026-10-07T14:42:39.157Z",
+    "engine": "MongoDB 7.0.43 · mongosh 2.12.0",
+    "runId": "20261007T144227Z-4564",
+    "repository": "https://github.com/mongodb/sample-app-nodejs-mflix",
+    "commit": "1f7dcdba04f6212a5fd4842135973e28a0a2d741",
+    "license": "Apache-2.0",
+    "licenseUrl": "/sample-data/mongodb.LICENSE",
+    "manifestSha256": "d894b180d14972435e1ab77fd4d84ca4729101f12442982abe788b856b1aff55",
+    "recordedManifestSha256": "8f19a98cd53a7045ed2671a4c70d453c7ebc5b35c0312e1b688cb57c812d9394",
+    "note": "案例清单已更名；历史记录保留原清单哈希。所有输入、已有结果和运行脚本均已按原始记录核对。"
+  },
+  "examples": [
+    {
+      "id": "00-movie-count",
+      "title": "电影数量",
+      "category": "查询",
+      "notes": [
+        "读取 movies 集合的估算文档数，用于了解已导入样例的规模。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/config/database.ts\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.estimatedDocumentCount();\n",
+      "status": "passed",
+      "operation": "estimatedDocumentCount",
+      "namespace": "sample_mflix",
+      "inputSha256": "b5097657b95bb78544e02339904f597a1f410c8fb71ea6a6da93037d084d565c",
+      "result": 21349,
+      "outputSha256": "d490821786c871f31184121d302588e9c720e686c6b68acfa7ad79cc054abfbe"
+    },
+    {
+      "id": "01-list-movies",
+      "title": "电影筛选、排序与分页",
+      "category": "查询",
+      "notes": [
+        "筛选 Drama 类别、2000 年、IMDb 评分 7 到 9 的电影，按标题排序，取前 5 条。",
+        "查询与返回文档均来自这次已保存的采集记录。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L66\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.find({\n  genres: { $regex: /Drama/i },\n  year: 2000,\n  'imdb.rating': { $gte: 7, $lte: 9 }\n}).sort({ title: 1 }).limit(5).skip(0).toArray();\n",
+      "status": "passed",
+      "operation": "find",
+      "namespace": "sample_mflix",
+      "inputSha256": "b4b4c427061f7d1614fd534afb424b338e1a6a781bcc4dc345d7b07115c6b8b2",
+      "result": [
+        {
+          "_id": {
+            "$oid": "573a13a4f29313caabd11d1d"
+          },
+          "countries": [
+            "Philippines"
+          ],
+          "genres": [
+            "Drama"
+          ],
+          "runtime": 93,
+          "cast": [
+            "Ricky Davao",
+            "Joel Torre",
+            "Cris Villanueva",
+            "Daria Ramirez"
+          ],
+          "num_mflix_comments": 3,
+          "title": "3rd World Hero",
+          "lastupdated": "2015-03-06 00:46:09.587000000",
+          "languages": [
+            "Filipino",
+            "Tagalog"
+          ],
+          "released": {
+            "$date": "2003-05-04T00:00:00Z"
+          },
+          "directors": [
+            "Mike De Leon"
+          ],
+          "writers": [
+            "Clodualdo Del Mundo Jr.",
+            "Mike De Leon"
+          ],
+          "awards": {
+            "wins": 10,
+            "nominations": 9,
+            "text": "10 wins & 9 nominations."
+          },
+          "year": 2000,
+          "imdb": {
+            "rating": 7.5,
+            "votes": 91,
+            "id": 260731
+          },
+          "type": "movie",
+          "tomatoes": {
+            "website": "http://www.bigbadlove.net",
+            "viewer": {
+              "rating": 3.6,
+              "numReviews": 1182,
+              "meter": 73
+            },
+            "dvd": {
+              "$date": "2002-09-24T00:00:00Z"
+            },
+            "critic": {
+              "rating": 5.4,
+              "numReviews": 58,
+              "meter": 41
+            },
+            "boxOffice": "$0.1M",
+            "consensus": "A boozy depiction of a struggling writer, Big Bad Love is too messy and self-indulgent.",
+            "rotten": 34,
+            "production": "IFC Films",
+            "lastUpdated": {
+              "$date": "2015-08-18T18:03:29Z"
+            },
+            "fresh": 24
+          }
+        },
+        {
+          "_id": {
+            "$oid": "573a13a1f29313caabd0787f"
+          },
+          "plot": "Nicolas, a handsome, young waiter, is befriended by Frèdèric Delamont, a wealthy middle-aged businessman. Delamont, a man of power, influence and strictly refined tastes, is immediately ...",
+          "genres": [
+            "Crime",
+            "Thriller",
+            "Drama"
+          ],
+          "runtime": 90,
+          "metacritic": 74,
+          "cast": [
+            "Bernard Giraudeau",
+            "Jean-Pierre Lorit",
+            "Florence Thomassin",
+            "Charles Berling"
+          ],
+          "poster": "https://m.media-amazon.com/images/M/MV5BMTQxMDY4NzYwNF5BMl5BanBnXkFtZTcwNTQ3MDcyMQ@@._V1_SY1000_SX677_AL_.jpg",
+          "title": "A Matter of Taste",
+          "fullplot": "Nicolas, a handsome, young waiter, is befriended by Frèdèric Delamont, a wealthy middle-aged businessman. Delamont, a man of power, influence and strictly refined tastes, is immediately smitten by Nicolas' charm. Lonely and phobic, Delamont offers Nicolas a lucrative job as his personal food taster. In spite of their differences, a close friendship begins to emerge between the two men. However, their bond of trust and admiration soon spirals downward into a dangerous game of deceit and obsession for which neither is prepared.",
+          "languages": [
+            "French"
+          ],
+          "released": {
+            "$date": "2000-04-26T00:00:00Z"
+          },
+          "directors": [
+            "Bernard Rapp"
+          ],
+          "writers": [
+            "Philippe Balland (book)",
+            "Bernard Rapp",
+            "Gilles Taurand"
+          ],
+          "awards": {
+            "wins": 4,
+            "nominations": 6,
+            "text": "4 wins & 6 nominations."
+          },
+          "lastupdated": "2015-08-21 00:41:34.547000000",
+          "year": 2000,
+          "imdb": {
+            "rating": 7,
+            "votes": 1381,
+            "id": 217119
+          },
+          "countries": [
+            "France"
+          ],
+          "type": "movie",
+          "tomatoes": {
+            "viewer": {
+              "rating": 3.2,
+              "numReviews": 112,
+              "meter": 52
+            },
+            "dvd": {
+              "$date": "2002-10-29T00:00:00Z"
+            },
+            "production": "TLA Releasing",
+            "lastUpdated": {
+              "$date": "2015-09-11T18:06:30Z"
+            }
+          },
+          "num_mflix_comments": 0
+        },
+        {
+          "_id": {
+            "$oid": "573a13a1f29313caabd0784e"
+          },
+          "plot": "An old Jewish shop owner Mr. Shaddick ('Peter Falk') suddenly finds himself responsible for a little black boy named Herman Washington ('Aaron Meek') trying to escape the chaos of Harlem as...",
+          "genres": [
+            "Drama"
+          ],
+          "runtime": 94,
+          "cast": [
+            "Peter Falk",
+            "Andrew McCarthy",
+            "Nastassja Kinski",
+            "Ruby Dee"
+          ],
+          "poster": "https://m.media-amazon.com/images/M/MV5BMTY1MjU2MjgxNV5BMl5BanBnXkFtZTcwNTA1ODcxMQ@@._V1_SY1000_SX677_AL_.jpg",
+          "title": "A Storm in Summer",
+          "fullplot": "An old Jewish shop owner Mr. Shaddick ('Peter Falk') suddenly finds himself responsible for a little black boy named Herman Washington ('Aaron Meek') trying to escape the chaos of Harlem as part of a sponsorship program. At first, Mr. Shaddick wants nothing more than to get rid of the kid, but to spite the well to do lady who tries to take him over to her home, he decides to take Herman in. As time goes on, Mr. Shaddick finds himself caring about Herman and has the misfortune of being the bearer of bad news, which reminds him of when he received a telegram himself.",
+          "languages": [
+            "English"
+          ],
+          "released": {
+            "$date": "2000-02-27T00:00:00Z"
+          },
+          "directors": [
+            "Robert Wise"
+          ],
+          "writers": [
+            "Rod Serling",
+            "Rod Serling"
+          ],
+          "awards": {
+            "wins": 3,
+            "nominations": 3,
+            "text": "3 wins & 3 nominations."
+          },
+          "lastupdated": "2015-08-28 00:43:09.457000000",
+          "year": 2000,
+          "imdb": {
+            "rating": 7.2,
+            "votes": 381,
+            "id": 217066
+          },
+          "countries": [
+            "USA"
+          ],
+          "type": "movie",
+          "tomatoes": {
+            "viewer": {
+              "rating": 3.2,
+              "numReviews": 88,
+              "meter": 45
+            },
+            "dvd": {
+              "$date": "2002-05-28T00:00:00Z"
+            },
+            "lastUpdated": {
+              "$date": "2015-08-23T18:56:32Z"
+            }
+          },
+          "num_mflix_comments": 0
+        },
+        {
+          "_id": {
+            "$oid": "573a13a4f29313caabd11865"
+          },
+          "plot": "Young Iranian Kurds (brothers and sisters) try to save the youngest of them, who is seriously ill.",
+          "genres": [
+            "Drama",
+            "War"
+          ],
+          "runtime": 80,
+          "metacritic": 78,
+          "cast": [
+            "Ayoub Ahmadi",
+            "Rojin Younessi",
+            "Amaneh Ekhtiar-dini",
+            "Madi Ekhtiar-dini"
+          ],
+          "num_mflix_comments": 1,
+          "poster": "https://m.media-amazon.com/images/M/MV5BMjAyNzk4NDYzNl5BMl5BanBnXkFtZTcwNzczNTEyMQ@@._V1_SY1000_SX677_AL_.jpg",
+          "title": "A Time for Drunken Horses",
+          "fullplot": "After their father dies, a family of five are forced to survive on their own in a Kurdish village on the border of Iran and Iraq. Matters are made worse when 12 year old Ayoub, the new head of the family, is told that his handicapped brother, Madi, needs an immediate operation in order to remain alive. This heartbreaking tale shows the lengths to which a family will go in order to survive in the harshest of conditions, where even the horses are fed liquor in order to work.",
+          "languages": [
+            "Kurdish",
+            "Persian"
+          ],
+          "released": {
+            "$date": "2000-09-13T00:00:00Z"
+          },
+          "directors": [
+            "Bahman Ghobadi"
+          ],
+          "writers": [
+            "Bahman Ghobadi"
+          ],
+          "awards": {
+            "wins": 11,
+            "nominations": 3,
+            "text": "11 wins & 3 nominations."
+          },
+          "lastupdated": "2015-08-30 23:48:02.513000000",
+          "year": 2000,
+          "imdb": {
+            "rating": 7.7,
+            "votes": 4903,
+            "id": 259072
+          },
+          "countries": [
+            "Iran"
+          ],
+          "type": "movie",
+          "tomatoes": {
+            "viewer": {
+              "rating": 4.2,
+              "numReviews": 1302,
+              "meter": 91
+            },
+            "dvd": {
+              "$date": "2011-02-15T00:00:00Z"
+            },
+            "critic": {
+              "rating": 7.3,
+              "numReviews": 32,
+              "meter": 84
+            },
+            "lastUpdated": {
+              "$date": "2015-08-27T18:08:04Z"
+            },
+            "rotten": 5,
+            "production": "Shooting Gallery",
+            "fresh": 27
+          }
+        },
+        {
+          "_id": {
+            "$oid": "573a13a4f29313caabd116f2"
+          },
+          "plot": "Young Iranian Kurds (brothers and sisters) try to save the youngest of them, who is seriously ill.",
+          "genres": [
+            "Drama",
+            "War"
+          ],
+          "runtime": 80,
+          "metacritic": 78,
+          "cast": [
+            "Ayoub Ahmadi",
+            "Rojin Younessi",
+            "Amaneh Ekhtiar-dini",
+            "Madi Ekhtiar-dini"
+          ],
+          "num_mflix_comments": 0,
+          "poster": "https://m.media-amazon.com/images/M/MV5BMjAyNzk4NDYzNl5BMl5BanBnXkFtZTcwNzczNTEyMQ@@._V1_SY1000_SX677_AL_.jpg",
+          "title": "A Time for Drunken Horses",
+          "fullplot": "After their father dies, a family of five are forced to survive on their own in a Kurdish village on the border of Iran and Iraq. Matters are made worse when 12 year old Ayoub, the new head of the family, is told that his handicapped brother, Madi, needs an immediate operation in order to remain alive. This heartbreaking tale shows the lengths to which a family will go in order to survive in the harshest of conditions, where even the horses are fed liquor in order to work.",
+          "languages": [
+            "Kurdish",
+            "Persian"
+          ],
+          "released": {
+            "$date": "2000-09-13T00:00:00Z"
+          },
+          "directors": [
+            "Bahman Ghobadi"
+          ],
+          "writers": [
+            "Bahman Ghobadi"
+          ],
+          "awards": {
+            "wins": 11,
+            "nominations": 3,
+            "text": "11 wins & 3 nominations."
+          },
+          "lastupdated": "2015-09-02 00:32:37.960000000",
+          "year": 2000,
+          "imdb": {
+            "rating": 7.7,
+            "votes": 4907,
+            "id": 259072
+          },
+          "countries": [
+            "Iran"
+          ],
+          "type": "movie",
+          "tomatoes": {
+            "viewer": {
+              "rating": 4.2,
+              "numReviews": 1302,
+              "meter": 91
+            },
+            "dvd": {
+              "$date": "2011-02-15T00:00:00Z"
+            },
+            "critic": {
+              "rating": 7.3,
+              "numReviews": 32,
+              "meter": 84
+            },
+            "lastUpdated": {
+              "$date": "2015-08-27T18:08:04Z"
+            },
+            "rotten": 5,
+            "production": "Shooting Gallery",
+            "fresh": 27
+          }
+        }
+      ],
+      "outputSha256": "2d40630ebb5c4cfe1808f1e1de6d9c0908e547c526280d2b60e64038f2c375f9"
+    },
+    {
+      "id": "02-distinct-genres",
+      "title": "电影类别去重",
+      "category": "查询",
+      "notes": [
+        "对 genres 字段去重，返回值是字符串数组，表格视图以单列展示。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L156\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.distinct('genres');\n",
+      "status": "passed",
+      "operation": "distinct",
+      "namespace": "sample_mflix",
+      "inputSha256": "58a18bfae88e3d1f85a06dc630bfdf93ca1598bead582ee48ea84024ddb2817b",
+      "result": [
+        "Action",
+        "Adventure",
+        "Animation",
+        "Biography",
+        "Comedy",
+        "Crime",
+        "Documentary",
+        "Drama",
+        "Family",
+        "Fantasy",
+        "Film-Noir",
+        "History",
+        "Horror",
+        "Music",
+        "Musical",
+        "Mystery",
+        "News",
+        "Romance",
+        "Sci-Fi",
+        "Short",
+        "Sport",
+        "Talk-Show",
+        "Thriller",
+        "War",
+        "Western"
+      ],
+      "outputSha256": "004a61b3947c069ffc33f9aed4a65c5a56bee25b34805510bc648a17b3354e91"
+    },
+    {
+      "id": "03-find-movie",
+      "title": "按 ID 查询电影",
+      "category": "查询",
+      "notes": [
+        "通过 ObjectId 精确查找一部电影，返回单个文档。JSON 视图保留 ObjectId、日期等 Extended JSON 表示。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L182\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.findOne({ _id: ObjectId('573a1390f29313caabcd42e8') });\n",
+      "status": "passed",
+      "operation": "findOne",
+      "namespace": "sample_mflix",
+      "inputSha256": "f7120c10ff74e8bc13b83d6be1326ae29cbfd65e941bb5df45bb9e1e5afd8716",
+      "result": {
+        "_id": {
+          "$oid": "573a1390f29313caabcd42e8"
+        },
+        "plot": "A group of bandits stage a brazen train hold-up, only to find a determined posse hot on their heels.",
+        "genres": [
+          "Short",
+          "Western"
+        ],
+        "runtime": 11,
+        "cast": [
+          "A.C. Abadie",
+          "Gilbert M. 'Broncho Billy' Anderson",
+          "George Barnes",
+          "Justus D. Barnes"
+        ],
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTU3NjE5NzYtYTYyNS00MDVmLWIwYjgtMmYwYWIxZDYyNzU2XkEyXkFqcGdeQXVyNzQzNzQxNzI@._V1_SY1000_SX677_AL_.jpg",
+        "title": "The Great Train Robbery",
+        "fullplot": "Among the earliest existing films in American cinema - notable as the first film that presented a narrative story to tell - it depicts a group of cowboy outlaws who hold up a train and rob the passengers. They are then pursued by a Sheriff's posse. Several scenes have color included - all hand tinted.",
+        "languages": [
+          "English"
+        ],
+        "released": {
+          "$date": {
+            "$numberLong": "-2085523200000"
+          }
+        },
+        "directors": [
+          "Edwin S. Porter"
+        ],
+        "rated": "TV-G",
+        "awards": {
+          "wins": 1,
+          "nominations": 0,
+          "text": "1 win."
+        },
+        "lastupdated": "2015-08-13 00:27:59.177000000",
+        "year": 1903,
+        "imdb": {
+          "rating": 7.4,
+          "votes": 9847,
+          "id": 439
+        },
+        "countries": [
+          "USA"
+        ],
+        "type": "movie",
+        "tomatoes": {
+          "viewer": {
+            "rating": 3.7,
+            "numReviews": 2559,
+            "meter": 75
+          },
+          "fresh": 6,
+          "critic": {
+            "rating": 7.6,
+            "numReviews": 6,
+            "meter": 100
+          },
+          "rotten": 0,
+          "lastUpdated": {
+            "$date": "2015-08-08T19:16:10Z"
+          }
+        },
+        "num_mflix_comments": 0
+      },
+      "outputSha256": "3e73c864a77937d02bf7b5409eb0384d111bc8a32a1118628421ff2254148e3a"
+    },
+    {
+      "id": "04-insert-one",
+      "title": "创建一部电影",
+      "category": "新增",
+      "notes": [
+        "调度器先创建空的临时练习库，再插入一部电影。结果展示写入确认和 insertedId。",
+        "临时库在采集结束后清理，原始 sample_mflix 数据保持不变。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L216\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.insertOne({\n  _id: ObjectId('000000000000000000000001'),\n  title: 'MFlix insertOne business example',\n  year: 2000,\n  genres: ['Drama'],\n  plot: 'A movie used to practice MongoDB business operations.'\n});\n",
+      "status": "passed",
+      "operation": "insertOne",
+      "namespace": "临时练习库",
+      "inputSha256": "0a2e821518ce581f6a327d157a20baf0038a3a3405bb77641f3be0b3f4895432",
+      "result": {
+        "acknowledged": true,
+        "insertedId": {
+          "$oid": "000000000000000000000001"
+        }
+      },
+      "outputSha256": "9a14c038a20c8e62e8a21ae96113c829afc2f37ed83006c92cf9b78fcfb16495"
+    },
+    {
+      "id": "05-insert-many",
+      "title": "批量创建电影",
+      "category": "新增",
+      "notes": [
+        "在空的临时练习库中批量新增电影，返回 insertedIds。练习库由采集脚本创建并清理。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L254\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.insertMany([\n  { _id: ObjectId('000000000000000000000001'), title: 'MFlix batch movie A', year: 2000, genres: ['Drama'] },\n  { _id: ObjectId('000000000000000000000002'), title: 'MFlix batch movie B', year: 2001, genres: ['Comedy'] }\n]);\n",
+      "status": "passed",
+      "operation": "insertMany",
+      "namespace": "临时练习库",
+      "inputSha256": "0390bcc63962eb2d16494f0e84801fa7257e2ea577c03a9eae8f2e139471b7e2",
+      "result": {
+        "acknowledged": true,
+        "insertedIds": {
+          "0": {
+            "$oid": "000000000000000000000001"
+          },
+          "1": {
+            "$oid": "000000000000000000000002"
+          }
+        }
+      },
+      "outputSha256": "7bb312bb855de33ac5148dd454f7a93b82a1fa5196aefec0571f7589b551bdff"
+    },
+    {
+      "id": "06-update-one",
+      "title": "更新一部电影",
+      "category": "修改",
+      "notes": [
+        "先准备临时练习数据，再修改一条匹配记录；查看 matchedCount 与 modifiedCount 的区别。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L314\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.updateOne({ _id: ObjectId('000000000000000000000001') }, { $set: { title: 'MFlix updated title', year: 2001 } });\n",
+      "status": "passed",
+      "operation": "updateOne",
+      "namespace": "临时练习库",
+      "inputSha256": "ffeccf719817582d94c58796d7f65af1aef3b7674f6946ee1d796e5dfd86950a",
+      "result": {
+        "acknowledged": true,
+        "insertedId": null,
+        "matchedCount": 1,
+        "modifiedCount": 1,
+        "upsertedCount": 0
+      },
+      "outputSha256": "4a84fd30d6d48083cccfa08898a38b4df3229544b94825eed355a73bb546a5d8"
+    },
+    {
+      "id": "07-update-many",
+      "title": "批量更新电影",
+      "category": "修改",
+      "notes": [
+        "对临时练习库中的多条记录执行更新，结果包含匹配数量、实际修改数量及 upsert 信息。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L386\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.updateMany({ _id: { $in: [ObjectId('000000000000000000000001'), ObjectId('000000000000000000000002')] } }, { $set: { title: 'MFlix batch updated title' } });\n",
+      "status": "passed",
+      "operation": "updateMany",
+      "namespace": "临时练习库",
+      "inputSha256": "0904c1727901acc30b88c80a4a809353adaa3d8731ef745bff9df8b1e02e950f",
+      "result": {
+        "acknowledged": true,
+        "insertedId": null,
+        "matchedCount": 2,
+        "modifiedCount": 2,
+        "upsertedCount": 0
+      },
+      "outputSha256": "68f7649b90c0a452cf93756395e7c4c35fb00bf05797ec122d6aa02af38bcd96"
+    },
+    {
+      "id": "08-delete-one",
+      "title": "删除一部电影",
+      "category": "删除",
+      "notes": [
+        "从预先准备的临时练习数据中删除一条记录，通过 deletedCount 核对结果。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L479\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.deleteOne({ _id: ObjectId('000000000000000000000001') });\n",
+      "status": "passed",
+      "operation": "deleteOne",
+      "namespace": "临时练习库",
+      "inputSha256": "a9b0aca6d2a8185b7b9343c2bd63569e0d212a2bb39bc6a92ac854616f423f09",
+      "result": {
+        "acknowledged": true,
+        "deletedCount": 1
+      },
+      "outputSha256": "248fd5ba7bbbd23f90c447d420090125294255bb86dea617f55db3097013f13d"
+    },
+    {
+      "id": "09-delete-many",
+      "title": "批量删除电影",
+      "category": "删除",
+      "notes": [
+        "批量删除临时练习库中符合条件的记录，已保存结果包含实际删除数量。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L518\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.deleteMany({\n  _id: { $in: [ObjectId('000000000000000000000001'), ObjectId('000000000000000000000002')] }\n});\n",
+      "status": "passed",
+      "operation": "deleteMany",
+      "namespace": "临时练习库",
+      "inputSha256": "1a21e146a8b056befce958536ec0bb923750bf13f050b0ef0117c035b7a4fc8d",
+      "result": {
+        "acknowledged": true,
+        "deletedCount": 2
+      },
+      "outputSha256": "1984a967eaed27ee04af091cc185097ca73ef2b01d74c0f910452fddb4b8c2c7"
+    },
+    {
+      "id": "10-find-one-and-delete",
+      "title": "返回并删除电影",
+      "category": "删除",
+      "notes": [
+        "删除匹配记录并返回被删除的文档，结果形状与仅返回确认信息的 deleteOne 不同。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L584\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.findOneAndDelete({ _id: ObjectId('000000000000000000000001') });\n",
+      "status": "passed",
+      "operation": "findOneAndDelete",
+      "namespace": "临时练习库",
+      "inputSha256": "57b4643dfcac7ad224b9a5858a307d5f4ae90af3c54b7abd5b373d03a1692bcc",
+      "result": {
+        "_id": {
+          "$oid": "000000000000000000000001"
+        },
+        "plot": "A group of bandits stage a brazen train hold-up, only to find a determined posse hot on their heels.",
+        "genres": [
+          "Short",
+          "Western"
+        ],
+        "runtime": 11,
+        "cast": [
+          "A.C. Abadie",
+          "Gilbert M. 'Broncho Billy' Anderson",
+          "George Barnes",
+          "Justus D. Barnes"
+        ],
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTU3NjE5NzYtYTYyNS00MDVmLWIwYjgtMmYwYWIxZDYyNzU2XkEyXkFqcGdeQXVyNzQzNzQxNzI@._V1_SY1000_SX677_AL_.jpg",
+        "title": "MFlix prepared movie 1",
+        "fullplot": "Among the earliest existing films in American cinema - notable as the first film that presented a narrative story to tell - it depicts a group of cowboy outlaws who hold up a train and rob the passengers. They are then pursued by a Sheriff's posse. Several scenes have color included - all hand tinted.",
+        "languages": [
+          "English"
+        ],
+        "released": {
+          "$date": {
+            "$numberLong": "-2085523200000"
+          }
+        },
+        "directors": [
+          "Edwin S. Porter"
+        ],
+        "rated": "TV-G",
+        "awards": {
+          "wins": 1,
+          "nominations": 0,
+          "text": "1 win."
+        },
+        "lastupdated": "2015-08-13 00:27:59.177000000",
+        "year": 1903,
+        "imdb": {
+          "rating": 7.4,
+          "votes": 9847,
+          "id": 439
+        },
+        "countries": [
+          "USA"
+        ],
+        "type": "movie",
+        "tomatoes": {
+          "viewer": {
+            "rating": 3.7,
+            "numReviews": 2559,
+            "meter": 75
+          },
+          "fresh": 6,
+          "critic": {
+            "rating": 7.6,
+            "numReviews": 6,
+            "meter": 100
+          },
+          "rotten": 0,
+          "lastUpdated": {
+            "$date": "2015-08-08T19:16:10Z"
+          }
+        },
+        "num_mflix_comments": 0
+      },
+      "outputSha256": "fef9750e0cfb95f68f67cb69d0e6b9ad5dc05e495291dc976da7d0dd7306afaa"
+    },
+    {
+      "id": "11-text-search",
+      "title": "普通文本查询",
+      "category": "查询",
+      "notes": [
+        "在准备好的练习数据和文本索引上执行 $text 查询。普通文本索引与 MongoDB Search 使用不同的查询入口。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L66\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.find({ $text: { $search: 'spaceship' } }).sort({ title: 1 }).limit(20).skip(0).toArray();\n",
+      "status": "passed",
+      "operation": "find",
+      "namespace": "临时练习库",
+      "inputSha256": "9088c2fcf38d3936ab0c45151995bc3e93275abd354baf03a37b3e6b9b8b1c19",
+      "result": [
+        {
+          "_id": {
+            "$oid": "000000000000000000000001"
+          },
+          "plot": "spaceship orbit adventure",
+          "genres": [
+            "Short",
+            "Western"
+          ],
+          "runtime": 11,
+          "cast": [
+            "A.C. Abadie",
+            "Gilbert M. 'Broncho Billy' Anderson",
+            "George Barnes",
+            "Justus D. Barnes"
+          ],
+          "poster": "https://m.media-amazon.com/images/M/MV5BMTU3NjE5NzYtYTYyNS00MDVmLWIwYjgtMmYwYWIxZDYyNzU2XkEyXkFqcGdeQXVyNzQzNzQxNzI@._V1_SY1000_SX677_AL_.jpg",
+          "title": "MFlix prepared movie 1",
+          "fullplot": "A spaceship travels into orbit.",
+          "languages": [
+            "English"
+          ],
+          "released": {
+            "$date": {
+              "$numberLong": "-2085523200000"
+            }
+          },
+          "directors": [
+            "Edwin S. Porter"
+          ],
+          "rated": "TV-G",
+          "awards": {
+            "wins": 1,
+            "nominations": 0,
+            "text": "1 win."
+          },
+          "lastupdated": "2015-08-13 00:27:59.177000000",
+          "year": 1903,
+          "imdb": {
+            "rating": 7.4,
+            "votes": 9847,
+            "id": 439
+          },
+          "countries": [
+            "USA"
+          ],
+          "type": "movie",
+          "tomatoes": {
+            "viewer": {
+              "rating": 3.7,
+              "numReviews": 2559,
+              "meter": 75
+            },
+            "fresh": 6,
+            "critic": {
+              "rating": 7.6,
+              "numReviews": 6,
+              "meter": 100
+            },
+            "rotten": 0,
+            "lastUpdated": {
+              "$date": "2015-08-08T19:16:10Z"
+            }
+          },
+          "num_mflix_comments": 0
+        }
+      ],
+      "outputSha256": "89326afc08df8a74dcf90d31d0c4e4fe985cfe472d59f89e8cd7f454829d5330"
+    },
+    {
+      "id": "12-comments-report",
+      "title": "电影最新评论与评论数量",
+      "category": "聚合",
+      "notes": [
+        "通过 $lookup 关联电影与评论，按日期整理最近三条评论，并保留评论总数。嵌套数组可在 JSON 视图完整查看。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L1021\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.aggregate([\n  { $match: { year: { $type: 'number' }, _id: ObjectId('573a1390f29313caabcd446f') } },\n  // STAGE 2: Join with comments collection\n  {\n    $lookup: {\n      from: \"comments\",\n      localField: \"_id\",\n      foreignField: \"movie_id\",\n      as: \"comments\",\n    },\n  },\n  // STAGE 3: Filter movies with at least one comment\n  {\n    $match: {\n      comments: { $ne: [] },\n    },\n  },\n  // STAGE 4: Add computed fields\n  {\n    $addFields: {\n      recentComments: {\n        $slice: [\n          {\n            $sortArray: {\n              input: \"$comments\",\n              sortBy: { date: -1 },\n            },\n          },\n          3,\n        ],\n      },\n      mostRecentCommentDate: {\n        $max: \"$comments.date\",\n      },\n    },\n  },\n  // STAGE 5: Sort by most recent comment date\n  {\n    $sort: { mostRecentCommentDate: -1 },\n  },\n  // STAGE 6: Limit results\n  {\n    $limit: 50,\n  },\n  // STAGE 7: Shape final output\n  {\n    $project: {\n      title: 1,\n      year: 1,\n      genres: 1,\n      _id: 1,\n      imdbRating: \"$imdb.rating\",\n      recentComments: {\n        $map: {\n          input: \"$recentComments\",\n          as: \"comment\",\n          in: {\n            _id: \"$$comment._id\",\n            userName: \"$$comment.name\",\n            userEmail: \"$$comment.email\",\n            text: \"$$comment.text\",\n            date: \"$$comment.date\",\n          },\n        },\n      },\n      totalComments: { $size: \"$comments\" },\n    },\n  }\n]).toArray();\n",
+      "status": "passed",
+      "operation": "aggregate",
+      "namespace": "sample_mflix",
+      "inputSha256": "60f79c667967c321a30618b0a47e8352b32ad8777ec24dd42680ed4b0adb75a9",
+      "result": [
+        {
+          "_id": {
+            "$oid": "573a1390f29313caabcd446f"
+          },
+          "genres": [
+            "Short",
+            "Drama"
+          ],
+          "title": "A Corner in Wheat",
+          "year": 1909,
+          "imdbRating": 6.6,
+          "recentComments": [
+            {
+              "_id": {
+                "$oid": "5a9427648b0beebeb69579f5"
+              },
+              "userName": "John Bishop",
+              "userEmail": "john_bishop@fakegmail.com",
+              "text": "Id error ab at molestias dolorum incidunt. Non deserunt praesentium dolorem nihil. Optio tempora vel ut quas.\nMinus dicta numquam quasi. Rem totam cumque at eum. Ullam hic ut ea magni.",
+              "date": {
+                "$date": "1975-01-21T00:31:22Z"
+              }
+            }
+          ],
+          "totalComments": 1
+        }
+      ],
+      "outputSha256": "4aa9e8e30cf3cabbe7f09eb5d28e93eaa740163169c2d8fd6f29aa50c69b071f"
+    },
+    {
+      "id": "13-year-report",
+      "title": "按年份统计电影与评分",
+      "category": "聚合",
+      "notes": [
+        "按数值年份分组统计电影数量和评分，结果共有 108 个年份分组。",
+        "非数值年份记录未参与这项聚合，因此汇总数量与全部电影数可能不同。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L1164\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.aggregate([\n  // STAGE 1: Data quality filter\n  {\n    $match: {\n      year: { $type: \"number\" },\n    },\n  },\n  // STAGE 2: Group by year and calculate statistics\n  {\n    $group: {\n      _id: \"$year\",\n      movieCount: { $sum: 1 },\n      averageRating: {\n        $avg: {\n          $cond: [\n            {\n              $and: [\n                { $ne: [\"$imdb.rating\", null] },\n                { $ne: [\"$imdb.rating\", \"\"] },\n                { $eq: [{ $type: \"$imdb.rating\" }, \"double\"] },\n              ],\n            },\n            \"$imdb.rating\",\n            \"$$REMOVE\",\n          ],\n        },\n      },\n      highestRating: {\n        $max: {\n          $cond: [\n            {\n              $and: [\n                { $ne: [\"$imdb.rating\", null] },\n                { $ne: [\"$imdb.rating\", \"\"] },\n                { $eq: [{ $type: \"$imdb.rating\" }, \"double\"] },\n              ],\n            },\n            \"$imdb.rating\",\n            \"$$REMOVE\",\n          ],\n        },\n      },\n      lowestRating: {\n        $min: {\n          $cond: [\n            {\n              $and: [\n                { $ne: [\"$imdb.rating\", null] },\n                { $ne: [\"$imdb.rating\", \"\"] },\n                { $eq: [{ $type: \"$imdb.rating\" }, \"double\"] },\n              ],\n            },\n            \"$imdb.rating\",\n            \"$$REMOVE\",\n          ],\n        },\n      },\n      totalVotes: { $sum: \"$imdb.votes\" },\n    },\n  },\n  // STAGE 3: Shape final output\n  {\n    $project: {\n      year: \"$_id\",\n      movieCount: 1,\n      averageRating: { $round: [\"$averageRating\", 2] },\n      highestRating: 1,\n      lowestRating: 1,\n      totalVotes: 1,\n      _id: 0,\n    },\n  },\n  // STAGE 4: Sort by year (newest first)\n  {\n    $sort: { year: -1 },\n  },\n]).toArray();\n",
+      "status": "passed",
+      "operation": "aggregate",
+      "namespace": "sample_mflix",
+      "inputSha256": "8d0b07144186a1c9425f38b23c07326fc3b5e5cb9ce9df543548329cf3440d5f",
+      "result": [
+        {
+          "movieCount": 1,
+          "highestRating": null,
+          "lowestRating": null,
+          "totalVotes": 0,
+          "year": 2016,
+          "averageRating": null
+        },
+        {
+          "movieCount": 480,
+          "highestRating": 9.4,
+          "lowestRating": 3.1,
+          "totalVotes": 2997571,
+          "year": 2015,
+          "averageRating": 6.95
+        },
+        {
+          "movieCount": 1073,
+          "highestRating": 9.2,
+          "lowestRating": 1.6,
+          "totalVotes": 19490022,
+          "year": 2014,
+          "averageRating": 6.58
+        },
+        {
+          "movieCount": 1105,
+          "highestRating": 8.9,
+          "lowestRating": 1.6,
+          "totalVotes": 24061762,
+          "year": 2013,
+          "averageRating": 6.49
+        },
+        {
+          "movieCount": 955,
+          "highestRating": 8.8,
+          "lowestRating": 2.5,
+          "totalVotes": 24793550,
+          "year": 2012,
+          "averageRating": 6.48
+        },
+        {
+          "movieCount": 893,
+          "highestRating": 9.2,
+          "lowestRating": 1.6,
+          "totalVotes": 23540335,
+          "year": 2011,
+          "averageRating": 6.45
+        },
+        {
+          "movieCount": 866,
+          "highestRating": 8.8,
+          "lowestRating": 2.5,
+          "totalVotes": 22124894,
+          "year": 2010,
+          "averageRating": 6.51
+        },
+        {
+          "movieCount": 917,
+          "highestRating": 9.2,
+          "lowestRating": 2.1,
+          "totalVotes": 20296381,
+          "year": 2009,
+          "averageRating": 6.51
+        },
+        {
+          "movieCount": 886,
+          "highestRating": 9,
+          "lowestRating": 1.9,
+          "totalVotes": 22741519,
+          "year": 2008,
+          "averageRating": 6.55
+        },
+        {
+          "movieCount": 810,
+          "highestRating": 9,
+          "lowestRating": 2,
+          "totalVotes": 21289778,
+          "year": 2007,
+          "averageRating": 6.59
+        },
+        {
+          "movieCount": 774,
+          "highestRating": 9.5,
+          "lowestRating": 2.7,
+          "totalVotes": 20198082,
+          "year": 2006,
+          "averageRating": 6.6
+        },
+        {
+          "movieCount": 713,
+          "highestRating": 8.7,
+          "lowestRating": 2.1,
+          "totalVotes": 18358805,
+          "year": 2005,
+          "averageRating": 6.58
+        },
+        {
+          "movieCount": 678,
+          "highestRating": 9,
+          "lowestRating": 1.9,
+          "totalVotes": 20453250,
+          "year": 2004,
+          "averageRating": 6.66
+        },
+        {
+          "movieCount": 603,
+          "highestRating": 8.9,
+          "lowestRating": 2,
+          "totalVotes": 16670445,
+          "year": 2003,
+          "averageRating": 6.53
+        },
+        {
+          "movieCount": 622,
+          "highestRating": 8.7,
+          "lowestRating": 2.9,
+          "totalVotes": 15767276,
+          "year": 2002,
+          "averageRating": 6.55
+        },
+        {
+          "movieCount": 612,
+          "highestRating": 9.6,
+          "lowestRating": 2.1,
+          "totalVotes": 16494165,
+          "year": 2001,
+          "averageRating": 6.57
+        },
+        {
+          "movieCount": 581,
+          "highestRating": 8.5,
+          "lowestRating": 2.4,
+          "totalVotes": 15077798,
+          "year": 2000,
+          "averageRating": 6.52
+        },
+        {
+          "movieCount": 515,
+          "highestRating": 8.9,
+          "lowestRating": 2.5,
+          "totalVotes": 15543903,
+          "year": 1999,
+          "averageRating": 6.62
+        },
+        {
+          "movieCount": 513,
+          "highestRating": 8.9,
+          "lowestRating": 2.3,
+          "totalVotes": 12046081,
+          "year": 1998,
+          "averageRating": 6.64
+        },
+        {
+          "movieCount": 439,
+          "highestRating": 8.7,
+          "lowestRating": 2.7,
+          "totalVotes": 11683202,
+          "year": 1997,
+          "averageRating": 6.6
+        },
+        {
+          "movieCount": 407,
+          "highestRating": 9,
+          "lowestRating": 2.3,
+          "totalVotes": 7501539,
+          "year": 1996,
+          "averageRating": 6.57
+        },
+        {
+          "movieCount": 372,
+          "highestRating": 9.1,
+          "lowestRating": 2.4,
+          "totalVotes": 9560481,
+          "year": 1995,
+          "averageRating": 6.6
+        },
+        {
+          "movieCount": 305,
+          "highestRating": 9.3,
+          "lowestRating": 2.3,
+          "totalVotes": 11716178,
+          "year": 1994,
+          "averageRating": 6.62
+        },
+        {
+          "movieCount": 274,
+          "highestRating": 8.9,
+          "lowestRating": 3.5,
+          "totalVotes": 6547648,
+          "year": 1993,
+          "averageRating": 6.61
+        },
+        {
+          "movieCount": 270,
+          "highestRating": 8.9,
+          "lowestRating": 3.7,
+          "totalVotes": 5368619,
+          "year": 1992,
+          "averageRating": 6.7
+        },
+        {
+          "movieCount": 238,
+          "highestRating": 8.7,
+          "lowestRating": 2.8,
+          "totalVotes": 4744238,
+          "year": 1991,
+          "averageRating": 6.61
+        },
+        {
+          "movieCount": 225,
+          "highestRating": 9.4,
+          "lowestRating": 2.2,
+          "totalVotes": 5080573,
+          "year": 1990,
+          "averageRating": 6.65
+        },
+        {
+          "movieCount": 232,
+          "highestRating": 9.2,
+          "lowestRating": 2.2,
+          "totalVotes": 4366676,
+          "year": 1989,
+          "averageRating": 6.68
+        },
+        {
+          "movieCount": 251,
+          "highestRating": 9,
+          "lowestRating": 3.4,
+          "totalVotes": 4240023,
+          "year": 1988,
+          "averageRating": 6.51
+        },
+        {
+          "movieCount": 222,
+          "highestRating": 8.8,
+          "lowestRating": 2.2,
+          "totalVotes": 4012549,
+          "year": 1987,
+          "averageRating": 6.64
+        },
+        {
+          "movieCount": 190,
+          "highestRating": 8.6,
+          "lowestRating": 2.9,
+          "totalVotes": 3705720,
+          "year": 1986,
+          "averageRating": 6.62
+        },
+        {
+          "movieCount": 189,
+          "highestRating": 8.8,
+          "lowestRating": 4.1,
+          "totalVotes": 2946533,
+          "year": 1985,
+          "averageRating": 6.72
+        },
+        {
+          "movieCount": 199,
+          "highestRating": 8.9,
+          "lowestRating": 2.1,
+          "totalVotes": 3812656,
+          "year": 1984,
+          "averageRating": 6.64
+        },
+        {
+          "movieCount": 161,
+          "highestRating": 8.6,
+          "lowestRating": 2.5,
+          "totalVotes": 2498988,
+          "year": 1983,
+          "averageRating": 6.77
+        },
+        {
+          "movieCount": 177,
+          "highestRating": 9,
+          "lowestRating": 3.4,
+          "totalVotes": 2784192,
+          "year": 1982,
+          "averageRating": 6.78
+        },
+        {
+          "movieCount": 168,
+          "highestRating": 8.6,
+          "lowestRating": 3.2,
+          "totalVotes": 2048558,
+          "year": 1981,
+          "averageRating": 6.7
+        },
+        {
+          "movieCount": 167,
+          "highestRating": 9.3,
+          "lowestRating": 3.4,
+          "totalVotes": 2753355,
+          "year": 1980,
+          "averageRating": 6.64
+        },
+        {
+          "movieCount": 131,
+          "highestRating": 8.7,
+          "lowestRating": 3.4,
+          "totalVotes": 2060554,
+          "year": 1979,
+          "averageRating": 6.9
+        },
+        {
+          "movieCount": 128,
+          "highestRating": 8.7,
+          "lowestRating": 2.9,
+          "totalVotes": 1279049,
+          "year": 1978,
+          "averageRating": 6.78
+        },
+        {
+          "movieCount": 123,
+          "highestRating": 8.7,
+          "lowestRating": 3.7,
+          "totalVotes": 1733668,
+          "year": 1977,
+          "averageRating": 7.06
+        },
+        {
+          "movieCount": 116,
+          "highestRating": 9,
+          "lowestRating": 4.2,
+          "totalVotes": 1654133,
+          "year": 1976,
+          "averageRating": 6.93
+        },
+        {
+          "movieCount": 107,
+          "highestRating": 8.7,
+          "lowestRating": 4.3,
+          "totalVotes": 2098806,
+          "year": 1975,
+          "averageRating": 7.04
+        },
+        {
+          "movieCount": 103,
+          "highestRating": 9.1,
+          "lowestRating": 5.4,
+          "totalVotes": 1813006,
+          "year": 1974,
+          "averageRating": 7.22
+        },
+        {
+          "movieCount": 112,
+          "highestRating": 8.5,
+          "lowestRating": 4,
+          "totalVotes": 1621624,
+          "year": 1973,
+          "averageRating": 7.07
+        },
+        {
+          "movieCount": 121,
+          "highestRating": 9.2,
+          "lowestRating": 4.1,
+          "totalVotes": 1643505,
+          "year": 1972,
+          "averageRating": 7.07
+        },
+        {
+          "movieCount": 106,
+          "highestRating": 8.3,
+          "lowestRating": 3.9,
+          "totalVotes": 904017,
+          "year": 1971,
+          "averageRating": 7.23
+        },
+        {
+          "movieCount": 120,
+          "highestRating": 8.3,
+          "lowestRating": 4.5,
+          "totalVotes": 574431,
+          "year": 1970,
+          "averageRating": 7.08
+        },
+        {
+          "movieCount": 107,
+          "highestRating": 8.4,
+          "lowestRating": 5.7,
+          "totalVotes": 619335,
+          "year": 1969,
+          "averageRating": 7.06
+        },
+        {
+          "movieCount": 89,
+          "highestRating": 8.6,
+          "lowestRating": 5.6,
+          "totalVotes": 1235348,
+          "year": 1968,
+          "averageRating": 7.1
+        },
+        {
+          "movieCount": 81,
+          "highestRating": 8.3,
+          "lowestRating": 4.3,
+          "totalVotes": 834268,
+          "year": 1967,
+          "averageRating": 7.01
+        },
+        {
+          "movieCount": 87,
+          "highestRating": 8.2,
+          "lowestRating": 5.1,
+          "totalVotes": 331414,
+          "year": 1966,
+          "averageRating": 6.95
+        },
+        {
+          "movieCount": 77,
+          "highestRating": 8.8,
+          "lowestRating": 5.2,
+          "totalVotes": 494486,
+          "year": 1965,
+          "averageRating": 7.26
+        },
+        {
+          "movieCount": 86,
+          "highestRating": 8.5,
+          "lowestRating": 3.9,
+          "totalVotes": 973053,
+          "year": 1964,
+          "averageRating": 7.22
+        },
+        {
+          "movieCount": 69,
+          "highestRating": 8.3,
+          "lowestRating": 5.1,
+          "totalVotes": 580694,
+          "year": 1963,
+          "averageRating": 6.99
+        },
+        {
+          "movieCount": 70,
+          "highestRating": 8.4,
+          "lowestRating": 5.5,
+          "totalVotes": 588078,
+          "year": 1962,
+          "averageRating": 7.17
+        },
+        {
+          "movieCount": 68,
+          "highestRating": 8.3,
+          "lowestRating": 5.1,
+          "totalVotes": 262052,
+          "year": 1961,
+          "averageRating": 7.12
+        },
+        {
+          "movieCount": 73,
+          "highestRating": 8.6,
+          "lowestRating": 5.5,
+          "totalVotes": 755078,
+          "year": 1960,
+          "averageRating": 7.21
+        },
+        {
+          "movieCount": 71,
+          "highestRating": 8.4,
+          "lowestRating": 2.4,
+          "totalVotes": 576466,
+          "year": 1959,
+          "averageRating": 7.13
+        },
+        {
+          "movieCount": 75,
+          "highestRating": 8.4,
+          "lowestRating": 5.4,
+          "totalVotes": 503371,
+          "year": 1958,
+          "averageRating": 7.12
+        },
+        {
+          "movieCount": 71,
+          "highestRating": 8.5,
+          "lowestRating": 4.8,
+          "totalVotes": 451974,
+          "year": 1957,
+          "averageRating": 7.1
+        },
+        {
+          "movieCount": 67,
+          "highestRating": 8.2,
+          "lowestRating": 5.6,
+          "totalVotes": 388687,
+          "year": 1956,
+          "averageRating": 7.22
+        },
+        {
+          "movieCount": 67,
+          "highestRating": 8.4,
+          "lowestRating": 5.7,
+          "totalVotes": 505250,
+          "year": 1955,
+          "averageRating": 7.24
+        },
+        {
+          "movieCount": 47,
+          "highestRating": 8.6,
+          "lowestRating": 6.2,
+          "totalVotes": 529940,
+          "year": 1954,
+          "averageRating": 7.21
+        },
+        {
+          "movieCount": 65,
+          "highestRating": 8.5,
+          "lowestRating": 4.9,
+          "totalVotes": 285105,
+          "year": 1953,
+          "averageRating": 7.1
+        },
+        {
+          "movieCount": 45,
+          "highestRating": 8.4,
+          "lowestRating": 5.6,
+          "totalVotes": 290268,
+          "year": 1952,
+          "averageRating": 7.29
+        },
+        {
+          "movieCount": 54,
+          "highestRating": 8.2,
+          "lowestRating": 6.1,
+          "totalVotes": 480912,
+          "year": 1951,
+          "averageRating": 7.24
+        },
+        {
+          "movieCount": 55,
+          "highestRating": 8.4,
+          "lowestRating": 4.9,
+          "totalVotes": 304555,
+          "year": 1950,
+          "averageRating": 7.06
+        },
+        {
+          "movieCount": 52,
+          "highestRating": 8.3,
+          "lowestRating": 6.2,
+          "totalVotes": 121047,
+          "year": 1949,
+          "averageRating": 7.18
+        },
+        {
+          "movieCount": 56,
+          "highestRating": 8.3,
+          "lowestRating": 4.7,
+          "totalVotes": 238289,
+          "year": 1948,
+          "averageRating": 7.22
+        },
+        {
+          "movieCount": 29,
+          "highestRating": 8.2,
+          "lowestRating": 6.5,
+          "totalVotes": 70490,
+          "year": 1947,
+          "averageRating": 7.23
+        },
+        {
+          "movieCount": 34,
+          "highestRating": 8.6,
+          "lowestRating": 6.5,
+          "totalVotes": 521090,
+          "year": 1946,
+          "averageRating": 7.4
+        },
+        {
+          "movieCount": 29,
+          "highestRating": 8.3,
+          "lowestRating": 5.8,
+          "totalVotes": 99569,
+          "year": 1945,
+          "averageRating": 7.13
+        },
+        {
+          "movieCount": 23,
+          "highestRating": 8.4,
+          "lowestRating": 6.6,
+          "totalVotes": 216997,
+          "year": 1944,
+          "averageRating": 7.45
+        },
+        {
+          "movieCount": 32,
+          "highestRating": 8.2,
+          "lowestRating": 6.1,
+          "totalVotes": 112237,
+          "year": 1943,
+          "averageRating": 7.26
+        },
+        {
+          "movieCount": 30,
+          "highestRating": 8.6,
+          "lowestRating": 6.3,
+          "totalVotes": 572521,
+          "year": 1942,
+          "averageRating": 7.32
+        },
+        {
+          "movieCount": 24,
+          "highestRating": 8.4,
+          "lowestRating": 5.4,
+          "totalVotes": 427851,
+          "year": 1941,
+          "averageRating": 7.25
+        },
+        {
+          "movieCount": 24,
+          "highestRating": 8.5,
+          "lowestRating": 5.2,
+          "totalVotes": 360240,
+          "year": 1940,
+          "averageRating": 7.12
+        },
+        {
+          "movieCount": 20,
+          "highestRating": 8.2,
+          "lowestRating": 6.8,
+          "totalVotes": 543821,
+          "year": 1939,
+          "averageRating": 7.53
+        },
+        {
+          "movieCount": 38,
+          "highestRating": 8.1,
+          "lowestRating": 6.3,
+          "totalVotes": 228830,
+          "year": 1938,
+          "averageRating": 7.29
+        },
+        {
+          "movieCount": 31,
+          "highestRating": 8.3,
+          "lowestRating": 6.1,
+          "totalVotes": 165119,
+          "year": 1937,
+          "averageRating": 7.26
+        },
+        {
+          "movieCount": 30,
+          "highestRating": 8.6,
+          "lowestRating": 5.4,
+          "totalVotes": 178846,
+          "year": 1936,
+          "averageRating": 7.18
+        },
+        {
+          "movieCount": 31,
+          "highestRating": 8.1,
+          "lowestRating": 6.6,
+          "totalVotes": 82788,
+          "year": 1935,
+          "averageRating": 7.2
+        },
+        {
+          "movieCount": 23,
+          "highestRating": 7.9,
+          "lowestRating": 5.9,
+          "totalVotes": 44552,
+          "year": 1934,
+          "averageRating": 7.17
+        },
+        {
+          "movieCount": 20,
+          "highestRating": 8.1,
+          "lowestRating": 5.8,
+          "totalVotes": 85004,
+          "year": 1933,
+          "averageRating": 7.18
+        },
+        {
+          "movieCount": 18,
+          "highestRating": 8.2,
+          "lowestRating": 6.4,
+          "totalVotes": 63790,
+          "year": 1932,
+          "averageRating": 7.38
+        },
+        {
+          "movieCount": 20,
+          "highestRating": 8.6,
+          "lowestRating": 6,
+          "totalVotes": 172158,
+          "year": 1931,
+          "averageRating": 7.22
+        },
+        {
+          "movieCount": 10,
+          "highestRating": 7.5,
+          "lowestRating": 5.8,
+          "totalVotes": 13822,
+          "year": 1930,
+          "averageRating": 6.97
+        },
+        {
+          "movieCount": 7,
+          "highestRating": 7.9,
+          "lowestRating": 6.4,
+          "totalVotes": 10544,
+          "year": 1929,
+          "averageRating": 7.06
+        },
+        {
+          "movieCount": 8,
+          "highestRating": 7.8,
+          "lowestRating": 5.8,
+          "totalVotes": 10643,
+          "year": 1928,
+          "averageRating": 7.24
+        },
+        {
+          "movieCount": 4,
+          "highestRating": 7.8,
+          "lowestRating": 6.2,
+          "totalVotes": 14464,
+          "year": 1927,
+          "averageRating": 7.22
+        },
+        {
+          "movieCount": 6,
+          "highestRating": 8.1,
+          "lowestRating": 6.8,
+          "totalVotes": 4866,
+          "year": 1926,
+          "averageRating": 7.35
+        },
+        {
+          "movieCount": 3,
+          "highestRating": 7.9,
+          "lowestRating": 6.7,
+          "totalVotes": 1495,
+          "year": 1925,
+          "averageRating": 7.4
+        },
+        {
+          "movieCount": 6,
+          "highestRating": 7.9,
+          "lowestRating": 6.5,
+          "totalVotes": 7943,
+          "year": 1924,
+          "averageRating": 7.33
+        },
+        {
+          "movieCount": 2,
+          "highestRating": 7.2,
+          "lowestRating": 7.1,
+          "totalVotes": 5807,
+          "year": 1923,
+          "averageRating": 7.15
+        },
+        {
+          "movieCount": 3,
+          "highestRating": 7.7,
+          "lowestRating": 6.6,
+          "totalVotes": 3703,
+          "year": 1922,
+          "averageRating": 7.2
+        },
+        {
+          "movieCount": 5,
+          "highestRating": 8.1,
+          "lowestRating": 6.8,
+          "totalVotes": 5421,
+          "year": 1921,
+          "averageRating": 7.4
+        },
+        {
+          "movieCount": 4,
+          "highestRating": 8.3,
+          "lowestRating": 6.2,
+          "totalVotes": 5638,
+          "year": 1920,
+          "averageRating": 6.98
+        },
+        {
+          "movieCount": 1,
+          "highestRating": 7,
+          "lowestRating": 7,
+          "totalVotes": 639,
+          "year": 1919,
+          "averageRating": 7
+        },
+        {
+          "movieCount": 1,
+          "highestRating": 6.6,
+          "lowestRating": 6.6,
+          "totalVotes": 446,
+          "year": 1918,
+          "averageRating": 6.6
+        },
+        {
+          "movieCount": 2,
+          "highestRating": 6.9,
+          "lowestRating": 6.9,
+          "totalVotes": 1272,
+          "year": 1917,
+          "averageRating": 6.9
+        },
+        {
+          "movieCount": 2,
+          "highestRating": 6.3,
+          "lowestRating": 5.9,
+          "totalVotes": 409,
+          "year": 1916,
+          "averageRating": 6.1
+        },
+        {
+          "movieCount": 2,
+          "highestRating": 6.8,
+          "lowestRating": 6.4,
+          "totalVotes": 801,
+          "year": 1915,
+          "averageRating": 6.6
+        },
+        {
+          "movieCount": 3,
+          "highestRating": 7.6,
+          "lowestRating": 5.8,
+          "totalVotes": 2804,
+          "year": 1914,
+          "averageRating": 6.9
+        },
+        {
+          "movieCount": 1,
+          "highestRating": 6,
+          "lowestRating": 6,
+          "totalVotes": 371,
+          "year": 1913,
+          "averageRating": 6
+        },
+        {
+          "movieCount": 2,
+          "highestRating": 7.3,
+          "lowestRating": 7.3,
+          "totalVotes": 2070,
+          "year": 1911,
+          "averageRating": 7.3
+        },
+        {
+          "movieCount": 1,
+          "highestRating": 6.6,
+          "lowestRating": 6.6,
+          "totalVotes": 1375,
+          "year": 1909,
+          "averageRating": 6.6
+        },
+        {
+          "movieCount": 1,
+          "highestRating": 7.4,
+          "lowestRating": 7.4,
+          "totalVotes": 9847,
+          "year": 1903,
+          "averageRating": 7.4
+        },
+        {
+          "movieCount": 2,
+          "highestRating": 5.9,
+          "lowestRating": 5.9,
+          "totalVotes": 3498,
+          "year": 1896,
+          "averageRating": 5.9
+        }
+      ],
+      "outputSha256": "3d10cd56afafaead11e9bbc1401c68d5045503c5d140026573a6cf2f0acaad8b"
+    },
+    {
+      "id": "14-director-report",
+      "title": "导演作品数量排名",
+      "category": "聚合",
+      "notes": [
+        "展开导演数组，按导演分组统计作品数量，再排序并限制返回条数。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L1264\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.aggregate([\n  // STAGE 1: Data quality filter\n  {\n    $match: {\n      directors: { $exists: true, $ne: null, $not: { $eq: [] } },\n      year: { $type: \"number\" },\n    },\n  },\n  // STAGE 2: Unwind directors array\n  {\n    $unwind: \"$directors\",\n  },\n  // STAGE 3: Clean director names\n  {\n    $match: {\n      directors: { $nin: [null, \"\"] },\n    },\n  },\n  // STAGE 4: Group by director\n  {\n    $group: {\n      _id: \"$directors\",\n      movieCount: { $sum: 1 },\n      averageRating: { $avg: \"$imdb.rating\" },\n    },\n  },\n  // STAGE 5: Sort by movie count\n  {\n    $sort: { movieCount: -1 },\n  },\n  // STAGE 6: Limit results\n  {\n    $limit: 5,\n  },\n  // STAGE 7: Shape final output\n  {\n    $project: {\n      director: \"$_id\",\n      movieCount: 1,\n      averageRating: { $round: [\"$averageRating\", 2] },\n      _id: 0,\n    },\n  },\n]).toArray();\n",
+      "status": "passed",
+      "operation": "aggregate",
+      "namespace": "sample_mflix",
+      "inputSha256": "e48b51190c280dd17117cfe66e5d8e8532f81407e5134af483711c845a5eeeb5",
+      "result": [
+        {
+          "movieCount": 40,
+          "director": "Woody Allen",
+          "averageRating": 7.22
+        },
+        {
+          "movieCount": 32,
+          "director": "Martin Scorsese",
+          "averageRating": 7.64
+        },
+        {
+          "movieCount": 31,
+          "director": "Takashi Miike",
+          "averageRating": 6.84
+        },
+        {
+          "movieCount": 29,
+          "director": "John Ford",
+          "averageRating": 7.12
+        },
+        {
+          "movieCount": 29,
+          "director": "Sidney Lumet",
+          "averageRating": 6.93
+        }
+      ],
+      "outputSha256": "058dd117c4cba1945cebc9cfcc28435d559c212a9c129ce1eb62ce9c6ebcde52"
+    },
+    {
+      "id": "15-search-movies",
+      "title": "MongoDB Search 组合查询",
+      "category": "搜索",
+      "notes": [
+        "需要启用 MongoDB Search 和 movieSearchIndex。本次采集跳过此项，没有对应的查询结果。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L627\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.aggregate([\n  {\n    $search: {\n      index: \"movieSearchIndex\",\n      compound: {\n        must: [{\n            phrase: {\n              query: 'love',\n              path: \"plot\",\n            },\n          },\n          {\n            compound: {\n              should: [\n                // Highest score: exact phrase match\n                { phrase: { query: 'Christopher Nolan', path: \"directors\" } },\n                // High score: exact text match (all terms, no fuzzy)\n                { text: { query: 'Christopher Nolan', path: \"directors\", matchCriteria: \"all\" } },\n                // Lower score: fuzzy match (typo tolerance)\n                {\n                  text: {\n                    query: 'Christopher Nolan',\n                    path: \"directors\",\n                    matchCriteria: \"all\",\n                    fuzzy: { maxEdits: 1, prefixLength: 2 }, // Allow up to 1 edit, require first 2 characters to match\n                  },\n                },\n              ],\n              minimumShouldMatch: 1,\n            },\n          }],\n      },\n    },\n  },\n  {\n    $facet: {\n      totalCount: [{ $count: \"count\" }],\n      results: [\n        { $skip: 0 },\n        { $limit: 5 },\n        {\n          $project: {\n            _id: 1,\n            title: 1,\n            year: 1,\n            plot: 1,\n            fullplot: 1,\n            released: 1,\n            runtime: 1,\n            poster: 1,\n            genres: 1,\n            directors: 1,\n            writers: 1,\n            cast: 1,\n            countries: 1,\n            languages: 1,\n            rated: 1,\n            awards: 1,\n            imdb: 1,\n          },\n        },\n      ],\n    },\n  },\n]).toArray();\n",
+      "status": "skipped",
+      "operation": "aggregate",
+      "namespace": "sample_mflix",
+      "inputSha256": "35608697be73c5fc94898a02192204356772afe1d592599bc693f9d113798f7d",
+      "reason": "MongoDB Search/movieSearchIndex is not enabled"
+    },
+    {
+      "id": "16-vector-search",
+      "title": "电影向量相似度查询",
+      "category": "搜索",
+      "notes": [
+        "需要向量搜索索引和真实的 queryVector 查询向量。本次采集跳过此项，没有生成替代结果。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L828\n// Modified: literal example parameters; execution/verification handled separately.\ndb.embedded_movies.aggregate([\n  {\n    $vectorSearch: {\n      index: \"vector_index\",\n      path: \"plot_embedding_voyage_3_large\",\n      queryVector: queryVector,\n      numCandidates: 5 * 20, // We recommend searching 20 times higher than the limit to improve result relevance\n      limit: 5,\n    },\n  },\n  {\n    $project: {\n      _id: 1,\n      score: { $meta: \"vectorSearchScore\" },\n    },\n  },\n]).toArray();\n",
+      "status": "skipped",
+      "operation": "aggregate",
+      "namespace": "sample_mflix",
+      "inputSha256": "5b8b7348657d205a2519c42da1be58e78db56462576717599aa29cb1d952c4d6",
+      "reason": "Vector Search/vector_index and a real voyage-3-large query embedding are not enabled"
+    },
+    {
+      "id": "17-vector-hydration",
+      "title": "按检索 ID 补全电影信息",
+      "category": "聚合",
+      "notes": [
+        "根据已有检索 ID 读取电影文档并整理输出。这项语句展示文档补全步骤，不代表已经执行向量搜索。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L828\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.aggregate([\n  {\n    $match: {\n      _id: { $in: [ObjectId('573a1390f29313caabcd42e8'), ObjectId('573a1390f29313caabcd446f'), ObjectId('573a1390f29313caabcd4803')] }\n    }\n  },\n  {\n    $project: {\n      _id: 1,\n      title: 1,\n      plot: 1,\n      poster: 1,\n      genres: 1,\n      directors: 1,\n      cast: 1,\n      // Safely convert year to integer, handling strings and dirty data\n      year: {\n        $cond: {\n          if: {\n            $and: [\n              { $ne: [\"$year\", null] },\n              { $eq: [{ $type: \"$year\" }, \"int\"] }\n            ]\n          },\n          then: \"$year\",\n          else: null\n        }\n      }\n    }\n  }\n]).toArray();\n",
+      "status": "passed",
+      "operation": "aggregate",
+      "namespace": "sample_mflix",
+      "inputSha256": "4fa0e0f3c984d8931d23c945b8050a1956b74624858010b585290326270b7672",
+      "result": [
+        {
+          "_id": {
+            "$oid": "573a1390f29313caabcd42e8"
+          },
+          "plot": "A group of bandits stage a brazen train hold-up, only to find a determined posse hot on their heels.",
+          "genres": [
+            "Short",
+            "Western"
+          ],
+          "cast": [
+            "A.C. Abadie",
+            "Gilbert M. 'Broncho Billy' Anderson",
+            "George Barnes",
+            "Justus D. Barnes"
+          ],
+          "poster": "https://m.media-amazon.com/images/M/MV5BMTU3NjE5NzYtYTYyNS00MDVmLWIwYjgtMmYwYWIxZDYyNzU2XkEyXkFqcGdeQXVyNzQzNzQxNzI@._V1_SY1000_SX677_AL_.jpg",
+          "title": "The Great Train Robbery",
+          "directors": [
+            "Edwin S. Porter"
+          ],
+          "year": 1903
+        },
+        {
+          "_id": {
+            "$oid": "573a1390f29313caabcd446f"
+          },
+          "plot": "A greedy tycoon decides, on a whim, to corner the world market in wheat. This doubles the price of bread, forcing the grain's producers into charity lines and further into poverty. The film...",
+          "genres": [
+            "Short",
+            "Drama"
+          ],
+          "cast": [
+            "Frank Powell",
+            "Grace Henderson",
+            "James Kirkwood",
+            "Linda Arvidson"
+          ],
+          "title": "A Corner in Wheat",
+          "directors": [
+            "D.W. Griffith"
+          ],
+          "year": 1909
+        },
+        {
+          "_id": {
+            "$oid": "573a1390f29313caabcd4803"
+          },
+          "plot": "Cartoon figures announce, via comic strip balloons, that they will move - and move they do, in a wildly exaggerated style.",
+          "genres": [
+            "Animation",
+            "Short",
+            "Comedy"
+          ],
+          "cast": [
+            "Winsor McCay"
+          ],
+          "poster": "https://m.media-amazon.com/images/M/MV5BYzg2NjNhNTctMjUxMi00ZWU4LWI3ZjYtNTI0NTQxNThjZTk2XkEyXkFqcGdeQXVyNzg5OTk2OA@@._V1_SY1000_SX677_AL_.jpg",
+          "title": "Winsor McCay, the Famous Cartoonist of the N.Y. Herald and His Moving Comics",
+          "directors": [
+            "Winsor McCay",
+            "J. Stuart Blackton"
+          ],
+          "year": 1911
+        }
+      ],
+      "outputSha256": "2da2982ebcc73fbab5c288ac888036075c9b929d00d35ba40e6f18be4e48f4eb"
+    },
+    {
+      "id": "18-list-indexes",
+      "title": "列出电影集合索引",
+      "category": "索引",
+      "notes": [
+        "查看临时练习集合已经准备好的索引，返回索引定义数组。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/config/database.ts\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.getIndexes();\n",
+      "status": "passed",
+      "operation": "getIndexes",
+      "namespace": "临时练习库",
+      "inputSha256": "b1168ce3a6ef4adbacd740185f4b74449ba273909dd683580e3262c92dc69774",
+      "result": [
+        {
+          "v": 2,
+          "key": {
+            "_id": 1
+          },
+          "name": "_id_"
+        },
+        {
+          "v": 2,
+          "key": {
+            "_fts": "text",
+            "_ftsx": 1
+          },
+          "name": "text_search_index",
+          "background": true,
+          "weights": {
+            "fullplot": 1,
+            "plot": 1,
+            "title": 1
+          },
+          "default_language": "english",
+          "language_override": "language",
+          "textIndexVersion": 3
+        }
+      ],
+      "outputSha256": "4620f117d999b50fd03fef4d881aee1b10106b8ec4d94a443de31c844610e334"
+    },
+    {
+      "id": "19-text-index",
+      "title": "创建文本索引",
+      "category": "索引",
+      "notes": [
+        "在临时练习库创建文本索引。表达式直接返回索引名称，因此结果是字符串。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/config/database.ts\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.createIndex({ plot: 'text', title: 'text', fullplot: 'text' }, { name: 'text_search_index', background: true });\n",
+      "status": "passed",
+      "operation": "createIndex",
+      "namespace": "临时练习库",
+      "inputSha256": "a5a0f508ba20f84e44ef9efb44e9b8723372fe6dd4ddd10ce55d835bfe9d42e1",
+      "result": "text_search_index",
+      "outputSha256": "b9d6332229135c97b907e29c4f03e80222d5f93882b65a8e523a651394e532b1"
+    },
+    {
+      "id": "20-find-created-movie",
+      "title": "读取创建后的电影",
+      "category": "查询",
+      "notes": [
+        "准备一条新增电影记录后再读取，展示创建业务中的文档回读步骤。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L216\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.findOne({ _id: ObjectId('000000000000000000000001') });\n",
+      "status": "passed",
+      "operation": "findOne",
+      "namespace": "临时练习库",
+      "inputSha256": "c858ad235efb882d52170aefd252cb93f33ab801d67f4c6c85e89825ff3756d5",
+      "result": {
+        "_id": {
+          "$oid": "000000000000000000000001"
+        },
+        "title": "MFlix insertOne business example",
+        "year": 2000,
+        "genres": [
+          "Drama"
+        ],
+        "plot": "A movie used to practice MongoDB business operations."
+      },
+      "outputSha256": "82bbc4d576374cd1011a865280118ad88e7cccb02352cd4f2fec52b36fa635ac"
+    },
+    {
+      "id": "21-find-updated-movie",
+      "title": "读取更新后的电影",
+      "category": "查询",
+      "notes": [
+        "准备并更新电影记录后再读取，展示更新业务中的文档回读步骤。"
+      ],
+      "query": "// MongoDB MFlix, Apache-2.0 (see LICENSE).\n// Source: https://github.com/mongodb/sample-app-nodejs-mflix/blob/1f7dcdba04f6212a5fd4842135973e28a0a2d741/server/src/controllers/movieController.ts#L314\n// Modified: literal example parameters; execution/verification handled separately.\ndb.movies.findOne({ _id: ObjectId('000000000000000000000001') });\n",
+      "status": "passed",
+      "operation": "findOne",
+      "namespace": "临时练习库",
+      "inputSha256": "aba7825111b9dd243686b574d8408fc7701ed02dbd714bedb3f1f698184e0506",
+      "result": {
+        "_id": {
+          "$oid": "000000000000000000000001"
+        },
+        "plot": "A group of bandits stage a brazen train hold-up, only to find a determined posse hot on their heels.",
+        "genres": [
+          "Short",
+          "Western"
+        ],
+        "runtime": 11,
+        "cast": [
+          "A.C. Abadie",
+          "Gilbert M. 'Broncho Billy' Anderson",
+          "George Barnes",
+          "Justus D. Barnes"
+        ],
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTU3NjE5NzYtYTYyNS00MDVmLWIwYjgtMmYwYWIxZDYyNzU2XkEyXkFqcGdeQXVyNzQzNzQxNzI@._V1_SY1000_SX677_AL_.jpg",
+        "title": "MFlix updated title",
+        "fullplot": "Among the earliest existing films in American cinema - notable as the first film that presented a narrative story to tell - it depicts a group of cowboy outlaws who hold up a train and rob the passengers. They are then pursued by a Sheriff's posse. Several scenes have color included - all hand tinted.",
+        "languages": [
+          "English"
+        ],
+        "released": {
+          "$date": {
+            "$numberLong": "-2085523200000"
+          }
+        },
+        "directors": [
+          "Edwin S. Porter"
+        ],
+        "rated": "TV-G",
+        "awards": {
+          "wins": 1,
+          "nominations": 0,
+          "text": "1 win."
+        },
+        "lastupdated": "2015-08-13 00:27:59.177000000",
+        "year": 2001,
+        "imdb": {
+          "rating": 7.4,
+          "votes": 9847,
+          "id": 439
+        },
+        "countries": [
+          "USA"
+        ],
+        "type": "movie",
+        "tomatoes": {
+          "viewer": {
+            "rating": 3.7,
+            "numReviews": 2559,
+            "meter": 75
+          },
+          "fresh": 6,
+          "critic": {
+            "rating": 7.6,
+            "numReviews": 6,
+            "meter": 100
+          },
+          "rotten": 0,
+          "lastUpdated": {
+            "$date": "2015-08-08T19:16:10Z"
+          }
+        },
+        "num_mflix_comments": 0
+      },
+      "outputSha256": "645885a73ed08f2287a2ba4bbbb5461db2d44164e31da9a59cd15ebed7c18c6b"
+    }
+  ]
+}

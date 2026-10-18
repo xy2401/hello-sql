@@ -10,7 +10,7 @@
 4. **DuckDB-WASM**：前端毫秒级执行百万行数据列式 OLAP 聚合。
 
 ::: tip 在线实验环境
-可在 [WASM 数据库实验台](/playground/) 体验 SQLite-WASM、DuckDB-WASM、PGlite 等浏览器数据库的实际运行。
+可在 [🧪 实验台](/playground/) 体验 SQLite-WASM、DuckDB-WASM、PGlite 等浏览器数据库的实际运行。
 :::
 
 ## 适用边界

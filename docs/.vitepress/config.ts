@@ -182,9 +182,14 @@ function databaseProductSidebar(id: string, name: string, link: string) {
         { text: '安装与切换', link: `${link}/install` },
         { text: '连接与执行', link: `${link}/cli` },
         { text: '核心知识', link: `${link}/core-concepts` },
-        ...(id === 'mongodb' ? [{ text: '示例数据', link: `${link}/sample-data` }] : []),
+        ...(id === 'mongodb' ? [
+          { text: '示例数据', link: `${link}/sample-data` },
+          { text: '示例数据操作', link: `${link}/sample-data-ops` },
+          { text: '容器内命令', link: `${link}/docker-commands` },
+          { text: '命令示例与结果', link: `${link}/docker-command-ops` },
+        ] : []),
         { text: '版本演进', link: `${link}/version/`, collapsed: false, items: databaseVersionItems[id] },
-        { text: 'Docker 验证', link: `${link}/DockerTooling` },
+        { text: id === 'mongodb' ? '历史 Docker 证据' : 'Docker 验证', link: `${link}/DockerTooling` },
       ],
     },
   ];
@@ -237,7 +242,7 @@ export default defineConfig({
           })),
         ],
       },
-      { text: 'WASM 数据库实验台', link: '/playground/' },
+      { text: '🧪 实验台', link: '/playground/' },
       { text: '⚖️ 对比矩阵', link: '/matrix/' },
       { text: '📚 参考资料', link: '/reference/' },
     ],
@@ -262,11 +267,11 @@ export default defineConfig({
           { text: '离线、本地优先与同步', link: '/products/browser/local-first' },
         ],
       }],
-      '/reference/': [{ text: '参考资料', items: [
-        { text: '参考资料总览', link: '/reference/' },
+      '/reference/': [{ text: '📚 参考资料', items: [
+        { text: '📚 参考资料', link: '/reference/' },
       ] }],
-      '/playground/': [{ text: 'WASM 数据库实验台', items: [
-        { text: 'WASM 数据库实验台', link: '/playground/' },
+      '/playground/': [{ text: '🧪 实验台', items: [
+        { text: '🧪 实验台', link: '/playground/' },
         { text: 'SQLite WASM', link: '/playground/sqlite' },
         { text: 'DuckDB-Wasm', link: '/playground/duckdb' },
         { text: 'PGlite / PostgreSQL', link: '/playground/pglite' },
@@ -274,8 +279,8 @@ export default defineConfig({
         { text: 'IndexedDB', link: '/playground/indexeddb' },
         { text: 'WASM 成熟度目录', link: '/playground/catalog' },
       ] }],
-      '/matrix/': [{ text: '数据库对比', items: [
-        { text: '矩阵总览', link: '/matrix/' },
+      '/matrix/': [{ text: '⚖️ 对比矩阵', items: [
+        { text: '⚖️ 对比矩阵', link: '/matrix/' },
         { text: 'SQL 方言与查询能力', link: '/matrix/sql-dialects' },
         { text: '事务与一致性', link: '/matrix/transactions' },
         { text: '索引、搜索与 JSON', link: '/matrix/indexes-json' },
