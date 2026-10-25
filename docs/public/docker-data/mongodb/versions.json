@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "9.0.4",
+      "captureId": "capture-20261018163805008-3e713660",
+      "manifestFile": "runs/capture-20261018163805008-3e713660/manifest.json",
+      "manifestSha256": "75a414fa357a93858856a5fd410c0e7ae3a66e5fa15f05723d476158eac69933",
+      "product": "mongodb",
+      "status": "passed"
+    },
+    {
+      "version": "9.0.4",
+      "captureId": "capture-20261018163250044-d4131e0d",
+      "manifestFile": "runs/capture-20261018163250044-d4131e0d/manifest.json",
+      "manifestSha256": "062fe2fa5ce301d4070a59362f24489b167a4abd8e37f54f4a4ddf6220a051db",
+      "product": "mongodb",
+      "status": "passed"
+    }
+  ]
+}

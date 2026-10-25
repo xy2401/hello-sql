@@ -1,0 +1,763 @@
+{
+  "schemaVersion": 1,
+  "captureId": "capture-20261018163250044-d4131e0d",
+  "directory": "/opt/database-tools",
+  "files": [
+    {
+      "path": "/opt/database-tools/bin",
+      "pathBytesBase64": "L29wdC9kYXRhYmFzZS10b29scy9iaW4=",
+      "type": "directory",
+      "stage": "mongodb",
+      "mode": 16877,
+      "permissionsOctal": "0755",
+      "permissions": "drwxr-xr-x",
+      "accessBits": {
+        "owner": {
+          "read": true,
+          "write": true,
+          "execute": true
+        },
+        "group": {
+          "read": true,
+          "write": false,
+          "execute": true
+        },
+        "other": {
+          "read": true,
+          "write": false,
+          "execute": true
+        }
+      },
+      "specialBits": {
+        "setuid": false,
+        "setgid": false,
+        "sticky": false
+      },
+      "uid": 0,
+      "gid": 0,
+      "user": "root",
+      "group": "root",
+      "sizeBytes": "4096",
+      "blocks": "8",
+      "blockUnitBytes": 512,
+      "allocatedBytes": "4096",
+      "blockSize": 4096,
+      "inode": "176399",
+      "device": "93",
+      "deviceMajor": 0,
+      "deviceMinor": 93,
+      "rdevMajor": 0,
+      "rdevMinor": 0,
+      "hardlinkCount": 2,
+      "hardlinkKey": null,
+      "times": {
+        "accessed": {
+          "seconds": "1792341163",
+          "nanoseconds": 834424461
+        },
+        "modified": {
+          "seconds": "1792341157",
+          "nanoseconds": 0
+        },
+        "changed": {
+          "seconds": "1792341163",
+          "nanoseconds": 831189619
+        },
+        "created": {
+          "seconds": "1792341162",
+          "nanoseconds": 402676158
+        }
+      },
+      "attributes": null,
+      "attributesMask": null,
+      "statxMask": null,
+      "linuxFileFlags": "--------------e-------",
+      "fieldAvailability": {
+        "statx": {
+          "status": "unsupported",
+          "reason": "Linux CLI does not expose statx result/support masks"
+        },
+        "birthTime": {
+          "status": "available"
+        },
+        "user": {
+          "status": "available"
+        },
+        "group": {
+          "status": "available"
+        },
+        "xattrs": {
+          "status": "available"
+        },
+        "acl": {
+          "status": "available"
+        },
+        "linuxFileFlags": {
+          "status": "available"
+        },
+        "capabilities": {
+          "status": "absent",
+          "reason": "security.capability xattr; supplementary getcap output saved separately"
+        }
+      },
+      "linkTarget": null,
+      "linkTargetBytesBase64": null,
+      "xattrs": {},
+      "acl": {
+        "format": "getfacl-numeric",
+        "entries": [
+          "user::rwx",
+          "group::r-x",
+          "other::r-x"
+        ],
+        "support": "mode entries alone do not prove extended ACL support"
+      },
+      "capabilities": null,
+      "sha256": null,
+      "hashStatus": "not-applicable",
+      "errors": [],
+      "packages": [],
+      "packageVersions": [],
+      "rdev": "0",
+      "origin": "product",
+      "introducedAt": "mongodb",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      }
+    },
+    {
+      "path": "/opt/database-tools/LICENSE.md",
+      "pathBytesBase64": "L29wdC9kYXRhYmFzZS10b29scy9MSUNFTlNFLm1k",
+      "type": "file",
+      "stage": "mongodb",
+      "mode": 33188,
+      "permissionsOctal": "0644",
+      "permissions": "-rw-r--r--",
+      "accessBits": {
+        "owner": {
+          "read": true,
+          "write": true,
+          "execute": false
+        },
+        "group": {
+          "read": true,
+          "write": false,
+          "execute": false
+        },
+        "other": {
+          "read": true,
+          "write": false,
+          "execute": false
+        }
+      },
+      "specialBits": {
+        "setuid": false,
+        "setgid": false,
+        "sticky": false
+      },
+      "uid": 0,
+      "gid": 0,
+      "user": "root",
+      "group": "root",
+      "sizeBytes": "554",
+      "blocks": "8",
+      "blockUnitBytes": 512,
+      "allocatedBytes": "4096",
+      "blockSize": 4096,
+      "inode": "176396",
+      "device": "93",
+      "deviceMajor": 0,
+      "deviceMinor": 93,
+      "rdevMajor": 0,
+      "rdevMinor": 0,
+      "hardlinkCount": 1,
+      "hardlinkKey": null,
+      "times": {
+        "accessed": {
+          "seconds": "1790699529",
+          "nanoseconds": 0
+        },
+        "modified": {
+          "seconds": "1790699529",
+          "nanoseconds": 0
+        },
+        "changed": {
+          "seconds": "1792341162",
+          "nanoseconds": 402101657
+        },
+        "created": {
+          "seconds": "1792341162",
+          "nanoseconds": 402068297
+        }
+      },
+      "attributes": null,
+      "attributesMask": null,
+      "statxMask": null,
+      "linuxFileFlags": "--------------e-------",
+      "fieldAvailability": {
+        "statx": {
+          "status": "unsupported",
+          "reason": "Linux CLI does not expose statx result/support masks"
+        },
+        "birthTime": {
+          "status": "available"
+        },
+        "user": {
+          "status": "available"
+        },
+        "group": {
+          "status": "available"
+        },
+        "xattrs": {
+          "status": "available"
+        },
+        "acl": {
+          "status": "available"
+        },
+        "linuxFileFlags": {
+          "status": "available"
+        },
+        "capabilities": {
+          "status": "absent",
+          "reason": "security.capability xattr; supplementary getcap output saved separately"
+        }
+      },
+      "linkTarget": null,
+      "linkTargetBytesBase64": null,
+      "xattrs": {},
+      "acl": {
+        "format": "getfacl-numeric",
+        "entries": [
+          "user::rw-",
+          "group::r--",
+          "other::r--"
+        ],
+        "support": "mode entries alone do not prove extended ACL support"
+      },
+      "capabilities": null,
+      "sha256": "e0b215145cf51c766603856643a746420f60aedfbf9a523a2d82a251cac3cce3",
+      "hashStatus": "complete",
+      "errors": [],
+      "packages": [],
+      "packageVersions": [],
+      "rdev": "0",
+      "origin": "product",
+      "introducedAt": "mongodb",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      }
+    },
+    {
+      "path": "/opt/database-tools/mongodb-database-tools-ubuntu2604-x86_64-100.19.1.tgz.cdx.json",
+      "pathBytesBase64": "L29wdC9kYXRhYmFzZS10b29scy9tb25nb2RiLWRhdGFiYXNlLXRvb2xzLXVidW50dTI2MDQteDg2XzY0LTEwMC4xOS4xLnRnei5jZHguanNvbg==",
+      "type": "file",
+      "stage": "mongodb",
+      "mode": 33188,
+      "permissionsOctal": "0644",
+      "permissions": "-rw-r--r--",
+      "accessBits": {
+        "owner": {
+          "read": true,
+          "write": true,
+          "execute": false
+        },
+        "group": {
+          "read": true,
+          "write": false,
+          "execute": false
+        },
+        "other": {
+          "read": true,
+          "write": false,
+          "execute": false
+        }
+      },
+      "specialBits": {
+        "setuid": false,
+        "setgid": false,
+        "sticky": false
+      },
+      "uid": 0,
+      "gid": 0,
+      "user": "root",
+      "group": "root",
+      "sizeBytes": "28616",
+      "blocks": "56",
+      "blockUnitBytes": 512,
+      "allocatedBytes": "28672",
+      "blockSize": 4096,
+      "inode": "176413",
+      "device": "93",
+      "deviceMajor": 0,
+      "deviceMinor": 93,
+      "rdevMajor": 0,
+      "rdevMinor": 0,
+      "hardlinkCount": 1,
+      "hardlinkKey": null,
+      "times": {
+        "accessed": {
+          "seconds": "1790699529",
+          "nanoseconds": 0
+        },
+        "modified": {
+          "seconds": "1790699529",
+          "nanoseconds": 0
+        },
+        "changed": {
+          "seconds": "1792341162",
+          "nanoseconds": 620877999
+        },
+        "created": {
+          "seconds": "1792341162",
+          "nanoseconds": 620794588
+        }
+      },
+      "attributes": null,
+      "attributesMask": null,
+      "statxMask": null,
+      "linuxFileFlags": "--------------e-------",
+      "fieldAvailability": {
+        "statx": {
+          "status": "unsupported",
+          "reason": "Linux CLI does not expose statx result/support masks"
+        },
+        "birthTime": {
+          "status": "available"
+        },
+        "user": {
+          "status": "available"
+        },
+        "group": {
+          "status": "available"
+        },
+        "xattrs": {
+          "status": "available"
+        },
+        "acl": {
+          "status": "available"
+        },
+        "linuxFileFlags": {
+          "status": "available"
+        },
+        "capabilities": {
+          "status": "absent",
+          "reason": "security.capability xattr; supplementary getcap output saved separately"
+        }
+      },
+      "linkTarget": null,
+      "linkTargetBytesBase64": null,
+      "xattrs": {},
+      "acl": {
+        "format": "getfacl-numeric",
+        "entries": [
+          "user::rw-",
+          "group::r--",
+          "other::r--"
+        ],
+        "support": "mode entries alone do not prove extended ACL support"
+      },
+      "capabilities": null,
+      "sha256": "89315d3037578b5bd3a4a89d2e87ba75f2d4e6e21f3c3afe4f4449a06e158211",
+      "hashStatus": "complete",
+      "errors": [],
+      "packages": [],
+      "packageVersions": [],
+      "rdev": "0",
+      "origin": "product",
+      "introducedAt": "mongodb",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      }
+    },
+    {
+      "path": "/opt/database-tools/mongodb-database-tools-ubuntu2604-x86_64-100.19.1.tgz.sarif.json",
+      "pathBytesBase64": "L29wdC9kYXRhYmFzZS10b29scy9tb25nb2RiLWRhdGFiYXNlLXRvb2xzLXVidW50dTI2MDQteDg2XzY0LTEwMC4xOS4xLnRnei5zYXJpZi5qc29u",
+      "type": "file",
+      "stage": "mongodb",
+      "mode": 33188,
+      "permissionsOctal": "0644",
+      "permissions": "-rw-r--r--",
+      "accessBits": {
+        "owner": {
+          "read": true,
+          "write": true,
+          "execute": false
+        },
+        "group": {
+          "read": true,
+          "write": false,
+          "execute": false
+        },
+        "other": {
+          "read": true,
+          "write": false,
+          "execute": false
+        }
+      },
+      "specialBits": {
+        "setuid": false,
+        "setgid": false,
+        "sticky": false
+      },
+      "uid": 0,
+      "gid": 0,
+      "user": "root",
+      "group": "root",
+      "sizeBytes": "4245",
+      "blocks": "16",
+      "blockUnitBytes": 512,
+      "allocatedBytes": "8192",
+      "blockSize": 4096,
+      "inode": "176414",
+      "device": "93",
+      "deviceMajor": 0,
+      "deviceMinor": 93,
+      "rdevMajor": 0,
+      "rdevMinor": 0,
+      "hardlinkCount": 1,
+      "hardlinkKey": null,
+      "times": {
+        "accessed": {
+          "seconds": "1790699529",
+          "nanoseconds": 0
+        },
+        "modified": {
+          "seconds": "1790699529",
+          "nanoseconds": 0
+        },
+        "changed": {
+          "seconds": "1792341162",
+          "nanoseconds": 620909460
+        },
+        "created": {
+          "seconds": "1792341162",
+          "nanoseconds": 620877999
+        }
+      },
+      "attributes": null,
+      "attributesMask": null,
+      "statxMask": null,
+      "linuxFileFlags": "--------------e-------",
+      "fieldAvailability": {
+        "statx": {
+          "status": "unsupported",
+          "reason": "Linux CLI does not expose statx result/support masks"
+        },
+        "birthTime": {
+          "status": "available"
+        },
+        "user": {
+          "status": "available"
+        },
+        "group": {
+          "status": "available"
+        },
+        "xattrs": {
+          "status": "available"
+        },
+        "acl": {
+          "status": "available"
+        },
+        "linuxFileFlags": {
+          "status": "available"
+        },
+        "capabilities": {
+          "status": "absent",
+          "reason": "security.capability xattr; supplementary getcap output saved separately"
+        }
+      },
+      "linkTarget": null,
+      "linkTargetBytesBase64": null,
+      "xattrs": {},
+      "acl": {
+        "format": "getfacl-numeric",
+        "entries": [
+          "user::rw-",
+          "group::r--",
+          "other::r--"
+        ],
+        "support": "mode entries alone do not prove extended ACL support"
+      },
+      "capabilities": null,
+      "sha256": "698c505fd2cc8ce9a9ae3fa759a8c90644b439a953db7f12f600048edae4a467",
+      "hashStatus": "complete",
+      "errors": [],
+      "packages": [],
+      "packageVersions": [],
+      "rdev": "0",
+      "origin": "product",
+      "introducedAt": "mongodb",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      }
+    },
+    {
+      "path": "/opt/database-tools/README.md",
+      "pathBytesBase64": "L29wdC9kYXRhYmFzZS10b29scy9SRUFETUUubWQ=",
+      "type": "file",
+      "stage": "mongodb",
+      "mode": 33188,
+      "permissionsOctal": "0644",
+      "permissions": "-rw-r--r--",
+      "accessBits": {
+        "owner": {
+          "read": true,
+          "write": true,
+          "execute": false
+        },
+        "group": {
+          "read": true,
+          "write": false,
+          "execute": false
+        },
+        "other": {
+          "read": true,
+          "write": false,
+          "execute": false
+        }
+      },
+      "specialBits": {
+        "setuid": false,
+        "setgid": false,
+        "sticky": false
+      },
+      "uid": 0,
+      "gid": 0,
+      "user": "root",
+      "group": "root",
+      "sizeBytes": "3419",
+      "blocks": "8",
+      "blockUnitBytes": 512,
+      "allocatedBytes": "4096",
+      "blockSize": 4096,
+      "inode": "176397",
+      "device": "93",
+      "deviceMajor": 0,
+      "deviceMinor": 93,
+      "rdevMajor": 0,
+      "rdevMinor": 0,
+      "hardlinkCount": 1,
+      "hardlinkKey": null,
+      "times": {
+        "accessed": {
+          "seconds": "1790699529",
+          "nanoseconds": 0
+        },
+        "modified": {
+          "seconds": "1790699529",
+          "nanoseconds": 0
+        },
+        "changed": {
+          "seconds": "1792341162",
+          "nanoseconds": 402171889
+        },
+        "created": {
+          "seconds": "1792341162",
+          "nanoseconds": 402101657
+        }
+      },
+      "attributes": null,
+      "attributesMask": null,
+      "statxMask": null,
+      "linuxFileFlags": "--------------e-------",
+      "fieldAvailability": {
+        "statx": {
+          "status": "unsupported",
+          "reason": "Linux CLI does not expose statx result/support masks"
+        },
+        "birthTime": {
+          "status": "available"
+        },
+        "user": {
+          "status": "available"
+        },
+        "group": {
+          "status": "available"
+        },
+        "xattrs": {
+          "status": "available"
+        },
+        "acl": {
+          "status": "available"
+        },
+        "linuxFileFlags": {
+          "status": "available"
+        },
+        "capabilities": {
+          "status": "absent",
+          "reason": "security.capability xattr; supplementary getcap output saved separately"
+        }
+      },
+      "linkTarget": null,
+      "linkTargetBytesBase64": null,
+      "xattrs": {},
+      "acl": {
+        "format": "getfacl-numeric",
+        "entries": [
+          "user::rw-",
+          "group::r--",
+          "other::r--"
+        ],
+        "support": "mode entries alone do not prove extended ACL support"
+      },
+      "capabilities": null,
+      "sha256": "8f9ce4b653f734945e06736aa4180a8b9fd3f2e22a26e923bc2bf4abf16586c6",
+      "hashStatus": "complete",
+      "errors": [],
+      "packages": [],
+      "packageVersions": [],
+      "rdev": "0",
+      "origin": "product",
+      "introducedAt": "mongodb",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      }
+    },
+    {
+      "path": "/opt/database-tools/THIRD-PARTY-NOTICES",
+      "pathBytesBase64": "L29wdC9kYXRhYmFzZS10b29scy9USElSRC1QQVJUWS1OT1RJQ0VT",
+      "type": "file",
+      "stage": "mongodb",
+      "mode": 33188,
+      "permissionsOctal": "0644",
+      "permissions": "-rw-r--r--",
+      "accessBits": {
+        "owner": {
+          "read": true,
+          "write": true,
+          "execute": false
+        },
+        "group": {
+          "read": true,
+          "write": false,
+          "execute": false
+        },
+        "other": {
+          "read": true,
+          "write": false,
+          "execute": false
+        }
+      },
+      "specialBits": {
+        "setuid": false,
+        "setgid": false,
+        "sticky": false
+      },
+      "uid": 0,
+      "gid": 0,
+      "user": "root",
+      "group": "root",
+      "sizeBytes": "424828",
+      "blocks": "832",
+      "blockUnitBytes": 512,
+      "allocatedBytes": "425984",
+      "blockSize": 4096,
+      "inode": "176398",
+      "device": "93",
+      "deviceMajor": 0,
+      "deviceMinor": 93,
+      "rdevMajor": 0,
+      "rdevMinor": 0,
+      "hardlinkCount": 1,
+      "hardlinkKey": null,
+      "times": {
+        "accessed": {
+          "seconds": "1790699529",
+          "nanoseconds": 0
+        },
+        "modified": {
+          "seconds": "1790699529",
+          "nanoseconds": 0
+        },
+        "changed": {
+          "seconds": "1792341162",
+          "nanoseconds": 402676158
+        },
+        "created": {
+          "seconds": "1792341162",
+          "nanoseconds": 402171889
+        }
+      },
+      "attributes": null,
+      "attributesMask": null,
+      "statxMask": null,
+      "linuxFileFlags": "--------------e-------",
+      "fieldAvailability": {
+        "statx": {
+          "status": "unsupported",
+          "reason": "Linux CLI does not expose statx result/support masks"
+        },
+        "birthTime": {
+          "status": "available"
+        },
+        "user": {
+          "status": "available"
+        },
+        "group": {
+          "status": "available"
+        },
+        "xattrs": {
+          "status": "available"
+        },
+        "acl": {
+          "status": "available"
+        },
+        "linuxFileFlags": {
+          "status": "available"
+        },
+        "capabilities": {
+          "status": "absent",
+          "reason": "security.capability xattr; supplementary getcap output saved separately"
+        }
+      },
+      "linkTarget": null,
+      "linkTargetBytesBase64": null,
+      "xattrs": {},
+      "acl": {
+        "format": "getfacl-numeric",
+        "entries": [
+          "user::rw-",
+          "group::r--",
+          "other::r--"
+        ],
+        "support": "mode entries alone do not prove extended ACL support"
+      },
+      "capabilities": null,
+      "sha256": "7066a7b061e4cd9c5d42b02c2650d04a24cb9384b455289f8588bc4443ad4e49",
+      "hashStatus": "complete",
+      "errors": [],
+      "packages": [],
+      "packageVersions": [],
+      "rdev": "0",
+      "origin": "product",
+      "introducedAt": "mongodb",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      }
+    }
+  ]
+}

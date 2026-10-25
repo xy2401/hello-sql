@@ -1,0 +1,775 @@
+{
+  "schemaVersion": 1,
+  "captureId": "capture-20261018163250044-d4131e0d",
+  "directory": "/usr/share/dpkg",
+  "files": [
+    {
+      "path": "/usr/share/dpkg/abitable",
+      "pathBytesBase64": "L3Vzci9zaGFyZS9kcGtnL2FiaXRhYmxl",
+      "type": "file",
+      "stage": "mongodb",
+      "mode": 33188,
+      "permissionsOctal": "0644",
+      "permissions": "-rw-r--r--",
+      "accessBits": {
+        "owner": {
+          "read": true,
+          "write": true,
+          "execute": false
+        },
+        "group": {
+          "read": true,
+          "write": false,
+          "execute": false
+        },
+        "other": {
+          "read": true,
+          "write": false,
+          "execute": false
+        }
+      },
+      "specialBits": {
+        "setuid": false,
+        "setgid": false,
+        "sticky": false
+      },
+      "uid": 0,
+      "gid": 0,
+      "user": "root",
+      "group": "root",
+      "sizeBytes": "352",
+      "blocks": "8",
+      "blockUnitBytes": 512,
+      "allocatedBytes": "4096",
+      "blockSize": 4096,
+      "inode": "138842",
+      "device": "93",
+      "deviceMajor": 0,
+      "deviceMinor": 93,
+      "rdevMajor": 0,
+      "rdevMinor": 0,
+      "hardlinkCount": 1,
+      "hardlinkKey": null,
+      "times": {
+        "accessed": {
+          "seconds": "1774968764",
+          "nanoseconds": 0
+        },
+        "modified": {
+          "seconds": "1774968764",
+          "nanoseconds": 0
+        },
+        "changed": {
+          "seconds": "1792340491",
+          "nanoseconds": 950968207
+        },
+        "created": {
+          "seconds": "1792340491",
+          "nanoseconds": 950929106
+        }
+      },
+      "attributes": null,
+      "attributesMask": null,
+      "statxMask": null,
+      "linuxFileFlags": "--------------e-------",
+      "fieldAvailability": {
+        "statx": {
+          "status": "unsupported",
+          "reason": "Linux CLI does not expose statx result/support masks"
+        },
+        "birthTime": {
+          "status": "available"
+        },
+        "user": {
+          "status": "available"
+        },
+        "group": {
+          "status": "available"
+        },
+        "xattrs": {
+          "status": "available"
+        },
+        "acl": {
+          "status": "available"
+        },
+        "linuxFileFlags": {
+          "status": "available"
+        },
+        "capabilities": {
+          "status": "absent",
+          "reason": "security.capability xattr; supplementary getcap output saved separately"
+        }
+      },
+      "linkTarget": null,
+      "linkTargetBytesBase64": null,
+      "xattrs": {},
+      "acl": {
+        "format": "getfacl-numeric",
+        "entries": [
+          "user::rw-",
+          "group::r--",
+          "other::r--"
+        ],
+        "support": "mode entries alone do not prove extended ACL support"
+      },
+      "capabilities": null,
+      "sha256": "dc56b70537be90fccb2f934f579464c8cdbabbdbb3c7ff1db67333cde7edf36e",
+      "hashStatus": "complete",
+      "errors": [],
+      "packages": [
+        "dpkg"
+      ],
+      "packageVersions": [
+        {
+          "name": "dpkg",
+          "version": "1.23.7ubuntu1",
+          "architecture": "amd64"
+        }
+      ],
+      "rdev": "0",
+      "origin": "system",
+      "introducedAt": "ubuntu",
+      "ownership": null
+    },
+    {
+      "path": "/usr/share/dpkg/cputable",
+      "pathBytesBase64": "L3Vzci9zaGFyZS9kcGtnL2NwdXRhYmxl",
+      "type": "file",
+      "stage": "mongodb",
+      "mode": 33188,
+      "permissionsOctal": "0644",
+      "permissions": "-rw-r--r--",
+      "accessBits": {
+        "owner": {
+          "read": true,
+          "write": true,
+          "execute": false
+        },
+        "group": {
+          "read": true,
+          "write": false,
+          "execute": false
+        },
+        "other": {
+          "read": true,
+          "write": false,
+          "execute": false
+        }
+      },
+      "specialBits": {
+        "setuid": false,
+        "setgid": false,
+        "sticky": false
+      },
+      "uid": 0,
+      "gid": 0,
+      "user": "root",
+      "group": "root",
+      "sizeBytes": "2066",
+      "blocks": "8",
+      "blockUnitBytes": 512,
+      "allocatedBytes": "4096",
+      "blockSize": 4096,
+      "inode": "138843",
+      "device": "93",
+      "deviceMajor": 0,
+      "deviceMinor": 93,
+      "rdevMajor": 0,
+      "rdevMinor": 0,
+      "hardlinkCount": 1,
+      "hardlinkKey": null,
+      "times": {
+        "accessed": {
+          "seconds": "1774968764",
+          "nanoseconds": 0
+        },
+        "modified": {
+          "seconds": "1774968764",
+          "nanoseconds": 0
+        },
+        "changed": {
+          "seconds": "1792340491",
+          "nanoseconds": 951043148
+        },
+        "created": {
+          "seconds": "1792340491",
+          "nanoseconds": 950968207
+        }
+      },
+      "attributes": null,
+      "attributesMask": null,
+      "statxMask": null,
+      "linuxFileFlags": "--------------e-------",
+      "fieldAvailability": {
+        "statx": {
+          "status": "unsupported",
+          "reason": "Linux CLI does not expose statx result/support masks"
+        },
+        "birthTime": {
+          "status": "available"
+        },
+        "user": {
+          "status": "available"
+        },
+        "group": {
+          "status": "available"
+        },
+        "xattrs": {
+          "status": "available"
+        },
+        "acl": {
+          "status": "available"
+        },
+        "linuxFileFlags": {
+          "status": "available"
+        },
+        "capabilities": {
+          "status": "absent",
+          "reason": "security.capability xattr; supplementary getcap output saved separately"
+        }
+      },
+      "linkTarget": null,
+      "linkTargetBytesBase64": null,
+      "xattrs": {},
+      "acl": {
+        "format": "getfacl-numeric",
+        "entries": [
+          "user::rw-",
+          "group::r--",
+          "other::r--"
+        ],
+        "support": "mode entries alone do not prove extended ACL support"
+      },
+      "capabilities": null,
+      "sha256": "eaaa1f2f8bf25c79f6f7037308f39b11afc4555679b7960ce66f0e2555daa275",
+      "hashStatus": "complete",
+      "errors": [],
+      "packages": [
+        "dpkg"
+      ],
+      "packageVersions": [
+        {
+          "name": "dpkg",
+          "version": "1.23.7ubuntu1",
+          "architecture": "amd64"
+        }
+      ],
+      "rdev": "0",
+      "origin": "system",
+      "introducedAt": "ubuntu",
+      "ownership": null
+    },
+    {
+      "path": "/usr/share/dpkg/ostable",
+      "pathBytesBase64": "L3Vzci9zaGFyZS9kcGtnL29zdGFibGU=",
+      "type": "file",
+      "stage": "mongodb",
+      "mode": 33188,
+      "permissionsOctal": "0644",
+      "permissions": "-rw-r--r--",
+      "accessBits": {
+        "owner": {
+          "read": true,
+          "write": true,
+          "execute": false
+        },
+        "group": {
+          "read": true,
+          "write": false,
+          "execute": false
+        },
+        "other": {
+          "read": true,
+          "write": false,
+          "execute": false
+        }
+      },
+      "specialBits": {
+        "setuid": false,
+        "setgid": false,
+        "sticky": false
+      },
+      "uid": 0,
+      "gid": 0,
+      "user": "root",
+      "group": "root",
+      "sizeBytes": "1696",
+      "blocks": "8",
+      "blockUnitBytes": 512,
+      "allocatedBytes": "4096",
+      "blockSize": 4096,
+      "inode": "138844",
+      "device": "93",
+      "deviceMajor": 0,
+      "deviceMinor": 93,
+      "rdevMajor": 0,
+      "rdevMinor": 0,
+      "hardlinkCount": 1,
+      "hardlinkKey": null,
+      "times": {
+        "accessed": {
+          "seconds": "1774968764",
+          "nanoseconds": 0
+        },
+        "modified": {
+          "seconds": "1774968764",
+          "nanoseconds": 0
+        },
+        "changed": {
+          "seconds": "1792340491",
+          "nanoseconds": 951073199
+        },
+        "created": {
+          "seconds": "1792340491",
+          "nanoseconds": 951043148
+        }
+      },
+      "attributes": null,
+      "attributesMask": null,
+      "statxMask": null,
+      "linuxFileFlags": "--------------e-------",
+      "fieldAvailability": {
+        "statx": {
+          "status": "unsupported",
+          "reason": "Linux CLI does not expose statx result/support masks"
+        },
+        "birthTime": {
+          "status": "available"
+        },
+        "user": {
+          "status": "available"
+        },
+        "group": {
+          "status": "available"
+        },
+        "xattrs": {
+          "status": "available"
+        },
+        "acl": {
+          "status": "available"
+        },
+        "linuxFileFlags": {
+          "status": "available"
+        },
+        "capabilities": {
+          "status": "absent",
+          "reason": "security.capability xattr; supplementary getcap output saved separately"
+        }
+      },
+      "linkTarget": null,
+      "linkTargetBytesBase64": null,
+      "xattrs": {},
+      "acl": {
+        "format": "getfacl-numeric",
+        "entries": [
+          "user::rw-",
+          "group::r--",
+          "other::r--"
+        ],
+        "support": "mode entries alone do not prove extended ACL support"
+      },
+      "capabilities": null,
+      "sha256": "e0676a630f642b31f639d88b56a395d5ef49aa04fc796dc562e09bb05e20a22e",
+      "hashStatus": "complete",
+      "errors": [],
+      "packages": [
+        "dpkg"
+      ],
+      "packageVersions": [
+        {
+          "name": "dpkg",
+          "version": "1.23.7ubuntu1",
+          "architecture": "amd64"
+        }
+      ],
+      "rdev": "0",
+      "origin": "system",
+      "introducedAt": "ubuntu",
+      "ownership": null
+    },
+    {
+      "path": "/usr/share/dpkg/sh",
+      "pathBytesBase64": "L3Vzci9zaGFyZS9kcGtnL3No",
+      "type": "directory",
+      "stage": "mongodb",
+      "mode": 16877,
+      "permissionsOctal": "0755",
+      "permissions": "drwxr-xr-x",
+      "accessBits": {
+        "owner": {
+          "read": true,
+          "write": true,
+          "execute": true
+        },
+        "group": {
+          "read": true,
+          "write": false,
+          "execute": true
+        },
+        "other": {
+          "read": true,
+          "write": false,
+          "execute": true
+        }
+      },
+      "specialBits": {
+        "setuid": false,
+        "setgid": false,
+        "sticky": false
+      },
+      "uid": 0,
+      "gid": 0,
+      "user": "root",
+      "group": "root",
+      "sizeBytes": "4096",
+      "blocks": "8",
+      "blockUnitBytes": 512,
+      "allocatedBytes": "4096",
+      "blockSize": 4096,
+      "inode": "138845",
+      "device": "93",
+      "deviceMajor": 0,
+      "deviceMinor": 93,
+      "rdevMajor": 0,
+      "rdevMinor": 0,
+      "hardlinkCount": 2,
+      "hardlinkKey": null,
+      "times": {
+        "accessed": {
+          "seconds": "1792340492",
+          "nanoseconds": 145738166
+        },
+        "modified": {
+          "seconds": "1791321924",
+          "nanoseconds": 905679200
+        },
+        "changed": {
+          "seconds": "1792340492",
+          "nanoseconds": 128737204
+        },
+        "created": {
+          "seconds": "1792340491",
+          "nanoseconds": 951073199
+        }
+      },
+      "attributes": null,
+      "attributesMask": null,
+      "statxMask": null,
+      "linuxFileFlags": "--------------e-------",
+      "fieldAvailability": {
+        "statx": {
+          "status": "unsupported",
+          "reason": "Linux CLI does not expose statx result/support masks"
+        },
+        "birthTime": {
+          "status": "available"
+        },
+        "user": {
+          "status": "available"
+        },
+        "group": {
+          "status": "available"
+        },
+        "xattrs": {
+          "status": "available"
+        },
+        "acl": {
+          "status": "available"
+        },
+        "linuxFileFlags": {
+          "status": "available"
+        },
+        "capabilities": {
+          "status": "absent",
+          "reason": "security.capability xattr; supplementary getcap output saved separately"
+        }
+      },
+      "linkTarget": null,
+      "linkTargetBytesBase64": null,
+      "xattrs": {},
+      "acl": {
+        "format": "getfacl-numeric",
+        "entries": [
+          "user::rwx",
+          "group::r-x",
+          "other::r-x"
+        ],
+        "support": "mode entries alone do not prove extended ACL support"
+      },
+      "capabilities": null,
+      "sha256": null,
+      "hashStatus": "not-applicable",
+      "errors": [],
+      "packages": [
+        "dpkg"
+      ],
+      "packageVersions": [
+        {
+          "name": "dpkg",
+          "version": "1.23.7ubuntu1",
+          "architecture": "amd64"
+        }
+      ],
+      "rdev": "0",
+      "origin": "system",
+      "introducedAt": "ubuntu",
+      "ownership": null
+    },
+    {
+      "path": "/usr/share/dpkg/tupletable",
+      "pathBytesBase64": "L3Vzci9zaGFyZS9kcGtnL3R1cGxldGFibGU=",
+      "type": "file",
+      "stage": "mongodb",
+      "mode": 33188,
+      "permissionsOctal": "0644",
+      "permissions": "-rw-r--r--",
+      "accessBits": {
+        "owner": {
+          "read": true,
+          "write": true,
+          "execute": false
+        },
+        "group": {
+          "read": true,
+          "write": false,
+          "execute": false
+        },
+        "other": {
+          "read": true,
+          "write": false,
+          "execute": false
+        }
+      },
+      "specialBits": {
+        "setuid": false,
+        "setgid": false,
+        "sticky": false
+      },
+      "uid": 0,
+      "gid": 0,
+      "user": "root",
+      "group": "root",
+      "sizeBytes": "2525",
+      "blocks": "8",
+      "blockUnitBytes": 512,
+      "allocatedBytes": "4096",
+      "blockSize": 4096,
+      "inode": "138847",
+      "device": "93",
+      "deviceMajor": 0,
+      "deviceMinor": 93,
+      "rdevMajor": 0,
+      "rdevMinor": 0,
+      "hardlinkCount": 1,
+      "hardlinkKey": null,
+      "times": {
+        "accessed": {
+          "seconds": "1774968764",
+          "nanoseconds": 0
+        },
+        "modified": {
+          "seconds": "1774968764",
+          "nanoseconds": 0
+        },
+        "changed": {
+          "seconds": "1792340491",
+          "nanoseconds": 951581128
+        },
+        "created": {
+          "seconds": "1792340491",
+          "nanoseconds": 951506117
+        }
+      },
+      "attributes": null,
+      "attributesMask": null,
+      "statxMask": null,
+      "linuxFileFlags": "--------------e-------",
+      "fieldAvailability": {
+        "statx": {
+          "status": "unsupported",
+          "reason": "Linux CLI does not expose statx result/support masks"
+        },
+        "birthTime": {
+          "status": "available"
+        },
+        "user": {
+          "status": "available"
+        },
+        "group": {
+          "status": "available"
+        },
+        "xattrs": {
+          "status": "available"
+        },
+        "acl": {
+          "status": "available"
+        },
+        "linuxFileFlags": {
+          "status": "available"
+        },
+        "capabilities": {
+          "status": "absent",
+          "reason": "security.capability xattr; supplementary getcap output saved separately"
+        }
+      },
+      "linkTarget": null,
+      "linkTargetBytesBase64": null,
+      "xattrs": {},
+      "acl": {
+        "format": "getfacl-numeric",
+        "entries": [
+          "user::rw-",
+          "group::r--",
+          "other::r--"
+        ],
+        "support": "mode entries alone do not prove extended ACL support"
+      },
+      "capabilities": null,
+      "sha256": "227c7e74ff8269f2c74b04520c2ff73b2b6368ff22bebf8af0b7fecfcbb950c8",
+      "hashStatus": "complete",
+      "errors": [],
+      "packages": [
+        "dpkg"
+      ],
+      "packageVersions": [
+        {
+          "name": "dpkg",
+          "version": "1.23.7ubuntu1",
+          "architecture": "amd64"
+        }
+      ],
+      "rdev": "0",
+      "origin": "system",
+      "introducedAt": "ubuntu",
+      "ownership": null
+    },
+    {
+      "path": "/usr/share/dpkg/varianttable",
+      "pathBytesBase64": "L3Vzci9zaGFyZS9kcGtnL3ZhcmlhbnR0YWJsZQ==",
+      "type": "file",
+      "stage": "mongodb",
+      "mode": 33188,
+      "permissionsOctal": "0644",
+      "permissions": "-rw-r--r--",
+      "accessBits": {
+        "owner": {
+          "read": true,
+          "write": true,
+          "execute": false
+        },
+        "group": {
+          "read": true,
+          "write": false,
+          "execute": false
+        },
+        "other": {
+          "read": true,
+          "write": false,
+          "execute": false
+        }
+      },
+      "specialBits": {
+        "setuid": false,
+        "setgid": false,
+        "sticky": false
+      },
+      "uid": 0,
+      "gid": 0,
+      "user": "root",
+      "group": "root",
+      "sizeBytes": "507",
+      "blocks": "8",
+      "blockUnitBytes": 512,
+      "allocatedBytes": "4096",
+      "blockSize": 4096,
+      "inode": "138848",
+      "device": "93",
+      "deviceMajor": 0,
+      "deviceMinor": 93,
+      "rdevMajor": 0,
+      "rdevMinor": 0,
+      "hardlinkCount": 1,
+      "hardlinkKey": null,
+      "times": {
+        "accessed": {
+          "seconds": "1774968764",
+          "nanoseconds": 0
+        },
+        "modified": {
+          "seconds": "1774968764",
+          "nanoseconds": 0
+        },
+        "changed": {
+          "seconds": "1792340491",
+          "nanoseconds": 951653170
+        },
+        "created": {
+          "seconds": "1792340491",
+          "nanoseconds": 951581128
+        }
+      },
+      "attributes": null,
+      "attributesMask": null,
+      "statxMask": null,
+      "linuxFileFlags": "--------------e-------",
+      "fieldAvailability": {
+        "statx": {
+          "status": "unsupported",
+          "reason": "Linux CLI does not expose statx result/support masks"
+        },
+        "birthTime": {
+          "status": "available"
+        },
+        "user": {
+          "status": "available"
+        },
+        "group": {
+          "status": "available"
+        },
+        "xattrs": {
+          "status": "available"
+        },
+        "acl": {
+          "status": "available"
+        },
+        "linuxFileFlags": {
+          "status": "available"
+        },
+        "capabilities": {
+          "status": "absent",
+          "reason": "security.capability xattr; supplementary getcap output saved separately"
+        }
+      },
+      "linkTarget": null,
+      "linkTargetBytesBase64": null,
+      "xattrs": {},
+      "acl": {
+        "format": "getfacl-numeric",
+        "entries": [
+          "user::rw-",
+          "group::r--",
+          "other::r--"
+        ],
+        "support": "mode entries alone do not prove extended ACL support"
+      },
+      "capabilities": null,
+      "sha256": "19634d61b1bdb7e8db61a12c5396b14b544ff195eac348462cabfcfab4578060",
+      "hashStatus": "complete",
+      "errors": [],
+      "packages": [
+        "dpkg"
+      ],
+      "packageVersions": [
+        {
+          "name": "dpkg",
+          "version": "1.23.7ubuntu1",
+          "architecture": "amd64"
+        }
+      ],
+      "rdev": "0",
+      "origin": "system",
+      "introducedAt": "ubuntu",
+      "ownership": null
+    }
+  ]
+}

@@ -1,0 +1,4768 @@
+{
+  "schemaVersion": 1,
+  "captureId": "capture-20261018163805008-3e713660",
+  "total": 7807,
+  "directories": [
+    {
+      "path": "/",
+      "count": 18,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8a5edab282632443-0.json"
+      ]
+    },
+    {
+      "path": "/.rock",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3beb8e4f252416a5-0.json"
+      ]
+    },
+    {
+      "path": "/etc",
+      "count": 77,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2824684de3d1a193-0.json"
+      ]
+    },
+    {
+      "path": "/etc/alternatives",
+      "count": 16,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b184d946f9ef279a-0.json"
+      ]
+    },
+    {
+      "path": "/etc/apt",
+      "count": 7,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7544cb2025ccd270-0.json"
+      ]
+    },
+    {
+      "path": "/etc/apt/apt.conf.d",
+      "count": 7,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/51f9f25ef9583fe9-0.json"
+      ]
+    },
+    {
+      "path": "/etc/apt/sources.list.d",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0464daa80774f475-0.json"
+      ]
+    },
+    {
+      "path": "/etc/apt/trusted.gpg.d",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/62353ba595bc16ec-0.json"
+      ]
+    },
+    {
+      "path": "/etc/ca-certificates",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/001b82b42cbb087a-0.json"
+      ]
+    },
+    {
+      "path": "/etc/cloud",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f992b478f310ddf7-0.json"
+      ]
+    },
+    {
+      "path": "/etc/cron.d",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/024f5fd88a5a8170-0.json"
+      ]
+    },
+    {
+      "path": "/etc/cron.daily",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e6551eaa3ac05e0b-0.json"
+      ]
+    },
+    {
+      "path": "/etc/default",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e6e0db6cf94a4c0b-0.json"
+      ]
+    },
+    {
+      "path": "/etc/dpkg",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/4d6251f708d45db3-0.json"
+      ]
+    },
+    {
+      "path": "/etc/dpkg/dpkg.cfg.d",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/dd2313941bc59a9c-0.json"
+      ]
+    },
+    {
+      "path": "/etc/dpkg/origins",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2cd27591814ad608-0.json"
+      ]
+    },
+    {
+      "path": "/etc/gnutls",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e2f392c4b026445b-0.json"
+      ]
+    },
+    {
+      "path": "/etc/gss",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/73b6d0ae9991fd6f-0.json"
+      ]
+    },
+    {
+      "path": "/etc/init.d",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c55a296bf4896c08-0.json"
+      ]
+    },
+    {
+      "path": "/etc/kernel",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ff8b7f4952bb60b5-0.json"
+      ]
+    },
+    {
+      "path": "/etc/ld.so.conf.d",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e855a100ac55639c-0.json"
+      ]
+    },
+    {
+      "path": "/etc/ldap",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/97708ff12d65e119-0.json"
+      ]
+    },
+    {
+      "path": "/etc/logrotate.d",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7534754c804f9d94-0.json"
+      ]
+    },
+    {
+      "path": "/etc/pam.d",
+      "count": 17,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/dfe711c34730172e-0.json"
+      ]
+    },
+    {
+      "path": "/etc/profile.d",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/25ec93c60dd05945-0.json"
+      ]
+    },
+    {
+      "path": "/etc/rcS.d",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/4dec6e204f3e1d42-0.json"
+      ]
+    },
+    {
+      "path": "/etc/security",
+      "count": 13,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7180697142fed966-0.json"
+      ]
+    },
+    {
+      "path": "/etc/selinux",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/15963aaad72d4489-0.json"
+      ]
+    },
+    {
+      "path": "/etc/skel",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/00abd747731929c9-0.json"
+      ]
+    },
+    {
+      "path": "/etc/ssl",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8b6554cf4168c3e5-0.json"
+      ]
+    },
+    {
+      "path": "/etc/ssl/certs",
+      "count": 243,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/bd8ae46e651cb398-0.json"
+      ]
+    },
+    {
+      "path": "/etc/sysctl.d",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9bf64c539a30b158-0.json"
+      ]
+    },
+    {
+      "path": "/etc/systemd",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/377afe02b0888167-0.json"
+      ]
+    },
+    {
+      "path": "/etc/systemd/system",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/822eaa5daa513a88-0.json"
+      ]
+    },
+    {
+      "path": "/etc/systemd/system/multi-user.target.wants",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/001a402ce071ebb0-0.json"
+      ]
+    },
+    {
+      "path": "/etc/systemd/system/timers.target.wants",
+      "count": 6,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/70f87ed7001835df-0.json"
+      ]
+    },
+    {
+      "path": "/etc/terminfo",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6d185d030c2868f9-0.json"
+      ]
+    },
+    {
+      "path": "/etc/update-motd.d",
+      "count": 4,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6ec792a245025ff6-0.json"
+      ]
+    },
+    {
+      "path": "/home",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2cc974af6afc822c-0.json"
+      ]
+    },
+    {
+      "path": "/home/ubuntu",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ce4fda4853034472-0.json"
+      ]
+    },
+    {
+      "path": "/opt",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cbcdfaeb37659981-0.json"
+      ]
+    },
+    {
+      "path": "/opt/database-tools",
+      "count": 6,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/429d8192212ebe33-0.json"
+      ]
+    },
+    {
+      "path": "/opt/database-tools/bin",
+      "count": 8,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5a6c58b177404b1b-0.json"
+      ]
+    },
+    {
+      "path": "/opt/mongodb",
+      "count": 5,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a4033eadec92c1d9-0.json"
+      ]
+    },
+    {
+      "path": "/opt/mongodb/bin",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/52d0a2797637ca1e-0.json"
+      ]
+    },
+    {
+      "path": "/opt/mongosh",
+      "count": 7,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/160c5d5a65c8f994-0.json"
+      ]
+    },
+    {
+      "path": "/opt/mongosh/bin",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/63cb6425a117c4b6-0.json"
+      ]
+    },
+    {
+      "path": "/root",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/94a6b447580330f9-0.json"
+      ]
+    },
+    {
+      "path": "/run",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b3d46fe883f343fe-0.json"
+      ]
+    },
+    {
+      "path": "/run/systemd",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2ce04f5a5ee5556c-0.json"
+      ]
+    },
+    {
+      "path": "/usr",
+      "count": 10,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/894d731f69bb6196-0.json"
+      ]
+    },
+    {
+      "path": "/usr/bin",
+      "count": 478,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/33629c0e654360bf-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib",
+      "count": 16,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5289cd0f221ee1de-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/apt",
+      "count": 6,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c08da088aeb1a59c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/apt/methods",
+      "count": 13,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/06922d91664aca6a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/apt/planners",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/4114d52241ec0df7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/apt/solvers",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cf8051cb78b7f5cd-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/cargo",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3c8e9d512b0ef76a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/cargo/bin",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2757cb49915dd8d8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/cargo/bin/coreutils",
+      "count": 115,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/26133f09fbeb0c16-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/compat-ld",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ebb54f8f310a48a6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/dpkg",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cfe34baa1866bd41-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/dpkg/methods",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/37cd581b1ea09fbd-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/dpkg/methods/apt",
+      "count": 5,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9148fd9907f5b646-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/init",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/122a3d6e8fc31d80-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/locale",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/10a7e26412504790-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/locale/C.utf8",
+      "count": 12,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2e267266141b590e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/locale/C.utf8/LC_MESSAGES",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a6591fdb662442ab-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/lsb",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/95b7b512f80b41bb-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/lsb/init-functions.d",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/da30cd32bc94a233-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/mime",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ab0660b4a5e6bec7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/mime/packages",
+      "count": 4,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/03e650107e02d794-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/ssl",
+      "count": 5,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b61d1088c768a52d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/ssl/misc",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d0bb6ef331ca4643-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/sysctl.d",
+      "count": 9,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/26361af642acbf0f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/systemd",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0aaf1d8b6f62ed23-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/systemd/system",
+      "count": 16,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b656e170518929b0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/tmpfiles.d",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/98673bd55bf90fb5-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/udev",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/930f1297f956045c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/udev/rules.d",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d8e2d7247d6037b2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu",
+      "count": 193,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3076b0246cb14681-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/bfd-plugins",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c88063a8bf3481db-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/engines-3",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/eed9ba11a1517ed2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv",
+      "count": 256,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/65b4e9a4bb532ce1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.d",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/810dd2e5fa606056-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/gprofng",
+      "count": 5,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/dd09c10f3d662a05-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/krb5",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/fc3b8576bb897aa0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/krb5/plugins",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c05f38b058582fbb-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/krb5/plugins/preauth",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a4bc15f56411fac4-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/ldscripts",
+      "count": 141,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/88889b12d8ae321a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/ossl-modules",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b7bcba317329338e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base",
+      "count": 49,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0314c45272b0df62-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto",
+      "count": 10,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f256b136cd4ad298-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/attributes",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c38a7a8ca5dc2f2d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/Cwd",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1aeeca0f12ac9b5e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/Fcntl",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a06c6d2bc48f1ce6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/File",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6f2da5eff9f1fc06-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/File/Glob",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3b801da0a9b915fb-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/Hash",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/da2bfd8688c9a2f4-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/Hash/Util",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/bf66f70ca76fb68b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/IO",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/95d8a40e0867910a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/List",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b942444fd8dda8c7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/List/Util",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/21685138619af2d9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/POSIX",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/afcc3ca549a088ca-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/re",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/08d20e3cd722f40e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/auto/Socket",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/58ffe32b4529a919-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/Carp",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c584b6c3d23244a5-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/Exporter",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/64cd641f52f916ba-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/File",
+      "count": 6,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/87e87cee853e5d5e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/File/Spec",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b2c888a5a101ed97-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/Getopt",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9fd61e98f33c65a8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/Getopt/Long",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0e8032d104555d72-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/Hash",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a1f5afe7cf9f8404-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/IO",
+      "count": 7,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/4f7812e7642e421f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/IO/Socket",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0f1ae7a90c720b13-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/IPC",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a48ed9a7ad2a759b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/List",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/98dd459decafc844-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/Scalar",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e734cb5f2273a658-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/Text",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/241b1b84c95599fa-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/Tie",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a234402a325f9480-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d4d3c2305682a361-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib",
+      "count": 73,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2048953b2106a58b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Age",
+      "count": 22,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/024345a20623a0fd-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Alpha",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d0ddf8c3a3422a75-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Bc",
+      "count": 13,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/99fdb72134788a55-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/BidiC",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a817f347a46899ad-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/BidiM",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/60024f8e42ccc5c3-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Blk",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d4290eeb4a453751-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Bpt",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/63a1e045a82e4460-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Cased",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/4810438217b264c0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Ccc",
+      "count": 11,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/23f2c6544b5a54a1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/CE",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/21f9599fddd3e490-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/CI",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a09eaf059ecfc338-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/CompEx",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3c35e8ff9dc2f671-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/CWCF",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/360c1d4c3a819e05-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/CWCM",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/571cafb0c0cc39ad-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/CWKCF",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/df1f2e804618b293-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/CWL",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3d441284ca7ea96e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/CWT",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9ceee8fe87f7822f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/CWU",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d906572931b880a0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Dash",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2bbceebab9a1a61c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Dep",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/eb7d7b6373b75f57-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/DI",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1640ba6a9a6e51c6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Dia",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9bf9bd743ea61e21-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Dt",
+      "count": 14,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e1dc17b491fc4cbd-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Ea",
+      "count": 5,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b5390d22d49b1291-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/EBase",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5f4bdc6bee92132c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/EComp",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/aa05eb191832c0b0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Emoji",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/54009b314107df85-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/EPres",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/fd358b723883c27f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Ext",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/13635f4eed79359e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/ExtPict",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f82d24c6ac6331cc-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Gc",
+      "count": 32,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5e29a89d0b446422-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/GCB",
+      "count": 7,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5304e4a2cb3a8dbe-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/GrBase",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2f6af5021f1d7571-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/GrExt",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b4fbad77a85c9595-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Hex",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/255a854f33d8d22c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Hst",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d034a12a321d30a9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Hyphen",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6bc248bf54fda7cb-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/IDC",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/547602321f6adf40-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Ideo",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/26c9a04e2c21b45b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/IDS",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ef7bc466c7397b85-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/IdStatus",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3186e31f83a040df-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/IdType",
+      "count": 11,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/4e2b3b0a86345183-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/In",
+      "count": 24,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/611f9243fd894196-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/InPC",
+      "count": 13,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/bd4e66bc1106b7d9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/InSC",
+      "count": 25,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c9488bcfd5800550-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Jg",
+      "count": 20,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ae194000b4f8466d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Jt",
+      "count": 6,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/909b617b9f76b6a5-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Lb",
+      "count": 20,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3e0412aafe1bc5c9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Lower",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d53cb3fd7dc9a9ee-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Math",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5ae56c964146f1bc-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/NFCQC",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/4605eec9a62c0df0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/NFDQC",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1ee6a83a9a8a0d9b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/NFKCQC",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d1a3ffb92d42eac7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/NFKDQC",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/04c4cbce7ddb7d06-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Nt",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cbd3e6c434e0c54e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Nv",
+      "count": 65,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/af400d4ecac49df1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/PatSyn",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/08e2dfdb5ff22b1a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/PCM",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/59251fc62d440b44-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Perl",
+      "count": 23,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c435d970cd620339-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/QMark",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/aa06c49ee863b7ef-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/SB",
+      "count": 12,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c8113b47fc904c9b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Sc",
+      "count": 32,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a1316f0c25c90893-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Scx",
+      "count": 70,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/378ed3a9e4a2f26f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/SD",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/262967800fc16ba7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/STerm",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b6f4748131028d7f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Term",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a5810485f6bde660-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/UIdeo",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f57d2d836b48b96a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Upper",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2390dbe52f91cda4-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/Vo",
+      "count": 4,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/02bc07636514afa1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/VS",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6c7d7c1cb2faf248-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/WB",
+      "count": 12,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/be448d7d5ca6003d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/XIDC",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/aedc30e72f0bbfa0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/lib/XIDS",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a1899c304c536bf1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/unicore/To",
+      "count": 39,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8fc20e93007ceebe-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/perl-base/warnings",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8cff25c4e71a52d6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/sasl2",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cec19bc3f735a282-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/security",
+      "count": 45,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/06e62c16fdb3e5fc-0.json"
+      ]
+    },
+    {
+      "path": "/usr/lib64",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/eefbcb3ad1fcd53f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/libexec",
+      "count": 5,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cf0c2a41b2badd83-0.json"
+      ]
+    },
+    {
+      "path": "/usr/libexec/coreutils",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/fdf1d9beac1b356f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/libexec/dpkg",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/52ed32848e2c7ca7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/libexec/e2fsprogs",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f696e31fbb11dbcd-0.json"
+      ]
+    },
+    {
+      "path": "/usr/libexec/libselinux",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3baeefd03e54c0a8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/libexec/rust-coreutils",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a52fcd0661a3d261-0.json"
+      ]
+    },
+    {
+      "path": "/usr/local",
+      "count": 10,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0885fcf5b23ee3ef-0.json"
+      ]
+    },
+    {
+      "path": "/usr/local/share",
+      "count": 4,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1e3238fb9e377866-0.json"
+      ]
+    },
+    {
+      "path": "/usr/local/share/capture",
+      "count": 6,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7e78bf8bae061b09-0.json"
+      ]
+    },
+    {
+      "path": "/usr/local/share/hello-capture",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7a5ff411315da143-0.json"
+      ]
+    },
+    {
+      "path": "/usr/local/share/hello-capture/mongodb",
+      "count": 8,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ab867c87f88fcf6c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/sbin",
+      "count": 104,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/829eb242159232e7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share",
+      "count": 44,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/10b2079988256c14-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/apport",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7928597d13f96fab-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/apport/package-hooks",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/82a4ff7d628fce5a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/apt",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/92664199cfa3b69d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/base-files",
+      "count": 8,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5b3eae73b4ac8a62-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/base-passwd",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/de6ed12bb45f5a64-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/bash-completion",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3b88e88e81cc8e29-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/bash-completion/completions",
+      "count": 172,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6aa0be3fd39561d3-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/bug",
+      "count": 4,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a1007464e71284ca-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/bug/apt",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5d87b2c6227a464d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/bug/binutils",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/873ec9c4fc007c61-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/bug/init-system-helpers",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f12c8e3d4292cdec-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/bug/procps",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/efb35253ba7aa92c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/ca-certificates",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c0b5e56504d81b16-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/ca-certificates/mozilla",
+      "count": 121,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6f1240a5511dd82a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/common-licenses",
+      "count": 17,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9190d1c1658d57bd-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/fe563d642cd38113-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales",
+      "count": 102,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/124e0298765fdcc8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/arch",
+      "count": 32,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/45c87953a5886813-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/base32",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d29985b87bb7a36c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/base64",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2748235284aafe8a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/basename",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8c526ec140f3955b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/basenc",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c90111cb99acd13d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/cat",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/46f1688d7adf524a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/chcon",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cd77e9e53db6c9c5-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/chgrp",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/08c0d318bd3b051d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/chmod",
+      "count": 30,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/dd885629805b1fce-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/chown",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/396afda277d44ffe-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/chroot",
+      "count": 28,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/bfdfa62441fad91c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/cksum",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f2c2cc0c0d73e23a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/comm",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/648434c8b89da583-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/cp",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7117d570d111632f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/csplit",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/effd605270566ed6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/cut",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/fc31daff6142755c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/date",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e9f62878e490ef5a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/dd",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a8e213faaef51917-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/df",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c8ee096f73647584-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/dircolors",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/868ed9d33b23e45c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/dirname",
+      "count": 28,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/86b3bd3fb873d6bc-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/du",
+      "count": 8,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/16515e2a5d3cf801-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/echo",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a352ed93c3ffe58e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/env",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2e0df0117bfbe080-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/expand",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c57ac8e618a8d0b3-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/expr",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/655e81c27cd27c08-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/factor",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b3875ae39da074f8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/false",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/abdedef538ba8e9b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/fmt",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/eeeeeef272f550ba-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/fold",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7971916fffbaa359-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/groups",
+      "count": 28,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b2004348920525b2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/hashsum",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c9a8f5a61b78d0b4-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/head",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/48d6657be865646a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/hostid",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/650de1e1a8d0140f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/hostname",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/70851bb436b9e9a8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/id",
+      "count": 28,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/eeb32f72ff60c66f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/install",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5d3d037cd6578d1f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/join",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8fdafec34ad299eb-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/kill",
+      "count": 28,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ea1ab58d036f37ad-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/link",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/efd8e01c9eab628c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/ln",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f891653d04b234e9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/logname",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9cedeb5555c1d011-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/ls",
+      "count": 30,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cef7f5d959997dc6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/mkdir",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cf9ac975fd9fd9f7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/mkfifo",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/dfdbb36c6df375a4-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/mknod",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/388131519b9ebc56-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/mktemp",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cbec882bad6a4e92-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/more",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/314ccd431f6379f8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/mv",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/493fa0b3bc18f8f1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/nice",
+      "count": 28,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/82aea5a0a98ea51e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/nl",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/02676ed9447fca3e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/nohup",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/29e1dedf07180e42-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/nproc",
+      "count": 28,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a46b0ca6107cc957-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/numfmt",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/309dc44e59528424-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/od",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a061ed25c641ab80-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/paste",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/dc2f8b66a6269dde-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/pathchk",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/18d06a5e3e0ef01f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/pinky",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a79027cc6cbb9b7f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/pr",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c8cea7bb34a641c0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/printenv",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ed847a2f6fde50b4-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/printf",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3dd7235a54caf63a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/ptx",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7a5e9e7c58516fae-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/pwd",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/bffb024e95447a94-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/readlink",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f8fddc78bd85a025-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/realpath",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/bc7cc911d61354ce-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/rm",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7de180ad14fd604e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/rmdir",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/de91e5d49557cafa-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/runcon",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b595df24aa279f66-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/seq",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f6970da38b7b4e4e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/shred",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f14fad6dbc1b4829-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/shuf",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/308c50c7f1c528e4-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/sleep",
+      "count": 29,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ffd7fc9eed48c2a8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/sort",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/21b09ca9f5a25880-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/split",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e93356aeb781d9ec-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/stat",
+      "count": 26,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8f0b19f9686ec24d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/stdbuf",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/12bd443d6ca58bc2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/stty",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e16face23321993e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/sum",
+      "count": 28,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/bebe4f8949576f21-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/sync",
+      "count": 26,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9489263fbbc848e1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/tac",
+      "count": 26,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/fb3f34dcec6dcc1b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/tail",
+      "count": 26,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/addc4dc8b7dbba42-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/tee",
+      "count": 26,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e41a7c32b29230a5-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/test",
+      "count": 26,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0ebcbac210cdf84d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/timeout",
+      "count": 26,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/23a376af1b5ea2eb-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/touch",
+      "count": 26,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2df14b70ab463b26-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/tr",
+      "count": 26,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/4688e5f666ef4902-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/true",
+      "count": 28,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2ded36036b048624-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/truncate",
+      "count": 6,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/540510d7c0e3eea2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/tsort",
+      "count": 26,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7e16d94e83e3c50f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/tty",
+      "count": 9,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1dee27e340abc828-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/uname",
+      "count": 25,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e8748bb45183817e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/unexpand",
+      "count": 25,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/efff9ec30d7a7004-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/uniq",
+      "count": 25,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1c51404208be1724-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/unlink",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/64e6843003a79bd8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/uptime",
+      "count": 25,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8c1fd662557ef58e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/users",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/adc5f6bee2a1c6d3-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/uucore",
+      "count": 11,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5ed50275d685b292-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/vdir",
+      "count": 27,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1e3a23411867c32e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/wc",
+      "count": 25,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0d70ae5595058a40-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/who",
+      "count": 25,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b7ee9062ddf6469a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/whoami",
+      "count": 28,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ea7621dc8f6d6b9b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/coreutils/locales/yes",
+      "count": 31,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c5f5b6bfd538fc6c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/debconf",
+      "count": 5,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/66ba12589aadd545-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/debianutils",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/92f371d475582d08-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/debianutils/shells.d",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/28bb6806589bd4d8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc",
+      "count": 134,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7813088c4bcbc2dd-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc-base",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/dd058e86dd6d2435-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/acl",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f84d4d8342c2e8f8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/apt",
+      "count": 4,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ce37361d60fbed7c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/attr",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/eef7ec1109162a7f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/base-files",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5faf14c4c3474628-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/base-passwd",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a917b0932e9af934-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/bash",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f7dbc7f0a2e15e60-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/binutils",
+      "count": 6,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d9917075b31a3220-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/binutils-common",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/02d6618efda7706d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/bsdutils",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/752aee290b55f98f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/ca-certificates",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/00b45a0aac4f23d0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/ca-certificates/examples",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/45e67a37c1a74a04-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/ca-certificates/examples/ca-certificates-local",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/90b52031d9a02840-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/ca-certificates/examples/ca-certificates-local/debian",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a311ae6c262d9b71-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/coreutils",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cfda9c9c6cab0166-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/coreutils-from-uutils",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/914a49c7ba11dd1e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/curl",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0e107840551fe42a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/dash",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a2215c19c68747dc-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/debconf",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0421ae73d058984b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/debianutils",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/652d548778312110-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/diffutils",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/471c72b84b70f84c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/dpkg",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2998bbfb13670a40-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/e2fsprogs",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5cb2ad6ee10737b8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/findutils",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9b98b1af308c7351-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/gcc-16-base",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3d4ebf712285bfec-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/gnu-coreutils",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3cc11cfe869a15e9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/gpgv",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/4dae6912791867db-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/grep",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2c726b38ddc5b666-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/gzip",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/24f578e6caa4469f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/hostname",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e7426f40429fdc2c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/init-system-helpers",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/82bb0da82e96acc6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/jq",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/bf45e041072c461d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libacl1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d5471f0cddb805fd-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libapt-pkg7.0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a17a84b015eee62b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libattr1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9f0e76fbd0179c46-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libaudit-common",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6965a0cfbd944fcc-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libaudit1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5bb78a1d2f0c3ad6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libblkid1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/826206a08c7aee99-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libbrotli1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a5f6ebe57b07ee5f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libbsd0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e6ecbabe6e29762d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libbz2-1.0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/855ba86d1fff1591-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libc-bin",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/184f1d45fa016acd-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libc-gconv-modules-extra",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d261adc013e6f881-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libc6",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3693354851d0475d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libcap-ng0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/18bb38f73105337f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libcap2",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/56f1ff008104381a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libcap2-bin",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/829d9ec61a2f23b1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libcom-err2",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1abfa55f242c21ad-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libcrypt1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/86a14e9163a1758b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libctf-nobfd0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3bcecef2e11351b7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libcurl4t64",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2e8a1c4d93a031d4-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libdb5.3t64",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/360ccde796f61d08-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libdebconfclient0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6ddf1ad13190dfa3-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libext2fs2t64",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/39c92ab150ea9986-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libffi8",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/30f1eb3098a1e533-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libgcrypt20",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9f8596fa83b57e7a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libgmp10",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3f1026a4ed008a67-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libgnutls30t64",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5a71ef26d86c46a3-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libgpg-error0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b16a84779f5906c3-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libgssapi-krb5-2",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c33b97cbc3caf862-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libhogweed6t64",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8509016efb36953d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libidn2-0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/139e4b41ae074260-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libjansson4",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d1c115b250fbd3e6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libjq1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8a9f8662e5733039-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libk5crypto3",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0437ae32d4550fc9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libkeyutils1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/22488915c5bfda8d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libkrb5-3",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3ed6f8d2b33da117-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libkrb5support0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/83ecc452f31c55ef-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libldap-common",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8ff394fe5f582eed-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libldap2",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2dac136c599cab68-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/liblz4-1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/362ff9121ffb7df5-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/liblzma5",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/29c3d161d635a126-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libmd0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6b82781003dd55bf-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libmount1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/131d00181a062562-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libnettle8t64",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/87526d8eafd23e1d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libnghttp2-14",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cc127b61b46b0de8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libonig5",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/18e45b0d57753a6a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libp11-kit0",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5ffe7128e780dd3d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libpam-modules",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f61a4371a2bc40b5-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libpam-modules-bin",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/63a6389fe553a44f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libpam-runtime",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0556689325bb7b4b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libpam0g",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6968af0db16711d5-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libpcre2-8-0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5d4c236662a4d8c9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libproc2-0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/60450b07f1b6cf8f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libpsl5t64",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d30838c4c29b6144-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/librtmp1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/08af1e59aababe48-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libsasl2-2",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5131ea0a706a2a39-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libsasl2-modules-db",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/fcd7f2d5df314c40-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libseccomp2",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1015b7e4d17e63eb-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libselinux1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/25efeae91dd8fba8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libsemanage-common",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/72b072fe2a764744-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libsemanage2",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9f12250d7f2e4e26-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libsepol2",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f55040d5afd769df-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libsframe3",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c605fffd77d71ca7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libsmartcols1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a9867f08e44855ad-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libsnappy1v5",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a5f8c8c8750134cc-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libss2",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8f03a7a46e93538c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libssh2-1t64",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/75dac55cfbd32cf9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libssl3t64",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/75a6bcdb88024430-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libsystemd0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3d3630f65e39e0e4-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libtasn1-6",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b06796092d13c51c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libtinfo6",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a22f319a01c7d4f0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libudev1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d329e94c0c10e387-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libunistring5",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/78b2ef7064cd9ad0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libuuid1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cb721f8e99df447e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libxxhash0",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d77caa57a7f1aee0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/libzstd1",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b50cfd50b36f4ef1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/login",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c5ecfa333b0e8b4e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/login.defs",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/da1c84413e5739a5-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/logsave",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/38a595f64329855c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/mawk",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3a8e27defdfca809-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/mount",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6b0592c6dc6cfeee-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/ncurses-base",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/32c52d6eb3b6492c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/ncurses-bin",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3489ca8fd576a9aa-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/openssl",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e2b2a5a070eb5e25-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/openssl-provider-legacy",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6e222e0ab1e35346-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/passwd",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8649a4d29882f412-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/perl-base",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d61babf279f218b6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/procps",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ebf3a6b0d3d436b5-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/rust-coreutils",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d861cfcc2bd21b89-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/sed",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/02d4ac3813f08e13-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/sensible-utils",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/34def534c17f50b1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/sysvinit-utils",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ca4af436b4bb816e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/tar",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/20086b369b4f3587-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/ubuntu-keyring",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d2f686b45453cbf9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/unzip",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1418e0cc59d600cc-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/util-linux",
+      "count": 4,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3f9a2a069c7d420b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/xz-utils",
+      "count": 5,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1e1a96a24b0da514-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/zip",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cb376b7292e64826-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/doc/zlib1g",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0adca50fcda9e721-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/dpkg",
+      "count": 6,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c8af435b87fe08e7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/dpkg/sh",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/70125e804e23df91-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/fish",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/27e9ea2172c4b77f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/fish/vendor_completions.d",
+      "count": 110,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c45f80f5640b55b7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/gcc",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c17584b229a56896-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/gcc/python",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c95e9781abafa341-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/gcc/python/libstdcxx",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8e43fac1609e8f67-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/gcc/python/libstdcxx/v6",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1331a996965ee787-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/gdb",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0310812c9dda5dc6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/gdb/auto-load",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7f02c43153928106-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/gdb/auto-load/usr",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1c15574ccbc97d42-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/gdb/auto-load/usr/lib",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8184b523bb5f029c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/gdb/auto-load/usr/lib/x86_64-linux-gnu",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/54918ba40777b3d2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/info",
+      "count": 8,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/72362178a3b42e71-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/keyrings",
+      "count": 5,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d40cc43e3b952175-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/libc-bin",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0d4255d700d884b2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/libgcrypt20",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/fd55e9244a5d4920-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/lintian",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2a74d4bbced388b6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/lintian/overrides",
+      "count": 48,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2a9aebe60720718f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/lintian/profiles",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ad75767fb2ed0483-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/lintian/profiles/dpkg",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a1ea2185956075de-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale",
+      "count": 62,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0d2555733e398649-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/af",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8f00619243ffd851-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/af/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/bb1bef7694b883a0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ar",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e8c511d42106fff0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ast",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/29c865be41f2bbfc-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/be",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/cd9161f09392b45a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/be/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/00a1fe63750b5eb0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/bg",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2024eea4baf0908f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/bg/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8f768a95514d8e8f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/bs",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3caeea39902e776c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ca",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/144fb750e12c30fd-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ca/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/166aac634e4a9cf7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/cs",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/acb5e5e52c8f1622-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/cs/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/467438b15270a7dd-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/cy",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/bacb1308d8285344-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/da",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b24aceb910b37a8e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/da/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ffaf9710a28a6f85-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/de",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/fc3da229cf287af2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/de/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1cedc4950880b8f3-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/dz",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0d327218cecbecd3-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/el",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a63d54be22b639ea-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/el/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e92f9d3a0d4fe464-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/en",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8645e3545df77dee-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/eo",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5abc1a3491da4b66-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/eo/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0fcd6f9d09b922fb-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/es",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/dcd1d4c876940287-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/es/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/08d1be7a0ba76d5a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/et",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/aea3ffbf07bc9a1c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/et/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6a521469d493fc46-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/eu",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9b7cfa52ab83870c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/eu/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7431f7dc572d8df6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/fi",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e6563ac36141a4e5-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/fi/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b25fbbdb08edaf2b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/fr",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ed9bc26acd10508a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/fr/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f8635906389b8aa8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ga",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/94f44b7c1882291c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ga/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/efd8b7d3e9c40e36-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/gl",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c2080f51cb6f12da-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/gl/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/452bb9dacbc0181e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/he",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9031243dd7f3ea9b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/hr",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7e188348005bb30e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/hr/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/73a6035f65cc076b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/hu",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/54fa27814ad899c1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/hu/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/940f936405e5ec33-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ia",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/66755cedc9882388-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ia/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/915c971c2b9af0b4-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/id",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/92be60594d18ab1e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/id/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d22f52248015088a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/it",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1bba201819a10efd-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/it/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2a984bccba34e5ce-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ja",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/499ade8b27b188e0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ja/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a334923ef7495350-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ka",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/43a8fbb0e5f4f4cc-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ka/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/12fea3b3140c01ad-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/kk",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/886c127d23d6ffa2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/kk/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/676a44b5d2dd0673-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/km",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8581f0553723f1c8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ko",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d749c661cc878802-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ko/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/4a71c203fd9ec35d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ku",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/60758f5370fd5d82-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/lg",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2b1c95d2d63ddd8d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/lg/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/684da67152764d3e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/lt",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ef5f6a1fa5347130-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/lt/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8aa2c80297d7842b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/mr",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/57ab45aeee361b8d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ms",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c96320f86b55baed-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ms/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5abd939e269a8e95-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/nb",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c82420542d537250-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/nb/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7cb1a2be7f13b5a8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ne",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3e327ede897fbf44-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/nl",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5724b524dd1b865e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/nl/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/569df283bcb0c3b8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/nn",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c1409a075e689dcb-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/oc",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/eca2a7e19a661050-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/pa",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ed27943c4902c8a2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/pl",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/99dc735870c6a58c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/pl/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/218937f566f1bdbe-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/pt",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d2f21c0719bb1ce8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/pt_BR",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3ae136f6a867aae2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/pt_BR/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/32c62c70573b0a95-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/pt/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b7ecadd314ca504f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ro",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/34bd10b9833d47a0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ro/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/48a6f39826ef5735-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ru",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d3c45927889c6eac-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ru/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/198e7d87ca505b28-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/sk",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8daaa615e45393a0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/sk/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d95eb9d4a2b35015-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/sl",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/4fe121919259d843-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/sl/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9a33cee7668c8b29-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/sq",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/342c3e005e602bc1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/sr",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b40f77ec94116a4e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/sr/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/911dd78e7a9882c7-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/sv",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b4f6f5fe3dacfae2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/sv/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/68be1975896cda33-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ta",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/72a4482e18c32028-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/ta/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/4056ad429d77764e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/th",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/11250dc623bb8243-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/tl",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6185676d6567a943-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/tr",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/bc833f61f84a128c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/tr/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/d861707071b4753a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/uk",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0fc9c6322b1ee4a9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/uk/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6d4fde6bba8ce24d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/vi",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/835f63824d60ee46-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/vi/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b1ae72e8317bd5a2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/zh_CN",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/61b4efb2babd52a6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/zh_CN/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/2d459e0ad558219f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/zh_TW",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/49a275390ac806d4-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/locale/zh_TW/LC_TIME",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c311944126866afe-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man",
+      "count": 19,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9821d8ddb1dbec3b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/de",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6a77b7b047450157-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/es",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a76878d99d506fd6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/fr",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f8524d4c37913b6c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/it",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/87d24d62facf5915-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/ja",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3758609565adbd66-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/nl",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f62a9e52cfe633a2-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/pl",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/bbdf77fc6c16b357-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/pt",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b6b0412c859c6eac-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/pt_BR",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f67125389fe07f4d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/ro",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6a3ce396fa9ac752-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/ru",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ad53d084c1383f8f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/sl",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/26f7ac03c2f27b69-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/sv",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5cce9e8310ecc2e1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/uk",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/351120974de68325-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/man/zh_CN",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/73ad683f0232c95d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/menu",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/50779fd7242022fa-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/pam",
+      "count": 10,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/847f39f74d26fb5d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/pam-configs",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/61a540c163ed9833-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/5174d5419baabcb8-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debconf",
+      "count": 24,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/55d9b088a0613504-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debconf/Client",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ba53bc141f7a594b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debconf/DbDriver",
+      "count": 11,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b762513295a38912-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debconf/Element",
+      "count": 10,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/eea5322966b275ca-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debconf/Element/Dialog",
+      "count": 9,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/62b5a74f102fad0c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debconf/Element/Editor",
+      "count": 9,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/106e293cefd7a14a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debconf/Element/Gnome",
+      "count": 9,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3b7a753713110b2a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debconf/Element/Noninteractive",
+      "count": 9,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/fd40450eafec73a1-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debconf/Element/Teletype",
+      "count": 9,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/868be032366d7d9b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debconf/Element/Web",
+      "count": 9,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/68395f8f677e7756-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debconf/Format",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/496843a11206b60a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debconf/FrontEnd",
+      "count": 11,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/32d354cccc1ae15b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debconf/Template",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f145bc01e65153e0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debian",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6f5f7315945cfb7e-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debian/DebConf",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ee3d5e317b9c23cb-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/perl5/Debian/DebConf/Client",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/170f041d28f77144-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/pixmaps",
+      "count": 7,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/af667f7d36d8dc81-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/polkit-1",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/fe01cf2256ff76b9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/polkit-1/actions",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/6f40740c6d26e087-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/tabset",
+      "count": 4,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a7c3f063e0552da9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo",
+      "count": 14,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e76efd2abb9adf9d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/a",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/faf53835690aa771-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/c",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a0c18b2824042d7c-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/d",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/581c6223cf9929a6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/E",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a1a9362fd0d12b14-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/h",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/02c23fa4682ecc1a-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/l",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a30d94320ebbf160-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/m",
+      "count": 5,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/66cf51563552e0e6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/p",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3000d959b81f99b9-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/r",
+      "count": 5,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a8f8265a73f059b0-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/s",
+      "count": 8,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7922d9fd7ee50bd6-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/t",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/756ce7ec7d9de740-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/v",
+      "count": 4,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1d749204dc522ad3-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/w",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f17f683d7878d448-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/terminfo/x",
+      "count": 9,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a43cb0a9ba2aee16-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/util-linux",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/636ef7948a31bc42-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/util-linux/logcheck",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/601df769958c68ff-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/util-linux/logcheck/ignore.d.server",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c1dbcf141a9481ac-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/zsh",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1e090b13403dc95f-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/zsh/site-functions",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8c04faa8b8a8230b-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/zsh/site-functions/rust-coreutils",
+      "count": 109,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/bcba1dede93b8f3d-0.json"
+      ]
+    },
+    {
+      "path": "/usr/share/zsh/vendor-completions",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/f768bf6fc83640bc-0.json"
+      ]
+    },
+    {
+      "path": "/var",
+      "count": 11,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/c309689ef6f2432e-0.json"
+      ]
+    },
+    {
+      "path": "/var/cache",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/b79f7b1a48aea6d3-0.json"
+      ]
+    },
+    {
+      "path": "/var/cache/apt",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/e0f0d92cbaf657b6-0.json"
+      ]
+    },
+    {
+      "path": "/var/cache/apt/archives",
+      "count": 2,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/fc3a6f2bbbd72c03-0.json"
+      ]
+    },
+    {
+      "path": "/var/cache/debconf",
+      "count": 6,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/142eb721f6b66e93-0.json"
+      ]
+    },
+    {
+      "path": "/var/cache/ldconfig",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/0cdc1fc72532f04b-0.json"
+      ]
+    },
+    {
+      "path": "/var/lib",
+      "count": 7,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/018076f20178b3bf-0.json"
+      ]
+    },
+    {
+      "path": "/var/lib/apt",
+      "count": 4,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/fa7048779b3f78dc-0.json"
+      ]
+    },
+    {
+      "path": "/var/lib/apt/mirrors",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/327854c2e2975e17-0.json"
+      ]
+    },
+    {
+      "path": "/var/lib/dpkg",
+      "count": 13,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7b17bf219a79afea-0.json"
+      ]
+    },
+    {
+      "path": "/var/lib/dpkg/alternatives",
+      "count": 5,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/ed0980e9e957a1b1-0.json"
+      ]
+    },
+    {
+      "path": "/var/lib/dpkg/info",
+      "count": 603,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7ff4291aa41acde0-0.json",
+        "runs/capture-20261018163805008-3e713660/files/7ff4291aa41acde0-1.json"
+      ]
+    },
+    {
+      "path": "/var/lib/dpkg/triggers",
+      "count": 6,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/1b8f1fb1417c5435-0.json"
+      ]
+    },
+    {
+      "path": "/var/lib/pam",
+      "count": 6,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/926fdb3aa58ca0aa-0.json"
+      ]
+    },
+    {
+      "path": "/var/lib/pebble",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/48f0ba5c83280f28-0.json"
+      ]
+    },
+    {
+      "path": "/var/lib/pebble/default",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/a69d6aa2c75adef4-0.json"
+      ]
+    },
+    {
+      "path": "/var/lib/systemd",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/93ea9dea37916448-0.json"
+      ]
+    },
+    {
+      "path": "/var/lib/systemd/deb-systemd-helper-enabled",
+      "count": 9,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/8b0353ef5cafc4fc-0.json"
+      ]
+    },
+    {
+      "path": "/var/lib/systemd/deb-systemd-helper-enabled/multi-user.target.wants",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/7361174ecf7f6dff-0.json"
+      ]
+    },
+    {
+      "path": "/var/lib/systemd/deb-systemd-helper-enabled/timers.target.wants",
+      "count": 6,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/48ebc2306e99cd40-0.json"
+      ]
+    },
+    {
+      "path": "/var/log",
+      "count": 7,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/9a6a409e26d4fd90-0.json"
+      ]
+    },
+    {
+      "path": "/var/log/apt",
+      "count": 3,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/3439532bda976ab4-0.json"
+      ]
+    },
+    {
+      "path": "/var/spool",
+      "count": 1,
+      "chunks": [
+        "runs/capture-20261018163805008-3e713660/files/01f1d631e7df830b-0.json"
+      ]
+    }
+  ]
+}

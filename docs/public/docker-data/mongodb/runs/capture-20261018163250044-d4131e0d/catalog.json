@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "captureId": "capture-20261018163250044-d4131e0d",
+  "product": {
+    "id": "mongodb",
+    "name": "MongoDB",
+    "version": "9.0.4"
+  },
+  "commands": [
+    {
+      "id": "/opt/database-tools/bin/mongorestore",
+      "name": "mongorestore",
+      "path": "/opt/database-tools/bin/mongorestore",
+      "realPath": "/opt/database-tools/bin/mongorestore",
+      "sha256": "0aef331ae4ea1bd31479434f2d9d0a38740990fc89423b274fec20ac4b2e1808",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      },
+      "purpose": "从 BSON 备份恢复数据库。",
+      "category": "备份恢复",
+      "verified": true
+    },
+    {
+      "id": "/opt/database-tools/bin/mongodump",
+      "name": "mongodump",
+      "path": "/opt/database-tools/bin/mongodump",
+      "realPath": "/opt/database-tools/bin/mongodump",
+      "sha256": "74d84c59655655ab2b00a72c8dba9053ebffce332adad2866fb67302f37604f2",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      },
+      "purpose": "生成数据库 BSON 备份。",
+      "category": "备份恢复",
+      "verified": true
+    },
+    {
+      "id": "/opt/database-tools/bin/mongotop",
+      "name": "mongotop",
+      "path": "/opt/database-tools/bin/mongotop",
+      "realPath": "/opt/database-tools/bin/mongotop",
+      "sha256": "72a9141cbb67bc10cf45fc02fb712abda4273b6bd07206e38ab5948cadb1adde",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      },
+      "purpose": "发行包内辅助命令；用途说明待补充。",
+      "category": "辅助工具",
+      "verified": true
+    },
+    {
+      "id": "/opt/database-tools/bin/mongostat",
+      "name": "mongostat",
+      "path": "/opt/database-tools/bin/mongostat",
+      "realPath": "/opt/database-tools/bin/mongostat",
+      "sha256": "c08860cebf69dd0487c2c3707fda89eaca8a82a8898bbdbad91db65335cdb2e5",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      },
+      "purpose": "发行包内辅助命令；用途说明待补充。",
+      "category": "辅助工具",
+      "verified": true
+    },
+    {
+      "id": "/opt/database-tools/bin/bsondump",
+      "name": "bsondump",
+      "path": "/opt/database-tools/bin/bsondump",
+      "realPath": "/opt/database-tools/bin/bsondump",
+      "sha256": "969db13fd1f9a02ef1e408eca2608c54a11efc5aab3e7120e617895e0ea766e2",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      },
+      "purpose": "发行包内辅助命令；用途说明待补充。",
+      "category": "辅助工具",
+      "verified": true
+    },
+    {
+      "id": "/opt/database-tools/bin/mongoimport",
+      "name": "mongoimport",
+      "path": "/opt/database-tools/bin/mongoimport",
+      "realPath": "/opt/database-tools/bin/mongoimport",
+      "sha256": "6df1e2bdfeb83856966825c9380b2fdb1fc2dbdb210143d5375f3d81701df2d3",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      },
+      "purpose": "将 JSON 或 CSV 导入集合。",
+      "category": "导入导出",
+      "verified": true
+    },
+    {
+      "id": "/opt/database-tools/bin/mongofiles",
+      "name": "mongofiles",
+      "path": "/opt/database-tools/bin/mongofiles",
+      "realPath": "/opt/database-tools/bin/mongofiles",
+      "sha256": "5b6f9cf0a3d13395c1bbd0bf0ef24e33e19b92dfcd8b6566be0d99a3cdca06ee",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      },
+      "purpose": "发行包内辅助命令；用途说明待补充。",
+      "category": "辅助工具",
+      "verified": true
+    },
+    {
+      "id": "/opt/database-tools/bin/mongoexport",
+      "name": "mongoexport",
+      "path": "/opt/database-tools/bin/mongoexport",
+      "realPath": "/opt/database-tools/bin/mongoexport",
+      "sha256": "c97df6fbc5feb615cef1315e3de4d62d5a7b2ae6ba82c7e4f95420c20183fe20",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/database-tools",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      },
+      "purpose": "导出集合为 JSON 或 CSV。",
+      "category": "导入导出",
+      "verified": true
+    },
+    {
+      "id": "/opt/mongosh/bin/mongosh_crypt_v1.so",
+      "name": "mongosh_crypt_v1.so",
+      "path": "/opt/mongosh/bin/mongosh_crypt_v1.so",
+      "realPath": "/opt/mongosh/bin/mongosh_crypt_v1.so",
+      "sha256": "6d6656ebde0e24dc62293af0efe7d12123c4350ae9c275305b8af200876c8418",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/mongosh",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      },
+      "purpose": "发行包内辅助命令；用途说明待补充。",
+      "category": "辅助工具",
+      "verified": true
+    },
+    {
+      "id": "/opt/mongosh/bin/mongosh",
+      "name": "mongosh",
+      "path": "/opt/mongosh/bin/mongosh",
+      "realPath": "/opt/mongosh/bin/mongosh",
+      "sha256": "6b39fa8b9fe0deb5ae5db469966da31bffd1dd8603726dc9aadcc1d2ff7dea70",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/mongosh",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      },
+      "purpose": "运行 MongoDB Shell 查询与管理表达式。",
+      "category": "交互",
+      "verified": true
+    },
+    {
+      "id": "/opt/mongodb/bin/mongod",
+      "name": "mongod",
+      "path": "/opt/mongodb/bin/mongod",
+      "realPath": "/opt/mongodb/bin/mongod",
+      "sha256": "a7015198555c4ccc9baab53ccf19418c6ee916400d3f77189742b380aca2b58d",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/mongodb",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      },
+      "purpose": "启动 MongoDB 数据库服务。",
+      "category": "服务",
+      "verified": true
+    },
+    {
+      "id": "/opt/mongodb/bin/mongos",
+      "name": "mongos",
+      "path": "/opt/mongodb/bin/mongos",
+      "realPath": "/opt/mongodb/bin/mongos",
+      "sha256": "0d542c251cf7eebb9b3953feb3b617fdb8df99d4aeb751a8748f72b139835164",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/mongodb",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      },
+      "purpose": "启动分片集群路由。",
+      "category": "服务",
+      "verified": true
+    },
+    {
+      "id": "/opt/mongodb/bin/install_compass",
+      "name": "install_compass",
+      "path": "/opt/mongodb/bin/install_compass",
+      "realPath": "/opt/mongodb/bin/install_compass",
+      "sha256": "eef371180aba34eba8fa704db9aa16ba0b756837fcc36fcde1ea4f8299ab1fc0",
+      "ownership": {
+        "method": "declared-install-root",
+        "root": "/opt/mongodb",
+        "imageId": "fe89ebf7325386cb87b8f30ae3287c92d065d75ba46075d0f89dbd05daf4d6f7",
+        "recipeSha256": "93aeac4610ab81bab0fb81e38e346c190da47070d3c2da3f46d329461ba7e182",
+        "note": "安装目录归属；缓存、系统工具及包装脚本不计为产品命令。"
+      },
+      "purpose": "发行包内辅助命令；用途说明待补充。",
+      "category": "辅助工具",
+      "verified": true
+    }
+  ],
+  "plannedCommands": []
+}

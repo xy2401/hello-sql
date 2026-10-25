@@ -1,0 +1,10 @@
+services:
+  mongodb:
+    image: ${MONGODB_IMAGE:-localhost/hello-capture/mongodb:9.0.4}
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BASE_IMAGE: ${BASE_IMAGE:?Set the built common Ubuntu image explicitly}
+

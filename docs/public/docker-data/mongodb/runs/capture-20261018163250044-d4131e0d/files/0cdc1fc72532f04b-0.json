@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "captureId": "capture-20261018163250044-d4131e0d",
+  "directory": "/var/cache/ldconfig",
+  "files": [
+    {
+      "path": "/var/cache/ldconfig/aux-cache",
+      "pathBytesBase64": "L3Zhci9jYWNoZS9sZGNvbmZpZy9hdXgtY2FjaGU=",
+      "type": "file",
+      "stage": "mongodb",
+      "mode": 33152,
+      "permissionsOctal": "0600",
+      "permissions": "-rw-------",
+      "accessBits": {
+        "owner": {
+          "read": true,
+          "write": true,
+          "execute": false
+        },
+        "group": {
+          "read": false,
+          "write": false,
+          "execute": false
+        },
+        "other": {
+          "read": false,
+          "write": false,
+          "execute": false
+        }
+      },
+      "specialBits": {
+        "setuid": false,
+        "setgid": false,
+        "sticky": false
+      },
+      "uid": 0,
+      "gid": 0,
+      "user": "root",
+      "group": "root",
+      "sizeBytes": "6720",
+      "blocks": "16",
+      "blockUnitBytes": 512,
+      "allocatedBytes": "8192",
+      "blockSize": 4096,
+      "inode": "176475",
+      "device": "93",
+      "deviceMajor": 0,
+      "deviceMinor": 93,
+      "rdevMajor": 0,
+      "rdevMinor": 0,
+      "hardlinkCount": 1,
+      "hardlinkKey": null,
+      "times": {
+        "accessed": {
+          "seconds": "1792341129",
+          "nanoseconds": 0
+        },
+        "modified": {
+          "seconds": "1792341129",
+          "nanoseconds": 0
+        },
+        "changed": {
+          "seconds": "1792341163",
+          "nanoseconds": 826093022
+        },
+        "created": {
+          "seconds": "1792341163",
+          "nanoseconds": 825949909
+        }
+      },
+      "attributes": null,
+      "attributesMask": null,
+      "statxMask": null,
+      "linuxFileFlags": "--------------e-------",
+      "fieldAvailability": {
+        "statx": {
+          "status": "unsupported",
+          "reason": "Linux CLI does not expose statx result/support masks"
+        },
+        "birthTime": {
+          "status": "available"
+        },
+        "user": {
+          "status": "available"
+        },
+        "group": {
+          "status": "available"
+        },
+        "xattrs": {
+          "status": "available"
+        },
+        "acl": {
+          "status": "available"
+        },
+        "linuxFileFlags": {
+          "status": "available"
+        },
+        "capabilities": {
+          "status": "absent",
+          "reason": "security.capability xattr; supplementary getcap output saved separately"
+        }
+      },
+      "linkTarget": null,
+      "linkTargetBytesBase64": null,
+      "xattrs": {},
+      "acl": {
+        "format": "getfacl-numeric",
+        "entries": [
+          "user::rw-",
+          "group::---",
+          "other::---"
+        ],
+        "support": "mode entries alone do not prove extended ACL support"
+      },
+      "capabilities": null,
+      "sha256": "db51a113f4a4920fa0a0d40246df41250e0e92a73432070592f861496797d61e",
+      "hashStatus": "complete",
+      "errors": [],
+      "packages": [],
+      "packageVersions": [],
+      "rdev": "0",
+      "origin": "unconfirmed",
+      "introducedAt": "ubuntu",
+      "ownership": null
+    }
+  ]
+}

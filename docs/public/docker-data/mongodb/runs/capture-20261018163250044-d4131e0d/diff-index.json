@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "captureId": "capture-20261018163250044-d4131e0d",
+  "total": 63,
+  "chunks": [
+    "runs/capture-20261018163250044-d4131e0d/diff/0.json"
+  ],
+  "transitions": [
+    {
+      "id": "ubuntu-to-mongodb",
+      "label": "Ubuntu 26.04 基线 → MongoDB",
+      "count": 63,
+      "chunks": [
+        "runs/capture-20261018163250044-d4131e0d/diff/0.json"
+      ]
+    }
+  ]
+}

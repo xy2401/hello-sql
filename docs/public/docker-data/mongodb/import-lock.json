@@ -1,10 +1,14 @@
 {
   "schemaVersion": 1,
+  "version": "9.0.4",
+  "captureId": "capture-20261018163805008-3e713660",
+  "manifestFile": "runs/capture-20261018163805008-3e713660/manifest.json",
+  "manifestSha256": "75a414fa357a93858856a5fd410c0e7ae3a66e5fa15f05723d476158eac69933",
   "product": "mongodb",
-  "captureId": "pending-02efdf7d78b049ed",
-  "manifestFile": "runs/pending-02efdf7d78b049ed/manifest.json",
-  "sourceRepository": "https://github.com/xy2401/hello-docker",
-  "sourceSha": null,
-  "dataRevision": null,
-  "manifestSha256": "0c333dbda9ba5557de1ea145d32ad175b4c28796cbd3fdb47798ee7136c43c9a"
+  "status": "passed",
+  "sourceRepository": "https://github.com/xy2401/hello-sql",
+  "sourceSha": "6f9ff23ce73c760def75945c399112599f205fa6",
+  "toolSha": "730f40d4a275132aab21a8ae35a9cc51c9118ff7",
+  "protocolVersion": 2,
+  "dataRevision": null
 }

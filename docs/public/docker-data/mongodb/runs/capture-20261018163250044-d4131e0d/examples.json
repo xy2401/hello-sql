@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 1,
+  "captureId": "capture-20261018163250044-d4131e0d",
+  "product": {
+    "id": "mongodb",
+    "name": "MongoDB",
+    "version": "9.0.4"
+  },
+  "preparation": {
+    "command": "source /capture/scripts/product/prepare.sh",
+    "stdout": "{\"t\":{\"$date\":\"2026-10-18T16:33:06.727+00:00\"},\"s\":\"I\",  \"c\":\"-\",        \"id\":8991200, \"ctx\":\"main\",\"msg\":\"Shuffling initializers\",\"attr\":{\"seed\":3369612761}}\n{ acknowledged: true, insertedIds: { '0': 1, '1': 2, '2': 3 } }\n",
+    "stderr": "",
+    "exitCode": 0
+  },
+  "examples": [
+    {
+      "id": "version",
+      "title": "版本",
+      "notes": [
+        "服务端 9.0.4；Shell 和 Database Tools 分别固定版本，和历史 7/8 结果分开。"
+      ],
+      "steps": [
+        {
+          "id": "server-version",
+          "argv": [
+            "mongod",
+            "--version"
+          ],
+          "assertions": [
+            {
+              "stream": "exitCode",
+              "op": "equals",
+              "value": 0,
+              "passed": true
+            },
+            {
+              "stream": "stdout",
+              "op": "includes",
+              "value": "9.0.4",
+              "passed": true
+            }
+          ],
+          "cwd": "/capture/work",
+          "stdin": null,
+          "stdout": "db version v9.0.4\nBuild Info: {\n    \"version\": \"9.0.4\",\n    \"gitVersion\": \"64ade602b836c9adeffba7fa038c887ffab56196\",\n    \"openSSLVersion\": \"OpenSSL 3.5.5 27 Jan 2026\",\n    \"modules\": [],\n    \"allocator\": \"tcmalloc-google\",\n    \"javascriptEngine\": \"mozjs-wasm\",\n    \"environment\": {\n        \"distmod\": \"ubuntu2604\",\n        \"distarch\": \"x86_64\",\n        \"target_arch\": \"x86_64\"\n    }\n}\n",
+          "stderr": "",
+          "exitCode": 0,
+          "status": "passed"
+        },
+        {
+          "id": "shell-version",
+          "argv": [
+            "mongosh",
+            "--version"
+          ],
+          "assertions": [
+            {
+              "stream": "exitCode",
+              "op": "equals",
+              "value": 0,
+              "passed": true
+            },
+            {
+              "stream": "stdout",
+              "op": "includes",
+              "value": "2.12.0",
+              "passed": true
+            }
+          ],
+          "cwd": "/capture/work",
+          "stdin": null,
+          "stdout": "2.12.0\n",
+          "stderr": "",
+          "exitCode": 0,
+          "status": "passed"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "ping",
+      "title": "连接检查",
+      "notes": [
+        "只连接本次隔离容器的本地服务。"
+      ],
+      "steps": [
+        {
+          "id": "ping",
+          "argv": [
+            "mongosh",
+            "--quiet",
+            "--eval",
+            "print(JSON.stringify(db.runCommand({ping:1})))"
+          ],
+          "assertions": [
+            {
+              "stream": "exitCode",
+              "op": "equals",
+              "value": 0,
+              "passed": true
+            },
+            {
+              "stream": "stdout",
+              "op": "includes",
+              "value": "\"ok\":1",
+              "passed": true
+            }
+          ],
+          "format": "json",
+          "cwd": "/capture/work",
+          "stdin": null,
+          "stdout": "{\"ok\":1}\n",
+          "stderr": "",
+          "exitCode": 0,
+          "status": "passed",
+          "result": {
+            "ok": 1
+          }
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "collection",
+      "title": "临时集合增查",
+      "notes": [
+        "只操作 capture 临时数据库，不导入或修改既有 MFlix 快照。"
+      ],
+      "steps": [
+        {
+          "id": "insert-find",
+          "argv": [
+            "mongosh",
+            "--quiet",
+            "capture",
+            "--eval",
+            "db.demo.drop(); db.demo.insertMany([{_id:1,name:'alpha',score:10},{_id:2,name:'beta',score:20}]); print(JSON.stringify(db.demo.find({score:{$gte:15}}).toArray()))"
+          ],
+          "assertions": [
+            {
+              "stream": "exitCode",
+              "op": "equals",
+              "value": 0,
+              "passed": true
+            },
+            {
+              "stream": "stdout",
+              "op": "includes",
+              "value": "beta",
+              "passed": true
+            }
+          ],
+          "format": "json",
+          "cwd": "/capture/work",
+          "stdin": null,
+          "stdout": "[{\"_id\":2,\"name\":\"beta\",\"score\":20}]\n",
+          "stderr": "",
+          "exitCode": 0,
+          "status": "passed",
+          "result": [
+            {
+              "_id": 2,
+              "name": "beta",
+              "score": 20
+            }
+          ]
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "export-import",
+      "title": "导出与导入",
+      "notes": [
+        "独立使用 seed 集合，目标为本次运行的 imported 集合。"
+      ],
+      "steps": [
+        {
+          "id": "export",
+          "argv": [
+            "mongoexport",
+            "--db=capture",
+            "--collection=seed",
+            "--out=/capture/work/seed.json",
+            "--jsonArray"
+          ],
+          "assertions": [
+            {
+              "stream": "exitCode",
+              "op": "equals",
+              "value": 0,
+              "passed": true
+            }
+          ],
+          "cwd": "/capture/work",
+          "stdin": null,
+          "stdout": "",
+          "stderr": "2026-10-18T16:33:08.038+0000\tconnected to: mongodb://localhost/\n2026-10-18T16:33:08.039+0000\texported 3 records\n",
+          "exitCode": 0,
+          "status": "passed"
+        },
+        {
+          "id": "import",
+          "argv": [
+            "mongoimport",
+            "--db=capture",
+            "--collection=imported",
+            "--drop",
+            "--file=/capture/work/seed.json",
+            "--jsonArray"
+          ],
+          "assertions": [
+            {
+              "stream": "exitCode",
+              "op": "equals",
+              "value": 0,
+              "passed": true
+            }
+          ],
+          "cwd": "/capture/work",
+          "stdin": null,
+          "stdout": "",
+          "stderr": "2026-10-18T16:33:08.051+0000\tconnected to: mongodb://localhost/\n2026-10-18T16:33:08.051+0000\tdropping: `capture.imported`\n2026-10-18T16:33:08.062+0000\t3 document(s) imported successfully. 0 document(s) failed to import.\n",
+          "exitCode": 0,
+          "status": "passed"
+        },
+        {
+          "id": "verify",
+          "argv": [
+            "mongosh",
+            "--quiet",
+            "capture",
+            "--eval",
+            "print(JSON.stringify({count:db.imported.countDocuments({})}))"
+          ],
+          "assertions": [
+            {
+              "stream": "exitCode",
+              "op": "equals",
+              "value": 0,
+              "passed": true
+            },
+            {
+              "stream": "stdout",
+              "op": "includes",
+              "value": "\"count\":3",
+              "passed": true
+            }
+          ],
+          "format": "json",
+          "cwd": "/capture/work",
+          "stdin": null,
+          "stdout": "{\"count\":3}\n",
+          "stderr": "",
+          "exitCode": 0,
+          "status": "passed",
+          "result": {
+            "count": 3
+          }
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "dump-restore",
+      "title": "备份与恢复",
+      "notes": [
+        "从 seed 备份到 /capture/work，再恢复为 restored；不接触外部服务。"
+      ],
+      "steps": [
+        {
+          "id": "dump",
+          "argv": [
+            "mongodump",
+            "--db=capture",
+            "--collection=seed",
+            "--out=/capture/work/dump"
+          ],
+          "assertions": [
+            {
+              "stream": "exitCode",
+              "op": "equals",
+              "value": 0,
+              "passed": true
+            }
+          ],
+          "cwd": "/capture/work",
+          "stdin": null,
+          "stdout": "",
+          "stderr": "2026-10-18T16:33:08.374+0000\twriting `capture.seed` to `/capture/work/dump/capture/seed.bson`\n2026-10-18T16:33:08.374+0000\tdone dumping `capture.seed` (3 documents)\n",
+          "exitCode": 0,
+          "status": "passed"
+        },
+        {
+          "id": "restore",
+          "argv": [
+            "mongorestore",
+            "--drop",
+            "--nsInclude=capture.seed",
+            "--nsFrom=capture.seed",
+            "--nsTo=capture.restored",
+            "/capture/work/dump"
+          ],
+          "assertions": [
+            {
+              "stream": "exitCode",
+              "op": "equals",
+              "value": 0,
+              "passed": true
+            }
+          ],
+          "cwd": "/capture/work",
+          "stdin": null,
+          "stdout": "",
+          "stderr": "2026-10-18T16:33:08.386+0000\tpreparing collections to restore from\n2026-10-18T16:33:08.386+0000\tdon't know what to do with file `/capture/work/dump/capture/prelude.json`, skipping...\n2026-10-18T16:33:08.386+0000\treading metadata for `capture.restored` from `/capture/work/dump/capture/seed.metadata.json`\n2026-10-18T16:33:08.397+0000\trestoring `capture.restored` from `/capture/work/dump/capture/seed.bson`\n2026-10-18T16:33:08.409+0000\tfinished restoring `capture.restored` (3 documents, 0 failures)\n2026-10-18T16:33:08.409+0000\tno indexes to restore for collection `capture.restored`\n2026-10-18T16:33:08.409+0000\t3 document(s) restored successfully. 0 document(s) failed to restore.\n",
+          "exitCode": 0,
+          "status": "passed"
+        },
+        {
+          "id": "verify",
+          "argv": [
+            "mongosh",
+            "--quiet",
+            "capture",
+            "--eval",
+            "print(JSON.stringify({count:db.restored.countDocuments({})}))"
+          ],
+          "assertions": [
+            {
+              "stream": "exitCode",
+              "op": "equals",
+              "value": 0,
+              "passed": true
+            },
+            {
+              "stream": "stdout",
+              "op": "includes",
+              "value": "\"count\":3",
+              "passed": true
+            }
+          ],
+          "format": "json",
+          "cwd": "/capture/work",
+          "stdin": null,
+          "stdout": "{\"count\":3}\n",
+          "stderr": "",
+          "exitCode": 0,
+          "status": "passed",
+          "result": {
+            "count": 3
+          }
+        }
+      ],
+      "status": "passed"
+    }
+  ]
+}
