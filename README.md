@@ -39,9 +39,13 @@ npm run check         # 内容检查 + typecheck + vitest + docs:build
 
 ## 部署
 
-站点部署在独立域名的根路径 `/`。
+仓库根目录的 [wrangler.jsonc](wrangler.jsonc) 声明了构建命令和静态资源目录。Wrangler 在部署阶段执行 `npm run docs:build`，随后发布 `docs/.vitepress/dist`；页面使用静态 HTML 路由和 VitePress 的 404 页面。
 
-Cloudflare Pages 使用自定义构建命令 `npx vitepress build docs`，输出目录 `docs/.vitepress/dist`。构建会把超过 Pages 25 MiB 单文件限制的 DuckDB WASM 拆分为同域静态分片，运行时在数据库 Worker 内合并，不依赖第三方 CDN。
+在 Cloudflare Workers 中导入本仓库，Worker 名称使用 `hello-sql`（与配置中的 `name` 一致），根目录使用仓库根目录，**构建命令留空**，部署命令保留默认的 `npx wrangler deploy`。构建环境使用 Node.js 22.16+，站点默认部署到域名根路径 `/`，无需设置 `DOCS_BASE`。
+
+构建命令由 Wrangler 执行，不依赖控制台自动填充构建命令字段。配置方式见 [Wrangler 自定义构建](https://developers.cloudflare.com/workers/wrangler/custom-builds/)和 [Workers 静态站点路由](https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/)。
+
+构建继续通过 VitePress 插件把大型 DuckDB WASM 拆分为同域静态分片，运行时在数据库 Worker 内合并，不依赖第三方 CDN。
 
 ## Live 运行边界
 
