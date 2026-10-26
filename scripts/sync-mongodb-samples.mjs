@@ -55,7 +55,7 @@ const bundle = {
   defaultExampleId: '01-list-movies',
   source: {
     label: 'Hello Docker · MongoDB MFlix',
-    url: 'https://github.com/xy2401/hello-docker/tree/codex/hello-docker/compose/mongo-samples',
+    url: 'https://github.com/xy2401/hello-docker/tree/main/compose/mongo-samples',
     recordedAt: summary.generatedAt, engine: `MongoDB ${summary.database.version} · mongosh ${summary.cases[0].mongoshVersion}`,
     runId: summary.runId, repository: provenance.repository, commit: provenance.commit,
     license: provenance.license, licenseUrl: '/sample-data/mongodb.LICENSE',

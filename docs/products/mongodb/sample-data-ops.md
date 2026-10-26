@@ -16,4 +16,4 @@ pageClass: sample-data-ops-page
 
 普通写入在临时练习库中准备和验证，采集后清理。ObjectId、日期和嵌套文档使用原始 Extended JSON 展示；表格按返回字段组织，JSON 视图保留完整结构。
 
-样例语句、结果与来源记录见 [Hello Docker 的 mongo-samples](https://github.com/xy2401/hello-docker/tree/codex/hello-docker/compose/mongo-samples)。原始样例来自 MongoDB MFlix 应用，许可及采集信息可在工作台底部查看。
+样例语句、结果与来源记录见 [Hello Docker 的 mongo-samples](https://github.com/xy2401/hello-docker/tree/main/compose/mongo-samples)。原始样例来自 MongoDB MFlix 应用，许可及采集信息可在工作台底部查看。

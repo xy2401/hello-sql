@@ -77,7 +77,7 @@ npm run sync:mongodb-samples -- D:/path/to/hello-docker/compose/mongo-samples
 
 MongoDB 新入口：[容器内命令](docs/products/mongodb/docker-commands.md)、[命令示例与结果](docs/products/mongodb/docker-command-ops.md)。新采集固定 Ubuntu 26.04 / MongoDB 9.0.4，和现有 7/8 版本证据及 MFlix 样例分开。
 
-完整文件清单、安装锁和采集历史归 [Hello Docker](https://github.com/xy2401/hello-docker/blob/codex/hello-docker/docs/support/software-capture.md) 管理。本站只保存导入并校验过的 `docs/public/docker-data/mongodb/` 展示包，构建不读取相邻仓库。初始 `pending` 包只有计划命令及案例，不代表已经运行。
+完整文件清单、安装锁和采集历史归 [Hello Docker](https://github.com/xy2401/hello-docker/blob/main/docs/support/software-capture.md) 管理。本站只保存导入并校验过的 `docs/public/docker-data/mongodb/` 展示包，构建不读取相邻仓库。初始 `pending` 包只有计划命令及案例，不代表已经运行。
 
 ## License
 

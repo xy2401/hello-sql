@@ -22,7 +22,7 @@ MongoDB 官方提供 **Atlas Sample Datasets**，包含电影、餐馆、房源�
 
 ## 用 Compose 一次完成下载与导入
 
-独立的 [hello-docker 仓库](https://github.com/xy2401/hello-docker/tree/codex/hello-docker)在 `compose/mongo-samples/` 提供 Compose 文件和 Bash 导入脚本。获取该仓库的 `codex/hello-docker` 分支后，从 hello-docker 仓库根目录执行：
+独立的 [hello-docker 仓库](https://github.com/xy2401/hello-docker/tree/main)在 `compose/mongo-samples/` 提供 Compose 文件和 Bash 导入脚本。获取该仓库的 `main` 分支后，从 hello-docker 仓库根目录执行：
 
 ```bash
 cd compose/mongo-samples
@@ -36,7 +36,7 @@ docker exec -u root hello-docker-mongo bash /workspace/scripts/import-samples.sh
 
 脚本使用官方地址 `https://atlas-education.s3.amazonaws.com/sampledata.archive`，将归档保存在宿主机的 `data/sampledata.archive`，容器内对应 `/workspace/data/sampledata.archive`。下载先写临时文件，成功后改名；后续运行复用已下载的非空归档。共享目录已被 Git 忽略。
 
-导入使用 `--nsInclude='sample_*.*'` 选择全部样例库，结束时列出数据库并检查 `sample_restaurants.restaurants`。只执行 `up -d` 会启动服务，下载与导入由上面的 Bash 命令触发。完整文件与说明见 [Mongo Compose 目录](https://github.com/xy2401/hello-docker/tree/codex/hello-docker/compose/mongo-samples)。Podman 使用同一份文件，将命令中的 `docker` 替换为 `podman`，并配置好 Compose provider。
+导入使用 `--nsInclude='sample_*.*'` 选择全部样例库，结束时列出数据库并检查 `sample_restaurants.restaurants`。只执行 `up -d` 会启动服务，下载与导入由上面的 Bash 命令触发。完整文件与说明见 [Mongo Compose 目录](https://github.com/xy2401/hello-docker/tree/main/compose/mongo-samples)。Podman 使用同一份文件，将命令中的 `docker` 替换为 `podman`，并配置好 Compose provider。
 
 停止服务时执行：
 

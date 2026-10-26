@@ -7,7 +7,7 @@
   "defaultExampleId": "01-list-movies",
   "source": {
     "label": "Hello Docker · MongoDB MFlix",
-    "url": "https://github.com/xy2401/hello-docker/tree/codex/hello-docker/compose/mongo-samples",
+    "url": "https://github.com/xy2401/hello-docker/tree/main/compose/mongo-samples",
     "recordedAt": "2026-10-07T14:42:39.157Z",
     "engine": "MongoDB 7.0.43 · mongosh 2.12.0",
     "runId": "20261007T144227Z-4564",
